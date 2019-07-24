@@ -10,6 +10,14 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    //
+    //protected $table = "table";
+    //protected $primaryKey = "id";
+    //protected $keyType = 'int';
+    //public $incrementing = false;
+    //protected $connection = "mysql";
+    //$this->setConnection("mysql");
+    
     /**
      * The attributes that are mass assignable.
      *

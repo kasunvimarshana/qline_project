@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+use Illuminate\Support\Facades\DB;
+
 class CreatePermissionsTable extends Migration
 {
     /**
@@ -14,8 +16,16 @@ class CreatePermissionsTable extends Migration
     public function up()
     {
         Schema::create('permissions', function (Blueprint $table) {
+            /*
             $table->bigIncrements('id');
             $table->timestamps();
+            */
+            
+            $table->bigIncrements('id')->comment('comment');
+            $table->timestamps();
+            
+            $table->string('slug')->index()->comment('comment'); // create-table
+            $table->string('name')->index()->comment('comment'); // create table
         });
     }
 

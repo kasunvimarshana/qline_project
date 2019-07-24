@@ -13,8 +13,13 @@ return [
     |
     */
 
-    'defaults' => [
+    /*'defaults' => [
         'guard' => 'web',
+        'passwords' => 'users',
+    ],*/
+    
+    'defaults' => [
+        'guard' => 'api',
         'passwords' => 'users',
     ],
 
@@ -41,10 +46,14 @@ return [
             'provider' => 'users',
         ],
 
-        'api' => [
+        /*'api' => [
             'driver' => 'token',
             'provider' => 'users',
             'hash' => false,
+        ],*/
+        
+        'api' => [
+            'driver' => 'user-token'
         ],
     ],
 
