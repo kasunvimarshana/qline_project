@@ -14,6 +14,7 @@ class SewingAuditStandard extends Model
     //protected $connection = "mysql";
     //$this->setConnection("mysql");
     
+    //protected $attributes = array();
     //protected $fillable = array();
     //protected $hidden = array();
     //protected $casts = array();

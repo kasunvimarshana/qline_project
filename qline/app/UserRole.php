@@ -7,14 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class UserRole extends Model
 {
     //
-    //protected $table = "table";
-    //protected $primaryKey = "id";
+    protected $table = "user_roles";
+    protected $primaryKey = "id";
     //protected $keyType = 'int';
     //public $incrementing = false;
     //protected $connection = "mysql";
     //$this->setConnection("mysql");
     
-    //protected $fillable = array();
+    //protected $attributes = array();
+    protected $fillable = array('user_id', 'role_id');
     //protected $hidden = array();
     //protected $casts = array();
 }

@@ -7,14 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class RolePermission extends Model
 {
     //
-    //protected $table = "table";
-    //protected $primaryKey = "id";
+    protected $table = "role_permissions";
+    protected $primaryKey = "id";
     //protected $keyType = 'int';
     //public $incrementing = false;
     //protected $connection = "mysql";
     //$this->setConnection("mysql");
     
-    //protected $fillable = array();
+    //protected $attributes = array();
+    protected $fillable = array('role_id', 'permission_id');
     //protected $hidden = array();
     //protected $casts = array();
+    
 }
