@@ -53,7 +53,7 @@ return [
         ],*/
         
         'api' => [
-            'driver' => 'user-token'
+            'driver' => 'access_token'
         ],
     ],
 

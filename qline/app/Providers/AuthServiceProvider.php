@@ -7,9 +7,10 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
 use App\User;
 use App\UserAPIToken;
+use App\Extensions\AccessTokenGuard;
+use App\Extensions\TokenToUserProvider;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -52,6 +53,14 @@ class AuthServiceProvider extends ServiceProvider
             return User::where('token', $token)->first();
         });
         */
+        
+        Auth::extend('access_token', function ($app, $name, array $config) {
+			// automatically build the DI, put it as reference
+			$userProvider = app(TokenToUserProvider::class);
+			$request = app('request');
+
+			return new AccessTokenGuard($userProvider, $request, $config);
+		});
         
     }
 }
