@@ -29,7 +29,9 @@ class CreateUserAPITokensTable extends Migration
             $table->boolean('is_notifiable')->index()->default(false)->nullable()->comment('comment');
             //$table->string('colour')->index()->nullable()->comment('comment');
             //$table->string('slug')->index()->unique()->nullable()->comment('comment');
-            $table->text('api_token')->comment('comment');
+            //$table->text('api_token')->comment('comment');
+            $table->text('access_token')->comment('comment');
+            $table->text('refresh_token')->comment('comment');
             //$table->text('payload')->comment('comment')->nullable();
             $table->string('code_active')->index()->nullable()->comment('comment');
             $table->string('ip_address_request')->index()->nullable()->comment('comment');

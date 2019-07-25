@@ -21,6 +21,7 @@ class User extends Authenticatable
     public $incrementing = false;
     //protected $connection = "mysql";
     //$this->setConnection("mysql");
+    //protected $guard = 'guard';//the authentication guard
     
     //protected $attributes = array();
     /**
@@ -45,4 +46,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    //one to many
+    public function userAPIToken(){
+        return $this->hasMany('App\UserAPIToken', 'user_id', 'user_code');
+    }
+    
 }

@@ -32,28 +32,26 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         //
-        Auth::viaRequest('user-token', function ($request) {
-            
-            $remember_token = null;
+        /*
+        Auth::viaRequest('custom-token', function ($request) {
             $user_id = null;
-            $user = null;
-            // user_id
+            $token = null;
+            //user_id
             if( $request->header('user_id') ){
-                $user_id = $request->header('user_id');
+                $user_id = urldecode( $request->header('user_id') );
             }else{
-                $user_id = $request->input('user_id');
+                $user_id = urldecode( $request->input('user_id') );
             }
-            // remember_token
-            if( $request->header('remember_token') ){
-                $remember_token = $request->header('remember_token');
+            //token
+            if( $request->header('token') ){
+                $token = urldecode( $request->header('token') );
             }else{
-                $remember_token = $request->input('remember_token');
+                $token = urldecode( $request->input('token') );
             }
             
-            return UserAPIToken::where('user_id', '=', $user_id)
-                ->where('remember_token', '=', $remember_token)
-                ->first();
-            
+            return User::where('token', $token)->first();
         });
+        */
+        
     }
 }
