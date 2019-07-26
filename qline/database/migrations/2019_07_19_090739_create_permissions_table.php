@@ -22,6 +22,7 @@ class CreatePermissionsTable extends Migration
             */
             
             $table->bigIncrements('id')->comment('comment');
+            //$table->->uuid('id')->default(0)->nullable()->comment('universal unique identifier');
             $table->timestamps();
             
             $table->string('slug')->index()->comment('comment'); // create-table

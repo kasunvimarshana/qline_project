@@ -22,6 +22,7 @@ class CreateStatusesTable extends Migration
             */
             
             $table->bigIncrements('id')->comment('comment');
+            //$table->->uuid('id')->default(0)->nullable()->comment('universal unique identifier');
             $table->timestamps();
             $table->boolean('is_visible')->index()->default(false)->nullable()->comment('comment');
             $table->boolean('is_active')->index()->default(false)->nullable()->comment('comment');

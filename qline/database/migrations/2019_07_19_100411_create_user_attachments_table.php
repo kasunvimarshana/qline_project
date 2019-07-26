@@ -22,8 +22,8 @@ class CreateUserAttachmentsTable extends Migration
             */
             
             $table->bigIncrements('id');
+            //$table->->uuid('id')->default(0)->nullable()->comment('universal unique identifier');
             $table->timestamps();
-            
             $table->boolean('is_visible')->index()->default(1)->nullable()->comment('comment');
             //$table->unsignedBigInteger('user_id_attached_by')->index()->nullable()->comment('comment');
             $table->string('attached_by')->index()->nullable()->comment('comment');

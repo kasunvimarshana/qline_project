@@ -22,6 +22,7 @@ class CreateCustomersTable extends Migration
             */
             
             $table->unsignedBigInteger('id')->default(0)->nullable()->comment('comment');
+            //$table->->uuid('id')->default(0)->nullable()->comment('universal unique identifier');
             $table->timestamps();
             $table->boolean('is_visible')->index()->nullable()->default(false)->comment('comment');
             $table->boolean('is_active')->index()->nullable()->default(false)->comment('comment');

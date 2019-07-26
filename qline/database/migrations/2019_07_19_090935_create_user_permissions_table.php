@@ -21,6 +21,7 @@ class CreateUserPermissionsTable extends Migration
             $table->timestamps();
             */
             
+            //$table->->uuid('id')->default(0)->nullable()->comment('universal unique identifier');
             //$table->unsignedBigInteger('user_id')->index()->unsigned()->comment('comment');
             $table->string('user_id')->index()->comment('comment');
             $table->unsignedBigInteger('permission_id')->index()->unsigned()->comment('comment');

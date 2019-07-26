@@ -22,6 +22,7 @@ class CreateAQLStandardDataTable extends Migration
             */
             
             $table->bigIncrements('id');
+            //$table->->uuid('id')->default(0)->nullable()->comment('universal unique identifier');
             $table->timestamps();
             $table->boolean('is_visible')->index()->nullable()->default(false)->comment('comment');
             $table->string('a_q_l_standard_id')->index()->nullable()->comment('comment');

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Response;
 //use \Response;
 use \Exception;
 
-class DisablePreventBack
+class DisablePreventBackMiddleware
 {
     /**
      * Handle an incoming request.

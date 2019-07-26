@@ -15,6 +15,7 @@ class MeasurePoint extends Model
     //$this->setConnection("mysql");
     
     //protected $attributes = array();
+    //protected $guarded = array();
     //protected $fillable = array();
     //protected $hidden = array();
     //protected $casts = array();

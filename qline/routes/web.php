@@ -18,5 +18,8 @@ Route::get('/', function () {
 */
 
 Route::get('/', function () {
-    return abort(403, 'Unauthorized action.');
-});
+    echo Auth::check();
+    dd( Auth::user() );
+    
+    //return abort(403, 'Unauthorized action.');
+})->middleware('disablePreventBackMiddleware');

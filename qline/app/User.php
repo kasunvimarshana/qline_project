@@ -11,7 +11,6 @@ use App\Permissions\HasPermissionsTrait;
 class User extends Authenticatable
 {
     use Notifiable;
-
     //
     use HasPermissionsTrait;
     
@@ -24,6 +23,7 @@ class User extends Authenticatable
     //protected $guard = 'guard';//the authentication guard
     
     //protected $attributes = array();
+    //protected $guarded = array();
     /**
      * The attributes that are mass assignable.
      *
@@ -48,7 +48,7 @@ class User extends Authenticatable
     ];
     
     //one to many
-    public function userAPIToken(){
+    public function userAPITokens(){
         return $this->hasMany('App\UserAPIToken', 'user_id', 'user_code');
     }
     

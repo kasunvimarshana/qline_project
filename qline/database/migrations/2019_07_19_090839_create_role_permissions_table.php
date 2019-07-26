@@ -21,6 +21,7 @@ class CreateRolePermissionsTable extends Migration
             $table->timestamps();
             */
             
+            //$table->->uuid('id')->default(0)->nullable()->comment('universal unique identifier');
             $table->unsignedBigInteger('role_id')->index()->unsigned()->comment('comment');
             $table->unsignedBigInteger('permission_id')->index()->unsigned()->comment('comment');
             //FOREIGN KEY CONSTRAINTS

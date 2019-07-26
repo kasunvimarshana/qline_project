@@ -61,7 +61,6 @@ class TokenToUserProvider implements UserProvider
             ->where('user_id', $identifier)
             ->where('api_token', $token)
             ->first();
-        
 		return $queryObject && $queryObject->user ? $queryObject->user : null;
     }
     /**
@@ -98,13 +97,14 @@ class TokenToUserProvider implements UserProvider
                 continue;
             }
             if(is_array($value) || $value instanceof Arrayable){
-                $queryObject->whereIn($key, $value);
+                $queryObject = $queryObject->whereIn($key, $value);
             } else {
-                $queryObject->where($key, $value);
+                $queryObject = $queryObject->where($key, '=', $value);
             }
         }
-
-		return $queryObject->first();
+        
+		$queryObject = $queryObject->first();
+        return $queryObject && $queryObject->user ? $queryObject->user : null;
     }
     /**
      * Validate a user against the given credentials.

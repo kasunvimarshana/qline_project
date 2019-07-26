@@ -22,6 +22,7 @@ class CreateSectionsTable extends Migration
             */
             
             $table->unsignedBigInteger('id')->default(0)->nullable()->comment('comment');
+            //$table->->uuid('id')->default(0)->nullable()->comment('universal unique identifier');
             $table->timestamps();
             $table->boolean('is_visible')->index()->default(false)->nullable()->comment('comment');
             $table->string('colour')->index()->nullable()->comment('comment');

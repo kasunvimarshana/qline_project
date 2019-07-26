@@ -17,6 +17,7 @@ class Permission extends Model
     //$this->setConnection("mysql");
     
     protected $attributes = array();
+    //protected $guarded = array();
     protected $fillable = array('slug', 'name');
     //protected $hidden = array();
     //protected $casts = array();

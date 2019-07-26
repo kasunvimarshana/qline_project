@@ -20,6 +20,7 @@ class CreateSewingAuditStandardDataTable extends Migration
             */
             
             $table->bigIncrements('id');
+            //$table->->uuid('id')->default(0)->nullable()->comment('universal unique identifier');
             $table->timestamps();
             $table->boolean('is_visible')->index()->nullable()->default(false)->comment('comment');
             $table->double('sample_size')->index()->nullable()->default(0)->comment('comment');
