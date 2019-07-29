@@ -57,9 +57,9 @@ class TokenToUserProvider implements UserProvider
     {
         $queryObject = $this->token;
         $queryObject = $queryObject->with('user')
-            ->where('is_active', true)
-            ->where('user_id', $identifier)
-            ->where('api_token', $token)
+            ->where('is_active', '=', true)
+            ->where('user_id', '=', $identifier)
+            ->where('api_token', '=', $token)
             ->first();
 		return $queryObject && $queryObject->user ? $queryObject->user : null;
     }
