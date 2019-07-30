@@ -22,7 +22,19 @@ class UserAttachment extends Model
     //protected $appends = array('field1', 'field2');
     //protected $attributes = array();
     //protected $guarded = array();
-    //protected $fillable = array();
+    protected $fillable = array('is_visible', 'attached_by', 'file_original_name', 'attachable', 'file_type', 'link_url');
     //protected $hidden = array();
     //protected $casts = array();
+    
+    //one to many (inverse)
+    public function userAttachedBy(){
+        return $this->belongsTo('App\User', 'attached_by', 'user_code');
+    }
+    
+    //one to many (polymorphic) (inverse)
+    public function attachable(){
+        //return $this->morphTo();
+        return $this->morphTo('attachable', 'attachable_type', 'attachable_id');
+    }
+    
 }

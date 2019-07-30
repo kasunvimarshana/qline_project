@@ -8,9 +8,9 @@ class RQCStandard extends Model
 {
     //
     //protected $table = "table";
-    //protected $primaryKey = "id";
-    //protected $keyType = 'int';
-    //public $incrementing = false;
+    protected $primaryKey = "name";
+    protected $keyType = 'string';
+    public $incrementing = false;
     //protected $connection = "mysql";
     //$this->setConnection("mysql");
     //protected $perPage = 25;
@@ -22,7 +22,28 @@ class RQCStandard extends Model
     //protected $appends = array('field1', 'field2');
     //protected $attributes = array();
     //protected $guarded = array();
-    //protected $fillable = array();
+    protected $fillable = array('is_visible', 'colour', 'name', 'display_name', 'image_uri', 'r_q_c_standard_id_parent', 'a_q_l_standard_id');
     //protected $hidden = array();
     //protected $casts = array();
+    
+    //one to many (inverse)
+    public function rQCStandardParent(){
+        return $this->belongsTo('App\RQCStandard', 'r_q_c_standard_id_parent', 'name');
+    }
+    
+    //one to many
+    public function rQCStandardChildren(){
+        return $this->hasMany('App\RQCStandard', 'r_q_c_standard_id_parent', 'name');
+    }
+    
+    //one to many (inverse)
+    public function aQLStandard(){
+        return $this->belongsTo('App\AQLStandard', 'a_q_l_standard_id', 'name');
+    }
+    
+    //one to many
+    public function rQCStandardDatas(){
+        return $this->hasMany('App\RQCStandardData', 'r_q_c_standard_id', 'name');
+    }
+    
 }

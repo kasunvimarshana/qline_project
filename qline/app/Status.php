@@ -24,7 +24,7 @@ class Status extends Model
     //protected $appends = array('field1', 'field2');
     //protected $attributes = array();
     //protected $guarded = array();
-    //protected $fillable = array();
+    protected $fillable = array('is_visible', 'is_active', 'colour', 'name', 'display_name', 'image_uri');
     //protected $hidden = array();
     //protected $casts = array();
     
@@ -47,4 +47,12 @@ class Status extends Model
         return $this->keyType;
     }
     */
+    
+    /*
+    //one to many (polymorphic)
+    public function userAttachments(){
+        return $this->morphMany('App\UserAttachment', 'attachable', 'attachable_type', 'attachable_id', 'id');
+    }
+    */
+    
 }

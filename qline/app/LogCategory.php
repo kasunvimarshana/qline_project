@@ -22,7 +22,7 @@ class LogCategory extends Model
     //protected $appends = array('field1', 'field2');
     //protected $attributes = array();
     //protected $guarded = array();
-    //protected $fillable = array();
+    protected $fillable = array('is_visible', 'is_active', 'log_code', 'name', 'display_name', 'image_uri');
     //protected $hidden = array();
     //protected $casts = array();
 }

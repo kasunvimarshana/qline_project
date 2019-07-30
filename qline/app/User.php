@@ -58,4 +58,16 @@ class User extends Authenticatable
         return $this->hasMany('App\UserAPIToken', 'user_id', 'user_code');
     }
     
+    //one to many
+    public function userAttachments(){
+        return $this->hasMany('App\UserAttachment', 'attached_by', 'user_code');
+    }
+    
+    /*
+    //one to many (polymorphic)
+    public function userAttachments(){
+        return $this->morphMany('App\UserAttachment', 'attachable', 'attachable_type', 'attachable_id', 'user_code');
+    }
+    */
+    
 }

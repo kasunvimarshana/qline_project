@@ -22,7 +22,12 @@ class AQLStandardData extends Model
     //protected $appends = array('field1', 'field2');
     //protected $attributes = array();
     //protected $guarded = array();
-    //protected $fillable = array();
+    protected $fillable = array('is_visible', 'a_q_l_standard_id');
     //protected $hidden = array();
     //protected $casts = array();
+    
+    //one to many (inverse)
+    public function aQlStandard(){
+        return $this->belongsTo('App\AQLStandard', 'a_q_l_standard_id', 'name');
+    }
 }

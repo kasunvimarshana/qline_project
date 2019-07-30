@@ -8,9 +8,9 @@ class Defect extends Model
 {
     //
     //protected $table = "table";
-    //protected $primaryKey = "id";
-    //protected $keyType = 'int';
-    //public $incrementing = false;
+    protected $primaryKey = "name";
+    protected $keyType = 'string';
+    public $incrementing = false;
     //protected $connection = "mysql";
     //$this->setConnection("mysql");
     //protected $perPage = 25;
@@ -22,7 +22,22 @@ class Defect extends Model
     //protected $appends = array('field1', 'field2');
     //protected $attributes = array();
     //protected $guarded = array();
-    //protected $fillable = array();
+    protected $fillable = array('is_visible', 'colour', 'name', 'display_name', 'image_uri', 'defect_id_parent', 'defect_category_id');
     //protected $hidden = array();
     //protected $casts = array();
+    
+    //one to many (inverse)
+    public function defectParent(){
+        return $this->belongsTo('App\Defect', 'defect_id_parent', 'name');
+    }
+    
+    //one to many
+    public function defectChildren(){
+        return $this->hasMany('App\Defect', 'defect_id_parent', 'name');
+    }
+    
+    //one to many (inverse)
+    public function defectCategory(){
+        return $this->belongsTo('App\DefectCategory', 'defect_category_id', 'name');
+    }
 }
