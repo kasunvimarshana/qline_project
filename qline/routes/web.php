@@ -23,3 +23,7 @@ Route::get('/', function () {
     
     //return abort(403, 'Unauthorized action.');
 })->middleware('disablePreventBackMiddleware');
+
+Route::fallback(function () {
+    //
+});
