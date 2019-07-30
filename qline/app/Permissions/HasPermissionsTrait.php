@@ -9,11 +9,13 @@ trait HasPermissionsTrait{
 
     //many to many
     public function roles(){
+        //return $this->belongsToMany(Role::class, 'user_roles');
         return $this->belongsToMany(Role::class, 'user_roles', 'user_id', 'role_id');
     }
 
     //many to many
     public function permissions(){
+        //return $this->belongsToMany(Permission::class, 'user_permissions');
         return $this->belongsToMany(Permission::class, 'user_permissions', 'user_id', 'permission_id');
     }
     

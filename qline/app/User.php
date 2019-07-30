@@ -21,7 +21,13 @@ class User extends Authenticatable
     //protected $connection = "mysql";
     //$this->setConnection("mysql");
     //protected $guard = 'guard';//the authentication guard
+    //protected $perPage = 25;
+    //const CREATED_AT = 'created_at';
+    //const UPDATED_AT = 'updated_at';
+    //public $timestamps = false;
     
+    //protected $dates = array('created_at', 'updated_at', 'deleted_at');
+    //protected $appends = array('field1', 'field2');
     //protected $attributes = array();
     //protected $guarded = array();
     /**
