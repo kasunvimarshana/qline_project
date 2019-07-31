@@ -17,13 +17,14 @@ Route::get('/', function () {
 });
 */
 
+/*
 Route::get('/', function () {
-    echo Auth::check();
-    dd( Auth::user() );
-    
+    //echo Auth::check();
+    //dd( Auth::user() );
     //return abort(403, 'Unauthorized action.');
 })->middleware('disablePreventBackMiddleware');
 
 Route::fallback(function () {
     //
 });
+*/

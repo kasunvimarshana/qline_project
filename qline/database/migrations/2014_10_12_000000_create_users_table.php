@@ -42,6 +42,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken()->comment('comment');
             $table->string('display_name')->index()->nullable()->comment('comment');
             $table->text('image_uri')->default(null)->nullable()->comment('uniform resource identifier'); 
+            $table->string('email')->default(null)->nullable()->comment('comment');
             $table->string('company_id')->index()->nullable()->comment('comment');
             $table->string('department_id')->index()->nullable()->comment('comment');
             $table->string('section_id')->index()->nullable()->comment('comment');
