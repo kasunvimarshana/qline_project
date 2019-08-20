@@ -40,7 +40,12 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
+<body class="hold-transition">
+<!-- wrapper -->
+<!-- div class="row wrapper" -->
+<!-- Main Header -->
+<!-- nav-bar -->
+<!-- header -->
     
 <!-- nav -->
 <nav class="navbar navbar-expand-sm navbar-light bg-danger sticky-top fixed-top d-print" role="navigation">
@@ -67,7 +72,7 @@
         <!-- navbar-collapse -->
         <div class="collapse navbar-collapse justify-content-left" id="collapsibleNavbar">
             <!-- nav lists -->
-            <!-- ul class="nav navbar-nav mr-auto navbar-left">
+            <!-- ul class="list-unstyled nav navbar-nav mr-auto navbar-left">
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
                 </li>  
@@ -108,72 +113,86 @@
     <!-- /div -->
     <!-- /.container-fluid -->
 </nav>
-<!-- /.nav -->
+<!-- /.nav -->   
+    
+<!-- /header -->
+<!-- /.nav-bar -->
+<!-- /.Main Header -->
 
 <!-- column-break -->
 <div class="w-100 d-none d-md-block"></div>
 <!-- /.column-break -->
+ 
+<!-- section -->
+<div class="wrapper">
     
-<!-- container -->
-<div class="container container-fluid">
-    <!-- --- -->
-    <!-- row -->
-    <div class="row clearfix" style="min-height: 10em;">
-    </div>
-    <!-- /.row -->
-    <!-- row -->
-    <div class="row justify-content-center align-self-center align-items-cente">
-
-        <!-- col -->
-        <div class="col-sm-12">
-            <!-- form -->
-            <form action="" method="POST" class="col-sm-12" autocomplete="off" id="form1" enctype="multipart/form-data">
-            @csrf
-                <!-- form-group -->
-                <div class="form-group row col-sm-12">
-                    <label for="user_id" class="col-lg-4 control-label col-form-label col-form-label-lg text-justify font-weight-bold text-lg-right">User ID</label>
-                    <div class="col-lg-6">
-                        <!-- p class="form-control-static"></p -->
-                        <input type="text" class="form-control form-control-lg" id="user_id" name="user_id" placeholder="User ID" value="{{ old('user_id') }}" required/>
-                    </div>
-                    <!-- span id="form-control" class="help-block"></span -->
-                </div>
-                <!-- /.form-group -->
-                
-                <!-- form-group -->
-                <div class="form-group row col-sm-12">
-                    <label for="password" class="col-lg-4 control-label col-form-label col-form-label-lg text-justify font-weight-bold text-lg-right">Passsword</label>
-                    <div class="col-lg-6">
-                        <!-- p class="form-control-static"></p -->
-                        <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Password" value="{{ old('password') }}" required/>
-                    </div>
-                    <!-- span id="form-control" class="help-block"></span -->
-                </div>
-                <!-- /.form-group -->
-
-                <!-- form-group -->
-                <div class="form-group row col-sm-12">
-                    <!-- btn-toolbar -->
-                    <div class="col col-sm-10">
-                        <!-- div class="btn-group btn-group-lg pull-right" -->
-                            <div class="text-right mb-3">
-                                <button type="submit" class="btn btn-danger float-right pull-right ml-auto" id="submit">Login</button>
-                            </div>               
-                        <!-- /div -->
-                    </div>
-                </div>
-                <!-- /.form-group -->
-
-            </form>
-            <!-- /.form -->
+    <!-- container -->
+    <div class="container container-fluid">
+        <!-- --- -->
+        <!-- row -->
+        <div class="row clearfix" style="min-height: 10em;">
         </div>
-        <!-- /.col -->
+        <!-- /.row -->
+        <!-- row -->
+        <div class="row justify-content-center align-self-center align-items-cente">
 
+            <!-- col -->
+            <div class="col-sm-12">
+                <!-- form -->
+                <form action="" method="POST" class="col-sm-12" autocomplete="off" id="form1" enctype="multipart/form-data">
+                @csrf
+                    <!-- form-group -->
+                    <div class="form-group row col-sm-12">
+                        <label for="user_id" class="col-lg-4 control-label col-form-label col-form-label-lg text-justify font-weight-bold text-lg-right">User ID</label>
+                        <div class="col-lg-6">
+                            <!-- p class="form-control-static"></p -->
+                            <input type="text" class="form-control form-control-lg" id="user_id" name="user_id" placeholder="User ID" value="{{ old('user_id') }}" required/>
+                        </div>
+                        <!-- span id="form-control" class="help-block"></span -->
+                    </div>
+                    <!-- /.form-group -->
+
+                    <!-- form-group -->
+                    <div class="form-group row col-sm-12">
+                        <label for="password" class="col-lg-4 control-label col-form-label col-form-label-lg text-justify font-weight-bold text-lg-right">Passsword</label>
+                        <div class="col-lg-6">
+                            <!-- p class="form-control-static"></p -->
+                            <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Password" value="{{ old('password') }}" required/>
+                        </div>
+                        <!-- span id="form-control" class="help-block"></span -->
+                    </div>
+                    <!-- /.form-group -->
+
+                    <!-- form-group -->
+                    <div class="form-group row col-sm-12">
+                        <!-- btn-toolbar -->
+                        <div class="col col-sm-10">
+                            <!-- div class="btn-group btn-group-lg pull-right" -->
+                                <div class="text-right mb-3">
+                                    <button type="submit" class="btn btn-danger float-right pull-right ml-auto" id="submit">Login</button>
+                                </div>               
+                            <!-- /div -->
+                        </div>
+                    </div>
+                    <!-- /.form-group -->
+
+                </form>
+                <!-- /.form -->
+            </div>
+            <!-- /.col -->
+
+        </div>
+        <!-- /.row -->
+        <!-- --- -->
     </div>
-    <!-- /.row -->
-    <!-- --- -->
+    <!-- /.container -->
+    
 </div>
-<!-- /.container -->
+<!-- /.section -->
+    
+<!-- column-break -->
+<div class="w-100 d-none d-md-block"></div>
+<!-- /.column-break -->
     
 <!-- nav -->
 <!-- nav class="navbar navbar-expand-sm navbar-light bg-danger sticky-bottom fixed-bottom navbar-light d-print" -->
@@ -213,5 +232,11 @@ $(function(){
 });
 </script>
     
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
+    
+<!-- /div -->
+<!-- /.wrapper -->
 </body>
 </html>
