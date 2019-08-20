@@ -41,12 +41,6 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
-    <style>
-        .card-shadow-1{
-            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-        }
-    </style>
 </head>
 <body class="hold-transition h-100 bg-light bg-gradient-light">
 <!-- wrapper -->
@@ -135,108 +129,63 @@
 <div class="row wrapper flex-fill p-0 m-0">
     
     <!-- container -->
-    <div class="col bg-light bg-gradient-light">
-        
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-        <!-- Main content -->
-        <section class="content container-fluid" id="container_fluid">
-
-        <!--------------------------
-        | Your Page Content Here |
-        -------------------------->
-        
+    <div class="container container-fluid">
+        <!-- --- -->
         <!-- row -->
-        <div class="row">
-            <!-- col -->
-            <div class="col col-sm-12 p-0 m-0">
-                <!-- log -->
-                <div class="container pt-5">
-                    <div class="row justify-content-sm-center">
-                        <div class="col-sm-6 col-md-6">
-                            <!-- card-group -->
-                            <div class="card-group">
-                                
-                                <div class="card border-info text-center card-shadow-1">
-                                    <div class="card-header">
-                                        Sign in to continue
-                                    </div>
-                                    <div class="card-body">
-                                        
-                                        <!-- row -->
-                                        <div class="row justify-content-center align-self-center align-items-cente">
-
-                                            <!-- col -->
-                                            <div class="col col-sm-12 p-0 m-0">
-                                                <!-- form -->
-                                                <form action="" method="POST" class="col-sm-12" autocomplete="off" id="form1" enctype="multipart/form-data">
-                                                @csrf
-                                                    <!-- form-group -->
-                                                    <div class="form-group row col-sm-12">
-                                                        <label for="user_id" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">User ID</label>
-                                                        <div class="col">
-                                                            <!-- p class="form-control-static"></p -->
-                                                            <input type="text" class="form-control form-control-md" id="user_id" name="user_id" placeholder="User ID" value="{{ old('user_id') }}" required/>
-                                                        </div>
-                                                        <!-- span id="form-control" class="help-block"></span -->
-                                                    </div>
-                                                    <!-- /.form-group -->
-
-                                                    <!-- form-group -->
-                                                    <div class="form-group row col-sm-12">
-                                                        <label for="password" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Passsword</label>
-                                                        <div class="col">
-                                                            <!-- p class="form-control-static"></p -->
-                                                            <input type="password" class="form-control form-control-md" id="password" name="password" placeholder="Password" value="{{ old('password') }}" required/>
-                                                        </div>
-                                                        <!-- span id="form-control" class="help-block"></span -->
-                                                    </div>
-                                                    <!-- /.form-group -->
-
-                                                    <!-- form-group -->
-                                                    <div class="form-group row col-sm-12">
-                                                        <!-- btn-toolbar -->
-                                                        <div class="col">
-                                                            <!-- div class="btn-group btn-group-lg pull-right" -->
-                                                                <div class="text-right mb-3">
-                                                                    <button type="submit" class="btn btn-danger float-right pull-right ml-auto" id="submit">Login</button>
-                                                                </div>               
-                                                            <!-- /div -->
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.form-group -->
-
-                                                </form>
-                                                <!-- /.form -->
-                                            </div>
-                                            <!-- /.col -->
-
-                                        </div>
-                                        <!-- /.row -->
-                                        
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <!-- /.card-group -->
-                        </div>
-                    </div>
-                </div>
-                <!-- /.log -->
-            </div>
-            <!-- /.col -->
+        <div class="row clearfix" style="min-height: 10em;">
         </div>
         <!-- /.row -->
-            
-        <!--------------------------
-        | Your Page Content Here |
-        -------------------------->
+        <!-- row -->
+        <div class="row justify-content-center align-self-center align-items-cente">
 
-        </section>
-        <!-- /.Main content -->
+            <!-- col -->
+            <div class="col col-sm-12">
+                <!-- form -->
+                <form action="" method="POST" class="col-sm-12" autocomplete="off" id="form1" enctype="multipart/form-data">
+                @csrf
+                    <!-- form-group -->
+                    <div class="form-group row col-sm-12">
+                        <label for="user_id" class="col-lg-4 control-label col-form-label col-form-label-lg text-justify font-weight-bold text-lg-right">User ID</label>
+                        <div class="col-lg-6">
+                            <!-- p class="form-control-static"></p -->
+                            <input type="text" class="form-control form-control-lg" id="user_id" name="user_id" placeholder="User ID" value="{{ old('user_id') }}" required/>
+                        </div>
+                        <!-- span id="form-control" class="help-block"></span -->
+                    </div>
+                    <!-- /.form-group -->
+
+                    <!-- form-group -->
+                    <div class="form-group row col-sm-12">
+                        <label for="password" class="col-lg-4 control-label col-form-label col-form-label-lg text-justify font-weight-bold text-lg-right">Passsword</label>
+                        <div class="col-lg-6">
+                            <!-- p class="form-control-static"></p -->
+                            <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Password" value="{{ old('password') }}" required/>
+                        </div>
+                        <!-- span id="form-control" class="help-block"></span -->
+                    </div>
+                    <!-- /.form-group -->
+
+                    <!-- form-group -->
+                    <div class="form-group row col-sm-12">
+                        <!-- btn-toolbar -->
+                        <div class="col col-sm-10">
+                            <!-- div class="btn-group btn-group-lg pull-right" -->
+                                <div class="text-right mb-3">
+                                    <button type="submit" class="btn btn-danger float-right pull-right ml-auto" id="submit">Login</button>
+                                </div>               
+                            <!-- /div -->
+                        </div>
+                    </div>
+                    <!-- /.form-group -->
+
+                </form>
+                <!-- /.form -->
+            </div>
+            <!-- /.col -->
+
         </div>
-        <!-- /.Content Wrapper. Contains page content -->
-        
+        <!-- /.row -->
+        <!-- --- -->
     </div>
     <!-- /.container -->
     
