@@ -31,6 +31,7 @@ class CreateLinesTable extends Migration
             $table->string('display_name')->index()->nullable()->comment('comment');
             $table->text('image_uri')->default(null)->nullable()->comment('uniform resource identifier'); 
             $table->string('line_id_parent')->index()->nullable()->comment('comment');
+            $table->string('company_id')->index()->nullable()->comment('comment');
             $table->string('factory_id')->index()->nullable()->comment('comment');
             //$table->softDeletes();
             
@@ -39,6 +40,7 @@ class CreateLinesTable extends Migration
             $table->primary(array('name'));
             
             //$table->foreign('status_id')->references('id')->on('statuses')->onUpdate('cascade');
+            $table->foreign('company_id')->references('name')->on('companies')->onUpdate('cascade');
             $table->foreign('factory_id')->references('name')->on('factories')->onUpdate('cascade');
         });
         

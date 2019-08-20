@@ -31,6 +31,7 @@ class CreateSectionsTable extends Migration
             $table->string('display_name')->index()->nullable()->comment('comment');
             $table->text('image_uri')->default(null)->nullable()->comment('uniform resource identifier'); 
             $table->string('section_id_parent')->index()->nullable()->comment('comment');
+            $table->string('company_id')->index()->nullable()->comment('comment');
             $table->string('department_id')->index()->nullable()->comment('comment');
             //$table->softDeletes();
             
@@ -39,6 +40,7 @@ class CreateSectionsTable extends Migration
             $table->primary(array('name'));
             
             //$table->foreign('status_id')->references('id')->on('statuses')->onUpdate('cascade');
+            $table->foreign('company_id')->references('name')->on('companies')->onUpdate('cascade');
             $table->foreign('department_id')->references('name')->on('departments')->onUpdate('cascade');
         });
         

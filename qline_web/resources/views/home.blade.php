@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-100">
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -40,15 +40,15 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition">
+<body class="hold-transition h-100">
 <!-- wrapper -->
-<!-- div class="row wrapper" -->
+<div class="wrapper container-fluid h-100 d-flex flex-column p-0 m-0">
 <!-- Main Header -->
 <!-- nav-bar -->
 <!-- header -->
     
 <!-- nav -->
-<nav class="navbar navbar-expand-sm navbar-light bg-danger sticky-top fixed-top d-print" role="navigation">
+<nav class="navbar navbar-expand-sm navbar-light bg-danger sticky-top fixed-top d-print s-navbar" role="navigation">
     <!-- container-fluid -->
     <!-- div class="container container-fluid" -->
         <!-- div class="navbar-header" -->
@@ -145,10 +145,10 @@
 <!-- /.column-break --> 
  
 <!-- section -->
-<div class="wrapper">
+<div class="row wrapper flex-fill p-0 m-0">
     
     <!-- Left side column. contains the logo and sidebar -->
-    <div class="col-md-2 pl-0">
+    <div class="col-md-2 pl-0 bg-danger">
         
         <!-- accordion -->
         <div id="accordion">
@@ -432,8 +432,8 @@
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
-    
-<!-- /div -->
+      
+</div>
 <!-- /.wrapper -->
 </body>
 </html>
