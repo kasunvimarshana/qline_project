@@ -448,6 +448,70 @@
         | Your Page Content Here |
         -------------------------->
         
+        <!-- -------------------------------------------------------------------------------------------------- -->
+        <!-- row -->
+        <div class="row">
+            <!-- col -->
+            <div class="col col-sm-12 p-0 m-0">
+                
+                <!-- accordion -->
+                <div id="accordion_1_content" class="mt-2">
+                    <!-- card-group -->
+                    <div class="card-group">
+                        <!-- card -->
+                        <div class="card bg-danger border-light">
+                            <div class="card-header" id="idCard_accordion_1_content_1">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-default m-0 p-0 text-white" data-toggle="collapse" data-target="#idCollapse_accordion_1_content_1" aria-expanded="false" aria-controls="idCollapse_accordion_1_content_1" role="button" type="button">
+                                    <i class="fab fa-buromobelexperte fa-fw"></i>
+                                    <span class="text-decoration-none text-justify small"> Create New ( Company )</span>
+                                    </button>
+                                </h5>
+                            </div>
+
+                            <div id="idCollapse_accordion_1_content_1" class="collapse hide" aria-labelledby="idCard_accordion_1_content_1" data-parent="#idCollapse_accordion_1_content_1">
+                                <div class="card-body" id="idCollapse_content_1_body">
+                                    <!-- ++++++++++++++++++++++++++++ -->
+                                    <!-- ++++++++++++++++++++++++++++ -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.card-group -->
+                    
+                    <!-- card-group -->
+                    <div class="card-group">
+                        <!-- card -->
+                        <div class="card bg-danger border-light">
+                            <div class="card-header" id="idCard_accordion_1_content_2">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-default m-0 p-0 text-white" data-toggle="collapse" data-target="#idCollapse_accordion_1_content_2" aria-expanded="false" aria-controls="idCollapse_accordion_1_content_2" role="button" type="button">
+                                    <i class="fab fa-buromobelexperte fa-fw"></i>
+                                    <span class="text-decoration-none text-justify small"> List</span>
+                                    </button>
+                                </h5>
+                            </div>
+
+                            <div id="idCollapse_accordion_1_content_2" class="collapse hide" aria-labelledby="idCard_accordion_1_content_2" data-parent="#idCollapse_accordion_1_content_2">
+                                <div class="card-body" id="idCollapse_content_2_body">
+                                    <!-- ++++++++++++++++++++++++++++ -->
+                                    <!-- ++++++++++++++++++++++++++++ -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.card-group -->
+                </div>
+                <!-- /.accordion -->
+                
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+        <!-- -------------------------------------------------------------------------------------------------- -->
+            
         <!--------------------------
         | Your Page Content Here |
         -------------------------->

@@ -15,6 +15,8 @@
     <!-- link rel="stylesheet" href="{!! asset('theme/simplex/bootstrap.min.css') !!}"/ -->
     <!-- link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/ -->
     <link rel="stylesheet" href="{!! asset('node_modules/@fortawesome/fontawesome-free/css/all.css') !!}"/>
+    
+    <link rel="stylesheet" href="{!! asset('css/custom_scrollbar.css') !!}"/>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="{!! asset('node_modules/jquery/dist/jquery.min.js') !!}"><\/script>')</script>
@@ -40,7 +42,7 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition h-100">
+<body class="hold-transition h-100 bg-light bg-gradient-light">
 <!-- wrapper -->
 <div class="wrapper container-fluid h-100 d-flex flex-column p-0 m-0">
 <!-- Main Header -->
@@ -137,7 +139,7 @@
         <div class="row justify-content-center align-self-center align-items-cente">
 
             <!-- col -->
-            <div class="col-sm-12">
+            <div class="col col-sm-12">
                 <!-- form -->
                 <form action="" method="POST" class="col-sm-12" autocomplete="off" id="form1" enctype="multipart/form-data">
                 @csrf
