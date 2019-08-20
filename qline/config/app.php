@@ -3,11 +3,6 @@
 return [
     
     /*
-    |custom data
-    */
-    'app_file_storage_uri' => env('APP_FILE_STORAGE_URI', 'file_input'),
-
-    /*
     |--------------------------------------------------------------------------
     | Application Name
     |--------------------------------------------------------------------------
@@ -245,5 +240,15 @@ return [
         //alias for chumper\zipper
         'Zipper' => Chumper\Zipper\Zipper::class
     ],
+    
+     /*
+    |--------------------------------------------------------------------------
+    | Custom Data
+    |--------------------------------------------------------------------------
+    */
+    'display_name' => env('APP_DISPLAY_NAME', 'Application'),
+    'app_file_storage_uri' => env('APP_FILE_STORAGE_URI', 'file_input'),
+    'mail_user_name' => env('MAIL_USERNAME', null),
+    'mail_password' => env('MAIL_PASSWORD', null)
 
 ];

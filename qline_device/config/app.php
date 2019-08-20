@@ -67,7 +67,9 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    //'timezone' => 'UTC',
+    //'timezone' => 'Asia/Colombo',
+    'timezone' => env('APP_TIMEZONE', 'UTC'),
 
     /*
     |--------------------------------------------------------------------------
@@ -227,5 +229,15 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
+    
+     /*
+    |--------------------------------------------------------------------------
+    | Custom Data
+    |--------------------------------------------------------------------------
+    */
+    'display_name' => env('APP_DISPLAY_NAME', 'Application'),
+    'app_file_storage_uri' => env('APP_FILE_STORAGE_URI', 'file_input'),
+    'mail_user_name' => env('MAIL_USERNAME', null),
+    'mail_password' => env('MAIL_PASSWORD', null)
 
 ];

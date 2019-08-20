@@ -67,7 +67,9 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    //'timezone' => 'UTC',
+    //'timezone' => 'Asia/Colombo',
+    'timezone' => env('APP_TIMEZONE', 'UTC'),
 
     /*
     |--------------------------------------------------------------------------
@@ -174,6 +176,14 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        // custom service providers
+        // App\Providers\AuthUserProvider::class,
+        // provider for flash message
+        Codecourse\Notify\NotifyServiceProvider::class,
+        // provider for bensampo/laravel-enum (Laravel < 5.5)
+        // BenSampo\Enum\EnumServiceProvider
+        // provider for chumper\zipper
+        Chumper\Zipper\ZipperServiceProvider::class
 
     ],
 
@@ -225,7 +235,21 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        //alias for flash message
+        'Notify' => Codecourse\Notify\Facades\Notify::class,
+        //alias for chumper\zipper
+        'Zipper' => Chumper\Zipper\Zipper::class
 
     ],
+    
+     /*
+    |--------------------------------------------------------------------------
+    | Custom Data
+    |--------------------------------------------------------------------------
+    */
+    'display_name' => env('APP_DISPLAY_NAME', 'Application'),
+    'app_file_storage_uri' => env('APP_FILE_STORAGE_URI', 'file_input'),
+    'mail_user_name' => env('MAIL_USERNAME', null),
+    'mail_password' => env('MAIL_PASSWORD', null)
 
 ];
