@@ -50,7 +50,7 @@
 <!-- header -->
     
 <!-- nav -->
-<nav class="navbar navbar-expand-sm navbar-light bg-danger sticky-top fixed-top d-print s-navbar" role="navigation">
+<nav class="navbar navbar-expand-sm navbar-light bg-danger sticky-top fixed-top d-print s-navbar text-wrap text-break" role="navigation">
     <!-- container-fluid -->
     <!-- div class="container container-fluid" -->
         <!-- div class="navbar-header" -->
@@ -153,7 +153,7 @@
     <div class="col-md-2 pl-0 bg-danger">
         
         <!-- accordion -->
-        <div id="accordion_nav">
+        <div id="accordion_nav text-wrap text-break">
             <!-- card-group -->
             <div class="card-group">
                 <!-- card -->
