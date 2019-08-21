@@ -153,7 +153,7 @@
     <div class="col-md-2 pl-0 bg-danger">
         
         <!-- accordion -->
-        <div id="accordion_nav text-wrap text-break">
+        <div id="accordion_nav" class="text-wrap text-break">
             <!-- card-group -->
             <div class="card-group">
                 <!-- card -->
