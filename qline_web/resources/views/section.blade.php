@@ -504,7 +504,7 @@
                                 <h5 class="mb-0">
                                     <button class="btn btn-default m-0 p-0 text-white" data-toggle="collapse" data-target="#idCollapse_accordion_1_content_1" aria-expanded="true" aria-controls="idCollapse_accordion_1_content_1" role="button" type="button">
                                     <i class="fab fa-buromobelexperte fa-fw"></i>
-                                    <span class="text-decoration-none text-justify small"> Create New ( Line )</span>
+                                    <span class="text-decoration-none text-justify small"> Create New ( Section )</span>
                                     </button>
                                 </h5>
                             </div>
@@ -539,13 +539,13 @@
                                                 
                                                 <!-- form-group -->
                                                 <div class="form-group row col-sm-12 m-1">
-                                                    <label for="factory" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Factory</label>
+                                                    <label for="department" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Department</label>
                                                     <div class="col">
                                                         <!-- p class="form-control-static"></p -->
-                                                        <select class="form-control form-control-md select2" id="factory" name="factory" value="{{ old('factory') }}" data-placeholder="Factory" style="width: 100%;" required>
+                                                        <select class="form-control form-control-md select2" id="department" name="department" value="{{ old('department') }}" data-placeholder="Department" style="width: 100%;" required>
                                                             
                                                             <!-- @for($i =1; $i <= 5; $i++) -->
-                                                            <option>Factory {{ $i }}</option>
+                                                            <option>Department {{ $i }}</option>
                                                             <!-- @endfor -->
                                                             
                                                         </select>
@@ -629,7 +629,7 @@
                                                    <!-- tr -->
                                                    <tr>
                                                         <th scope="row"># {{ $i }}</th>
-                                                        <td>Line {{ $i }}</td>
+                                                        <td>Section {{ $i }}</td>
                                                         <td>
                                                             <div class="btn-group" role="group" aria-label="Button group with nested dropdown" tabindex="-1">
                                                                 <div class="btn-group" role="group">
@@ -727,7 +727,7 @@ $(document).ready(function(){
     $('#tableId_1').DataTable();
     $.fn.select2.defaults.set( "theme", "bootstrap" );
     $('#company').select2();
-    $('#factory').select2();
+    $('#department').select2();
 }); 
 </script>
 <!-- REQUIRED JS SCRIPTS -->

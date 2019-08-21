@@ -41,4 +41,10 @@ Route::get('/factory', function () {
 Route::get('/line', function () {
     return view('line');
 });
+Route::get('/section', function () {
+    return view('section');
+});
+Route::get('/user', function () {
+    return view('user');
+});
 

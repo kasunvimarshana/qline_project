@@ -504,7 +504,7 @@
                                 <h5 class="mb-0">
                                     <button class="btn btn-default m-0 p-0 text-white" data-toggle="collapse" data-target="#idCollapse_accordion_1_content_1" aria-expanded="true" aria-controls="idCollapse_accordion_1_content_1" role="button" type="button">
                                     <i class="fab fa-buromobelexperte fa-fw"></i>
-                                    <span class="text-decoration-none text-justify small"> Create New ( Line )</span>
+                                    <span class="text-decoration-none text-justify small"> Create New ( User )</span>
                                     </button>
                                 </h5>
                             </div>
@@ -522,6 +522,39 @@
                                                 @csrf
                                                 <!-- form-group -->
                                                 <div class="form-group row col-sm-12 m-1">
+                                                    <label for="code" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">EMP No</label>
+                                                    <div class="col">
+                                                        <!-- p class="form-control-static"></p -->
+                                                        <input type="text" class="form-control form-control-md" id="code" name="code" placeholder="EMP No" value="{{ old('code') }}" required/>
+                                                    </div>
+                                                    <!-- span id="form-control" class="help-block"></span -->
+                                                </div>
+                                                <!-- /.form-group -->
+                                                
+                                                <!-- form-group -->
+                                                <div class="form-group row col-sm-12 m-1">
+                                                    <label for="name_first" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">First Name</label>
+                                                    <div class="col">
+                                                        <!-- p class="form-control-static"></p -->
+                                                        <input type="text" class="form-control form-control-md" id="name_first" name="name_first" placeholder="First Name" value="{{ old('name_first') }}" required/>
+                                                    </div>
+                                                    <!-- span id="form-control" class="help-block"></span -->
+                                                </div>
+                                                <!-- /.form-group -->
+                                                
+                                                <!-- form-group -->
+                                                <div class="form-group row col-sm-12 m-1">
+                                                    <label for="name_last" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Surname</label>
+                                                    <div class="col">
+                                                        <!-- p class="form-control-static"></p -->
+                                                        <input type="text" class="form-control form-control-md" id="name_last" name="name_last" placeholder="Surname" value="{{ old('name_last') }}" required/>
+                                                    </div>
+                                                    <!-- span id="form-control" class="help-block"></span -->
+                                                </div>
+                                                <!-- /.form-group -->
+                                                
+                                                <!-- form-group -->
+                                                <div class="form-group row col-sm-12 m-1">
                                                     <label for="company" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Company</label>
                                                     <div class="col">
                                                         <!-- p class="form-control-static"></p -->
@@ -529,6 +562,40 @@
                                                             
                                                             <!-- @for($i =1; $i <= 5; $i++) -->
                                                             <option>Company {{ $i }}</option>
+                                                            <!-- @endfor -->
+                                                            
+                                                        </select>
+                                                    </div>
+                                                    <!-- span id="form-control" class="help-block"></span -->
+                                                </div>
+                                                <!-- /.form-group -->
+                                                
+                                                <!-- form-group -->
+                                                <div class="form-group row col-sm-12 m-1">
+                                                    <label for="department" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Department</label>
+                                                    <div class="col">
+                                                        <!-- p class="form-control-static"></p -->
+                                                        <select class="form-control form-control-md select2" id="department" name="department" value="{{ old('department') }}" data-placeholder="Department" style="width: 100%;" required>
+                                                            
+                                                            <!-- @for($i =1; $i <= 5; $i++) -->
+                                                            <option>Department {{ $i }}</option>
+                                                            <!-- @endfor -->
+                                                            
+                                                        </select>
+                                                    </div>
+                                                    <!-- span id="form-control" class="help-block"></span -->
+                                                </div>
+                                                <!-- /.form-group -->
+                                                
+                                                <!-- form-group -->
+                                                <div class="form-group row col-sm-12 m-1">
+                                                    <label for="section" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Section</label>
+                                                    <div class="col">
+                                                        <!-- p class="form-control-static"></p -->
+                                                        <select class="form-control form-control-md select2" id="section" name="section" value="{{ old('section') }}" data-placeholder="Section" style="width: 100%;" required>
+                                                            
+                                                            <!-- @for($i =1; $i <= 5; $i++) -->
+                                                            <option>Section {{ $i }}</option>
                                                             <!-- @endfor -->
                                                             
                                                         </select>
@@ -556,10 +623,10 @@
                                                 
                                                 <!-- form-group -->
                                                 <div class="form-group row col-sm-12 m-1">
-                                                    <label for="name" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Name</label>
+                                                    <label for="phone_mobile" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Mobile</label>
                                                     <div class="col">
                                                         <!-- p class="form-control-static"></p -->
-                                                        <input type="text" class="form-control form-control-md" id="name" name="name" placeholder="Name" value="{{ old('name') }}" required/>
+                                                        <input type="text" class="form-control form-control-md" id="phone_mobile" name="phone_mobile" placeholder="Mobile" value="{{ old('phone_mobile') }}" required/>
                                                     </div>
                                                     <!-- span id="form-control" class="help-block"></span -->
                                                 </div>
@@ -728,6 +795,8 @@ $(document).ready(function(){
     $.fn.select2.defaults.set( "theme", "bootstrap" );
     $('#company').select2();
     $('#factory').select2();
+    $('#department').select2();
+    $('#section').select2();
 }); 
 </script>
 <!-- REQUIRED JS SCRIPTS -->

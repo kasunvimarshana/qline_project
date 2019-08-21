@@ -521,7 +521,7 @@
                                             <form action="{!! route('home') !!}" method="POST" class="col-sm-8" autocomplete="off" id="form1" enctype="multipart/form-data">
                                                 @csrf
                                                 <!-- form-group -->
-                                                <div class="form-group row col-sm-12">
+                                                <div class="form-group row col-sm-12 m-1">
                                                     <label for="name" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Name</label>
                                                     <div class="col">
                                                         <!-- p class="form-control-static"></p -->
