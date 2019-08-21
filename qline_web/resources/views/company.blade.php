@@ -41,6 +41,47 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+    <!-- optional-style -->
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('node_modules/admin-lte/bower_components/select2/dist/css/select2.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css') }}" />
+    <!-- DataTable -->
+    <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-scroller-bs4/css/scroller.bootstrap4.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('node_modules/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}" />
+    <!-- Bootstrap Datepicker -->
+    <link rel="stylesheet" href="{{ asset('node_modules/admin-lte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}" />
+    <!-- Bootstrap FileInput -->
+    <link href="{!! asset('node_modules/bootstrap-fileinput/css/fileinput.css') !!}" media="all" rel="stylesheet" type="text/css"/>
+    <!-- link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous" -->
+    <link href="{!! asset('node_modules/bootstrap-fileinput/themes/explorer-fas/theme.css') !!}" media="all" rel="stylesheet" type="text/css"/>
+    <!-- /.optional-style -->
+    <!-- optional-script -->
+    <!-- Select2 -->
+    <script src="{{ asset('node_modules/admin-lte/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
+    <!-- DataTable -->
+    <script src="{{ asset('node_modules/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('node_modules/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('node_modules/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('node_modules/datatables.net-scroller/js/dataTables.scroller.min.js') }}"></script>
+    <script src="{{ asset('node_modules/datatables.net-scroller-bs4/js/scroller.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('node_modules/datatables.net-select/js/dataTables.select.min.js') }}"></script>
+    <script src="{{ asset('node_modules/datatables.net-select-bs4/js/select.bootstrap4.min.js') }}"></script>
+    <!-- Bootstrap Datepicker -->
+    <script src="{{ asset('node_modules/admin-lte/plugins/input-mask/jquery.inputmask.date.extensions.js') }}"></script>
+    <script src="{{ asset('node_modules/admin-lte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+    <!-- Bootstrap FileInput -->
+    <script src="{!! asset('node_modules/bootstrap-fileinput/js/plugins/piexif.js') !!}" type="text/javascript"></script>
+    <script src="{!! asset('node_modules/bootstrap-fileinput/js/plugins/sortable.js') !!}" type="text/javascript"></script>
+    <script src="{!! asset('node_modules/bootstrap-fileinput/js/fileinput.js') !!}" type="text/javascript"></script>
+    <script src="{!! asset('node_modules/bootstrap-fileinput/js/locales/fr.js') !!}" type="text/javascript"></script>
+    <script src="{!! asset('node_modules/bootstrap-fileinput/js/locales/es.js') !!}" type="text/javascript"></script>
+    <script src="{!! asset('node_modules/bootstrap-fileinput/themes/fas/theme.js') !!}" type="text/javascript"></script>
+    <script src="{!! asset('node_modules/bootstrap-fileinput/themes/explorer-fas/theme.js') !!}" type="text/javascript"></script>
+    <!-- /.optional-script -->
 </head>
 <body class="hold-transition h-100 bg-light bg-gradient-light">
 <!-- wrapper -->
@@ -550,44 +591,42 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <th scope="row">1</th>
-                                                        <td>BLI</td>
+                                                   <!-- @for($i =1; $i <= 5; $i++) -->                 
+                                                   <!-- tr -->
+                                                   <tr>
+                                                        <th scope="row"># {{ $i }}</th>
+                                                        <td>Company {{ $i }}</td>
                                                         <td>
-
-                                                            <!-- -->
                                                             <div class="btn-group" role="group" aria-label="Button group with nested dropdown" tabindex="-1">
                                                                 <div class="btn-group" role="group">
                                                                     <!-- button type="button" role="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split">Action</button -->
-                                                                    <button id="btnGroupDrop_1" type="button" role="button" class="btn btn-outline-primary" data-toggle="dropdown"
+                                                                    <button id="btnGroupDrop_1_{{ $i }}" type="button" role="button" class="btn btn-outline-primary" data-toggle="dropdown"
                                                                     aria-haspopup="true" aria-expanded="false">
                                                                         <i class="fas fa-cogs fa-fw" aria-hidden="true"></i>
                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                     </button>
-                                                                    <div class="dropdown-menu text-wrap text-break bg-transparent" aria-labelledby="btnGroupDrop_1">
-                                                                        <!-- -->
+                                                                    <div class="dropdown-menu text-wrap text-break bg-light border-light" aria-labelledby="btnGroupDrop_1_{{ $i }}">
                                                                         <!-- span class="dropdown-item-text ">Title</span -->
                                                                         <!-- div class="dropdown-item dropdown-divider"></div -->
-                                                                        <div class="dropdown-item btn-group  pl-0 pr-0 m-0" role="group" aria-label="Button Group">
+                                                                        <div class="dropdown-item btn-group  pl-1 pr-1 m-0" role="group" aria-label="Button Group">
                                                                             <button type="button" role="button" class="btn btn-outline-primary btn-block waves-effect">
                                                                             <i class="far fa-edit fa-fw" aria-hidden="true"></i>
                                                                             <span class="sr-only">Action</span>
                                                                             </button>
                                                                         </div>
-                                                                        <div class="dropdown-item btn-group  pl-0 pr-0 m-0" role="group" aria-label="Button Group">
+                                                                        <div class="dropdown-item btn-group  pl-1 pr-1 m-0" role="group" aria-label="Button Group">
                                                                             <button type="button" role="button" class="btn btn-outline-primary btn-block waves-effect">
                                                                             <i class="far fa-trash-alt fa-fw" aria-hidden="true"></i>
                                                                             <span class="sr-only">Action</span>
                                                                             </button>
                                                                         </div>
-                                                                        <!-- -->
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <!-- -->
-
                                                         </td>
                                                     </tr>
+                                                    <!-- /.tr -->                 
+                                                    <!-- @endfor -->
                                                 </tbody>
                                                 
                                             </table>
@@ -649,7 +688,11 @@
 <!-- /.nav -->
 
 <!-- REQUIRED JS SCRIPTS -->
-<script></script>
+<script>
+$(document).ready(function(){
+    $('#tableId_1').DataTable();
+}); 
+</script>
 <!-- REQUIRED JS SCRIPTS -->
 
 

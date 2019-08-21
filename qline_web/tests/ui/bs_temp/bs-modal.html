@@ -1,0 +1,18 @@
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    ...
+    <select id="mySelect2">
+        ...
+    </select>
+    ...
+</div>
+
+...
+
+<script>
+    // Do this before you initialize any of your modals
+    $.fn.modal.Constructor.prototype.enforceFocus = function() {};
+    
+    $('#mySelect2').select2({
+        dropdownParent: $('#myModal')
+    });
+</script>

@@ -29,8 +29,16 @@ Route::get('logout', array('uses' => 'LoginController@doLogout'))->name('login.d
 Route::get('/home', function () {
     return view('home');
 });
-
 Route::get('/company', function () {
     return view('company');
+});
+Route::get('/department', function () {
+    return view('department');
+});
+Route::get('/factory', function () {
+    return view('factory');
+});
+Route::get('/line', function () {
+    return view('line');
 });
 
