@@ -15,6 +15,9 @@
     <!-- link rel="stylesheet" href="{!! asset('theme/simplex/bootstrap.min.css') !!}"/ -->
     <!-- link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/ -->
     <link rel="stylesheet" href="{!! asset('node_modules/@fortawesome/fontawesome-free/css/all.css') !!}"/>
+    <!-- glyphicon -->
+    <link rel="stylesheet" href="{!! asset('node_modules/glyphicons-only-bootstrap/css/bootstrap.min.css') !!}"/>
+    <!-- link rel="stylesheet" href="{!! asset('node_modules/glyphicons-only-bootstrap/css/bootstrap-theme.min.css') !!}"/ -->
     
     <link rel="stylesheet" href="{!! asset('css/custom_scrollbar.css') !!}"/>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -54,9 +57,9 @@
     <!-- Bootstrap Datepicker -->
     <link rel="stylesheet" href="{{ asset('node_modules/admin-lte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}" />
     <!-- Bootstrap FileInput -->
-    <link href="{!! asset('node_modules/bootstrap-fileinput/css/fileinput.css') !!}" media="all" rel="stylesheet" type="text/css"/>
+    <link href="{!! asset('node_modules/bootstrap-fileinput/css/fileinput.min.css') !!}" media="all" rel="stylesheet" type="text/css"/>
     <!-- link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous" -->
-    <link href="{!! asset('node_modules/bootstrap-fileinput/themes/explorer-fas/theme.css') !!}" media="all" rel="stylesheet" type="text/css"/>
+    <!-- link href="{!! asset('node_modules/bootstrap-fileinput/themes/explorer-fas/theme.min.css') !!}" media="all" rel="stylesheet" type="text/css"/ -->
     <!-- /.optional-style -->
     <!-- optional-script -->
     <!-- Select2 -->
@@ -79,8 +82,9 @@
     <script src="{!! asset('node_modules/bootstrap-fileinput/js/fileinput.js') !!}" type="text/javascript"></script>
     <script src="{!! asset('node_modules/bootstrap-fileinput/js/locales/fr.js') !!}" type="text/javascript"></script>
     <script src="{!! asset('node_modules/bootstrap-fileinput/js/locales/es.js') !!}" type="text/javascript"></script>
-    <script src="{!! asset('node_modules/bootstrap-fileinput/themes/fas/theme.js') !!}" type="text/javascript"></script>
-    <script src="{!! asset('node_modules/bootstrap-fileinput/themes/explorer-fas/theme.js') !!}" type="text/javascript"></script>
+    <script src="{!! asset('node_modules/bootstrap-fileinput/themes/fa/theme.min.js') !!}" type="text/javascript"></script>
+    <!-- script src="{!! asset('node_modules/bootstrap-fileinput/themes/fas/theme.js') !!}" type="text/javascript"></script -->
+    <!-- script src="{!! asset('node_modules/bootstrap-fileinput/themes/explorer-fas/theme.js') !!}" type="text/javascript"></script -->
     <!-- /.optional-script -->
 </head>
 <body class="hold-transition h-100 bg-light bg-gradient-light">
@@ -520,28 +524,33 @@
                                             <!-- form -->
                                             <form action="{!! route('home') !!}" method="POST" class="col-sm-8" autocomplete="off" id="form1" enctype="multipart/form-data">
                                                 @csrf
-                                                <!-- form-group -->
-                                                <div class="form-group row col-sm-12 m-1">
-                                                    <label for="name" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Name</label>
-                                                    <div class="col">
-                                                        <!-- p class="form-control-static"></p -->
-                                                        <input type="text" class="form-control form-control-md" id="name" name="name" placeholder="Name" value="{{ old('name') }}" required/>
+                                                <!-- form-group-row -->
+                                                <div class="row">
+                                                    <!-- -->
+                                                    <!-- form-group -->
+                                                    <div class="form-group row col-sm-12 m-1">
+                                                        <label for="name" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Name</label>
+                                                        <div class="col">
+                                                            <!-- p class="form-control-static"></p -->
+                                                            <input type="text" class="form-control form-control-md" id="name" name="name" placeholder="Name" value="{{ old('name') }}" required/>
+                                                        </div>
+                                                        <!-- span id="form-control" class="help-block"></span -->
                                                     </div>
-                                                    <!-- span id="form-control" class="help-block"></span -->
-                                                </div>
-                                                <!-- /.form-group -->
+                                                    <!-- /.form-group -->
 
-                                                <!-- form-group -->
-                                                <div class="form-group row col-sm-12">
-                                                    <!-- btn-toolbar -->
-                                                    <div class="col text-right">
-                                                        <!-- div class="btn-group btn-group-lg pull-right" -->
-                                                            <button type="submit" class="btn btn-primary ml-auto" id="submit">Submit</button>
-                                                        <!-- /div -->
+                                                    <!-- form-group -->
+                                                    <div class="form-group row col-sm-12">
+                                                        <!-- btn-toolbar -->
+                                                        <div class="col text-right">
+                                                            <!-- div class="btn-group btn-group-lg pull-right" -->
+                                                                <button type="submit" class="btn btn-primary ml-auto" id="submit">Submit</button>
+                                                            <!-- /div -->
+                                                        </div>
                                                     </div>
+                                                    <!-- /.form-group -->
+                                                    <!-- -->
                                                 </div>
-                                                <!-- /.form-group -->
-
+                                                <!-- /.form-group-row -->
                                             </form>
                                             <!-- /.form -->
                                         </div>

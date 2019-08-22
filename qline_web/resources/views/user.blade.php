@@ -15,6 +15,9 @@
     <!-- link rel="stylesheet" href="{!! asset('theme/simplex/bootstrap.min.css') !!}"/ -->
     <!-- link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/ -->
     <link rel="stylesheet" href="{!! asset('node_modules/@fortawesome/fontawesome-free/css/all.css') !!}"/>
+    <!-- glyphicon -->
+    <link rel="stylesheet" href="{!! asset('node_modules/glyphicons-only-bootstrap/css/bootstrap.min.css') !!}"/>
+    <!-- link rel="stylesheet" href="{!! asset('node_modules/glyphicons-only-bootstrap/css/bootstrap-theme.min.css') !!}"/ -->
     
     <link rel="stylesheet" href="{!! asset('css/custom_scrollbar.css') !!}"/>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -54,9 +57,9 @@
     <!-- Bootstrap Datepicker -->
     <link rel="stylesheet" href="{{ asset('node_modules/admin-lte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}" />
     <!-- Bootstrap FileInput -->
-    <link href="{!! asset('node_modules/bootstrap-fileinput/css/fileinput.css') !!}" media="all" rel="stylesheet" type="text/css"/>
+    <link href="{!! asset('node_modules/bootstrap-fileinput/css/fileinput.min.css') !!}" media="all" rel="stylesheet" type="text/css"/>
     <!-- link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous" -->
-    <link href="{!! asset('node_modules/bootstrap-fileinput/themes/explorer-fas/theme.css') !!}" media="all" rel="stylesheet" type="text/css"/>
+    <!-- link href="{!! asset('node_modules/bootstrap-fileinput/themes/explorer-fas/theme.min.css') !!}" media="all" rel="stylesheet" type="text/css"/ -->
     <!-- /.optional-style -->
     <!-- optional-script -->
     <!-- Select2 -->
@@ -79,9 +82,35 @@
     <script src="{!! asset('node_modules/bootstrap-fileinput/js/fileinput.js') !!}" type="text/javascript"></script>
     <script src="{!! asset('node_modules/bootstrap-fileinput/js/locales/fr.js') !!}" type="text/javascript"></script>
     <script src="{!! asset('node_modules/bootstrap-fileinput/js/locales/es.js') !!}" type="text/javascript"></script>
-    <script src="{!! asset('node_modules/bootstrap-fileinput/themes/fas/theme.js') !!}" type="text/javascript"></script>
-    <script src="{!! asset('node_modules/bootstrap-fileinput/themes/explorer-fas/theme.js') !!}" type="text/javascript"></script>
+    <script src="{!! asset('node_modules/bootstrap-fileinput/themes/fa/theme.min.js') !!}" type="text/javascript"></script>
+    <!-- script src="{!! asset('node_modules/bootstrap-fileinput/themes/fas/theme.js') !!}" type="text/javascript"></script -->
+    <!-- script src="{!! asset('node_modules/bootstrap-fileinput/themes/explorer-fas/theme.js') !!}" type="text/javascript"></script -->
     <!-- /.optional-script -->
+    
+    <!-- file-input-override-style -->
+    <!-- some CSS styling changes and overrides -->
+    <style>
+        .kv-avatar .krajee-default.file-preview-frame,.kv-avatar .krajee-default.file-preview-frame:hover {
+            margin: 0;
+            padding: 0;
+            border: none;
+            box-shadow: none;
+            text-align: center;
+        }
+        .kv-avatar {
+            display: inline-block;
+        }
+        .kv-avatar .file-input {
+            display: table-cell;
+            width: 213px;
+        }
+        .kv-reqd {
+            color: red;
+            font-family: monospace;
+            font-weight: normal;
+        }
+    </style>
+    <!-- file-input-override-style -->
 </head>
 <body class="hold-transition h-100 bg-light bg-gradient-light">
 <!-- wrapper -->
@@ -518,131 +547,168 @@
                                         <!-- col -->
                                         <div class="col-sm-12">
                                             <!-- form -->
-                                            <form action="{!! route('home') !!}" method="POST" class="col-sm-8" autocomplete="off" id="form1" enctype="multipart/form-data">
+                                            <form action="{!! route('home') !!}" method="POST" class="col col-sm-12 row" autocomplete="off" id="form1" enctype="multipart/form-data">
                                                 @csrf
-                                                <!-- form-group -->
-                                                <div class="form-group row col-sm-12 m-1">
-                                                    <label for="code" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">EMP No</label>
-                                                    <div class="col">
-                                                        <!-- p class="form-control-static"></p -->
-                                                        <input type="text" class="form-control form-control-md" id="code" name="code" placeholder="EMP No" value="{{ old('code') }}" required/>
-                                                    </div>
-                                                    <!-- span id="form-control" class="help-block"></span -->
-                                                </div>
-                                                <!-- /.form-group -->
-                                                
-                                                <!-- form-group -->
-                                                <div class="form-group row col-sm-12 m-1">
-                                                    <label for="name_first" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">First Name</label>
-                                                    <div class="col">
-                                                        <!-- p class="form-control-static"></p -->
-                                                        <input type="text" class="form-control form-control-md" id="name_first" name="name_first" placeholder="First Name" value="{{ old('name_first') }}" required/>
-                                                    </div>
-                                                    <!-- span id="form-control" class="help-block"></span -->
-                                                </div>
-                                                <!-- /.form-group -->
-                                                
-                                                <!-- form-group -->
-                                                <div class="form-group row col-sm-12 m-1">
-                                                    <label for="name_last" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Surname</label>
-                                                    <div class="col">
-                                                        <!-- p class="form-control-static"></p -->
-                                                        <input type="text" class="form-control form-control-md" id="name_last" name="name_last" placeholder="Surname" value="{{ old('name_last') }}" required/>
-                                                    </div>
-                                                    <!-- span id="form-control" class="help-block"></span -->
-                                                </div>
-                                                <!-- /.form-group -->
-                                                
-                                                <!-- form-group -->
-                                                <div class="form-group row col-sm-12 m-1">
-                                                    <label for="company" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Company</label>
-                                                    <div class="col">
-                                                        <!-- p class="form-control-static"></p -->
-                                                        <select class="form-control form-control-md select2" id="company" name="company" value="{{ old('company') }}" data-placeholder="Company" style="width: 100%;" required>
-                                                            
-                                                            <!-- @for($i =1; $i <= 5; $i++) -->
-                                                            <option>Company {{ $i }}</option>
-                                                            <!-- @endfor -->
-                                                            
-                                                        </select>
-                                                    </div>
-                                                    <!-- span id="form-control" class="help-block"></span -->
-                                                </div>
-                                                <!-- /.form-group -->
-                                                
-                                                <!-- form-group -->
-                                                <div class="form-group row col-sm-12 m-1">
-                                                    <label for="department" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Department</label>
-                                                    <div class="col">
-                                                        <!-- p class="form-control-static"></p -->
-                                                        <select class="form-control form-control-md select2" id="department" name="department" value="{{ old('department') }}" data-placeholder="Department" style="width: 100%;" required>
-                                                            
-                                                            <!-- @for($i =1; $i <= 5; $i++) -->
-                                                            <option>Department {{ $i }}</option>
-                                                            <!-- @endfor -->
-                                                            
-                                                        </select>
-                                                    </div>
-                                                    <!-- span id="form-control" class="help-block"></span -->
-                                                </div>
-                                                <!-- /.form-group -->
-                                                
-                                                <!-- form-group -->
-                                                <div class="form-group row col-sm-12 m-1">
-                                                    <label for="section" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Section</label>
-                                                    <div class="col">
-                                                        <!-- p class="form-control-static"></p -->
-                                                        <select class="form-control form-control-md select2" id="section" name="section" value="{{ old('section') }}" data-placeholder="Section" style="width: 100%;" required>
-                                                            
-                                                            <!-- @for($i =1; $i <= 5; $i++) -->
-                                                            <option>Section {{ $i }}</option>
-                                                            <!-- @endfor -->
-                                                            
-                                                        </select>
-                                                    </div>
-                                                    <!-- span id="form-control" class="help-block"></span -->
-                                                </div>
-                                                <!-- /.form-group -->
-                                                
-                                                <!-- form-group -->
-                                                <div class="form-group row col-sm-12 m-1">
-                                                    <label for="factory" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Factory</label>
-                                                    <div class="col">
-                                                        <!-- p class="form-control-static"></p -->
-                                                        <select class="form-control form-control-md select2" id="factory" name="factory" value="{{ old('factory') }}" data-placeholder="Factory" style="width: 100%;" required>
-                                                            
-                                                            <!-- @for($i =1; $i <= 5; $i++) -->
-                                                            <option>Factory {{ $i }}</option>
-                                                            <!-- @endfor -->
-                                                            
-                                                        </select>
-                                                    </div>
-                                                    <!-- span id="form-control" class="help-block"></span -->
-                                                </div>
-                                                <!-- /.form-group -->
-                                                
-                                                <!-- form-group -->
-                                                <div class="form-group row col-sm-12 m-1">
-                                                    <label for="phone_mobile" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Mobile</label>
-                                                    <div class="col">
-                                                        <!-- p class="form-control-static"></p -->
-                                                        <input type="text" class="form-control form-control-md" id="phone_mobile" name="phone_mobile" placeholder="Mobile" value="{{ old('phone_mobile') }}" required/>
-                                                    </div>
-                                                    <!-- span id="form-control" class="help-block"></span -->
-                                                </div>
-                                                <!-- /.form-group -->
+                                                <!-- form-group-row -->
+                                                <div class="row">
+                                                    <!-- -->
+                                                    <!-- form-group-col -->
+                                                    <div class="col col-md-8">
 
-                                                <!-- form-group -->
-                                                <div class="form-group row col-sm-12">
-                                                    <!-- btn-toolbar -->
-                                                    <div class="col text-right">
-                                                        <!-- div class="btn-group btn-group-lg pull-right" -->
-                                                            <button type="submit" class="btn btn-primary ml-auto" id="submit">Submit</button>
-                                                        <!-- /div -->
-                                                    </div>
-                                                </div>
-                                                <!-- /.form-group -->
+                                                        <!-- -->
+                                                        <!-- form-group -->
+                                                        <div class="form-group row col-sm-12 m-1">
+                                                            <label for="code" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">EMP No</label>
+                                                            <div class="col">
+                                                                <!-- p class="form-control-static"></p -->
+                                                                <input type="text" class="form-control form-control-md" id="code" name="code" placeholder="EMP No" value="{{ old('code') }}" required/>
+                                                            </div>
+                                                            <!-- span id="form-control" class="help-block"></span -->
+                                                        </div>
+                                                        <!-- /.form-group -->
 
+                                                        <!-- form-group -->
+                                                        <div class="form-group row col-sm-12 m-1">
+                                                            <label for="name_first" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">First Name</label>
+                                                            <div class="col">
+                                                                <!-- p class="form-control-static"></p -->
+                                                                <input type="text" class="form-control form-control-md" id="name_first" name="name_first" placeholder="First Name" value="{{ old('name_first') }}" required/>
+                                                            </div>
+                                                            <!-- span id="form-control" class="help-block"></span -->
+                                                        </div>
+                                                        <!-- /.form-group -->
+
+                                                        <!-- form-group -->
+                                                        <div class="form-group row col-sm-12 m-1">
+                                                            <label for="name_last" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Surname</label>
+                                                            <div class="col">
+                                                                <!-- p class="form-control-static"></p -->
+                                                                <input type="text" class="form-control form-control-md" id="name_last" name="name_last" placeholder="Surname" value="{{ old('name_last') }}" required/>
+                                                            </div>
+                                                            <!-- span id="form-control" class="help-block"></span -->
+                                                        </div>
+                                                        <!-- /.form-group -->
+
+                                                        <!-- form-group -->
+                                                        <div class="form-group row col-sm-12 m-1">
+                                                            <label for="company" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Company</label>
+                                                            <div class="col">
+                                                                <!-- p class="form-control-static"></p -->
+                                                                <select class="form-control form-control-md select2" id="company" name="company" value="{{ old('company') }}" data-placeholder="Company" style="width: 100%;" required>
+
+                                                                    <!-- @for($i =1; $i <= 5; $i++) -->
+                                                                    <option>Company {{ $i }}</option>
+                                                                    <!-- @endfor -->
+
+                                                                </select>
+                                                            </div>
+                                                            <!-- span id="form-control" class="help-block"></span -->
+                                                        </div>
+                                                        <!-- /.form-group -->
+
+                                                        <!-- form-group -->
+                                                        <div class="form-group row col-sm-12 m-1">
+                                                            <label for="department" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Department</label>
+                                                            <div class="col">
+                                                                <!-- p class="form-control-static"></p -->
+                                                                <select class="form-control form-control-md select2" id="department" name="department" value="{{ old('department') }}" data-placeholder="Department" style="width: 100%;" required>
+
+                                                                    <!-- @for($i =1; $i <= 5; $i++) -->
+                                                                    <option>Department {{ $i }}</option>
+                                                                    <!-- @endfor -->
+
+                                                                </select>
+                                                            </div>
+                                                            <!-- span id="form-control" class="help-block"></span -->
+                                                        </div>
+                                                        <!-- /.form-group -->
+
+                                                        <!-- form-group -->
+                                                        <div class="form-group row col-sm-12 m-1">
+                                                            <label for="section" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Section</label>
+                                                            <div class="col">
+                                                                <!-- p class="form-control-static"></p -->
+                                                                <select class="form-control form-control-md select2" id="section" name="section" value="{{ old('section') }}" data-placeholder="Section" style="width: 100%;" required>
+
+                                                                    <!-- @for($i =1; $i <= 5; $i++) -->
+                                                                    <option>Section {{ $i }}</option>
+                                                                    <!-- @endfor -->
+
+                                                                </select>
+                                                            </div>
+                                                            <!-- span id="form-control" class="help-block"></span -->
+                                                        </div>
+                                                        <!-- /.form-group -->
+
+                                                        <!-- form-group -->
+                                                        <div class="form-group row col-sm-12 m-1">
+                                                            <label for="factory" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Factory</label>
+                                                            <div class="col">
+                                                                <!-- p class="form-control-static"></p -->
+                                                                <select class="form-control form-control-md select2" id="factory" name="factory" value="{{ old('factory') }}" data-placeholder="Factory" style="width: 100%;" required>
+
+                                                                    <!-- @for($i =1; $i <= 5; $i++) -->
+                                                                    <option>Factory {{ $i }}</option>
+                                                                    <!-- @endfor -->
+
+                                                                </select>
+                                                            </div>
+                                                            <!-- span id="form-control" class="help-block"></span -->
+                                                        </div>
+                                                        <!-- /.form-group -->
+
+                                                        <!-- form-group -->
+                                                        <div class="form-group row col-sm-12 m-1">
+                                                            <label for="phone_mobile" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Mobile</label>
+                                                            <div class="col">
+                                                                <!-- p class="form-control-static"></p -->
+                                                                <input type="text" class="form-control form-control-md" id="phone_mobile" name="phone_mobile" placeholder="Mobile" value="{{ old('phone_mobile') }}" required/>
+                                                            </div>
+                                                            <!-- span id="form-control" class="help-block"></span -->
+                                                        </div>
+                                                        <!-- /.form-group -->
+
+                                                        <!-- form-group -->
+                                                        <div class="form-group row col-sm-12">
+                                                            <!-- btn-toolbar -->
+                                                            <div class="col text-right">
+                                                                <!-- div class="btn-group btn-group-lg pull-right" -->
+                                                                    <button type="submit" class="btn btn-primary ml-auto" id="submit">Submit</button>
+                                                                <!-- /div -->
+                                                            </div>
+                                                        </div>
+                                                        <!-- /.form-group -->
+                                                        <!-- -->
+
+                                                    </div>
+                                                    <!-- /.form-group-col -->
+
+                                                    <!-- form-group-col -->
+                                                    <div class="col col-md-4">
+
+                                                        <!-- -->
+                                                        <!-- form-group -->
+                                                        <div class="form-group row col-sm-12 m-1 p-0">
+                                                            <label for="image_uri" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right d-none">File</label>
+                                                            <div class="col kv-avatar">
+                                                                <!-- p class="form-control-static"></p -->
+                                                                <div class="col p-0 m-0 file-loading">
+                                                                    <!-- class="file" -->
+                                                                    <input type="file" multiple="false" class="form-control form-control-md" id="image_uri" name="image_uri" value="{{ old('image_uri') }}" data-preview-file-type="text"/>
+                                                                </div>
+                                                                <div class="col kv-avatar-hint d-none">
+                                                                    <small>hint</small>
+                                                                </div>
+                                                            </div>
+                                                            <!-- span id="form-control" class="help-block"></span -->
+                                                        </div>
+                                                        <!-- /.form-group -->
+                                                        <!-- -->
+
+                                                    </div>
+                                                    <!-- /.form-group-col -->
+                                                </div>
+                                                <!-- /.form-group-row -->
                                             </form>
                                             <!-- /.form -->
                                         </div>
@@ -797,6 +863,34 @@ $(document).ready(function(){
     $('#factory').select2();
     $('#department').select2();
     $('#section').select2();
+    //$.fn.fileinputThemes['fa'];
+    var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' + 
+    'onclick="alert(\'Call your custom code here.\')">' +
+    '<i class="glyphicon glyphicon-tag"></i>' +
+    '</button>'; 
+    $("#image_uri").fileinput({
+        //'theme': "fa",
+        'showUpload': false,
+        'showRemove': true,
+        'previewFileType': 'any',
+        'overwriteInitial': true,
+        'maxFileSize': 1500,
+        'showClose': false,
+        'showCaption': false,
+        'browseLabel': '',
+        'removeLabel': '',
+        'browseIcon': '<i class="glyphicon glyphicon-folder-open"></i>',
+        'removeIcon': '<i class="glyphicon glyphicon-remove"></i>',
+        'showBrowse': false,
+        'browseOnZoneClick': true,
+        'removeTitle': 'Cancel or reset changes',
+        'elErrorContainer': '#kv-avatar-errors-2',
+        'msgErrorClass': 'alert alert-block alert-danger',
+        'defaultPreviewContent': '<img src="{!! asset('img/avatar5.png') !!}" alt="Your Avatar"><h6 class="text-muted">Click to select</h6>',
+        //'layoutTemplates': {main2: '{preview} ' +  btnCust + ' {remove} {browse}'},
+        'layoutTemplates': {main2: '{preview} {remove} {browse}'},
+        'allowedFileExtensions': ["jpg", "png", "gif"]
+    });
 }); 
 </script>
 <!-- REQUIRED JS SCRIPTS -->
