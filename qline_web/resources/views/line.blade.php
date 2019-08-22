@@ -522,7 +522,7 @@
                                         <!-- col -->
                                         <div class="col-sm-12">
                                             <!-- form -->
-                                            <form action="{!! route('home') !!}" method="POST" class="col-sm-8" autocomplete="off" id="form1" enctype="multipart/form-data">
+                                            <form action="{!! route('home') !!}" method="POST" class="col col-sm-8" autocomplete="off" id="form1" enctype="multipart/form-data">
                                                 @csrf
                                                 <!-- form-group-row -->
                                                 <div class="row">

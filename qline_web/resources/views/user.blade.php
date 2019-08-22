@@ -547,7 +547,7 @@
                                         <!-- col -->
                                         <div class="col-sm-12">
                                             <!-- form -->
-                                            <form action="{!! route('home') !!}" method="POST" class="col col-sm-12 row" autocomplete="off" id="form1" enctype="multipart/form-data">
+                                            <form action="{!! route('home') !!}" method="POST" class="col col-sm-12" autocomplete="off" id="form1" enctype="multipart/form-data">
                                                 @csrf
                                                 <!-- form-group-row -->
                                                 <div class="row">
@@ -667,17 +667,6 @@
                                                             <!-- span id="form-control" class="help-block"></span -->
                                                         </div>
                                                         <!-- /.form-group -->
-
-                                                        <!-- form-group -->
-                                                        <div class="form-group row col-sm-12">
-                                                            <!-- btn-toolbar -->
-                                                            <div class="col text-right">
-                                                                <!-- div class="btn-group btn-group-lg pull-right" -->
-                                                                    <button type="submit" class="btn btn-primary ml-auto" id="submit">Submit</button>
-                                                                <!-- /div -->
-                                                            </div>
-                                                        </div>
-                                                        <!-- /.form-group -->
                                                         <!-- -->
 
                                                     </div>
@@ -707,6 +696,23 @@
 
                                                     </div>
                                                     <!-- /.form-group-col -->
+                                                </div>
+                                                <!-- /.form-group-row -->
+                                                
+                                                <!-- form-group-row -->
+                                                <div class="row">
+                                                    <!-- -->
+                                                    <!-- form-group -->
+                                                    <div class="form-group row col-sm-12">
+                                                        <!-- btn-toolbar -->
+                                                        <div class="col text-right">
+                                                            <!-- div class="btn-group btn-group-lg pull-right" -->
+                                                                <button type="submit" class="btn btn-primary ml-auto" id="submit">Submit</button>
+                                                            <!-- /div -->
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                    <!-- -->
                                                 </div>
                                                 <!-- /.form-group-row -->
                                             </form>
