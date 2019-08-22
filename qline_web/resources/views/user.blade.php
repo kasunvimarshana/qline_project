@@ -60,6 +60,8 @@
     <link href="{!! asset('node_modules/bootstrap-fileinput/css/fileinput.min.css') !!}" media="all" rel="stylesheet" type="text/css"/>
     <!-- link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous" -->
     <!-- link href="{!! asset('node_modules/bootstrap-fileinput/themes/explorer-fas/theme.min.css') !!}" media="all" rel="stylesheet" type="text/css"/ -->
+    <!-- Bootstrap Toggle -->
+    <link href="{!! asset('node_modules/bootstrap4-toggle/css/bootstrap4-toggle.min.css') !!}" media="all" rel="stylesheet" type="text/css"/>
     <!-- /.optional-style -->
     <!-- optional-script -->
     <!-- Select2 -->
@@ -85,6 +87,8 @@
     <script src="{!! asset('node_modules/bootstrap-fileinput/themes/fa/theme.min.js') !!}" type="text/javascript"></script>
     <!-- script src="{!! asset('node_modules/bootstrap-fileinput/themes/fas/theme.js') !!}" type="text/javascript"></script -->
     <!-- script src="{!! asset('node_modules/bootstrap-fileinput/themes/explorer-fas/theme.js') !!}" type="text/javascript"></script -->
+    <!-- Bootstrap Toggle -->
+    <script src="{!! asset('node_modules/bootstrap4-toggle/js/bootstrap4-toggle.min.js') !!}" type="text/javascript"></script>
     <!-- /.optional-script -->
     
     <!-- file-input-override-style -->
@@ -710,6 +714,120 @@
                                                                 <button type="submit" class="btn btn-primary ml-auto" id="submit">Submit</button>
                                                             <!-- /div -->
                                                         </div>
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                    <!-- -->
+                                                </div>
+                                                <!-- /.form-group-row -->
+                                                
+                                                <!-- form-group-row -->
+                                                <div class="row col">
+                                                    <!-- -->
+                                                    <!-- form-group -->
+                                                    <div class="form-group col col-md-6">
+                                                        <label for="input_id" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right d-none">Label</label>
+                                                        <div class="col custom-control custom-switch form-check">
+                                                            <!-- p class="form-control-static"></p -->
+                                                            <input type="checkbox" class="form-control form-control-md custom-control-input form-check-input" id="role_1" name="role_1" value="{{ old('role_1') }}"/>
+                                                            <label class="custom-control-label form-check-label" for="role_1">Service Admin</label>
+                                                        </div>
+                                                        <!-- span id="form-control" class="help-block"></span -->
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                    
+                                                    <!-- form-group -->
+                                                    <div class="form-group col col-md-6">
+                                                        <label for="input_id" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right d-none">Label</label>
+                                                        <div class="col custom-control custom-switch form-check">
+                                                            <!-- p class="form-control-static"></p -->
+                                                            <input type="checkbox" class="form-control form-control-md custom-control-input form-check-input" id="role_2" name="role_2" value="{{ old('role_2') }}"/>
+                                                            <label class="custom-control-label form-check-label" for="role_2">Finishing 100% Measuring</label>
+                                                        </div>
+                                                        <!-- span id="form-control" class="help-block"></span -->
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                    
+                                                    <!-- form-group -->
+                                                    <div class="form-group col col-md-6">
+                                                        <label for="input_id" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right d-none">Label</label>
+                                                        <div class="col custom-control custom-switch form-check">
+                                                            <!-- p class="form-control-static"></p -->
+                                                            <input type="checkbox" class="form-control form-control-md custom-control-input form-check-input" id="role_3" name="role_3" value="{{ old('role_3') }}"/>
+                                                            <label class="custom-control-label form-check-label" for="role_3">Sewing 100% Checking</label>
+                                                        </div>
+                                                        <!-- span id="form-control" class="help-block"></span -->
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                    
+                                                    <!-- form-group -->
+                                                    <div class="form-group col col-md-6">
+                                                        <label for="input_id" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right d-none">Label</label>
+                                                        <div class="col custom-control custom-switch form-check">
+                                                            <!-- p class="form-control-static"></p -->
+                                                            <input type="checkbox" class="form-control form-control-md custom-control-input form-check-input" id="role_4" name="role_4" value="{{ old('role_4') }}"/>
+                                                            <label class="custom-control-label form-check-label" for="role_4">Finishing AQL Audit</label>
+                                                        </div>
+                                                        <!-- span id="form-control" class="help-block"></span -->
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                    
+                                                    <!-- form-group -->
+                                                    <div class="form-group col col-md-6">
+                                                        <label for="input_id" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right d-none">Label</label>
+                                                        <div class="col custom-control custom-switch form-check">
+                                                            <!-- p class="form-control-static"></p -->
+                                                            <input type="checkbox" class="form-control form-control-md custom-control-input form-check-input" id="role_5" name="role_5" value="{{ old('role_5') }}"/>
+                                                            <label class="custom-control-label form-check-label" for="role_5">Sewing AQL Audit</label>
+                                                        </div>
+                                                        <!-- span id="form-control" class="help-block"></span -->
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                    
+                                                    <!-- form-group -->
+                                                    <div class="form-group col col-md-6">
+                                                        <label for="input_id" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right d-none">Label</label>
+                                                        <div class="col custom-control custom-switch form-check">
+                                                            <!-- p class="form-control-static"></p -->
+                                                            <input type="checkbox" class="form-control form-control-md custom-control-input form-check-input" id="role_6" name="role_6" value="{{ old('role_6') }}"/>
+                                                            <label class="custom-control-label form-check-label" for="role_6">Dry Room 100% Checking</label>
+                                                        </div>
+                                                        <!-- span id="form-control" class="help-block"></span -->
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                    
+                                                    <!-- form-group -->
+                                                    <div class="form-group col col-md-6">
+                                                        <label for="input_id" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right d-none">Label</label>
+                                                        <div class="col custom-control custom-switch form-check">
+                                                            <!-- p class="form-control-static"></p -->
+                                                            <input type="checkbox" class="form-control form-control-md custom-control-input form-check-input" id="role_7" name="role_7" value="{{ old('role_7') }}"/>
+                                                            <label class="custom-control-label form-check-label" for="role_7">Finishing 100% Checking</label>
+                                                        </div>
+                                                        <!-- span id="form-control" class="help-block"></span -->
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                    
+                                                    <!-- form-group -->
+                                                    <div class="form-group col col-md-6">
+                                                        <label for="input_id" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right d-none">Label</label>
+                                                        <div class="col custom-control custom-switch form-check">
+                                                            <!-- p class="form-control-static"></p -->
+                                                            <input type="checkbox" class="form-control form-control-md custom-control-input form-check-input" id="role_8" name="role_8" value="{{ old('role_8') }}"/>
+                                                            <label class="custom-control-label form-check-label" for="role_8">CTN Audit</label>
+                                                        </div>
+                                                        <!-- span id="form-control" class="help-block"></span -->
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                    
+                                                    <!-- form-group -->
+                                                    <div class="form-group col col-md-6">
+                                                        <label for="input_id" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right d-none">Label</label>
+                                                        <div class="col custom-control custom-switch form-check">
+                                                            <!-- p class="form-control-static"></p -->
+                                                            <input type="checkbox" class="form-control form-control-md custom-control-input form-check-input" id="role_9" name="role_9" value="{{ old('role_9') }}"/>
+                                                            <label class="custom-control-label form-check-label" for="role_9">RQC</label>
+                                                        </div>
+                                                        <!-- span id="form-control" class="help-block"></span -->
                                                     </div>
                                                     <!-- /.form-group -->
                                                     <!-- -->

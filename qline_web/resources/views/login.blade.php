@@ -60,6 +60,8 @@
     <link href="{!! asset('node_modules/bootstrap-fileinput/css/fileinput.min.css') !!}" media="all" rel="stylesheet" type="text/css"/>
     <!-- link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous" -->
     <!-- link href="{!! asset('node_modules/bootstrap-fileinput/themes/explorer-fas/theme.min.css') !!}" media="all" rel="stylesheet" type="text/css"/ -->
+    <!-- Bootstrap Toggle -->
+    <link href="{!! asset('node_modules/bootstrap4-toggle/css/bootstrap4-toggle.min.css') !!}" media="all" rel="stylesheet" type="text/css"/>
     <!-- /.optional-style -->
     <!-- optional-script -->
     <!-- Select2 -->
@@ -85,6 +87,8 @@
     <script src="{!! asset('node_modules/bootstrap-fileinput/themes/fa/theme.min.js') !!}" type="text/javascript"></script>
     <!-- script src="{!! asset('node_modules/bootstrap-fileinput/themes/fas/theme.js') !!}" type="text/javascript"></script -->
     <!-- script src="{!! asset('node_modules/bootstrap-fileinput/themes/explorer-fas/theme.js') !!}" type="text/javascript"></script -->
+    <!-- Bootstrap Toggle -->
+    <script src="{!! asset('node_modules/bootstrap4-toggle/js/bootstrap4-toggle.min.js') !!}" type="text/javascript"></script>
     <!-- /.optional-script -->
     
     <style>
