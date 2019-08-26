@@ -48,3 +48,50 @@ Route::get('/user', function () {
     return view('user');
 });
 
+////////////////////////////////////////////////////////
+/*
+Roue::get('/test', function(){
+    use GuzzleHttp\Exception\GuzzleException;
+    use GuzzleHttp\Client;
+    $client = new Client(); //GuzzleHttp\Client
+    $result = $client->post('your-request-uri', [
+        'form_params' => [
+            'sample-form-data' => 'value'
+        ]
+    ]);
+});
+
+Route::get('/test', function(){
+    $client = new \GuzzleHttp\Client();
+    $response = $client->request('POST', 'http://localhost:8001/api/store', [
+        'form_params' => [
+            'name' => 'krunal',
+        ]
+    ]);
+    $response = $response->getBody()->getContents();
+    echo '<pre>';
+    print_r($response);
+});
+*/
+/*
+Route::get('/test', function(){
+    $client = new \GuzzleHttp\Client();
+    $request = $client->get('http://localhost:8000');
+    $response = $request->getBody();
+   
+    //dd($response);
+    $response = $response->getContents();
+    echo '<pre>';
+    print_r($response);
+});
+*/
+Route::get('/test', function(){
+    $client = new \GuzzleHttp\Client();
+    $request = $client->get('http://localhost/qline_project/qline_web/public/home');
+    $response = $request->getBody();
+   
+    //dd($response);
+    $response = $response->getContents();
+    echo '<pre>';
+    print_r($response);
+});

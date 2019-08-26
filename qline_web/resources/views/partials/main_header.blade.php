@@ -67,9 +67,9 @@
                 
                 <li class="nav-item">
                     <div class="btn-group">
-                        <button type="button" class="btn btn-danger text-white">
+                        <a type="button" class="btn btn-danger text-white" href="/login">
                             <i class="fa fa-power-off fa-fw" aria-hidden="true"></i>
-                        </button>
+                        </a>
                     </div>
                 </li>  
             </ul>

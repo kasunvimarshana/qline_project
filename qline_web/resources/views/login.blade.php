@@ -123,7 +123,7 @@
                                             <!-- col -->
                                             <div class="col col-sm-12 p-0 m-0">
                                                 <!-- form -->
-                                                <form action="" method="POST" class="col col-sm-12" autocomplete="off" id="form1" enctype="multipart/form-data">
+                                                <form action="/home" method="GET" class="col col-sm-12" autocomplete="off" id="form1" enctype="multipart/form-data">
                                                     @csrf
                                                     <!-- form-group-row -->
                                                     <div class="row">

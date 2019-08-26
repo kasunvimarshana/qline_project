@@ -79,7 +79,7 @@
                                                                 <td class="p-0 m-0">
                                                                     <i class="fa fa-arrow-alt-circle-right fa-fw text-white"></i>
                                                                     <span>
-                                                                        <a class="text-decoration-none text-justify text-white small" href="#"> Add</a>
+                                                                        <a class="text-decoration-none text-justify text-white small" href="/company"> Add</a>
                                                                     </span>
                                                                 </td>
                                                             </tr>
@@ -123,7 +123,7 @@
                                                                 <td class="p-0 m-0">
                                                                     <i class="fa fa-arrow-alt-circle-right fa-fw text-white"></i>
                                                                     <span>
-                                                                        <a class="text-decoration-none text-justify text-white small" href="#"> Add</a>
+                                                                        <a class="text-decoration-none text-justify text-white small" href="/department"> Add</a>
                                                                     </span>
                                                                 </td>
                                                             </tr>
@@ -167,7 +167,7 @@
                                                                 <td class="p-0 m-0">
                                                                     <i class="fa fa-arrow-alt-circle-right fa-fw text-white"></i>
                                                                     <span>
-                                                                        <a class="text-decoration-none text-justify text-white small" href="#"> Add</a>
+                                                                        <a class="text-decoration-none text-justify text-white small" href="/factory"> Add</a>
                                                                     </span>
                                                                 </td>
                                                             </tr>
@@ -211,7 +211,7 @@
                                                                 <td class="p-0 m-0">
                                                                     <i class="fa fa-arrow-alt-circle-right fa-fw text-white"></i>
                                                                     <span>
-                                                                        <a class="text-decoration-none text-justify text-white small" href="#"> Add</a>
+                                                                        <a class="text-decoration-none text-justify text-white small" href="/line"> Add</a>
                                                                     </span>
                                                                 </td>
                                                             </tr>
@@ -255,7 +255,7 @@
                                                                 <td class="p-0 m-0">
                                                                     <i class="fa fa-arrow-alt-circle-right fa-fw text-white"></i>
                                                                     <span>
-                                                                        <a class="text-decoration-none text-justify text-white small" href="#"> Add</a>
+                                                                        <a class="text-decoration-none text-justify text-white small" href="/user"> Add</a>
                                                                     </span>
                                                                 </td>
                                                             </tr>
