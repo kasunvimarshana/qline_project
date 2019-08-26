@@ -1,7 +1,7 @@
 <!-- nav -->
 <!-- nav class="navbar navbar-expand-sm navbar-light bg-danger sticky-bottom fixed-bottom navbar-light d-print" -->
     <!-- Footer -->
-    <footer class="page-footer font-small bg-light fixed-bottom">
+    <footer class="page-footer font-small bg-danger fixed-bottom">
 
         <!-- Copyright -->
         <div class="footer-copyright text-lg-left py-0">

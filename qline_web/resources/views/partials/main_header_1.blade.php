@@ -3,7 +3,7 @@
 <!-- header -->
     
 <!-- nav -->
-<nav class="navbar navbar-expand-sm navbar-light bg-danger sticky-top fixed-top d-print s-navbar" role="navigation">
+<nav class="navbar navbar-expand-sm navbar-light bg-danger sticky-top fixed-top d-print s-navbar text-wrap text-break" role="navigation">
     <!-- container-fluid -->
     <!-- div class="container container-fluid" -->
         <!-- div class="navbar-header" -->
@@ -33,15 +33,14 @@
                 </li>  
             </ul -->
             <!-- /.nav lists -->
-            
             <!-- nav lists -->
             <ul class="list-unstyled nav navbar-nav ml-auto navbar-right">
-                <!-- li class="nav-item">
+                <li class="nav-item">
                     <span class="navbar-text text-center text-uppercase font-weight-bold text-white"> <span id="span_time">0</span> &nbsp;&nbsp;&nbsp;</span>
-                </li -->
-                <!-- li class="nav-item">
+                </li>
+                <li class="nav-item">
                     <span class="navbar-text text-center text-uppercase font-weight-bold text-white"> <span id="span_date">0</span> </span>
-                </li -->
+                </li>
                 <!-- li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Dropdown link
@@ -55,26 +54,6 @@
                 </li -->
             </ul>
             <!-- /.nav lists -->
-            
-            <!-- nav lists -->
-            <ul class="list-unstyled nav navbar-nav ml-auto navbar-right">
-                <li class="nav-item">
-                    <span class="navbar-text text-center font-weight-bold text-white">
-                        <i class="fa fa-user-alt fa-fw"></i>
-                        <span> User</span>
-                    </span>
-                </li>
-                
-                <li class="nav-item">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-danger text-white">
-                            <i class="fa fa-power-off fa-fw" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                </li>  
-            </ul>
-            <!-- /.nav lists -->
-            
             <!-- nav form >
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

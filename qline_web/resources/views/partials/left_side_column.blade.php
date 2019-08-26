@@ -1,125 +1,286 @@
-<aside class="main-sidebar">
+<!-- Left side column. contains the logo and sidebar -->
+<div class="col-md-2 pl-0 bg-danger">
 
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
+    <!-- accordion -->
+    <div id="accordion_nav" class="text-wrap text-break">
+        <!-- card-group -->
+        <div class="card-group">
+            <!-- card -->
+            <div class="card bg-danger">
+                <div class="card-header" id="idCard1">
+                    <h5 class="mb-0">
+                        <button class="btn btn-default m-0 p-0 text-white" data-toggle="collapse" data-target="#idCollapse1" aria-expanded="false" aria-controls="idCollapse1" role="button" type="button">
+                        <i class="fa fa-bold fa-fw"></i>
+                        <span class="text-decoration-none text-justify small"> TQMS</span>
+                        </button>
+                    </h5>
+                </div>
 
-        <!-- Sidebar user panel (optional) -->
-        <div class="user-panel">
-            <div class="pull-left image">
-                @if( (isset($auth_user)) && ($auth_user->image_uri) )
-                    <img src="{!! $auth_user->image_uri !!}" class="img-circle" alt="User Image"/>
-                @else
-                    <img src="{!! URL::asset('node_modules/admin-lte/dist/img/avatar5.png') !!}" class="img-circle" alt="User Image"/>
-                @endif
+                <div id="idCollapse1-temp" class="collapse hide" aria-labelledby="idCard1" data-parent="#accordion_nav">
+                    <div class="card-body" id="idCollapse1_body">
+                        <table class="table">
+                            <!-- table-tr -->
+                            <tr>
+                                <td class="p-0 m-0">
+                                    <i class="fa fa-arrow-alt-circle-right fa-fw text-white"></i>
+                                    <span>
+                                        <a class="text-decoration-none text-justify text-white small" href="#">Link 1</a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <!-- /.table-tr -->
+                        </table>
+                    </div>
+                </div>
             </div>
-            <div class="pull-left info">
-                @isset($auth_user)
-                    <p> {{ $auth_user->email }} </p>
-                @endisset
-                <!-- p>user</p -->
-                <!-- Status -->
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-            </div>
+            <!-- /.card -->
         </div>
+        <!-- /.card-group -->
 
-        <!-- search form (Optional) -->
-        <!-- /.search form -->
+        <!-- card-group -->
+        <div class="card-group">
+            <!-- card -->
+            <div class="card bg-danger">
+                <div class="card-header" id="idCard2">
+                    <h5 class="mb-0">
+                        <button class="btn btn-default m-0 p-0 text-white" data-toggle="collapse" data-target="#idCollapse2" aria-expanded="false" aria-controls="idCollapse2" role="button" type="button">
+                        <i class="fa fa-atom fa-fw"></i>
+                        <span class="text-decoration-none text-justify small"> Backstage</span>
+                        </button>
+                    </h5>
+                </div>
 
-        <!-- Sidebar Menu -->
-        <ul class="sidebar-menu" data-widget="tree">
-            
-            <!-- li class="header">ACTIVITIES</li -->
-            <!-- Optionally, you can add icons to the links -->
-            <!-- li class="{!! set_active(['home/']) !!}"><a href="{!! route('home') !!}"><i class="fa fa-edit"></i> <span>Home</span></a></li -->
-            <li class="header">ACTIVITIES</li>
-            <li class="treeview {!! set_active(['pdcas', 'pdcas/*']) !!}">
-                <a href="#">
-                    <i class="fa fa-edit"></i> <span>{{ config('app.display_name', 'Title') }}</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li class="{!! set_active(['pdcas/create', 'pdcas/create/*']) !!}"><a href="{!! route('home') !!}"> <i class="fa fa-arrow-circle-o-right"></i> Create New</a></li>
-                    <li class="{!! set_active(['pdcas/show-created-pdcas', 'pdcas/show-created-pdcas/*']) !!}"><a href="{!! route('home') !!}"> <i class="fa fa-arrow-circle-o-right"></i> Created PDCAS</a></li>
-                </ul>
-            </li>
-            <li class="treeview {!! set_active(['team/departments', 'team/departments/*']) !!}">
-                <a href="#">
-                    <i class="fa fa-edit"></i> <span>My Department</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li class="{!! set_active(['team/departments/show', 'team/departments/*']) !!}"><a href="{!! route('home') !!}"> <i class="fa fa-arrow-circle-o-right"></i> Status</a></li>
-                </ul>
-            </li>
-            <li class="treeview {!! set_active(['team/companies', 'team/companies/*']) !!}">
-                <a href="#">
-                    <i class="fa fa-edit"></i> <span>My SBU</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li class="{!! set_active(['team/companies/departments', 'team/companies/departments/*']) !!}"><a href="{!! route('home') !!}"> <i class="fa fa-arrow-circle-o-right"></i> Status</a></li>
-                </ul>
-            </li>
-            
-            <!-- backstage navigation -->
-            
-            <li class="treeview {!! set_active(['backstage', 'backstage/*']) !!}">
-                <a href="#">
-                    <i class="fa fa-edit"></i> <span>Backstage</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li class="treeview {!! set_active(['backstage/meeting-categories', 'backstage/meeting-categories/*']) !!}">
-                        <a href="#">
-                            <i class="fa fa-circle-o"></i> <span>Meeting Category</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li class="{!! set_active(['backstage/meeting-categories/create', 'backstage/meeting-categories/create/*']) !!}"><a href="{!! route('home') !!}"> <i class="fa fa-arrow-circle-o-right"></i> Control</a></li>
-                        </ul>
-                    </li>
-                    
-                    <li class="treeview {!! set_active(['backstage/user-roles', 'backstage/user-roles/*']) !!}">
-                        <a href="#">
-                            <i class="fa fa-circle-o"></i> <span>Admin User</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li class="{!! set_active(['backstage/user-roles/create', 'backstage/user-roles/create/*']) !!}"><a href="{!! route('home') !!}"> <i class="fa fa-arrow-circle-o-right"></i> Control</a></li>
-                        </ul>
-                    </li>
-                    
-                    <li class="treeview {!! set_active(['backstage/notification-schedules', 'backstage/notification-schedules/*']) !!}">
-                        <a href="#">
-                            <i class="fa fa-circle-o"></i> <span>Notification Schedule</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li class="{!! set_active(['backstage/notification-schedules/create', 'backstage/notification-schedules/create/*']) !!}"><a href="{!! route('home') !!}"> <i class="fa fa-arrow-circle-o-right"></i> Control</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            
-            <!-- /.backstage navigation -->
-            
-        </ul>
-        <!-- /.sidebar-menu -->
-    </section>
-    <!-- /.sidebar -->
-    
-</aside>
+                <div id="idCollapse2" class="collapse hide" aria-labelledby="idCard2" data-parent="#accordion_nav">
+                    <div class="card-body" id="idCollapse2_body">
+                        <table class="table">
+                            <!-- table-tr -->
+                            <tr>
+                                <td class="p-0 m-0">
+
+                                    <!-- nested accordion -->
+                                    <div id="accordion_nav_2_1">
+                                        <!-- card-group -->
+                                        <div class="card-group">
+                                            <!-- card -->
+                                            <div class="card bg-danger">
+                                                <div class="card-header" id="idCard2_1">
+                                                    <h5 class="mb-0">
+                                                        <button class="btn btn-default m-0 p-0 text-white" data-toggle="collapse" data-target="#idCollapse2_1" aria-expanded="false" aria-controls="idCollapse2_1" role="button" type="button">
+                                                        <i class="fa fa-band-aid fa-fw"></i>
+                                                        <span class="text-decoration-none text-justify small"> Company</span>
+                                                        </button>
+                                                    </h5>
+                                                </div>
+
+                                                <div id="idCollapse2_1" class="collapse hide" aria-labelledby="idCard2_1" data-parent="#idCollapse2_body">
+                                                    <div class="card-body">
+                                                        <table class="table">
+                                                            <tr>
+                                                                <td class="p-0 m-0">
+                                                                    <i class="fa fa-arrow-alt-circle-right fa-fw text-white"></i>
+                                                                    <span>
+                                                                        <a class="text-decoration-none text-justify text-white small" href="#"> Add</a>
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /.card -->
+                                        </div>
+                                        <!-- /.card-group -->
+                                    </div>
+                                    <!-- /.nested accordion -->
+
+                                </td>
+                            </tr>
+                            <!-- /.table-tr -->
+
+                            <!-- table-tr -->
+                            <tr>
+                                <td class="p-0 m-0">
+
+                                    <!-- nested accordion -->
+                                    <div id="accordionn_nav_2_2">
+                                        <!-- card-group -->
+                                        <div class="card-group">
+                                            <!-- card -->
+                                            <div class="card bg-danger">
+                                                <div class="card-header" id="idCard2_2">
+                                                    <h5 class="mb-0">
+                                                        <button class="btn btn-default m-0 p-0 text-white" data-toggle="collapse" data-target="#idCollapse2_2" aria-expanded="false" aria-controls="idCollapse2_2" role="button" type="button">
+                                                        <i class="fa fa-briefcase fa-fw"></i>
+                                                        <span class="text-decoration-none text-justify small"> Department</span>
+                                                        </button>
+                                                    </h5>
+                                                </div>
+
+                                                <div id="idCollapse2_2" class="collapse hide" aria-labelledby="idCard2_2" data-parent="#idCollapse2_body">
+                                                    <div class="card-body">
+                                                        <table class="table">
+                                                            <tr>
+                                                                <td class="p-0 m-0">
+                                                                    <i class="fa fa-arrow-alt-circle-right fa-fw text-white"></i>
+                                                                    <span>
+                                                                        <a class="text-decoration-none text-justify text-white small" href="#"> Add</a>
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /.card -->
+                                        </div>
+                                        <!-- /.card-group -->
+                                    </div>
+                                    <!-- /.nested accordion -->
+
+                                </td>
+                            </tr>
+                            <!-- /.table-tr -->
+
+                            <!-- table-tr -->
+                            <tr>
+                                <td class="p-0 m-0">
+
+                                    <!-- nested accordion -->
+                                    <div id="accordionn_nav_2_3">
+                                        <!-- card-group -->
+                                        <div class="card-group">
+                                            <!-- card -->
+                                            <div class="card bg-danger">
+                                                <div class="card-header" id="idCard2_3">
+                                                    <h5 class="mb-0">
+                                                        <button class="btn btn-default m-0 p-0 text-white" data-toggle="collapse" data-target="#idCollapse2_3" aria-expanded="false" aria-controls="idCollapse2_3" role="button" type="button">
+                                                        <i class="fa fa-boxes fa-fw"></i>
+                                                        <span class="text-decoration-none text-justify small"> Factory</span>
+                                                        </button>
+                                                    </h5>
+                                                </div>
+
+                                                <div id="idCollapse2_3" class="collapse hide" aria-labelledby="idCard2_3" data-parent="#idCollapse2_body">
+                                                    <div class="card-body">
+                                                        <table class="table">
+                                                            <tr>
+                                                                <td class="p-0 m-0">
+                                                                    <i class="fa fa-arrow-alt-circle-right fa-fw text-white"></i>
+                                                                    <span>
+                                                                        <a class="text-decoration-none text-justify text-white small" href="#"> Add</a>
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /.card -->
+                                        </div>
+                                        <!-- /.card-group -->
+                                    </div>
+                                    <!-- /.nested accordion -->
+
+                                </td>
+                            </tr>
+                            <!-- /.table-tr -->
+
+                            <!-- table-tr -->
+                            <tr>
+                                <td class="p-0 m-0">
+
+                                    <!-- nested accordion -->
+                                    <div id="accordionn_nav_2_4">
+                                        <!-- card-group -->
+                                        <div class="card-group">
+                                            <!-- card -->
+                                            <div class="card bg-danger">
+                                                <div class="card-header" id="idCard2_4">
+                                                    <h5 class="mb-0">
+                                                        <button class="btn btn-default m-0 p-0 text-white" data-toggle="collapse" data-target="#idCollapse2_4" aria-expanded="false" aria-controls="idCollapse2_4" role="button" type="button">
+                                                        <i class="fa fa-box-open fa-fw"></i>
+                                                        <span class="text-decoration-none text-justify small"> Line</span>
+                                                        </button>
+                                                    </h5>
+                                                </div>
+
+                                                <div id="idCollapse2_4" class="collapse hide" aria-labelledby="idCard2_4" data-parent="#idCollapse2_body">
+                                                    <div class="card-body">
+                                                        <table class="table">
+                                                            <tr>
+                                                                <td class="p-0 m-0">
+                                                                    <i class="fa fa-arrow-alt-circle-right fa-fw text-white"></i>
+                                                                    <span>
+                                                                        <a class="text-decoration-none text-justify text-white small" href="#"> Add</a>
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /.card -->
+                                        </div>
+                                        <!-- /.card-group -->
+                                    </div>
+                                    <!-- /.nested accordion -->
+
+                                </td>
+                            </tr>
+                            <!-- /.table-tr -->
+
+                            <!-- table-tr -->
+                            <tr>
+                                <td class="p-0 m-0">
+
+                                    <!-- nested accordion -->
+                                    <div id="accordionn_nav_2_5">
+                                        <!-- card-group -->
+                                        <div class="card-group">
+                                            <!-- card -->
+                                            <div class="card bg-danger">
+                                                <div class="card-header" id="idCard2_5">
+                                                    <h5 class="mb-0">
+                                                        <button class="btn btn-default m-0 p-0 text-white" data-toggle="collapse" data-target="#idCollapse2_5" aria-expanded="false" aria-controls="idCollapse2_5" role="button" type="button">
+                                                        <i class="fa fa-user-alt fa-fw"></i>
+                                                        <span class="text-decoration-none text-justify small"> User</span>
+                                                        </button>
+                                                    </h5>
+                                                </div>
+
+                                                <div id="idCollapse2_5" class="collapse hide" aria-labelledby="idCard2_5" data-parent="#idCollapse2_body">
+                                                    <div class="card-body">
+                                                        <table class="table">
+                                                            <tr>
+                                                                <td class="p-0 m-0">
+                                                                    <i class="fa fa-arrow-alt-circle-right fa-fw text-white"></i>
+                                                                    <span>
+                                                                        <a class="text-decoration-none text-justify text-white small" href="#"> Add</a>
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /.card -->
+                                        </div>
+                                        <!-- /.card-group -->
+                                    </div>
+                                    <!-- /.nested accordion -->
+
+                                </td>
+                            </tr>
+                            <!-- /.table-tr -->
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.card-group -->
+    </div>
+    <!-- /.accordion -->
+
+</div>
+<!-- /.Left side column. contains the logo and sidebar -->
