@@ -981,6 +981,7 @@
 <!-- REQUIRED JS SCRIPTS -->
 <script>
 $(document).ready(function(){
+    "use strict";
     $('#tableId_1').DataTable();
     $.fn.select2.defaults.set( "theme", "bootstrap" );
     $('#company').select2();
@@ -988,35 +989,62 @@ $(document).ready(function(){
     $('#department').select2();
     $('#section').select2();
     //$.fn.fileinputThemes['fa'];
-    var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' + 
-    'onclick="alert(\'Call your custom code here.\')">' +
-    '<i class="glyphicon glyphicon-tag"></i>' +
-    '</button>'; 
-    $("#image_uri").fileinput({
-        //'theme': "fa",
-        'showUpload': false,
-        'showRemove': true,
-        'previewFileType': 'any',
-        'overwriteInitial': true,
-        'maxFileSize': 1500,
-        'showClose': false,
-        'showCaption': false,
-        'browseLabel': '',
-        'removeLabel': '',
-        'browseIcon': '<i class="glyphicon glyphicon-folder-open"></i>',
-        'removeIcon': '<i class="glyphicon glyphicon-remove"></i>',
-        'showBrowse': false,
-        'browseOnZoneClick': true,
-        'removeTitle': 'Cancel or reset changes',
-        'elErrorContainer': '#kv-avatar-errors-2',
-        'msgErrorClass': 'alert alert-block alert-danger',
-        'defaultPreviewContent': '<img src="{!! asset('img/avatar5.png') !!}" alt="Your Avatar"><h6 class="text-muted">Click to select</h6>',
-        //'layoutTemplates': {main2: '{preview} ' +  btnCust + ' {remove} {browse}'},
-        'layoutTemplates': {main2: '{preview} {remove} {browse}'},
-        'allowedFileExtensions': ["jpg", "png", "gif"]
-    });
+    
+    try {
+        var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' + 
+        'onclick="alert(\'Call your custom code here.\')">' +
+        '<i class="glyphicon glyphicon-tag"></i>' +
+        '</button>'; 
+        $("#image_uri").fileinput({
+            //'theme': "fa",
+            'showUpload': false,
+            'showRemove': true,
+            'previewFileType': 'any',
+            'overwriteInitial': true,
+            'maxFileSize': 1500,
+            'showClose': false,
+            'showCaption': false,
+            'browseLabel': '',
+            'removeLabel': '',
+            'browseIcon': '<i class="glyphicon glyphicon-folder-open"></i>',
+            'removeIcon': '<i class="glyphicon glyphicon-remove"></i>',
+            'showBrowse': false,
+            'browseOnZoneClick': true,
+            'removeTitle': 'Cancel or reset changes',
+            'elErrorContainer': '#kv-avatar-errors-2',
+            'msgErrorClass': 'alert alert-block alert-danger',
+            'defaultPreviewContent': '<img src="{!! asset('img/avatar5.png') !!}" alt="Your Avatar"><h6 class="text-muted">Click to select</h6>',
+            //'layoutTemplates': {main2: '{preview} ' +  btnCust + ' {remove} {browse}'},
+            'layoutTemplates': {main2: '{preview} {remove} {browse}'},
+            'allowedFileExtensions': ["jpg", "png", "gif"]
+        });
+    }
+    catch(e) {
+        console.log("catch error");
+    }
 }); 
 </script>
+<!-- script>
+    $(function(){
+        fileinput.prototype.toggleFullScreen = function(){
+            var /** @type {?} */ doc = (document);
+            if(doc.fullscreen){
+                if (doc.exitFullscreen){
+                    doc.exitFullscreen();
+                }
+                else if(doc.msExitFullscreen){
+                    doc.msExitFullscreen();
+                }
+                else if(doc.mozCancelFullScreen){
+                    doc.mozCancelFullScreen();
+                }
+                else if(doc.webkitExitFullscreen){
+                    doc.webkitExitFullscreen();
+                }
+            }
+        };
+    });
+</script -->
 <!-- REQUIRED JS SCRIPTS -->
 
 
