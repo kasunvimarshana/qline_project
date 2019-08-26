@@ -1,0 +1,12 @@
+/qline_web/node_modules
+/qline_web/core/node_modules
+/qline_web/core/public/hot
+/qline_web/core/public/storage
+/qline_web/core/storage/*.key
+/qline_web/core/vendor
+/qline_web/core/.env
+/qline_web/core/.phpunit.result.cache
+/qline_web/core/Homestead.json
+/qline_web/core/Homestead.yaml
+/qline_web/core/npm-debug.log
+/qline_web/core/yarn-error.log
