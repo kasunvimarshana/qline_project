@@ -47,7 +47,12 @@ Route::get('/section', function () {
 Route::get('/user', function () {
     return view('user');
 });
-
+Route::get('/factory_setup', function () {
+    return view('factory_setup');
+});
+Route::get('/line_setup', function () {
+    return view('line_setup');
+});
 ////////////////////////////////////////////////////////
 /*
 Roue::get('/test', function(){

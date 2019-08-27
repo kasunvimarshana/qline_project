@@ -279,6 +279,74 @@
             <!-- /.card -->
         </div>
         <!-- /.card-group -->
+        
+        <!-- card-group -->
+        <div class="card-group">
+            <!-- card -->
+            <div class="card bg-danger">
+                <div class="card-header" id="idCard3">
+                    <h5 class="mb-0">
+                        <button class="btn btn-default m-0 p-0 text-white" data-toggle="collapse" data-target="#idCollapse3" aria-expanded="false" aria-controls="idCollapse3" role="button" type="button">
+                        <i class="fa fa-bold fa-fw"></i>
+                        <span class="text-decoration-none text-justify small"> Factory</span>
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="idCollapse3" class="collapse hide" aria-labelledby="idCard3" data-parent="#accordion_nav">
+                    <div class="card-body" id="idCollapse3_body">
+                        <table class="table">
+                            <!-- table-tr -->
+                            <tr>
+                                <td class="p-0 m-0">
+                                    <i class="fa fa-arrow-alt-circle-right fa-fw text-white"></i>
+                                    <span>
+                                        <a class="text-decoration-none text-justify text-white small" href="{!! url('factory_setup') !!}">Setup</a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <!-- /.table-tr -->
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.card-group -->
+        
+        <!-- card-group -->
+        <div class="card-group">
+            <!-- card -->
+            <div class="card bg-danger">
+                <div class="card-header" id="idCard4">
+                    <h5 class="mb-0">
+                        <button class="btn btn-default m-0 p-0 text-white" data-toggle="collapse" data-target="#idCollapse4" aria-expanded="false" aria-controls="idCollapse4" role="button" type="button">
+                        <i class="fa fa-bold fa-fw"></i>
+                        <span class="text-decoration-none text-justify small"> Line</span>
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="idCollapse4" class="collapse hide" aria-labelledby="idCard4" data-parent="#accordion_nav">
+                    <div class="card-body" id="idCollapse4_body">
+                        <table class="table">
+                            <!-- table-tr -->
+                            <tr>
+                                <td class="p-0 m-0">
+                                    <i class="fa fa-arrow-alt-circle-right fa-fw text-white"></i>
+                                    <span>
+                                        <a class="text-decoration-none text-justify text-white small" href="{!! url('line_setup') !!}">Setup</a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <!-- /.table-tr -->
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.card-group -->
     </div>
     <!-- /.accordion -->
 
