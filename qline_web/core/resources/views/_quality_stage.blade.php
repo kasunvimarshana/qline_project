@@ -44,16 +44,16 @@
                                         <!-- tab-nav -->
                                         <ul class="nav nav-pills nav-justified flex-column flex-sm-row" id="id_nav" role="tablist">
                                             <li class="nav-item flex-sm-fill text-sm-center">
-                                                <a id="id_nav_link_1" class="nav-link" data-toggle="false" href="{!! url('quality_stage_cutting') !!}" role="tab" aria-controls="id_tab_content_1" aria-selected="false">Cutting</a>
+                                                <a id="id_nav_link_1" class="nav-link" data-toggle="pill" href="#id_tab_content_1" role="tab" aria-controls="id_tab_content_1" aria-selected="false">Cutting</a>
                                             </li>
                                             <li class="nav-item flex-sm-fill text-sm-center">
-                                                <a id="id_nav_link_2" class="nav-link" data-toggle="false" href="{!! url('quality_stage_rqc') !!}" role="tab" aria-controls="id_tab_content_2" aria-selected="false">RQC</a>
+                                                <a id="id_nav_link_2" class="nav-link" data-toggle="pill" href="#id_tab_content_2" role="tab" aria-controls="id_tab_content_2" aria-selected="false">RQC</a>
                                             </li>
                                             <li class="nav-item flex-sm-fill text-sm-center">
-                                                <a id="id_nav_link_3" class="nav-link" data-toggle="false" href="{!! url('quality_stage_about') !!}" role="tab" aria-controls="id_tab_content_3" aria-selected="false">About</a>
+                                                <a id="id_nav_link_3" class="nav-link" data-toggle="pill" href="#id_tab_content_3" role="tab" aria-controls="id_tab_content_3" aria-selected="false">About</a>
                                             </li>
                                             <li class="nav-item flex-sm-fill text-sm-center">
-                                                <a id="id_nav_link_4" class="nav-link" data-toggle="false" href="{!! url('quality_stage_contact') !!}" role="tab" aria-controls="id_tab_content_4" aria-selected="false">Contact</a>
+                                                <a id="id_nav_link_4" class="nav-link" data-toggle="pill" href="#id_tab_content_4" role="tab" aria-controls="id_tab_content_4" aria-selected="false">Contact</a>
                                             </li>
                                         </ul>
                                         <!-- /.tab-nav -->

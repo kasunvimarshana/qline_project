@@ -53,7 +53,7 @@
                                                 <a id="id_nav_link_3" class="nav-link" data-toggle="false" href="{!! url('quality_stage_about') !!}" role="tab" aria-controls="id_tab_content_3" aria-selected="false">About</a>
                                             </li>
                                             <li class="nav-item flex-sm-fill text-sm-center">
-                                                <a id="id_nav_link_4" class="nav-link" data-toggle="false" href="{!! url('quality_stage_contact') !!}" role="tab" aria-controls="id_tab_content_4" aria-selected="false">Contact</a>
+                                                <a id="id_nav_link_4" class="nav-link active" data-toggle="false" href="{!! url('quality_stage_contact') !!}" role="tab" aria-controls="id_tab_content_4" aria-selected="true">Contact</a>
                                             </li>
                                         </ul>
                                         <!-- /.tab-nav -->
@@ -72,7 +72,7 @@
                                                 <h3>About</h3>
                                                 <p>About</p>
                                             </div>
-                                            <div id="id_tab_content_4" class="container tab-pane fade" role="tabpanel" aria-labelledby="id_nav_link_4"><br>
+                                            <div id="id_tab_content_4" class="container tab-pane fade show active" role="tabpanel" aria-labelledby="id_nav_link_4"><br>
                                                 <h3>Contact</h3>
                                                 <p>Contact</p>
                                             </div>

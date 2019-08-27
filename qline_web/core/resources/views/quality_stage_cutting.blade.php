@@ -44,7 +44,7 @@
                                         <!-- tab-nav -->
                                         <ul class="nav nav-pills nav-justified flex-column flex-sm-row" id="id_nav" role="tablist">
                                             <li class="nav-item flex-sm-fill text-sm-center">
-                                                <a id="id_nav_link_1" class="nav-link" data-toggle="false" href="{!! url('quality_stage_cutting') !!}" role="tab" aria-controls="id_tab_content_1" aria-selected="false">Cutting</a>
+                                                <a id="id_nav_link_1" class="nav-link active" data-toggle="false" href="{!! url('quality_stage_cutting') !!}" role="tab" aria-controls="id_tab_content_1" aria-selected="true">Cutting</a>
                                             </li>
                                             <li class="nav-item flex-sm-fill text-sm-center">
                                                 <a id="id_nav_link_2" class="nav-link" data-toggle="false" href="{!! url('quality_stage_rqc') !!}" role="tab" aria-controls="id_tab_content_2" aria-selected="false">RQC</a>
@@ -60,7 +60,7 @@
                                         
                                         <!-- tab-content -->
                                         <div class="tab-content" id="id_nav_tab_content">
-                                            <div id="id_tab_content_1" class="container tab-pane fade" role="tabpanel" aria-labelledby="id_nav_link_1"><br>
+                                            <div id="id_tab_content_1" class="container tab-pane fade show active" role="tabpanel" aria-labelledby="id_nav_link_1"><br>
                                                 <h3>Cutting</h3>
                                                 <p>Cutting</p>
                                             </div>

@@ -56,6 +56,18 @@ Route::get('/line_setup', function () {
 Route::get('/quality_stage', function(){
    return view('quality_stage'); 
 });
+Route::get('/quality_stage_cutting', function(){
+    return view('quality_stage_cutting');
+});
+Route::get('/quality_stage_rqc', function(){
+    return view('quality_stage_rqc');
+});
+Route::get('/quality_stage_about', function(){
+    return view('quality_stage_about');
+});
+Route::get('/quality_stage_contact', function(){
+    return view('quality_stage_contact');
+});
 ////////////////////////////////////////////////////////
 /*
 Roue::get('/test', function(){

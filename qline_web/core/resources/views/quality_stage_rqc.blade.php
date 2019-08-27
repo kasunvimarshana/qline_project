@@ -47,7 +47,7 @@
                                                 <a id="id_nav_link_1" class="nav-link" data-toggle="false" href="{!! url('quality_stage_cutting') !!}" role="tab" aria-controls="id_tab_content_1" aria-selected="false">Cutting</a>
                                             </li>
                                             <li class="nav-item flex-sm-fill text-sm-center">
-                                                <a id="id_nav_link_2" class="nav-link" data-toggle="false" href="{!! url('quality_stage_rqc') !!}" role="tab" aria-controls="id_tab_content_2" aria-selected="false">RQC</a>
+                                                <a id="id_nav_link_2" class="nav-link active" data-toggle="false" href="{!! url('quality_stage_rqc') !!}" role="tab" aria-controls="id_tab_content_2" aria-selected="true">RQC</a>
                                             </li>
                                             <li class="nav-item flex-sm-fill text-sm-center">
                                                 <a id="id_nav_link_3" class="nav-link" data-toggle="false" href="{!! url('quality_stage_about') !!}" role="tab" aria-controls="id_tab_content_3" aria-selected="false">About</a>
@@ -64,7 +64,7 @@
                                                 <h3>Cutting</h3>
                                                 <p>Cutting</p>
                                             </div>
-                                            <div id="id_tab_content_2" class="container tab-pane fade" role="tabpanel" aria-labelledby="id_nav_link_2"><br>
+                                            <div id="id_tab_content_2" class="container tab-pane fade show active" role="tabpanel" aria-labelledby="id_nav_link_2"><br>
                                                 <h3>RQC</h3>
                                                 <p>RQC</p>
                                             </div>
