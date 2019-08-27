@@ -39,47 +39,47 @@
                                 <div class="col-sm-12">
                                     <!-- form -->
                                     <div class="container container-fluid">
-                                    <!-- ---------------------------------------------------------------------------- -->
+                                    <!-- container -->
                                     <div class="container">
-                                        <h2>Justified Tabs/Pills</h2>
-                                        <p>To justify tabs/pills (equal width), use the .nav-justified class:</p>
+                                        <!-- tab-nav -->
                                         <ul class="nav nav-pills nav-justified flex-column flex-sm-row" id="id_nav" role="tablist">
                                             <li class="nav-item flex-sm-fill text-sm-center">
-                                                <a id="id_nav_link_1" class="nav-link disabled active" data-toggle="pill" href="#home" role="tab" aria-controls="home" aria-selected="true">Active</a>
+                                                <a id="id_nav_link_1" class="nav-link" data-toggle="pill" href="#id_tab_content_1" role="tab" aria-controls="id_tab_content_1" aria-selected="false">Cutting</a>
                                             </li>
                                             <li class="nav-item flex-sm-fill text-sm-center">
-                                                <a id="id_nav_link_1" class="nav-link disabled active" data-toggle="pill" href="#home" role="tab" aria-controls="home" aria-selected="true">Active</a>
+                                                <a id="id_nav_link_2" class="nav-link" data-toggle="pill" href="#id_tab_content_2" role="tab" aria-controls="id_tab_content_2" aria-selected="false">RQC</a>
                                             </li>
                                             <li class="nav-item flex-sm-fill text-sm-center">
-                                                <a id="id_nav_link_1" class="nav-link disabled active" data-toggle="pill" href="#home" role="tab" aria-controls="home" aria-selected="true">Active</a>
+                                                <a id="id_nav_link_3" class="nav-link" data-toggle="pill" href="#id_tab_content_3" role="tab" aria-controls="id_tab_content_3" aria-selected="false">About</a>
                                             </li>
                                             <li class="nav-item flex-sm-fill text-sm-center">
-                                                <a id="id_nav_link_1" class="nav-link disabled active" data-toggle="pill" href="#home" role="tab" aria-controls="home" aria-selected="true">Active</a>
+                                                <a id="id_nav_link_4" class="nav-link" data-toggle="pill" href="#id_tab_content_4" role="tab" aria-controls="id_tab_content_4" aria-selected="false">Contact</a>
                                             </li>
                                         </ul>
+                                        <!-- /.tab-nav -->
                                         
-                                       
-                                        
-                                        
-                                        <!-- -------------------------------------------- -->
-                                        <!-- Tab panes -->
+                                        <!-- tab-content -->
                                         <div class="tab-content" id="id_nav_tab_content">
-                                            <div id="home" class="container tab-pane fade show active" role="tabpanel" aria-labelledby="id_nav_link_1"><br>
-                                                <h3>HOME</h3>
-                                                <p>Lorem ipsum dolor sit amet</p>
+                                            <div id="id_tab_content_1" class="container tab-pane fade" role="tabpanel" aria-labelledby="id_nav_link_1"><br>
+                                                <h3>Cutting</h3>
+                                                <p>Cutting</p>
                                             </div>
-                                            <div id="menu1" class="container tab-pane fade show active" role="tabpanel" aria-labelledby="id_nav_link_1"><br>
-                                                <h3>Menu 1</h3>
-                                                <p>Ut enim ad minim veniam</p>
+                                            <div id="id_tab_content_2" class="container tab-pane fade" role="tabpanel" aria-labelledby="id_nav_link_2"><br>
+                                                <h3>RQC</h3>
+                                                <p>RQC</p>
                                             </div>
-                                            <div id="menu2" class="container tab-pane fade show active" role="tabpanel" aria-labelledby="id_nav_link_1"><br>
-                                                <h3>Menu 2</h3>
-                                                <p>Sed ut perspiciatis unde omnis</p>
+                                            <div id="id_tab_content_3" class="container tab-pane fade" role="tabpanel" aria-labelledby="id_nav_link_3"><br>
+                                                <h3>About</h3>
+                                                <p>About</p>
+                                            </div>
+                                            <div id="id_tab_content_4" class="container tab-pane fade" role="tabpanel" aria-labelledby="id_nav_link_4"><br>
+                                                <h3>Contact</h3>
+                                                <p>Contact</p>
                                             </div>
                                         </div>
-                                        <!-- -------------------------------------------- -->
+                                        <!-- /.tab-content -->
                                     </div>
-                                    <!-- ---------------------------------------------------------------------------- -->
+                                    <!-- /.container -->
                                     </div>
                                     <!-- /.form -->
                                 </div>
