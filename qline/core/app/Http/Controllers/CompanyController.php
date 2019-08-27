@@ -36,6 +36,47 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         //
+        $dataArray = array();
+        $rules = array();
+        $date_today = Carbon::now();//->format('Y-m-d');
+        $current_user = null;
+        $data = array();
+        
+        $data = array('title' => 'title', 'text' => 'text', 'type' => 'default', 'timer' => 3000);
+        // validate the info, create rules for the inputs
+        $rules = array(
+            'name'    => 'required|unique:companies'
+        );
+        // run the validation rules on the inputs from the form
+        $validator = Validator::make(Input::all(), $rules);
+        // if the validator fails, redirect back to the form
+        if ($validator->fails()) {
+            //return redirect()->back()->withErrors($validator)->withInput();
+        } else {
+            // do process
+            try {
+                
+                $dataArray = array();
+                
+                DB::transaction(function () use ($request, $dataArray, $date_today, $current_user){
+                    
+                    unset($dataArray);
+                });
+                
+            }catch(Exception $e){
+                //return redirect()->back()->withInput();
+            }
+        }
+        
+        //unset data
+        unset( $dataArray );
+        unset( $rules );
+        unset( $date_today );
+        unset( $current_user );
+        unset( $data );
+        
+        //return Response::json( $data );
+        //return redirect()->back();
     }
 
     /**
