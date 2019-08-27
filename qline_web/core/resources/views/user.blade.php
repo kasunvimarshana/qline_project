@@ -79,7 +79,7 @@
 
 @section('contant')
 <!-- row -->
-<div class="row">
+<div class="row pb-4">
     <!-- col -->
     <div class="col col-sm-12 p-0 m-0">
 
@@ -277,8 +277,14 @@
                                         <!-- /.form-group-row -->
 
                                         <!-- form-group-row -->
-                                        <div class="row col">
+                                        <div class="row col border border-danger rounded shadow-sm">
                                             <!-- -->
+                                            <!-- container -->
+                                            <div class="container mt-3 mb-3">
+                                                <h2 class="text-danger">Application Access Level</h2>
+                                                <!-- p> - </p -->
+                                            </div>
+                                            <!-- /.container -->
                                             <!-- form-group -->
                                             <div class="form-group col col-md-6">
                                                 <label for="input_id" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right d-none">Label</label>

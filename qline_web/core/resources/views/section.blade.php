@@ -18,7 +18,7 @@
 
 @section('contant')
 <!-- row -->
-<div class="row">
+<div class="row pb-4">
     <!-- col -->
     <div class="col col-sm-12 p-0 m-0">
 
