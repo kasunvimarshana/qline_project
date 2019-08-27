@@ -347,6 +347,40 @@
             <!-- /.card -->
         </div>
         <!-- /.card-group -->
+        
+        <!-- card-group -->
+        <div class="card-group">
+            <!-- card -->
+            <div class="card bg-danger">
+                <div class="card-header" id="idCard5">
+                    <h5 class="mb-0">
+                        <button class="btn btn-default m-0 p-0 text-white" data-toggle="collapse" data-target="#idCollapse5" aria-expanded="false" aria-controls="idCollapse5" role="button" type="button">
+                        <i class="fa fa-bold fa-fw"></i>
+                        <span class="text-decoration-none text-justify small"> Quality Stage</span>
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="idCollapse5" class="collapse hide" aria-labelledby="idCard5" data-parent="#accordion_nav">
+                    <div class="card-body" id="idCollapse5_body">
+                        <table class="table">
+                            <!-- table-tr -->
+                            <tr>
+                                <td class="p-0 m-0">
+                                    <i class="fa fa-arrow-alt-circle-right fa-fw text-white"></i>
+                                    <span>
+                                        <a class="text-decoration-none text-justify text-white small" href="{!! url('quality_stage') !!}">Link</a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <!-- /.table-tr -->
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.card-group -->
     </div>
     <!-- /.accordion -->
 

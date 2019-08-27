@@ -53,6 +53,9 @@ Route::get('/factory_setup', function () {
 Route::get('/line_setup', function () {
     return view('line_setup');
 });
+Route::get('/quality_stage', function(){
+   return view('quality_stage'); 
+});
 ////////////////////////////////////////////////////////
 /*
 Roue::get('/test', function(){
