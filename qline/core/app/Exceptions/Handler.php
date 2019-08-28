@@ -14,6 +14,11 @@ class Handler extends ExceptionHandler
      */
     protected $dontReport = [
         //
+        // \Illuminate\Auth\AuthenticationException::class,
+        // \Illuminate\Auth\Access\AuthorizationException::class,
+        // \Symfony\Component\HttpKernel\Exception\HttpException::class,
+        // \Illuminate\Database\Eloquent\ModelNotFoundException::class,
+        // \Illuminate\Validation\ValidationException::class,
     ];
 
     /**
@@ -53,6 +58,13 @@ class Handler extends ExceptionHandler
         if ($exception instanceof ModelNotFoundException) {
             return response()->json([
                 'error' => 'Resource not found'
+            ], 404);
+        }
+        */
+        /*
+        if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException){
+            return response()->json([
+                'message' => 'Resource not found'
             ], 404);
         }
         */

@@ -28,3 +28,6 @@ Route::fallback(function () {
     //
 });
 */
+
+/////////////////////////////////////////////////////////////////////////////////////
+Route::get('test', array('uses' => 'CompanyController@store'))->name('company.store');

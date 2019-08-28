@@ -5,6 +5,25 @@ namespace App\Http\Controllers;
 use App\Company;
 use Illuminate\Http\Request;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+//use Illuminate\Support\Facades\Response;
+use Illuminate\Http\Response;
+use DB;
+use Illuminate\Support\Str;
+use Illuminate\Http\JsonResponse;
+use \StdClass;
+use \Exception;
+use Carbon\Carbon;
+
+use App\Http\Resources\CommonResponseResource as CommonResponseResource;
+use App\Enums\HTTPStatusCodeEnum as HTTPStatusCodeEnum;
+
 class CompanyController extends Controller
 {
     /**
@@ -42,7 +61,6 @@ class CompanyController extends Controller
         $current_user = null;
         $data = array();
         
-        $data = array('title' => 'title', 'text' => 'text', 'type' => 'default', 'timer' => 3000);
         // validate the info, create rules for the inputs
         $rules = array(
             'name'    => 'required|unique:companies'
@@ -52,19 +70,36 @@ class CompanyController extends Controller
         // if the validator fails, redirect back to the form
         if ($validator->fails()) {
             //return redirect()->back()->withErrors($validator)->withInput();
+            $data['message_error'] = $validator->errors()->first();
+            return (new CommonResponseResource( $data ))->additional(array(
+                'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_UNPROCESSABLE_ENTITY]
+            ));
         } else {
             // do process
             try {
-                
                 $dataArray = array();
                 
-                DB::transaction(function () use ($request, $dataArray, $date_today, $current_user){
+                DB::transaction(function () use (&$data, $request, $dataArray, $date_today, $current_user){
+                    $dataArray = array(
+                        'is_visible' => true,
+                        'colour' => $request->input('colour'),
+                        'name' => $request->input('name'),
+                        'display_name' => $request->input('display_name'),
+                        'image_uri' => $request->input('image_uri'),
+                        'company_id_parent' => $request->input('company_id_parent')
+                    );
+                    
+                    $newCompany = Company::create( $dataArray );
+                    unset($dataArray);
+                    $data['company_new'] = $newCompany;
                     
                     unset($dataArray);
                 });
-                
             }catch(Exception $e){
                 //return redirect()->back()->withInput();
+                return (new CommonResponseResource( $data ))->additional(array(
+                    'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_UNPROCESSABLE_ENTITY]
+                ));
             }
         }
         
@@ -73,10 +108,14 @@ class CompanyController extends Controller
         unset( $rules );
         unset( $date_today );
         unset( $current_user );
-        unset( $data );
+        //unset( $data );
         
         //return Response::json( $data );
         //return redirect()->back();
+        //$http_response_code = http_response_code();
+        return (new CommonResponseResource( $data ))->additional(array(
+            'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_CREATED]
+        ));
     }
 
     /**
