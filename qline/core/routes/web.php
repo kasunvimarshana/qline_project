@@ -61,11 +61,4 @@ Route::fallback(function () {
 /////////////////////////////////////////////////////////////////////////////////////
 Route::get('test', array('uses' => 'CompanyController@store'))->name('company.store');
 
-Route::fallback('PageController@someMethod');
-Route::fallback(function(){
-    return response()->json([
-        'message' => 'Page Not Found. If error persists, contact info@website.com'], 404);
-});
-Route::fallback(function(){
-    return 'We could not find this server, there are other '. auth()->user()->servers()->count() . ' under your account ......';
-})->name('serverFallback');
+Route::fallback('FallbackController@index')->name('fallback');
