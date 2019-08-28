@@ -153,3 +153,27 @@ Route::delete('products/{product}', 'ProductsController@delete');
 
 ?>
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+The NotFoundHTTPException is how Laravel displays the 404 error. If you want the server to return a JSON response instead, you will have to change the default exception handling behavior.
+
+app/Exceptions/Handler.php
+*/
+<?php
+
+public function render($request, Exception $exception)
+  {
+     
+      if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) 
+      {
+       return response()->json([
+            'message' => 'Resource not found'
+        ], 404);
+      }
+       
+      return parent::render($request, $exception);
+  }
+
+?>
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
