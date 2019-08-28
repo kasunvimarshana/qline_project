@@ -42,7 +42,6 @@
                                         @csrf
                                         <!-- form-group-row -->
                                         <div class="row col border border-danger rounded shadow-sm pr-5 m-1">
-                                            <!-- -->
                                             <!-- container -->
                                             <div class="container mt-3 mb-3">
                                                 <!-- h2 class="text-danger"> - </h2 -->
