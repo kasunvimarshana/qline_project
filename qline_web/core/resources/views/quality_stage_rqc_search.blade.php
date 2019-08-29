@@ -102,7 +102,7 @@
                                                             <!-- --- -->
                                                             <ul class="nav nav-pills nav-pills-danger nav-fill nav-justified flex-column nav-stacked" id="id_nav" role="tablist" aria-orientation="vertical">
                                                                 <li class="nav-item flex-sm-fill text-sm-center" tabindex="1">
-                                                                    <a id="id_nav_link_1_1" class="nav-link m-1 btn btn-outline-danger text-left" data-toggle="false" href="{!! url('quality_stage_rqc_search') !!}" role="tab" aria-controls="id_tab_content_1_1" aria-selected="false">
+                                                                    <a id="id_nav_link_1_1" class="nav-link m-1 btn btn-outline-danger text-left active" data-toggle="false" href="{!! url('quality_stage_rqc_search') !!}" role="tab" aria-controls="id_tab_content_1_1" aria-selected="true">
                                                                         <span><i class="far fa-arrow-alt-circle-right"></i> Search</span>
                                                                     </a>
                                                                 </li>
@@ -125,17 +125,56 @@
                                                             <div class="col-9">
                                                             <!-- --- -->
                                                             <div class="tab-content w-100" id="id_nav_tab_content_1">
-                                                                <div id="id_tab_content_1_1" class="container tab-pane fade" role="tabpanel" aria-labelledby="id_nav_link_1_1"><br>
-                                                                    <h3>Tab</h3>
-                                                                    <p>Tab 1</p>
-                                                                </div>
-                                                                <div id="id_tab_content_1_2" class="container tab-pane fade" role="tabpanel" aria-labelledby="id_nav_link_1_2"><br>
-                                                                    <h3>Tab</h3>
-                                                                    <p>Tab 2</p>
-                                                                </div>
-                                                                <div id="id_tab_content_1_3" class="container tab-pane fade" role="tabpanel" aria-labelledby="id_nav_link_1_3"><br>
-                                                                    <h3>Tab</h3>
-                                                                    <p>Tab 3</p>
+                                                                <div id="id_tab_content_1_1" class="container tab-pane fade show active" role="tabpanel" aria-labelledby="id_nav_link_1_1"><br>
+                                                                    <!-- ----------------------------------------------------- -->
+                                                                    
+        <!-- * -->
+        <!-- row -->
+        <div class="row">
+
+            <!-- col -->
+            <div class="col">
+                <!-- form -->
+                <form action="{!! route('home') !!}" method="POST" class="col" autocomplete="off" id="form1" enctype="multipart/form-data">
+                    @csrf
+                    <!-- form-group-row -->
+                    <div class="row col">
+                        <!-- -->
+                        <!-- form-group-col -->
+                        <div class="col p-0 m-0">
+                            <!-- -->
+                            <!-- form-group -->
+                            <div class="form-group row col m-1">
+                                <label for="name" class="col-lg-2 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">EMP No</label>
+                                <div class="col">
+                                    <!-- p class="form-control-static"></p -->
+                                    <div class="input-group">
+                                        <input type="text" class="form-control form-control-md" id="name" name="name" placeholder="EMP No" value="{{ old('name') }}" aria-label="EMP No" aria-describedby="id_input_addon" required/>
+                                        <div class="input-group-addon input-group-append">
+                                            <!-- div class="input-group-text" -->
+                                                <button type="submit" class="btn btn btn-outline-danger" id="submit">Search</button>
+                                            <!-- /div -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- span id="form-control" class="help-block"></span -->
+                            </div>
+                            <!-- /.form-group -->   
+                            <!-- -->
+                        </div>
+                        <!-- /.form-group-col -->
+                    </div>
+                    <!-- /.form-group-row -->
+                </form>
+                <!-- /.form -->
+            </div>
+            <!-- /.col -->
+
+        </div>
+        <!-- /.row -->
+        <!-- * -->
+                                                                    
+                                                                    <!-- ----------------------------------------------------- -->
                                                                 </div>
                                                             </div>
                                                             <!-- --- -->

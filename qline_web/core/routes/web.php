@@ -82,6 +82,16 @@ Route::get('/quality_stage_about', function(){
 Route::get('/quality_stage_contact', function(){
     return view('quality_stage_contact');
 });
+
+Route::get('/quality_stage_rqc_search', function(){
+    return view('quality_stage_rqc_search');
+});
+Route::get('/quality_stage_rqc_record', function(){
+    return view('quality_stage_rqc_record');
+});
+Route::get('/quality_stage_rqc_view', function(){
+    return view('quality_stage_rqc_view');
+});
 ////////////////////////////////////////////////////////
 /*
 Roue::get('/test', function(){
