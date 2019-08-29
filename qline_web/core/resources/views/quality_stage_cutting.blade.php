@@ -42,24 +42,49 @@
                                     <!-- container -->
                                     <div class="container">
                                         <!-- tab-nav -->
-                                        <ul class="nav nav-pills nav-justified flex-column flex-sm-row" id="id_nav" role="tablist">
-                                            <li class="nav-item flex-sm-fill text-sm-center">
-                                                <a id="id_nav_link_1" class="nav-link active" data-toggle="false" href="{!! url('quality_stage_cutting') !!}" role="tab" aria-controls="id_tab_content_1" aria-selected="true">Cutting</a>
+                                        <div class="row">
+                                        <!-- --- -->
+                                        <!-- class="flex-column flex-sm-row" -->
+                                        <ul class="nav nav-pills nav-pills-danger nav-fill nav-justified w-100" id="id_nav" role="tablist">
+                                            <li class="nav-item flex-sm-fill text-sm-center" tabindex="1">
+                                                <a id="id_nav_link_1" class="nav-link m-1 btn btn-outline-danger active" data-toggle="false" href="{!! url('quality_stage_cutting') !!}" role="tab" aria-controls="id_tab_content_1" aria-selected="true">
+                                                    <span><i class="fas fa-anchor"></i> Cutting</span>
+                                                </a>
                                             </li>
-                                            <li class="nav-item flex-sm-fill text-sm-center">
-                                                <a id="id_nav_link_2" class="nav-link" data-toggle="false" href="{!! url('quality_stage_rqc') !!}" role="tab" aria-controls="id_tab_content_2" aria-selected="false">RQC</a>
+                                            <li class="nav-item flex-sm-fill text-sm-center" tabindex="1">
+                                                <a id="id_nav_link_2" class="nav-link m-1 btn btn-outline-danger" data-toggle="false" href="{!! url('quality_stage_rqc') !!}" role="tab" aria-controls="id_tab_content_2" aria-selected="false">
+                                                    <span><i class="fas fa-anchor"></i> RQC</span>
+                                                </a>
                                             </li>
-                                            <li class="nav-item flex-sm-fill text-sm-center">
-                                                <a id="id_nav_link_3" class="nav-link" data-toggle="false" href="{!! url('quality_stage_about') !!}" role="tab" aria-controls="id_tab_content_3" aria-selected="false">About</a>
+                                            <li class="nav-item flex-sm-fill text-sm-center" tabindex="1">
+                                                <a id="id_nav_link_3" class="nav-link m-1 btn btn-outline-danger" data-toggle="false" href="{!! url('quality_stage_sewing_hundred_percent') !!}" role="tab" aria-controls="id_tab_content_3" aria-selected="false">
+                                                    <span><i class="fas fa-anchor"></i> SC 100%</span>
+                                                </a>
                                             </li>
-                                            <li class="nav-item flex-sm-fill text-sm-center">
-                                                <a id="id_nav_link_4" class="nav-link" data-toggle="false" href="{!! url('quality_stage_contact') !!}" role="tab" aria-controls="id_tab_content_4" aria-selected="false">Contact</a>
+                                            <li class="nav-item flex-sm-fill text-sm-center" tabindex="1">
+                                                <a id="id_nav_link_4" class="nav-link m-1 btn btn-outline-danger" data-toggle="false" href="{!! url('quality_stage_sewing_aql_audit') !!}" role="tab" aria-controls="id_tab_content_4" aria-selected="false">
+                                                    <span><i class="fas fa-anchor"></i> Sewing AQL Audit</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item flex-sm-fill text-sm-center" tabindex="1">
+                                                <a id="id_nav_link_5" class="nav-link m-1 btn btn-outline-danger" data-toggle="false" href="{!! url('quality_stage_finishing') !!}" role="tab" aria-controls="id_tab_content_5" aria-selected="false">
+                                                    <span><i class="fas fa-anchor"></i> Finishing</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item flex-sm-fill text-sm-center" tabindex="1">
+                                                <a id="id_nav_link_6" class="nav-link m-1 btn btn-outline-danger" data-toggle="false" href="{!! url('quality_stage_cni') !!}" role="tab" aria-controls="id_tab_content_6" aria-selected="false">
+                                                    <span><i class="fas fa-anchor"></i> CNI</span>
+                                                </a>
                                             </li>
                                         </ul>
+                                        <!-- --- -->
+                                        </div>
                                         <!-- /.tab-nav -->
                                         
                                         <!-- tab-content -->
-                                        <div class="tab-content" id="id_nav_tab_content">
+                                        <div class="row">
+                                        <!-- --- -->
+                                        <div class="tab-content w-100" id="id_nav_tab_content">
                                             <div id="id_tab_content_1" class="container tab-pane fade show active" role="tabpanel" aria-labelledby="id_nav_link_1"><br>
                                                 <!-- tab-content-body -->
                                                 
@@ -171,6 +196,8 @@
                                                 
                                                 <!-- /.tab-content-body -->
                                             </div>
+                                        </div>
+                                        <!-- --- -->
                                         </div>
                                         <!-- /.tab-content -->
                                     </div>

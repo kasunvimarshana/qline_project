@@ -52,7 +52,7 @@
                                                 </a>
                                             </li>
                                             <li class="nav-item flex-sm-fill text-sm-center" tabindex="1">
-                                                <a id="id_nav_link_2" class="nav-link m-1 btn btn-outline-danger active" data-toggle="false" href="{!! url('quality_stage_rqc') !!}" role="tab" aria-controls="id_tab_content_2" aria-selected="true">
+                                                <a id="id_nav_link_2" class="nav-link m-1 btn btn-outline-danger" data-toggle="false" href="{!! url('quality_stage_rqc') !!}" role="tab" aria-controls="id_tab_content_2" aria-selected="false">
                                                     <span><i class="fas fa-anchor"></i> RQC</span>
                                                 </a>
                                             </li>
@@ -67,7 +67,7 @@
                                                 </a>
                                             </li>
                                             <li class="nav-item flex-sm-fill text-sm-center" tabindex="1">
-                                                <a id="id_nav_link_5" class="nav-link m-1 btn btn-outline-danger" data-toggle="false" href="{!! url('quality_stage_finishing') !!}" role="tab" aria-controls="id_tab_content_5" aria-selected="false">
+                                                <a id="id_nav_link_5" class="nav-link m-1 btn btn-outline-danger active" data-toggle="false" href="{!! url('quality_stage_finishing') !!}" role="tab" aria-controls="id_tab_content_5" aria-selected="true">
                                                     <span><i class="fas fa-anchor"></i> Finishing</span>
                                                 </a>
                                             </li>
@@ -85,79 +85,29 @@
                                         <div class="row">
                                         <!-- --- -->
                                         <div class="tab-content w-100" id="id_nav_tab_content">
-                                            <div id="id_tab_content_2" class="container tab-pane fade show active" role="tabpanel" aria-labelledby="id_nav_link_2"><br>
-                                                <!-- tab-content-body -->
-                                                
-                                                <!-- row -->
-                                                <div class="row">
-
-                                                    <!-- col -->
-                                                    <div class="col-sm-12 p-0 m-0">
-                                                        <!-- ----------------------------------------------------- -->
-                                                        
-                                                        
-        <!-- * -->
-        <div class="container container-fluid">
-        <!-- container -->
-        <div class="container row">
-            <!-- tab-nav -->
-            <div class="col-3">
-            <!-- --- -->
-            <!-- class="flex-column flex-sm-row" -->
-            <ul class="nav nav-pills nav-pills-danger nav-fill nav-justified flex-column nav-stacked" id="id_nav" role="tablist" aria-orientation="vertical">
-                <li class="nav-item flex-sm-fill text-sm-center" tabindex="1">
-                    <a id="id_nav_link_1_1" class="nav-link m-1 btn btn-outline-danger text-left" data-toggle="pill" href="#id_tab_content_1_1" role="tab" aria-controls="id_tab_content_1_1" aria-selected="false">
-                        <span><i class="far fa-arrow-alt-circle-right"></i> Record</span>
-                    </a>
-                </li>
-                <li class="nav-item flex-sm-fill text-sm-center" tabindex="1">
-                    <a id="id_nav_link_1_2" class="nav-link m-1 btn btn-outline-danger text-left" data-toggle="pill" href="#id_tab_content_1_2" role="tab" aria-controls="id_tab_content_1_2" aria-selected="false">
-                        <span><i class="far fa-arrow-alt-circle-right"></i> About</span>
-                    </a>
-                </li>
-                <li class="nav-item flex-sm-fill text-sm-center" tabindex="1">
-                    <a id="id_nav_link_1_3" class="nav-link m-1 btn btn-outline-danger text-left" data-toggle="pill" href="#id_tab_content_1_3" role="tab" aria-controls="id_tab_content_1_3" aria-selected="false">
-                        <span><i class="far fa-arrow-alt-circle-right"></i> Contact</span>
-                    </a>
-                </li>
-            </ul>
-            <!-- --- -->    
-            </div>
-            <!-- /.tab-nav -->
-
-            <!-- tab-content -->
-            <div class="col-9">
-            <!-- --- -->
-            <div class="tab-content w-100" id="id_nav_tab_content_1">
-                <div id="id_tab_content_1_1" class="container tab-pane fade" role="tabpanel" aria-labelledby="id_nav_link_1_1"><br>
-                    <h3>Tab</h3>
-                    <p>Tab 1</p>
-                </div>
-                <div id="id_tab_content_1_2" class="container tab-pane fade" role="tabpanel" aria-labelledby="id_nav_link_1_2"><br>
-                    <h3>Tab</h3>
-                    <p>Tab 2</p>
-                </div>
-                <div id="id_tab_content_1_3" class="container tab-pane fade" role="tabpanel" aria-labelledby="id_nav_link_1_3"><br>
-                    <h3>Tab</h3>
-                    <p>Tab 3</p>
-                </div>
-            </div>
-            <!-- --- -->
-            </div>
-            <!-- /.tab-content -->
-        </div>
-        <!-- /.container -->
-        </div>
-        <!-- * -->
-                                                        
-                                                        
-                                                        <!-- ----------------------------------------------------- -->
-                                                    </div>
-                                                    <!-- /.col -->
-                                                </div>
-                                                <!-- /.row -->
-                                                
-                                                <!-- /.tab-content-body -->
+                                            <div id="id_tab_content_1" class="container tab-pane fade" role="tabpanel" aria-labelledby="id_nav_link_1"><br>
+                                                <h3>Tab</h3>
+                                                <p>Tab 1</p>
+                                            </div>
+                                            <div id="id_tab_content_2" class="container tab-pane fade" role="tabpanel" aria-labelledby="id_nav_link_2"><br>
+                                                <h3>Tab</h3>
+                                                <p>Tab 2</p>
+                                            </div>
+                                            <div id="id_tab_content_3" class="container tab-pane fade" role="tabpanel" aria-labelledby="id_nav_link_3"><br>
+                                                <h3>Tab</h3>
+                                                <p>Tab 3</p>
+                                            </div>
+                                            <div id="id_tab_content_4" class="container tab-pane fade" role="tabpanel" aria-labelledby="id_nav_link_4"><br>
+                                                <h3>Tab</h3>
+                                                <p>Tab 4</p>
+                                            </div>
+                                            <div id="id_tab_content_5" class="container tab-pane fade show active" role="tabpanel" aria-labelledby="id_nav_link_5"><br>
+                                                <h3>Tab</h3>
+                                                <p>Tab 5</p>
+                                            </div>
+                                            <div id="id_tab_content_6" class="container tab-pane fade" role="tabpanel" aria-labelledby="id_nav_link_6"><br>
+                                                <h3>Tab</h3>
+                                                <p>Tab 6</p>
                                             </div>
                                         </div>
                                         <!-- --- -->

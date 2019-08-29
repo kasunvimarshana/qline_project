@@ -56,12 +56,26 @@ Route::get('/line_setup', function () {
 Route::get('/quality_stage', function(){
    return view('quality_stage'); 
 });
+
 Route::get('/quality_stage_cutting', function(){
     return view('quality_stage_cutting');
 });
 Route::get('/quality_stage_rqc', function(){
     return view('quality_stage_rqc');
 });
+Route::get('/quality_stage_sewing_hundred_percent', function(){
+    return view('quality_stage_sewing_hundred_percent');
+});
+Route::get('/quality_stage_sewing_aql_audit', function(){
+    return view('quality_stage_sewing_aql_audit');
+});
+Route::get('/quality_stage_finishing', function(){
+    return view('quality_stage_finishing');
+});
+Route::get('/quality_stage_cni', function(){
+    return view('quality_stage_cni');
+});
+
 Route::get('/quality_stage_about', function(){
     return view('quality_stage_about');
 });
