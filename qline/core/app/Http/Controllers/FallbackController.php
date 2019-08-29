@@ -34,9 +34,9 @@ class FallbackController extends Controller
         $current_user = null;
         $data = array();
         
-        $data['message_error'] = "Error";
+        $data['message_error'] = "Error [Bad Request]";
         return (new CommonResponseResource( $data ))->additional(array(
-            'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_UNPROCESSABLE_ENTITY]
+            'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
         ));
     }
 }
