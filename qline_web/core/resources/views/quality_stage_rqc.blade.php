@@ -44,8 +44,7 @@
                                         <!-- tab-nav -->
                                         <div class="row">
                                         <!-- --- -->
-                                        <!-- class="flex-column flex-sm-row" -->
-                                        <ul class="nav nav-pills nav-pills-danger nav-fill nav-justified w-100" id="id_nav" role="tablist">
+                                        <ul class="nav nav-pills nav-pills-danger nav-fill nav-justified flex-column flex-sm-row w-100" id="id_nav" role="tablist">
                                             <li class="nav-item flex-sm-fill text-sm-center" tabindex="1">
                                                 <a id="id_nav_link_1" class="nav-link m-1 btn btn-outline-danger" data-toggle="false" href="{!! url('quality_stage_cutting') !!}" role="tab" aria-controls="id_tab_content_1" aria-selected="false">
                                                     <span><i class="fas fa-anchor"></i> Cutting</span>
@@ -103,7 +102,6 @@
             <!-- tab-nav -->
             <div class="col-3">
             <!-- --- -->
-            <!-- class="flex-column flex-sm-row" -->
             <ul class="nav nav-pills nav-pills-danger nav-fill nav-justified flex-column nav-stacked" id="id_nav" role="tablist" aria-orientation="vertical">
                 <li class="nav-item flex-sm-fill text-sm-center" tabindex="1">
                     <a id="id_nav_link_1_1" class="nav-link m-1 btn btn-outline-danger text-left" data-toggle="pill" href="#id_tab_content_1_1" role="tab" aria-controls="id_tab_content_1_1" aria-selected="false">
