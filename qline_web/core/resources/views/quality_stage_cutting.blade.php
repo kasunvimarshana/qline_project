@@ -162,27 +162,27 @@
                                                                         <!-- span id="form-control" class="help-block"></span -->
                                                                     </div>
                                                                     <!-- /.form-group -->
+                                                                    
+                                                                    <!-- form-group-row -->
+                                                                    <div class="row col-12 w-100">
+                                                                        <!-- -->
+                                                                        <!-- form-group -->
+                                                                        <div class="form-group row col-sm-12">
+                                                                            <!-- btn-toolbar -->
+                                                                            <div class="col text-center">
+                                                                                <!-- div class="btn-group btn-group-lg pull-right" -->
+                                                                                    <button type="submit" class="btn btn-primary ml-auto mr-auto" id="submit">Submit</button>
+                                                                                <!-- /div -->
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- /.form-group -->
+                                                                        <!-- -->
+                                                                    </div>
+                                                                    <!-- /.form-group-row -->
                                                                     <!-- -->
                                                                 </div>
                                                                 <!-- /.form-group-col -->
                                                                 
-                                                            </div>
-                                                            <!-- /.form-group-row -->
-
-                                                            <!-- form-group-row -->
-                                                            <div class="row">
-                                                                <!-- -->
-                                                                <!-- form-group -->
-                                                                <div class="form-group row col-sm-12">
-                                                                    <!-- btn-toolbar -->
-                                                                    <div class="col text-center">
-                                                                        <!-- div class="btn-group btn-group-lg pull-right" -->
-                                                                            <button type="submit" class="btn btn-primary ml-auto mr-auto" id="submit">Submit</button>
-                                                                        <!-- /div -->
-                                                                    </div>
-                                                                </div>
-                                                                <!-- /.form-group -->
-                                                                <!-- -->
                                                             </div>
                                                             <!-- /.form-group-row -->
                                                         </form>

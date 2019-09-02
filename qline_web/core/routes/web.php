@@ -92,6 +92,10 @@ Route::get('/quality_stage_rqc_record', function(){
 Route::get('/quality_stage_rqc_view', function(){
     return view('quality_stage_rqc_view');
 });
+
+Route::get('/quality_stage_rqc_create', function(){
+    return view('quality_stage_rqc_create');
+});
 ////////////////////////////////////////////////////////
 /*
 Roue::get('/test', function(){
