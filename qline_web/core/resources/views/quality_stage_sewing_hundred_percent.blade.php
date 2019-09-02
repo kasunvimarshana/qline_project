@@ -84,29 +84,329 @@
                                         <div class="row">
                                         <!-- --- -->
                                         <div class="tab-content w-100" id="id_nav_tab_content">
-                                            <div id="id_tab_content_1" class="container tab-pane fade" role="tabpanel" aria-labelledby="id_nav_link_1"><br>
-                                                <h3>Tab</h3>
-                                                <p>Tab 1</p>
-                                            </div>
-                                            <div id="id_tab_content_2" class="container tab-pane fade" role="tabpanel" aria-labelledby="id_nav_link_2"><br>
-                                                <h3>Tab</h3>
-                                                <p>Tab 2</p>
-                                            </div>
                                             <div id="id_tab_content_3" class="container tab-pane fade show active" role="tabpanel" aria-labelledby="id_nav_link_3"><br>
-                                                <h3>Tab</h3>
-                                                <p>Tab 3</p>
-                                            </div>
-                                            <div id="id_tab_content_4" class="container tab-pane fade" role="tabpanel" aria-labelledby="id_nav_link_4"><br>
-                                                <h3>Tab</h3>
-                                                <p>Tab 4</p>
-                                            </div>
-                                            <div id="id_tab_content_5" class="container tab-pane fade" role="tabpanel" aria-labelledby="id_nav_link_5"><br>
-                                                <h3>Tab</h3>
-                                                <p>Tab 5</p>
-                                            </div>
-                                            <div id="id_tab_content_6" class="container tab-pane fade" role="tabpanel" aria-labelledby="id_nav_link_6"><br>
-                                                <h3>Tab</h3>
-                                                <p>Tab 6</p>
+                                                
+                                                <!-- ************************************************ -->
+                                                <!-- row -->
+                                                <div class="row">
+
+                                                    <!-- col -->
+                                                    <div class="col-sm-12 p-0 m-0">
+                                                        <!-- form -->
+                                                        <!-- form action="{!! route('home') !!}" method="POST" class="col col-sm-12 p-0 m-0" autocomplete="off" id="form1" enctype="multipart/form-data" -->
+                                                            <!-- @csrf -->
+                                                            <!-- form-group-row -->
+                                                            <div class="row col p-0 m-0">
+                                                                
+                                                                <div class="row w-100 justify-content-between p-0 m-0">
+                                                                    <!-- col -->
+                                                                    <div class="col col-md-3 p-0 m-0">
+                                                                        <!-- card-group -->
+                                                                        <div class="card-group">
+                                                                            <div class="card bg-light">
+                                                                                <div class="card-body text-center p-0 m-0">
+                                                                                    
+                                                                                    <!-- list-group -->
+                                                                                    <ul class="list-group">
+                                                                                        <!-- list-group-item -->
+                                                                                        <li class="list-group-item flex-column align-items-start bg-transparent">
+                                                                                            <div class="d-flex w-100 justify-content-between">
+                                                                                                <span class="text-monospace text-justify">
+                                                                                                    <span class="text-wrap text-break">Team </span>
+                                                                                                </span>
+                                                                                                <span class="text-monospace text-justify">
+                                                                                                    <span class="badge badge-secondary text-wrap text-break">#Team</span>
+                                                                                                </span>
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <!-- /.list-group-item -->
+                                                                                        
+                                                                                        <!-- list-group-item -->
+                                                                                        <li class="list-group-item flex-column align-items-start bg-transparent">
+                                                                                            <div class="d-flex w-100 justify-content-between">
+                                                                                                <span class="text-monospace text-justify">
+                                                                                                    <span class="text-wrap text-break">Buyer </span>
+                                                                                                </span>
+                                                                                                <span class="text-monospace text-justify">
+                                                                                                    <span class="badge badge-secondary text-wrap text-break">#Buyer</span>
+                                                                                                </span>
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <!-- /.list-group-item -->
+                                                                                        
+                                                                                        <!-- list-group-item -->
+                                                                                        <li class="list-group-item flex-column align-items-start bg-transparent">
+                                                                                            <div class="d-flex w-100 justify-content-between">
+                                                                                                <span class="text-monospace text-justify">
+                                                                                                    <span class="text-wrap text-break">Style </span>
+                                                                                                </span>
+                                                                                                <span class="text-monospace text-justify">
+                                                                                                    <span class="badge badge-secondary text-wrap text-break">#Style</span>
+                                                                                                </span>
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <!-- /.list-group-item -->
+                                                                                        
+                                                                                        <!-- list-group-item -->
+                                                                                        <li class="list-group-item flex-column align-items-start bg-transparent">
+                                                                                            <div class="d-flex w-100 justify-content-between">
+                                                                                                <span class="text-monospace text-justify">
+                                                                                                    <span class="text-wrap text-break">Colour </span>
+                                                                                                </span>
+                                                                                                <span class="text-monospace text-justify">
+                                                                                                    <span class="badge badge-secondary text-wrap text-break">#Colour</span>
+                                                                                                </span>
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <!-- /.list-group-item -->
+                                                                                        
+                                                                                        <!-- list-group-item -->
+                                                                                        <li class="list-group-item flex-column align-items-start bg-transparent">
+                                                                                            <div class="d-flex w-100 justify-content-between">
+                                                                                                <span class="text-monospace text-justify">
+                                                                                                    <span class="text-wrap text-break">Export </span>
+                                                                                                </span>
+                                                                                                <span class="text-monospace text-justify">
+                                                                                                    <span class="badge badge-secondary text-wrap text-break">#Export</span>
+                                                                                                </span>
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <!-- /.list-group-item -->
+                                                                                    </ul>
+                                                                                    <!-- /.list-group -->
+                                                                                    
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- /.card-group -->
+                                                                    </div>
+                                                                    <!-- /.col -->
+                                                                    <!-- col -->
+                                                                    <div class="col col-md-6 p-0 m-0">
+                                                                        <div class="card-group">
+                                                                            <div class="card bg-light">
+                                                                                <div class="card-body text-center p-0 m-0">
+                                                                                    
+                                                                                    <!-- list-group -->
+                                                                                    <ul class="list-group">
+                                                                                        <!-- list-group-item -->
+                                                                                        <li class="list-group-item flex-column align-items-start p-0 m-0 bg-transparent">
+                                                                                            <div class="d-flex w-100 justify-content-center">
+                                                                                                <!-- + -->
+        <!-- +++++++++++++++++++++++++++++++++++++++++++ -->
+        <!-- row -->
+        <div class="row w-100">
+
+            <!-- col -->
+            <div class="col col-sm-12">
+                <!-- form -->
+                <form action="{!! route('home') !!}" method="POST" class="col col-sm-12 p-0 m-0" autocomplete="off" id="form1" enctype="multipart/form-data">
+                    @csrf
+                    <!-- form-group-row -->
+                    <div class="row col">
+
+                        <!-- container -->
+                        <div class="container mt-3 mb-3">
+                            <!-- h2 class="text-danger"> - </h2 -->
+                            <!-- p> - </p -->
+                        </div>
+                        <!-- /.container -->
+                        <!-- form-group-col -->
+                        <div class="col col-sm-12 row p-0 m-0">
+                            <!-- -->
+                            <!-- form-group -->
+                            <div class="form-group row col col-12">
+                                <label for="operaion" class="col col-lg-12 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-left">Operation /Area /POM</label>
+                                <div class="col col-lg-12">
+                                    <!-- p class="form-control-static"></p -->
+                                    <select class="form-control form-control-md select2" id="operaion" name="operaion" value="{{ old('operaion') }}" data-placeholder="Operaion" style="width: 100%;" required>
+
+                                        <!-- @for($i =1; $i <= 5; $i++) -->
+                                        <option>Operaion {{ $i }}</option>
+                                        <!-- @endfor -->
+
+                                    </select>
+                                </div>
+                                <!-- span id="form-control" class="help-block"></span -->
+                            </div>
+                            <!-- /.form-group -->
+                            
+                            <!-- form-group -->
+                            <div class="form-group row col col-12">
+                                <label for="defect_category" class="col col-lg-12 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-left">Defect Category</label>
+                                <div class="col col-lg-12">
+                                    <!-- p class="form-control-static"></p -->
+                                    <select class="form-control form-control-md select2" id="defect_category" name="defect_category" value="{{ old('defect_category') }}" data-placeholder="Defect Category" style="width: 100%;" required>
+
+                                        <!-- @for($i =1; $i <= 5; $i++) -->
+                                        <option>Defect Category {{ $i }}</option>
+                                        <!-- @endfor -->
+
+                                    </select>
+                                </div>
+                                <!-- span id="form-control" class="help-block"></span -->
+                            </div>
+                            <!-- /.form-group -->
+                            
+                            <!-- form-group -->
+                            <div class="form-group row col col-12">
+                                <label for="defect" class="col col-lg-12 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-left">Defect</label>
+                                <div class="col col-lg-12">
+                                    <!-- p class="form-control-static"></p -->
+                                    <select class="form-control form-control-md select2" id="defect" name="defect" value="{{ old('defect') }}" data-placeholder="Defect" style="width: 100%;" required>
+
+                                        <!-- @for($i =1; $i <= 5; $i++) -->
+                                        <option>Defect {{ $i }}</option>
+                                        <!-- @endfor -->
+
+                                    </select>
+                                </div>
+                                <!-- span id="form-control" class="help-block"></span -->
+                            </div>
+                            <!-- /.form-group -->
+
+                            <!-- form-group-row -->
+                            <div class="row col col-12 w-100">
+                                <!-- -->
+                                <!-- form-group -->
+                                <div class="form-group row col-sm-12">
+                                    <!-- btn-toolbar -->
+                                    <div class="col text-center">
+                                        <!-- div class="btn-group btn-group-lg pull-right" -->
+                                            <button type="submit" class="btn btn-primary ml-auto mr-auto" id="submit">Submit</button>
+                                        <!-- /div -->
+                                    </div>
+                                </div>
+                                <!-- /.form-group -->
+                                <!-- -->
+                            </div>
+                            <!-- /.form-group-row -->
+                            <!-- -->
+                        </div>
+                        <!-- /.form-group-col -->
+
+                    </div>
+                    <!-- /.form-group-row -->
+                </form>
+                <!-- /.form -->
+            </div>
+            <!-- /.col -->
+
+        </div>
+        <!-- /.row -->
+        <!-- +++++++++++++++++++++++++++++++++++++++++++ -->
+                                                                                                <!-- + -->
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <!-- /.list-group-item -->    
+                                                
+                                                                                    </ul>
+                                                                                    <!-- /.list-group -->
+                                                                                    
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- /.col -->
+                                                                    <!-- col -->
+                                                                    <div class="col col-md-3 p-0 m-0">
+                                                                        <!-- card-group -->
+                                                                        <div class="card-group">
+                                                                            <div class="card bg-light">
+                                                                                <div class="card-body text-center p-0 m-0">
+                                                                                    
+                                                                                    <!-- list-group -->
+                                                                                    <ul class="list-group">
+                                                                                        <!-- list-group-item -->
+                                                                                        <li class="list-group-item flex-column align-items-start bg-transparent">
+                                                                                            <div class="d-flex w-100 justify-content-between">
+                                                                                                <span class="text-monospace text-justify">
+                                                                                                    <span class="text-wrap text-break">Now </span>
+                                                                                                </span>
+                                                                                                <span class="text-monospace text-justify">
+                                                                                                    <span class="text-wrap text-break">TTL</span>
+                                                                                                </span>
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <!-- /.list-group-item -->
+                                                                                        
+                                                                                        <!-- list-group-item -->
+                                                                                        <li class="list-group-item flex-column align-items-start bg-transparent">
+                                                                                            <div class="d-flex w-100 justify-content-between">
+                                                                                                <span class="text-monospace text-justify">
+                                                                                                    <span class="text-wrap text-break">Prod Qty </span>
+                                                                                                </span>
+                                                                                                <span class="text-monospace text-justify">
+                                                                                                    <span class="badge badge-secondary text-wrap text-break">000</span>
+                                                                                                </span>
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <!-- /.list-group-item -->
+                                                                                        
+                                                                                        <!-- list-group-item -->
+                                                                                        <li class="list-group-item flex-column align-items-start bg-transparent">
+                                                                                            <div class="d-flex w-100 justify-content-between">
+                                                                                                <span class="text-monospace text-justify">
+                                                                                                    <span class="text-wrap text-break">Check Qty </span>
+                                                                                                </span>
+                                                                                                <span class="text-monospace text-justify">
+                                                                                                    <span class="badge badge-secondary text-wrap text-break">000</span>
+                                                                                                </span>
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <!-- /.list-group-item -->
+                                                                                        
+                                                                                        <!-- list-group-item -->
+                                                                                        <li class="list-group-item flex-column align-items-start bg-transparent">
+                                                                                            <div class="d-flex w-100 justify-content-between">
+                                                                                                <span class="text-monospace text-justify">
+                                                                                                    <span class="text-wrap text-break">Defect Qty </span>
+                                                                                                </span>
+                                                                                                <span class="text-monospace text-justify">
+                                                                                                    <span class="badge badge-secondary text-wrap text-break">000</span>
+                                                                                                </span>
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <!-- /.list-group-item -->
+                                                                                        
+                                                                                        <!-- list-group-item -->
+                                                                                        <li class="list-group-item flex-column align-items-start bg-transparent">
+                                                                                            <div class="d-flex w-100 justify-content-between">
+                                                                                                <span class="text-monospace text-justify">
+                                                                                                    <span class="text-wrap text-break">Defect 
+                                                                                                        <span>%</span>
+                                                                                                    </span>
+                                                                                                </span>
+                                                                                                <span class="text-monospace text-justify">
+                                                                                                    <span class="badge badge-secondary text-wrap text-break">0
+                                                                                                        <span>%</span>
+                                                                                                    </span>
+                                                                                                </span>
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <!-- /.list-group-item -->
+                                                                                    </ul>
+                                                                                    <!-- /.list-group -->
+                                                                                    
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- /.card-group -->
+                                                                    </div>
+                                                                    <!-- /.col -->
+                                                                </div>
+                                                                
+                                                            </div>
+                                                            <!-- /.form-group-row -->
+                                                        <!-- /form -->
+                                                        <!-- /.form -->
+                                                    </div>
+                                                    <!-- /.col -->
+
+                                                </div>
+                                                <!-- /.row -->
+                                                <!-- ************************************************ -->
+                                                
                                             </div>
                                         </div>
                                         <!-- --- -->
