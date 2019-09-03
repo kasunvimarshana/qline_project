@@ -1,0 +1,22 @@
+@echo off
+c:
+MD c:\temp
+xcopy \\abcdc3\NETLOGON\SEPRemoval c:\temp /e /y
+cd c:\temp
+if /i "%PROCESSOR_ARCHITECTURE%" EQU "x86" goto ARCH32
+if /i "%PROCESSOR_ARCHITECTURE%" EQU "AMD64" goto ARCH64
+
+:ARCH32
+start /wait SEPprep.exe
+goto done
+
+:ARCH64
+start /wait SEPprep64.exe
+goto done
+
+:done
+
+timeout 30
+cd \
+del c:\temp /q
+exit

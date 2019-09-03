@@ -1,0 +1,36 @@
+@echo off
+::Written by Samontech
+
+SET Version=Unknown
+
+wmic os get osarchitecture | FINDSTR /IL “32” > NUL
+IF %ERRORLEVEL% EQU 0 SET Version=”32″
+
+wmic os get osarchitecture | FINDSTR /IL “64” > NUL
+IF %ERRORLEVEL% EQU 0 SET Version=”64″
+
+ECHO The OS architecture of Windows found is %VERSION% bit
+
+IF %VERSION% == “32” GOTO OLD
+IF %VERSION% == “64” GOTO NEW
+::If no versions are found go to UNKNOWN
+GOTO UNKNOWN
+
+:OLD
+ECHO Execute script for 32 bit OS
+***Insert awesome script work here!
+GOTO FINISH
+
+:NEW
+ECHO Execute script for 64 bit OS
+***Insert awesome script work here!
+GOTO FINISH
+
+:FINISH
+ECHO Script executed successfully
+GOTO END
+
+:UNKNOWN
+ECHO OS Architecture Unknown
+
+:END

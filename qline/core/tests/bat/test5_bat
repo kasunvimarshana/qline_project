@@ -1,0 +1,12 @@
+::CheckOS
+IF EXIST "%PROGRAMFILES(X86)%" (GOTO 64BIT) ELSE (GOTO 32BIT)
+
+::Register OCX file 64-bit
+copy \\MyShare\File.ocx C:\Windows\SysWOW64
+cd C:\Windows\SysWOW64
+regsvr32 File.ocx
+
+::Register OCX file 32-bit
+copy \\MyShare\File.ocx C:\Windows\System32
+cd C:\Windows\System32
+regsvr32 File.ocx

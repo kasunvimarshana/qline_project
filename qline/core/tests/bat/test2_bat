@@ -1,0 +1,9 @@
+@ECHO OFF
+
+echo Check operating system ...
+if defined PROGRAMFILES(X86) (
+    echo 64-bit sytem detected
+) else (
+    echo 32-bit sytem detected
+)
+pause

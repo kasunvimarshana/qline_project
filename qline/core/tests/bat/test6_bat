@@ -1,0 +1,11 @@
+::CheckOS
+IF EXIST "%PROGRAMFILES(X86)%" (set bit=x64) ELSE (set bit=x86)
+
+if %bit%==x64 (
+    echo 64 bit operating system detected
+)
+
+:: x86
+if %bit%==x86 (
+    echo 32 bit operating system detected
+)
