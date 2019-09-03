@@ -42,7 +42,7 @@
                                     <!-- container -->
                                     <div class="container">
                                         <!-- tab-nav -->
-                                        <div class="row">
+                                        <div class="row collapse multi-collapse" id="id_nav_container_1">
                                         <!-- --- -->
                                         <ul class="nav nav-pills nav-pills-danger nav-fill nav-justified flex-column flex-sm-row w-100" id="id_nav" role="tablist">
                                             <li class="nav-item flex-sm-fill text-sm-center" tabindex="1">
@@ -272,7 +272,7 @@
 
                                                                         <!-- form-group -->
                                                                         <div class="form-group row col-sm-12 m-1">
-                                                                            <label for="grade" class="col-lg-3 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-left">Grade</label>
+                                                                            <label for="grade" class="col-lg-3 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-left">Operator Grade</label>
                                                                             <div class="col">
                                                                                 <!-- p class="form-control-static"></p -->
                                                                                 <input type="text" class="form-control form-control-md" id="grade" name="grade" placeholder="Grade" value="{{ old('grade') }}" disabled/>

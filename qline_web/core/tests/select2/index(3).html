@@ -1,0 +1,41 @@
+<!-- ------------------------------------------------------------ -->
+$(document).ready(function(){
+  function setCurrency (currency) {
+	  if (!currency.id) { return currency.text; }
+		var $currency = $('<span class="glyphicon glyphicon-' + currency.element.value + '">' + currency.text + '</span>');
+		return $currency;
+	};
+	$(".templatingSelect2").select2({
+		placeholder: "What currency do you use?", //placeholder
+		templateResult: setCurrency,
+		templateSelection: setCurrency
+	});
+})
+<!-- ------------------------------------------------------------ -->
+<!-- ------------------------------------------------------------ -->
+function formatState (state) {
+  if (!state.id) {
+    return state.text;
+  }
+
+  var baseUrl = "/user/pages/images/flags";
+  var $state = $(
+    '<span><img class="img-flag" /> <span></span></span>'
+  );
+
+  // Use .text() instead of HTML string concatenation to avoid script injection issues
+  $state.find("span").text(state.text);
+  $state.find("img").attr("src", baseUrl + "/" + state.element.value.toLowerCase() + ".png");
+
+  return $state;
+};
+
+$(".js-example-templating").select2({
+  templateSelection: formatState
+});
+<!-- ------------------------------------------------------------ -->
+<!-- ------------------------------------------------------------ -->
+$(".js-example-basic-multiple-limit").select2({
+  maximumSelectionLength: 2
+});
+<!-- ------------------------------------------------------------ -->

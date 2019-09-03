@@ -35,6 +35,18 @@
             <!-- /.nav lists -->
             
             <!-- nav lists -->
+            <ul class="list-unstyled nav navbar-nav mr-auto navbar-left">
+                <li class="nav-item">
+                    <div class="btn-group">
+                        <button class="btn btn-default m-0 p-0 text-white" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="id_accordion_nav_container id_nav_container_1" role="button" type="button">
+                            <i class="fa fa-home fa-fw"></i>
+                        </button>
+                    </div>
+                </li>  
+            </ul>
+            <!-- /.nav lists -->
+            
+            <!-- nav lists -->
             <ul class="list-unstyled nav navbar-nav ml-auto navbar-right">
                 <!-- li class="nav-item">
                     <span class="navbar-text text-center text-uppercase font-weight-bold text-white"> <span id="span_time">0</span> &nbsp;&nbsp;&nbsp;</span>
@@ -59,9 +71,9 @@
             <!-- nav lists -->
             <ul class="list-unstyled nav navbar-nav ml-auto navbar-right">
                 <li class="nav-item">
-                    <span class="navbar-text text-center font-weight-bold text-white">
+                    <span class="navbar-text text-center font-weight-bold text-white p-1">
                         <i class="fa fa-user-alt fa-fw"></i>
-                        <span> User</span>
+                        <span> User </span>
                     </span>
                 </li>
                 

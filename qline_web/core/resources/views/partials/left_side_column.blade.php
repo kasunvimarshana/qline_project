@@ -1,8 +1,8 @@
 <!-- Left side column. contains the logo and sidebar -->
-<div class="col-md-2 pl-0 bg-danger">
+<div class="col-md-2 pl-0 bg-danger collapse multi-collapse" id="id_accordion_nav_container" name="id_accordion_nav_container">
 
     <!-- accordion -->
-    <div id="accordion_nav" class="text-wrap text-break">
+    <div id="id_accordion_nav" class="text-wrap text-break" data-parent="#id_accordion_nav_container">
         <!-- card-group -->
         <div class="card-group">
             <!-- card -->
@@ -16,7 +16,7 @@
                     </h5>
                 </div>
 
-                <div id="idCollapse1-temp" class="collapse hide" aria-labelledby="idCard1" data-parent="#accordion_nav">
+                <div id="idCollapse1-temp" class="collapse hide" aria-labelledby="idCard1" data-parent="#id_accordion_nav">
                     <div class="card-body" id="idCollapse1_body">
                         <table class="table">
                             <!-- table-tr -->
@@ -50,7 +50,7 @@
                     </h5>
                 </div>
 
-                <div id="idCollapse2" class="collapse hide" aria-labelledby="idCard2" data-parent="#accordion_nav">
+                <div id="idCollapse2" class="collapse hide" aria-labelledby="idCard2" data-parent="#id_accordion_nav">
                     <div class="card-body" id="idCollapse2_body">
                         <table class="table">
                             <!-- table-tr -->
@@ -58,7 +58,7 @@
                                 <td class="p-0 m-0">
 
                                     <!-- nested accordion -->
-                                    <div id="accordion_nav_2_1">
+                                    <div id="id_accordion_nav_2_1">
                                         <!-- card-group -->
                                         <div class="card-group">
                                             <!-- card -->
@@ -293,7 +293,7 @@
                     </h5>
                 </div>
 
-                <div id="idCollapse3" class="collapse hide" aria-labelledby="idCard3" data-parent="#accordion_nav">
+                <div id="idCollapse3" class="collapse hide" aria-labelledby="idCard3" data-parent="#id_accordion_nav">
                     <div class="card-body" id="idCollapse3_body">
                         <table class="table">
                             <!-- table-tr -->
@@ -327,7 +327,7 @@
                     </h5>
                 </div>
 
-                <div id="idCollapse4" class="collapse hide" aria-labelledby="idCard4" data-parent="#accordion_nav">
+                <div id="idCollapse4" class="collapse hide" aria-labelledby="idCard4" data-parent="#id_accordion_nav">
                     <div class="card-body" id="idCollapse4_body">
                         <table class="table">
                             <!-- table-tr -->
@@ -361,7 +361,7 @@
                     </h5>
                 </div>
 
-                <div id="idCollapse5" class="collapse hide" aria-labelledby="idCard5" data-parent="#accordion_nav">
+                <div id="idCollapse5" class="collapse hide" aria-labelledby="idCard5" data-parent="#id_accordion_nav">
                     <div class="card-body" id="idCollapse5_body">
                         <table class="table">
                             <!-- table-tr -->

@@ -1,0 +1,67 @@
+<!-- ---------------------------------------------------------------- -->
+function formatState (state) {
+  if (!state.id) {
+    return state.text;
+  }
+  var baseUrl = "/user/pages/images/flags";
+  var $state = $(
+    '<span><img src="' + baseUrl + '/' + state.element.value.toLowerCase() + '.png" class="img-flag" /> ' + state.text + '</span>'
+  );
+  return $state;
+};
+
+$(".js-example-templating").select2({
+  templateResult: formatState
+});
+<!-- ---------------------------------------------------------------- -->
+<!-- ---------------------------------------------------------------- -->
+$('#mySelect2').select2({
+  dropdownParent: $('#myModal')
+});
+<!-- ---------------------------------------------------------------- -->
+<!-- ---------------------------------------------------------------- -->
+$('body').on('shown.bs.modal', '.modal', function() {
+  $(this).find('select').each(function() {
+    var dropdownParent = $(document.body);
+    if ($(this).parents('.modal.in:first').length !== 0)
+      dropdownParent = $(this).parents('.modal.in:first');
+    $(this).select2({
+      dropdownParent: dropdownParent
+      // ...
+    });
+  });
+});
+<!-- ---------------------------------------------------------------- -->
+<!-- ---------------------------------------------------------------- -->
+function formatState (state) {
+  if (!state.id) {
+    return state.text;
+  }
+
+  var baseUrl = "/user/pages/images/flags";
+  var $state = $(
+    '<span><img class="img-flag" /> <span></span></span>'
+  );
+
+  // Use .text() instead of HTML string concatenation to avoid script injection issues
+  $state.find("span").text(state.text);
+  $state.find("img").attr("src", baseUrl + "/" + state.element.value.toLowerCase() + ".png");
+
+  return $state;
+};
+
+$(".js-example-templating").select2({
+  templateSelection: formatState
+});
+<!-- ---------------------------------------------------------------- -->
+<!-- ---------------------------------------------------------------- -->
+function format(state) {
+    if (!state.id) return state.text; // optgroup
+    return "<img class='flag' src='images/flags/" + state.id.toLowerCase() + ".png'/>" + state.text;
+}
+$("#e4").select2({
+    formatResult: format,
+    formatSelection: format,
+    escapeMarkup: function(m) { return m; }
+});
+<!-- ---------------------------------------------------------------- -->

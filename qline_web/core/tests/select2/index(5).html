@@ -1,0 +1,89 @@
+if (result.id == "" || result.loading) return result.text;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title></title>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/lib/select2/dist/css/select2.css" />
+</head>
+<body>
+
+<form id="organization_lookup_form" class="form-horizontal" >
+<div>
+    Select2 using placeholder <select id="search1" style="width:300px"></select>
+</div>
+<div style="padding-top:250px">
+    Select2 WITHOUT placeholder <select id="search2" style="width:300px"></select>  
+</div>
+</form>
+
+<script src="${pageContext.request.contextPath}/lib/jquery/dist/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/select2/dist/js/select2.min.js"></script>
+<script>
+$(document).ready(function () {
+      function formatResult (result){
+          console.log('%o', result);
+          if (result.loading) return result.text;
+          var html = '<div>'+
+                '<img src="' + result.image + '">' +
+                '<h4>'+result.label+'</h4></div>';
+          return html;
+      };
+
+      $('#search1').select2({
+          placeholder: "Search...",
+          ajax: {
+              url: '/search',
+              dataType: 'json',
+              data: function (params, page) {
+                  return {
+                      term: params.term, // search term
+                      page: page
+                  };
+              },
+              processResults: function (data, page) {
+                  return {results: data.results};
+              },
+              cache: true
+          },
+          templateResult : formatResult,
+          templateSelection : formatResult,
+          escapeMarkup: function(m) {
+              // Do not escape HTML in the select options text
+              return m;
+           },
+          minimumInputLength: 3
+      });
+      $('#search2').select2({
+//        placeholder: "Search...",
+          ajax: {
+              url: '/search',
+              dataType: 'json',
+              data: function (params, page) {
+                  return {
+                      term: params.term, // search term
+                      page: page
+                  };
+              },
+              processResults: function (data, page) {
+                  return {results: data.results};
+              },
+              cache: true
+          },
+          templateResult : formatResult,
+          templateSelection : formatResult,
+          escapeMarkup: function(m) {
+              // Do not escape HTML in the select options text
+              return m;
+           },
+          minimumInputLength: 3
+      });
+});
+</script>
+
+</body>
+</html>

@@ -42,7 +42,7 @@
                                     <!-- container -->
                                     <div class="container">
                                         <!-- tab-nav -->
-                                        <div class="row">
+                                        <div class="row collapse multi-collapse" id="id_nav_container_1">
                                         <!-- --- -->
                                         <ul class="nav nav-pills nav-pills-danger nav-fill nav-justified flex-column flex-sm-row w-100" id="id_nav" role="tablist">
                                             <li class="nav-item flex-sm-fill text-sm-center" tabindex="1">

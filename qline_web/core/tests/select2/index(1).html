@@ -1,0 +1,71 @@
+<!-- --------------------------------------------------------- -->
+<select class="form-control">
+  <option selected="selected">orange</option>
+  <option>white</option>
+  <option>purple</option>
+</select>
+
+$(".js-example-tags").select2({
+  tags: true
+});
+<!-- --------------------------------------------------------- -->
+<!-- --------------------------------------------------------- -->
+$(".js-example-tokenizer").select2({
+    tags: true,
+    tokenSeparators: [',', ' ']
+})
+<!-- --------------------------------------------------------- -->
+<!-- --------------------------------------------------------- -->
+$('select').select2({
+  createTag: function (params) {
+    var term = $.trim(params.term);
+
+    if (term === '') {
+      return null;
+    }
+
+    return {
+      id: term,
+      text: term,
+      newTag: true // add additional parameters
+    }
+  }
+});
+<!-- --------------------------------------------------------- -->
+<!-- --------------------------------------------------------- -->
+$('select').select2({
+  createTag: function (params) {
+    // Don't offset to create a tag if there is no @ symbol
+    if (params.term.indexOf('@') === -1) {
+      // Return null to disable tag creation
+      return null;
+    }
+
+    return {
+      id: params.term,
+      text: params.term
+    }
+  }
+});
+<!-- --------------------------------------------------------- -->
+<!-- --------------------------------------------------------- -->
+$('select').select2({
+  insertTag: function (data, tag) {
+    // Insert the tag at the end of the results
+    data.push(tag);
+  }
+});
+<!-- --------------------------------------------------------- -->
+<!-- --------------------------------------------------------- -->
+$('body').on('shown.bs.modal', '.modal', function() {
+  $(this).find('select').each(function() {
+    var dropdownParent = $(document.body);
+    if ($(this).parents('.modal.in:first').length !== 0)
+      dropdownParent = $(this).parents('.modal.in:first');
+    $(this).select2({
+      dropdownParent: dropdownParent
+      // ...
+    });
+  });
+});
+<!-- --------------------------------------------------------- -->
