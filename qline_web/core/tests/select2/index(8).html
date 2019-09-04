@@ -1,0 +1,38 @@
+<!-- -------------------------------------------------------------------------- -->
+$(function() {
+  
+  //get data from anywhere
+  var ops = [
+    {id:998, text: "啥a"},
+    {id:996, text: "洒到"},
+    {id:997, text: "Asda"}
+  ];
+  
+  $('#sel').select2({
+    width: 180,
+    minimumResultsForSearch: -1,
+    placeholder: 'Click, Bitch',
+    query: function(q) {
+      var data = {results:ops};
+      q.callback(data);
+    }
+  });
+  
+  $('#add').on('click', function() {
+    var new_op = {id: 966, text: '你好啊'};
+    ops.push(new_op);
+    $('#sel').select2('data', ops);    $('#sel').select2('data', new_op);
+  });
+  
+  $('#remove').on('click', function() {
+    ops.shift(); //remove one, splice, _ ..
+    $('#sel').select2('data', ops);    $('#sel').select2('data', ops[0]);
+  });
+  
+  $('#reset').on('click', function() {
+    ops = [];
+    $('#sel').select2('data', null);
+  });
+  
+});
+<!-- -------------------------------------------------------------------------- -->

@@ -157,7 +157,7 @@
                                                                             <select class="form-control form-control-md select2" id="operation" name="operation" value="{{ old('operation') }}" data-placeholder="Operation" style="width: 100%;" required>
 
                                                                                 <!-- @for($i =1; $i <= 5; $i++) -->
-                                                                                <option>Operation {{ $i }}</option>
+                                                                                <!-- option>Operation {{ $i }}</option -->
                                                                                 <!-- @endfor -->
 
                                                                             </select>
@@ -185,6 +185,19 @@
                                                                         
         <!-- --------test-script-------- -->
         <script>
+            // Function to dynamically set a new set of options to a select2 element
+            (function($) {
+                $.fn.setSelect2OptionDataAttribute = function(newData) {
+                    //newData = [];
+                    var origOptions = this.data('select2').options.options;
+                    origOptions.data = [];
+                    var newOptions = $.extend(origOptions, {data: newData});
+		            this.empty().select2(newOptions);
+                    return this;
+                };
+            })(jQuery);
+        </script>
+        <script>
         $(function(){
             //$.fn.select2.defaults.set( "theme", "bootstrap4" );
             
@@ -206,6 +219,50 @@
                 dropdownAutoWidth : true,
                 width: 'auto'
             });
+            //////////////////////////////////////////////////////////////////////
+            function format(param) {console.log("p");
+                if (!param.id){
+                    return param.text; // optgroup
+                }
+                return "<img class='flag' src='images/flags/" + param.id.toLowerCase() + ".png'/>" + param.text;
+            }
+            
+            var dataArray = [
+                {
+                    //"id": 1,
+                    "text": "Operation 1"
+                },{
+                    "id": 2,
+                    "text": "Operation 2",
+                    "selected": true
+                },{
+                    "id": 3,
+                    "text": "Operation 3",
+                    "disabled": true
+                },{
+                    "id": 3,
+                    "text": "Operation 4",
+                    "disabled": true
+                },{
+                    "id": 3,
+                    "text": "Operation 5",
+                    "disabled": true
+                }
+            ];
+            
+            var selectObject = $("#operation").select2({
+                theme: 'bootstrap4',
+                placeholder: "Select",
+                dropdownAutoWidth : true,
+                width: 'auto',
+                formatResult: format,
+                formatSelection: format,
+                escapeMarkup: function(m) {
+                    return m; 
+                },
+                data: []
+            }).setSelect2OptionDataAttribute(dataArray);
+            //////////////////////////////////////////////////////////////////////
         });
         </script>
         <!-- --------test-script-------- -->

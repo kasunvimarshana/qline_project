@@ -1,0 +1,36 @@
+<!-- ------------------------------------------------------- -->
+// Function to dynamically set a new set of options to a select2 element
+(function($) {
+	$.fn.setNewSelect2Data = function(newData) {
+		var origOptions = this.data('select2').options.options;
+		this.empty().select2($.extend(origOptions, { data: newData }));
+		return this;
+	};
+})(jQuery);
+<!-- ------------------------------------------------------- -->
+<!-- ------------------------------------------------------- -->
+// Function to dynamically set a new set of options to a select2 element
+(function($) {
+	$.fn.setNewSelect2Data = function(newData) {
+		var origOptions = this.data('select2').options.options;
+        var newOptions = $.extend(origOptions, {data: newData});
+		this.empty().select2(newOptions);
+		return this;
+	};
+})(jQuery);
+<!-- ------------------------------------------------------- -->
+<!-- ------------------------------------------------------- -->
+<script>
+    // Function to dynamically set a new set of options to a select2 element
+    (function($) {
+        $.fn.setSelect2OptionDataAttribute = function(newData) {
+            //newData = [];
+            var origOptions = this.data('select2').options.options;
+            origOptions.data = [];
+            var newOptions = $.extend(origOptions, {data: newData});
+            this.empty().select2(newOptions);
+            return this;
+        };
+    })(jQuery);
+</script>
+<!-- ------------------------------------------------------- -->
