@@ -1,0 +1,22 @@
+<!-- --------------------------------------------------------------------- -->
+document.body.style.position
+$(document.body).offset()
+<!-- --------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------------- -->
+$('#mySelect2').select2({
+  dropdownParent: $('#myModal')
+});
+<!-- --------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------------- -->
+$('body').on('shown.bs.modal', '.modal', function() {
+  $(this).find('select').each(function() {
+    var dropdownParent = $(document.body);
+    if ($(this).parents('.modal.in:first').length !== 0)
+      dropdownParent = $(this).parents('.modal.in:first');
+    $(this).select2({
+      dropdownParent: dropdownParent
+      // ...
+    });
+  });
+});
+<!-- --------------------------------------------------------------------- -->

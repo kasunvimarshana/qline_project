@@ -151,10 +151,10 @@
                                                                     
                                                                     <!-- form-group -->
                                                                     <div class="form-group row col-12">
-                                                                        <label for="company" class="col-lg-3 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Operation</label>
+                                                                        <label for="operation" class="col-lg-3 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Operation</label>
                                                                         <div class="col">
                                                                             <!-- p class="form-control-static"></p -->
-                                                                            <select class="form-control form-control-md select2" id="company" name="company" value="{{ old('company') }}" data-placeholder="Operation" style="width: 100%;" required>
+                                                                            <select class="form-control form-control-md select2" id="operation" name="operation" value="{{ old('operation') }}" data-placeholder="Operation" style="width: 100%;" required>
 
                                                                                 <!-- @for($i =1; $i <= 5; $i++) -->
                                                                                 <option>Operation {{ $i }}</option>
@@ -168,27 +168,47 @@
                                                                         
                                                                     <!-- form-group -->
                                                                     <div class="form-group row col-12">
-                                                                        <label for="company" class="col-lg-3 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Defect</label>
+                                                                        <label for="defect" class="col-lg-3 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Defect</label>
                                                                         <div class="col">
                                                                             <!-- p class="form-control-static"></p -->
-                                                                            <div class="input-group">
-                                                                                <select class="form-control form-control-md select2" id="company" name="company" value="{{ old('company') }}" data-placeholder="Defect" aria-label="EMP No" aria-describedby="id_input_addon" required>
+                                                                            <select class="form-control form-control-md select2" id="defect" name="defect" value="{{ old('defect') }}" data-placeholder="Defect" style="width: 100%;" required>
 
-                                                                                    <!-- @for($i =1; $i <= 5; $i++) -->
-                                                                                    <option>Defect {{ $i }}</option>
-                                                                                    <!-- @endfor -->
+                                                                                <!-- @for($i =1; $i <= 5; $i++) -->
+                                                                                <option>Defect {{ $i }}</option>
+                                                                                <!-- @endfor -->
 
-                                                                                </select>
-                                                                                <div class="input-group-addon input-group-append">
-                                                                                    <!-- div class="input-group-text" -->
-                                                                                        <button type="button" class="btn btn btn-outline-danger" id="submit" aria-disabled="false">Add</button>
-                                                                                    <!-- /div -->
-                                                                                </div>
-                                                                            </div>
+                                                                            </select>
                                                                         </div>
                                                                         <!-- span id="form-control" class="help-block"></span -->
                                                                     </div>
                                                                     <!-- /.form-group -->
+                                                                        
+        <!-- --------test-script-------- -->
+        <script>
+        $(function(){
+            //$.fn.select2.defaults.set( "theme", "bootstrap4" );
+            
+            var form1 = $("#form1");
+            var operation = $("#defect");
+            /*operation = operation.select2({
+                //dropdownParent: form1
+            });*/
+            $("#defect").select2({
+                //theme: "bootstrap",
+                //theme: 'bootstrap4',
+                //width: 'auto',
+                //width: 'resolve', // need to override the changed default
+                //allowClear: true,
+                //placeholder: "Select",
+                //dropdownAutoWidth: true,
+                theme: 'bootstrap4',
+                placeholder: "Buscar y Selecionar",
+                dropdownAutoWidth : true,
+                width: 'auto'
+            });
+        });
+        </script>
+        <!-- --------test-script-------- -->
                                                                     
                                                                     <!-- row-part -->
                                                                     <!-- form-group -->

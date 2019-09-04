@@ -12,21 +12,23 @@
 <!-- font-awesome -->
 <script src="{!! asset('node_modules/@fortawesome/fontawesome-free/js/all.min.js') !!}"></script>
 <!-- bootbox -->
-<script src="{{ asset('node_modules/bootbox/dist/bootbox.min.js') }}"></script>
-<script src="{{ asset('node_modules/bootbox/dist/bootbox.locales.min.js') }}"></script>
+<script src="{!! asset('node_modules/bootbox/dist/bootbox.min.js') !!}"></script>
+<script src="{!! asset('node_modules/bootbox/dist/bootbox.locales.min.js') !!}"></script>
 <!-- Moment -->
-<script src="{{ asset('node_modules/admin-lte/bower_components/moment/min/moment.min.js') }}"></script>
+<script src="{!! asset('node_modules/moment/min/moment.min.js') !!}"></script>
 <!-- InputMask -->
-<script src="{{ asset('node_modules/admin-lte/plugins/input-mask/jquery.inputmask.js') }}"></script>
-<script src="{{ asset('node_modules/admin-lte/plugins/input-mask/jquery.inputmask.extensions.js') }}"></script>
+<!-- script src="{!! asset('node_modules/inputmask/dist/min/inputmask/inputmask.min.js') !!}"></script -->
+<!-- script src="{!! asset('node_modules/inputmask/dist/min/inputmask/jquery.inputmask.min.js') !!}"></script -->
+<!-- script src="{!! asset('node_modules/inputmask/dist/min/inputmask/inputmask.extensions.min.js') !!}"></script -->
+<script src="{!! asset('node_modules/inputmask/dist/jquery.inputmask.bundle.js') !!}"></script>
 <!-- Jquery Easy Loading -->
-<script src="{{ asset('node_modules/jquery-easy-loading/dist/jquery.loading.min.js') }}"></script>
+<script src="{!! asset('node_modules/jquery-easy-loading/dist/jquery.loading.min.js') !!}"></script>
 <!-- Bootstrap Validation -->
-<script src="{{ asset('node_modules/bootstrap-validator/dist/validator.min.js') }}"></script>
+<script src="{!! asset('node_modules/bootstrap-validator/dist/validator.min.js') !!}"></script>
 <!-- Jquery Easy Loading -->
-<script src="{{ asset('node_modules/jquery-easy-loading/dist/jquery.loading.min.js') }}"></script>
+<script src="{!! asset('node_modules/jquery-easy-loading/dist/jquery.loading.min.js') !!}"></script>
 <!-- Bootstrap Validation -->
-<script src="{{ asset('node_modules/bootstrap-validator/dist/validator.min.js') }}"></script>
+<script src="{!! asset('node_modules/bootstrap-validator/dist/validator.min.js') !!}"></script>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
