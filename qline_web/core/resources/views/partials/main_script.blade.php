@@ -35,4 +35,4 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 <!-- custom script -->
-<!-- script src="{{ asset('js/custom_script.js') }}"></script -->
+<script src="{{ asset('js/custom_script.js') }}"></script>

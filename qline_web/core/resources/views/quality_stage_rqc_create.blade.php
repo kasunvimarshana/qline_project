@@ -223,11 +223,11 @@
                                                                         
                                                                     <!-- form-group -->
                                                                     <div class="form-group row col-12">
-                                                                        <label for="operation3" class="col-lg-3 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Operation</label>
+                                                                        <label for="operation" class="col-lg-3 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Operation</label>
                                                                         <div class="col">
                                                                             <!-- p class="form-control-static"></p -->
                                                                             <div class="input-group">
-                                                                                <select class="form-control select2" id="operation3" name="operation3" value="{{ old('operation3') }}" data-placeholder="Operation" required>
+                                                                                <select class="form-control select2" id="operation" name="operation" value="{{ old('operation') }}" data-placeholder="Operation" required>
 
                                                                                     <!-- @for($i =1; $i <= 5; $i++) -->
                                                                                     <option>Operations {{ $i }}</option>
@@ -236,7 +236,7 @@
                                                                                 </select>
                                                                                 <div class="input-group-addon input-group-append">
                                                                                     <!-- div class="input-group-text" -->
-                                                                                        <button type="button" class="btn btn-outline-danger" id="submit" data-select2-open="id_select2" aria-disabled="false">
+                                                                                        <button type="button" class="btn btn-outline-danger" id="submit" data-select2-open="operation" aria-disabled="false">
                                                                                             <i class="fa fa-plus" aria-hidden="true"></i>
                                                                                         </button>
                                                                                     <!-- /div -->
@@ -262,7 +262,7 @@
                                                                                 </select>
                                                                                 <div class="input-group-addon input-group-append">
                                                                                     <!-- div class="input-group-text" -->
-                                                                                        <button type="button" class="btn btn-outline-danger" id="submit" data-select2-open="id_select2" aria-disabled="false">
+                                                                                        <button type="button" class="btn btn-outline-danger" id="submit" data-select2-open="defect" aria-disabled="false">
                                                                                             <i class="fa fa-plus" aria-hidden="true"></i>
                                                                                         </button>
                                                                                     <!-- /div -->
@@ -275,65 +275,48 @@
                                                                         
         <!-- --------test-script-------- -->
         <script>
-            // Function to dynamically set a new set of options to a select2 element
-            (function($) {
-                $.fn.setSelect2OptionDataAttribute = function(newData) {
-                    //newData = [];
-                    try{
-                        var origOptions = this.data('select2').options.options;
-                        origOptions.data = [];
-                        var newOptions = $.extend(origOptions, {data: newData});
-                        this.empty().select2(newOptions);
-                    }catch(e){
-                        console.log("error");
-                    }
-                    return this;
-                };
-            })(jQuery);
+            $(function(){
+                $("button[data-select2-open]").each(function() {
+                    var element = $( this );
+                    var select2_id = element.attr("data-select2-open");
+                    element.on("click", function(){
+                        var element_id = "#" + select2_id;
+                        $(element_id).select2('open');
+                    });
+                });
+            });
         </script>
+        <!-- --------test-script-------- -->
+        <!-- --------test-script-------- -->
+        <script>
+            $(function(){
+                //$.fn.select2.defaults.set( "theme", "bootstrap" );
+                $("#defect").select2({
+                    theme: 'bootstrap',
+                    placeholder: "Select",
+                    //disabled: false,
+                    //scrollAfterSelect: true,
+                    //closeOnSelect: false,
+                    //containerCssClass: ':all:',
+                    width: 'resolve',
+                    scrollAfterSelect: true,
+                    closeOnSelect: false,
+                    allowClear: true,
+                    data: []
+                });
+            });
+        </script>
+        <!-- --------test-script-------- -->
+        <!-- --------test-script-------- -->
         <script>
         $(function(){
-            //$.fn.select2.defaults.set( "theme", "bootstrap4" );
-            
-            var form1 = $("#form1");
-            var operation = $("#defect");
-            /*operation = operation.select2({
-                //dropdownParent: form1
-            });*/
-            $("#defect").select2({
-                //theme: "bootstrap",
-                //theme: 'bootstrap4',
-                //width: 'auto',
-                //width: 'resolve', // need to override the changed default
-                //allowClear: true,
-                //placeholder: "Select",
-                //dropdownAutoWidth: true,
-                //adaptContainerCssClass: '',
-                //adaptDropdownCssClass: '',
-                //containerCss: '',
-                //containerCssClass: ':all:',
-                //dropdownCss: '',
-                //dropdownCssClass: '',
-                //debug: false,
-                //disabled: false,
-                //scrollAfterSelect: true,
-                //closeOnSelect: false,
-                theme: 'bootstrap',
-                containerCssClass: ':all:',
-                //dropdownCssClass: 'bg-danger',
-                width: 'resolve',
-                scrollAfterSelect: true,
-                closeOnSelect: false,
-                allowClear: true
-            });
-            ///////////////////////////////////////////////////////////////////////
             function format(param) {
                 if (!param.id){
                     return param.text; // optgroup
                 }
                 
                 var tempOptionObject = "<div class='text-wrap text-break w-100'>"
-                + "<p>qqqqqqqqqqqq  weg reg ergehtr  r y yt  y try  uy u65u 65u65 u 65u 65 u65u65u 65u 65u 65 u65 u65u65u 65 u65 u65 u6 u65 u 65u 65u 65u 6u 6</p>"
+                + "<p>" + param.text + "</p>"
                 + "</div>";
                 
                 var optionObject = $(tempOptionObject);
@@ -365,31 +348,18 @@
                 }
             ];
             
-            $("#operation3").select2({
-                //theme: "bootstrap",
-                //theme: 'bootstrap4',
-                //width: 'auto',
-                //width: 'resolve', // need to override the changed default
-                //allowClear: true,
-                //placeholder: "Select",
-                //dropdownAutoWidth: true,
-                //adaptContainerCssClass: '',
-                //adaptDropdownCssClass: '',
-                //containerCss: '',
-                //containerCssClass: ':all:',
-                //dropdownCss: '',
-                //dropdownCssClass: '',
-                //debug: false,
+            $("#operation").select2({
+                theme: 'bootstrap',
+                placeholder: "Select",
                 //disabled: false,
                 //scrollAfterSelect: true,
                 //closeOnSelect: false,
-                theme: 'bootstrap',
                 //containerCssClass: ':all:',
-                //dropdownCssClass: 'bg-danger',
-                //width: 'resolve',
-                //scrollAfterSelect: true,
-                //closeOnSelect: false,
+                width: 'resolve',
+                scrollAfterSelect: true,
+                closeOnSelect: true,
                 allowClear: true,
+                
                 formatResult: format,
                 formatSelection: format,
                 escapeMarkup: function(markup) {
@@ -407,7 +377,6 @@
                 },
                 data: dataArray
             }).setSelect2OptionDataAttribute(dataArray);
-            ///////////////////////////////////////////////////////////////////////
         });
         </script>
         <!-- --------test-script-------- -->
