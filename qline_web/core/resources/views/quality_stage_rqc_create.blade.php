@@ -2,6 +2,51 @@
 
 @section('section_stylesheet_optional')
     @parent
+<!-- style>
+    .select2-container .select2-selection--multiple .select2-selection__choice {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+    }
+</style -->
+<!-- style>
+    /*select2: fixes word text wrap issues on long select values*/
+    li.select2-selection__choice {
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis; /*use this if you want to shorten*/
+    }
+    ul.select2-selection__rendered {
+        padding-right: 12px !important; /*overrides select2 style*/
+    }
+</style -->
+<!-- style>
+    .select2-selection--single {
+        height: 100% !important;
+    }
+    .select2-container .wrap.select2-selection--single .select2-selection__rendered{
+        word-wrap: break-word !important;
+        text-overflow: inherit !important;
+        white-space: normal !important;
+    }
+</style>
+<style>
+    ul.select2-choices {
+        padding-right: 30px !important;
+    }
+
+    ul.select2-choices:after {
+        content: "";
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        border-top: 5px solid #333;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+    }
+</style -->
 @endsection
 
 @section('section_script_optional')
@@ -154,7 +199,7 @@
                                                                         <label for="operation" class="col-lg-3 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Operation</label>
                                                                         <div class="col">
                                                                             <!-- p class="form-control-static"></p -->
-                                                                            <select class="form-control form-control-md select2" id="operation" name="operation" value="{{ old('operation') }}" data-placeholder="Operation" style="width: 100%;" required>
+                                                                            <select class="form-control select2" id="operation" name="operation" value="{{ old('operation') }}" data-placeholder="Operation" aria-hidden="true" style="width: 100%;" multiple="multiple" required>
 
                                                                                 <!-- @for($i =1; $i <= 5; $i++) -->
                                                                                 <!-- option>Operation {{ $i }}</option -->
@@ -171,13 +216,22 @@
                                                                         <label for="defect" class="col-lg-3 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Defect</label>
                                                                         <div class="col">
                                                                             <!-- p class="form-control-static"></p -->
-                                                                            <select class="form-control form-control-md select2" id="defect" name="defect" value="{{ old('defect') }}" data-placeholder="Defect" style="width: 100%;" required>
+                                                                            <div class="input-group">
+                                                                                <select class="form-control select2 select2-multiple select2-allow-clear" id="defect" name="defect" value="{{ old('defect') }}" data-placeholder="Defect" aria-hidden="true" multiple="multiple" required>
 
-                                                                                <!-- @for($i =1; $i <= 5; $i++) -->
-                                                                                <option>Defect {{ $i }}</option>
-                                                                                <!-- @endfor -->
+                                                                                    <!-- @for($i =1; $i <= 5; $i++) -->
+                                                                                    <option>Defect {{ $i }}</option>
+                                                                                    <!-- @endfor -->
 
-                                                                            </select>
+                                                                                </select>
+                                                                                <div class="input-group-addon input-group-append">
+                                                                                    <!-- div class="input-group-text" -->
+                                                                                        <button type="button" class="btn btn-outline-danger" id="submit" data-select2-open="id_select2" aria-disabled="false">
+                                                                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                                                                        </button>
+                                                                                    <!-- /div -->
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                         <!-- span id="form-control" class="help-block"></span -->
                                                                     </div>
@@ -214,53 +268,95 @@
                 //allowClear: true,
                 //placeholder: "Select",
                 //dropdownAutoWidth: true,
-                theme: 'bootstrap4',
-                placeholder: "Buscar y Selecionar",
-                dropdownAutoWidth : true,
-                width: 'auto'
+                //adaptContainerCssClass: '',
+                //adaptDropdownCssClass: '',
+                //containerCss: '',
+                //containerCssClass: ':all:',
+                //dropdownCss: '',
+                //dropdownCssClass: '',
+                //debug: false,
+                //disabled: false,
+                //scrollAfterSelect: true,
+                //closeOnSelect: false,
+                theme: 'bootstrap',
+                containerCssClass: ':all:',
+                width: 'resolve',
+                scrollAfterSelect: true,
+                closeOnSelect: false,
+                allowClear: true
             });
             //////////////////////////////////////////////////////////////////////
-            function format(param) {console.log("p");
+            function format(param) {
                 if (!param.id){
                     return param.text; // optgroup
                 }
-                return "<img class='flag' src='images/flags/" + param.id.toLowerCase() + ".png'/>" + param.text;
+                //var $currency = $('<span class="glyphicon glyphicon-' + currency.element.value + '">' + currency.text + '</span>');
+                //return "<img class='flag' src='images/flags/" + param.id.toLowerCase() + ".png'/>" + param.text;
+                
+                
+                /*var tempOptionObject = "<div class='alert alert-success' role='alert'>"
+                + "<h4 class='alert-heading'>Well done!</h4>"
+                + "<p> test </p>"
+                + "<hr/>"
+                + "<p class='mb-0'>Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>"
+                + "</div>";*/
+                
+                //var tempOptionObject = "<h1 class='text-wrap text-break'>qqqqqqqqqqqq  weg reg ergehtr  r y yt  y try  uy u65u 65u65 u 65u 65 u65u65u 65u 65u 65 u65 u65u65u 65 u65 u65 u6 u65 u 65u 65u 65u 6u 6</h1>"
+                
+                var tempOptionObject = "<div class='text-wrap text-break w-100'>"
+                + "<p>qqqqqqqqqqqq  weg reg ergehtr  r y yt  y try  uy u65u 65u65 u 65u 65 u65u65u 65u 65u 65 u65 u65u65u 65 u65 u65 u6 u65 u 65u 65u 65u 6u 6</p>"
+                + "</div>";
+                
+                var optionObject = $(tempOptionObject);
+                return optionObject;
             }
             
             var dataArray = [
                 {
-                    //"id": 1,
-                    "text": "Operation 1"
+                    "id": 1,
+                    "text": "Operation 1",
+                    "selected": false
                 },{
                     "id": 2,
                     "text": "Operation 2",
-                    "selected": true
+                    "selected": false
                 },{
                     "id": 3,
                     "text": "Operation 3",
-                    "disabled": true
+                    "disabled": false
                 },{
-                    "id": 3,
+                    "id": 4,
                     "text": "Operation 4",
-                    "disabled": true
+                    "disabled": false
                 },{
-                    "id": 3,
+                    "id": 5,
                     "text": "Operation 5",
-                    "disabled": true
+                    "disabled": false
                 }
             ];
             
             var selectObject = $("#operation").select2({
-                theme: 'bootstrap4',
+                theme: 'bootstrap',
                 placeholder: "Select",
-                dropdownAutoWidth : true,
+                dropdownAutoWidth : false,
+                dropdownCssClass : 'custom-dropdown-1',
                 width: 'auto',
                 formatResult: format,
                 formatSelection: format,
-                escapeMarkup: function(m) {
-                    return m; 
+                escapeMarkup: function(markup) {
+                    return markup;
                 },
-                data: []
+                templateResult: function(data) {
+                    //console.log(data);
+                    //return data.text;
+                    return format(data);
+                },
+                templateSelection: function(data) {
+                    //console.log(data);
+                    //return data.text;
+                    return format(data);
+                },
+                data: dataArray
             }).setSelect2OptionDataAttribute(dataArray);
             //////////////////////////////////////////////////////////////////////
         });
@@ -352,7 +448,7 @@
                                                                             <label for="grade" class="col-lg-3 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-left">Operator Grade</label>
                                                                             <div class="col">
                                                                                 <!-- p class="form-control-static"></p -->
-                                                                                <input type="text" class="form-control form-control-md" id="grade" name="grade" placeholder="Grade" value="{{ old('grade') }}" disabled/>
+                                                                                <input type="text" class="form-control form-control-md" id="grade" name="grade" placeholder="Operator Grade" value="{{ old('grade') }}" disabled/>
                                                                             </div>
                                                                             <!-- span id="form-control" class="help-block"></span -->
                                                                         </div>

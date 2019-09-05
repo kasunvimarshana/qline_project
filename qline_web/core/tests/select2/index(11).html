@@ -1,0 +1,13 @@
+var data = {
+  "id": 1,
+  "text": "Tyto alba",
+  "genus": "Tyto",
+  "species": "alba"
+};
+
+$('#mySelect2').trigger({
+    type: 'select2:select',
+    params: {
+        data: data
+    }
+});

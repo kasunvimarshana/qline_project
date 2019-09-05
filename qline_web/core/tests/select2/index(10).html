@@ -1,0 +1,74 @@
+<!-- -------------------------------------------------------------------------- -->
+<h4>Select2 - Templating</h4>
+<select class="templatingSelect2">
+    <option value=""></option>
+    <option value="usd">USD</option>
+    <option value="euro">Euro</option>
+    <option value="gbp">Pound</option>
+</select>
+
+<script>
+    $(document).ready(function(){
+        function setCurrency (currency) {
+            if (!currency.id) { return currency.text; }
+            var $currency = $('<span class="glyphicon glyphicon-' + currency.element.value + '">' + currency.text + '</span>');
+            return $currency;
+        };
+        $(".templatingSelect2").select2({
+            placeholder: "What currency do you use?", //placeholder
+            templateResult: setCurrency,
+            templateSelection: setCurrency
+        });
+    })
+</script>
+<!-- -------------------------------------------------------------------------- -->
+<!-- -------------------------------------------------------------------------- -->
+<script>
+    function formatState (state) {
+        if (!state.id) {
+            return state.text;
+        }
+
+        var baseUrl = "/user/pages/images/flags";
+        var $state = $(
+            '<span><img class="img-flag" /> <span></span></span>'
+        );
+
+        // Use .text() instead of HTML string concatenation to avoid script injection issues
+        $state.find("span").text(state.text);
+        $state.find("img").attr("src", baseUrl + "/" + state.element.value.toLowerCase() + ".png");
+
+        return $state;
+    };
+
+    $(".js-example-templating").select2({
+        templateSelection: formatState
+    });
+</script>
+<!-- -------------------------------------------------------------------------- -->
+<!-- -------------------------------------------------------------------------- -->
+var data = [{
+  id: 0,
+  text: '<div style="color:green">enhancement</div>',
+  html: '<div style="color:green">enhancement</div><div><b>Select2</b> supports custom themes using the theme option so you can style Select2 to match the rest of your application.</div>',
+  title: 'enchancement'
+}, {
+  id: 1,
+  text: '<div style="color:red">bug</div>',
+  html: '<div style="color:red">bug</div><div><small>This is some small text on a new line</small></div>',
+  title: 'bug'
+}];
+
+$("select").select2({
+  data: data,
+  escapeMarkup: function(markup) {
+    return markup;
+  },
+  templateResult: function(data) {
+    return data.html;
+  },
+  templateSelection: function(data) {
+    return data.text;
+  }
+});
+<!-- -------------------------------------------------------------------------- -->

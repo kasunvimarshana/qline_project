@@ -2,7 +2,8 @@
 <!-- Select2 -->
 <link rel="stylesheet" href="{!! asset('node_modules/select2/dist/css/select2.min.css') !!}" />
 <!-- link rel="stylesheet" href="{!! asset('node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css') !!}" / -->
-<link rel="stylesheet" href="{!! asset('node_modules/select2-bootstrap4-theme/dist/select2-bootstrap4.min.css') !!}" />
+<!-- link rel="stylesheet" href="{!! asset('node_modules/select2-bootstrap4-theme/dist/select2-bootstrap4.min.css') !!}" / -->
+<link rel="stylesheet" href="{!! asset('node_modules/select2-theme-bootstrap4/dist/select2-bootstrap.min.css') !!}" />
 <!-- DataTable -->
 <link rel="stylesheet" href="{!! asset('node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css') !!}" />
 <link rel="stylesheet" href="{!! asset('node_modules/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') !!}" />
