@@ -21,17 +21,23 @@
         padding-right: 12px !important; /*overrides select2 style*/
     }
 </style -->
-<!-- style>
-    .select2-selection--single {
-        height: 100% !important;
+<style>
+    .select2-selection{
+        width: 100%;
     }
-    .select2-container .wrap.select2-selection--single .select2-selection__rendered{
+    .select2-selection, .select2-selection--single{
+        height: 100% !important;
+        max-width: 100% !important;
+    }
+    .select2-container .wrap.select2-selection--single .select2-selection__rendered .select2-selection--multiple .select2-selection__choice{
+        white-space: normal !important;
+        word-break: break-word!important;
+        overflow-wrap: break-word!important;
         word-wrap: break-word !important;
         text-overflow: inherit !important;
-        white-space: normal !important;
     }
 </style>
-<style>
+<!-- style>
     ul.select2-choices {
         padding-right: 30px !important;
     }
@@ -47,6 +53,27 @@
         border-right: 5px solid transparent;
     }
 </style -->
+<style>
+    .select2-results__option{
+        background-color: rgba(229, 229, 229, 0.5);
+    }
+    .select2-results__option--highlighted{
+        background-color: rgba(229, 229, 229, 1);
+    }
+    .select2-results__option[aria-selected="true"]{
+        background-color: rgba(255, 129, 129, 0.5) !important;
+    }
+    .select2-results__option--highlighted[aria-selected="true"]{
+        background-color: rgba(255, 129, 129, 1) !important;
+    }
+</style>
+<style>
+    .select2-selection__rendered > .select2-selection__choice{
+        white-space: normal !important;
+        word-break: break-word!important;
+        overflow-wrap: break-word!important;
+    }
+</style>
 @endsection
 
 @section('section_script_optional')
@@ -193,19 +220,28 @@
                                                                         <!-- span id="form-control" class="help-block"></span -->
                                                                     </div>
                                                                     <!-- /.form-group -->
-                                                                    
+                                                                        
                                                                     <!-- form-group -->
                                                                     <div class="form-group row col-12">
-                                                                        <label for="operation" class="col-lg-3 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Operation</label>
+                                                                        <label for="operation3" class="col-lg-3 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">Operation</label>
                                                                         <div class="col">
                                                                             <!-- p class="form-control-static"></p -->
-                                                                            <select class="form-control select2" id="operation" name="operation" value="{{ old('operation') }}" data-placeholder="Operation" aria-hidden="true" style="width: 100%;" multiple="multiple" required>
+                                                                            <div class="input-group">
+                                                                                <select class="form-control select2" id="operation3" name="operation3" value="{{ old('operation3') }}" data-placeholder="Operation" required>
 
-                                                                                <!-- @for($i =1; $i <= 5; $i++) -->
-                                                                                <!-- option>Operation {{ $i }}</option -->
-                                                                                <!-- @endfor -->
+                                                                                    <!-- @for($i =1; $i <= 5; $i++) -->
+                                                                                    <option>Operations {{ $i }}</option>
+                                                                                    <!-- @endfor -->
 
-                                                                            </select>
+                                                                                </select>
+                                                                                <div class="input-group-addon input-group-append">
+                                                                                    <!-- div class="input-group-text" -->
+                                                                                        <button type="button" class="btn btn-outline-danger" id="submit" data-select2-open="id_select2" aria-disabled="false">
+                                                                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                                                                        </button>
+                                                                                    <!-- /div -->
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                         <!-- span id="form-control" class="help-block"></span -->
                                                                     </div>
@@ -243,10 +279,14 @@
             (function($) {
                 $.fn.setSelect2OptionDataAttribute = function(newData) {
                     //newData = [];
-                    var origOptions = this.data('select2').options.options;
-                    origOptions.data = [];
-                    var newOptions = $.extend(origOptions, {data: newData});
-		            this.empty().select2(newOptions);
+                    try{
+                        var origOptions = this.data('select2').options.options;
+                        origOptions.data = [];
+                        var newOptions = $.extend(origOptions, {data: newData});
+                        this.empty().select2(newOptions);
+                    }catch(e){
+                        console.log("error");
+                    }
                     return this;
                 };
             })(jQuery);
@@ -280,28 +320,17 @@
                 //closeOnSelect: false,
                 theme: 'bootstrap',
                 containerCssClass: ':all:',
+                //dropdownCssClass: 'bg-danger',
                 width: 'resolve',
                 scrollAfterSelect: true,
                 closeOnSelect: false,
                 allowClear: true
             });
-            //////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////
             function format(param) {
                 if (!param.id){
                     return param.text; // optgroup
                 }
-                //var $currency = $('<span class="glyphicon glyphicon-' + currency.element.value + '">' + currency.text + '</span>');
-                //return "<img class='flag' src='images/flags/" + param.id.toLowerCase() + ".png'/>" + param.text;
-                
-                
-                /*var tempOptionObject = "<div class='alert alert-success' role='alert'>"
-                + "<h4 class='alert-heading'>Well done!</h4>"
-                + "<p> test </p>"
-                + "<hr/>"
-                + "<p class='mb-0'>Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>"
-                + "</div>";*/
-                
-                //var tempOptionObject = "<h1 class='text-wrap text-break'>qqqqqqqqqqqq  weg reg ergehtr  r y yt  y try  uy u65u 65u65 u 65u 65 u65u65u 65u 65u 65 u65 u65u65u 65 u65 u65 u6 u65 u 65u 65u 65u 6u 6</h1>"
                 
                 var tempOptionObject = "<div class='text-wrap text-break w-100'>"
                 + "<p>qqqqqqqqqqqq  weg reg ergehtr  r y yt  y try  uy u65u 65u65 u 65u 65 u65u65u 65u 65u 65 u65 u65u65u 65 u65 u65 u6 u65 u 65u 65u 65u 6u 6</p>"
@@ -310,6 +339,7 @@
                 var optionObject = $(tempOptionObject);
                 return optionObject;
             }
+            
             
             var dataArray = [
                 {
@@ -335,12 +365,31 @@
                 }
             ];
             
-            var selectObject = $("#operation").select2({
+            $("#operation3").select2({
+                //theme: "bootstrap",
+                //theme: 'bootstrap4',
+                //width: 'auto',
+                //width: 'resolve', // need to override the changed default
+                //allowClear: true,
+                //placeholder: "Select",
+                //dropdownAutoWidth: true,
+                //adaptContainerCssClass: '',
+                //adaptDropdownCssClass: '',
+                //containerCss: '',
+                //containerCssClass: ':all:',
+                //dropdownCss: '',
+                //dropdownCssClass: '',
+                //debug: false,
+                //disabled: false,
+                //scrollAfterSelect: true,
+                //closeOnSelect: false,
                 theme: 'bootstrap',
-                placeholder: "Select",
-                dropdownAutoWidth : false,
-                dropdownCssClass : 'custom-dropdown-1',
-                width: 'auto',
+                //containerCssClass: ':all:',
+                //dropdownCssClass: 'bg-danger',
+                //width: 'resolve',
+                //scrollAfterSelect: true,
+                //closeOnSelect: false,
+                allowClear: true,
                 formatResult: format,
                 formatSelection: format,
                 escapeMarkup: function(markup) {
@@ -358,7 +407,7 @@
                 },
                 data: dataArray
             }).setSelect2OptionDataAttribute(dataArray);
-            //////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////
         });
         </script>
         <!-- --------test-script-------- -->
