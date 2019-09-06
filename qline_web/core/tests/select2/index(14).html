@@ -1,0 +1,20 @@
+<script>
+    $(function(){
+        $("button[data-select2-open-control]").each(function() {
+            var element = $( this );
+            var select2_id = element.attr("data-select2-open-control");
+            element.on("click", function(){
+                var element_id = "#" + select2_id;
+                //console.log( $(element_id).data('select2').isOpen() );
+                //$(element_id).select2('isOpen');
+                //$(element_id).hasClass("select2-hidden-accessible");
+                //$(element_id).data('select2').toggleDropdown();
+                if( $(element_id).select2('isOpen') ){
+                    $(element_id).select2('close');
+                }else{
+                    $(element_id).select2('open');
+                }
+            });
+        });
+    });
+</script>

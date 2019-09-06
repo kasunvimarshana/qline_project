@@ -236,7 +236,7 @@
                                                                                 </select>
                                                                                 <div class="input-group-addon input-group-append">
                                                                                     <!-- div class="input-group-text" -->
-                                                                                        <button type="button" class="btn btn-outline-danger" id="submit" data-select2-open="operation" aria-disabled="false">
+                                                                                        <button type="button" class="btn btn-outline-danger" id="submit" data-select2-open-control="operation" aria-disabled="false">
                                                                                             <i class="fa fa-plus" aria-hidden="true"></i>
                                                                                         </button>
                                                                                     <!-- /div -->
@@ -262,7 +262,7 @@
                                                                                 </select>
                                                                                 <div class="input-group-addon input-group-append">
                                                                                     <!-- div class="input-group-text" -->
-                                                                                        <button type="button" class="btn btn-outline-danger" id="submit" data-select2-open="defect" aria-disabled="false">
+                                                                                        <button type="button" class="btn btn-outline-danger" id="submit" data-select2-open-control="defect" aria-disabled="false">
                                                                                             <i class="fa fa-plus" aria-hidden="true"></i>
                                                                                         </button>
                                                                                     <!-- /div -->
@@ -276,12 +276,20 @@
         <!-- --------test-script-------- -->
         <script>
             $(function(){
-                $("button[data-select2-open]").each(function() {
+                $("button[data-select2-open-control]").each(function() {
                     var element = $( this );
-                    var select2_id = element.attr("data-select2-open");
+                    var select2_id = element.attr("data-select2-open-control");
                     element.on("click", function(){
                         var element_id = "#" + select2_id;
-                        $(element_id).select2('open');
+                        //console.log( $(element_id).data('select2').isOpen() );
+                        //$(element_id).select2('isOpen');
+                        //$(element_id).hasClass("select2-hidden-accessible");
+                        //$(element_id).data('select2').toggleDropdown();
+                        if( $(element_id).select2('isOpen') ){
+                            $(element_id).select2('close');
+                        }else{
+                            $(element_id).select2('open');
+                        }
                     });
                 });
             });
