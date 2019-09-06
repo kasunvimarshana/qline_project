@@ -203,7 +203,7 @@
                 <form action="{!! route('home') !!}" method="POST" class="col col-sm-12 p-0 m-0" autocomplete="off" id="form1" enctype="multipart/form-data">
                     @csrf
                     <!-- form-group-row -->
-                    <div class="row col">
+                    <div class="row">
 
                         <!-- container -->
                         <div class="container mt-3 mb-3">
@@ -214,42 +214,104 @@
                         <!-- form-group-col -->
                         <div class="col col-sm-12 row p-0 m-0">
                             <!-- -->
+                            <!-- ------------------------------------------------------------------------- -->
                             <!-- form-group -->
-                            <div class="form-group row col col-12">
-                                <label for="operaion" class="col col-lg-12 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-left">Operation /Area /POM</label>
+                            <div class="form-group col col-12">
+                                <label for="operation" class="col col-lg-12 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-left">Operation /Area /POM</label>
                                 <div class="col col-lg-12">
                                     <!-- p class="form-control-static"></p -->
-                                    <select class="form-control form-control-md select2" id="operaion" name="operaion" value="{{ old('operaion') }}" data-placeholder="Operaion" style="width: 100%;" required>
+                                    <div class="input-group">
+                                        <div class="input-group-addon input-group-prepend">
+                                            <!-- div class="input-group-text" -->
+                                                <button type="button" class="btn btn-outline-danger" id="submit" data-select2-open-control="operation" aria-disabled="false">
+                                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                                </button>
+                                            <!-- /div -->
+                                        </div>
+                                        <select class="form-control select2" id="operation" name="operation" value="{{ old('operation') }}" data-placeholder="Operation" required>
 
-                                        <!-- @for($i =1; $i <= 5; $i++) -->
-                                        <option>Operaion {{ $i }}</option>
-                                        <!-- @endfor -->
+                                            <!-- @for($i =1; $i <= 5; $i++) -->
+                                            <option>Operations {{ $i }}</option>
+                                            <!-- @endfor -->
 
-                                    </select>
+                                        </select>
+                                    </div>
                                 </div>
                                 <!-- span id="form-control" class="help-block"></span -->
                             </div>
                             <!-- /.form-group -->
-                            
+                            <!-- ------------------------------------------------------------------------- -->
+                            <!-- ------------------------------------------------------------------------- -->
                             <!-- form-group -->
-                            <div class="form-group row col col-12">
+                            <div class="form-group col col-12">
                                 <label for="defect_category" class="col col-lg-12 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-left">Defect Category</label>
                                 <div class="col col-lg-12">
                                     <!-- p class="form-control-static"></p -->
-                                    <select class="form-control form-control-md select2" id="defect_category" name="defect_category" value="{{ old('defect_category') }}" data-placeholder="Defect Category" style="width: 100%;" required>
+                                    <div class="input-group">
+                                        <div class="input-group-addon input-group-prepend">
+                                            <!-- div class="input-group-text" -->
+                                                <button type="button" class="btn btn-outline-danger" id="submit" data-select2-open-control="defect_category" aria-disabled="false">
+                                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                                </button>
+                                            <!-- /div -->
+                                        </div>
+                                        <select class="form-control select2 select2-multiple select2-allow-clear" id="defect_category" name="defect_category" value="{{ old('defect_category') }}" data-placeholder="Defect Category" aria-hidden="true" multiple="multiple" required>
 
-                                        <!-- @for($i =1; $i <= 5; $i++) -->
-                                        <option>Defect Category {{ $i }}</option>
-                                        <!-- @endfor -->
+                                            <!-- @for($i =1; $i <= 5; $i++) -->
+                                            <option>Defect Category {{ $i }}</option>
+                                            <!-- @endfor -->
 
-                                    </select>
+                                        </select>
+                                        <div class="input-group-addon input-group-append">
+                                            <!-- div class="input-group-text" -->
+                                                <button type="button" class="btn btn-outline-danger" id="submit" data-select2-close-control="defect_category" aria-disabled="false">
+                                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                                </button>
+                                            <!-- /div -->
+                                        </div>
+                                    </div>
                                 </div>
                                 <!-- span id="form-control" class="help-block"></span -->
                             </div>
                             <!-- /.form-group -->
+                            <!-- ------------------------------------------------------------------------- -->
+                            <!-- ------------------------------------------------------------------------- -->
+                            <!-- form-group -->
+                            <div class="form-group col col-12">
+                                <label for="defect" class="col col-lg-12 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-left">Defect</label>
+                                <div class="col col-lg-12">
+                                    <!-- p class="form-control-static"></p -->
+                                    <div class="input-group">
+                                        <div class="input-group-addon input-group-prepend">
+                                            <!-- div class="input-group-text" -->
+                                                <button type="button" class="btn btn-outline-danger" id="submit" data-select2-open-control="defect" aria-disabled="false">
+                                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                                </button>
+                                            <!-- /div -->
+                                        </div>
+                                        <select class="form-control select2 select2-multiple select2-allow-clear" id="defect" name="defect" value="{{ old('defect') }}" data-placeholder="Defect" aria-hidden="true" multiple="multiple" required>
+
+                                            <!-- @for($i =1; $i <= 5; $i++) -->
+                                            <option>Defect {{ $i }}</option>
+                                            <!-- @endfor -->
+
+                                        </select>
+                                        <div class="input-group-addon input-group-append">
+                                            <!-- div class="input-group-text" -->
+                                                <button type="button" class="btn btn-outline-danger" id="submit" data-select2-close-control="defect" aria-disabled="false">
+                                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                                </button>
+                                            <!-- /div -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- span id="form-control" class="help-block"></span -->
+                            </div>
+                            <!-- /.form-group -->
+                            <!-- ------------------------------------------------------------------------- -->
                             
                             <!-- form-group -->
-                            <div class="form-group row col col-12">
+                            <div class="form-group col col-12">
                                 <label for="defect" class="col col-lg-12 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-left">Defect</label>
                                 <div class="col col-lg-12">
                                     <!-- p class="form-control-static"></p -->
@@ -266,7 +328,7 @@
                             <!-- /.form-group -->
 
                             <!-- form-group-row -->
-                            <div class="row col col-12 w-100">
+                            <div class="col col-12 w-100">
                                 <!-- -->
                                 <!-- form-group -->
                                 <div class="form-group row col-sm-12">

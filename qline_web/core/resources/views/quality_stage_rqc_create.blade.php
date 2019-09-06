@@ -2,82 +2,173 @@
 
 @section('section_stylesheet_optional')
     @parent
-<!-- style>
-    .select2-container .select2-selection--multiple .select2-selection__choice {
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-        white-space: normal !important;
-        word-wrap: break-word !important;
-    }
-</style -->
-<!-- style>
-    /*select2: fixes word text wrap issues on long select values*/
-    li.select2-selection__choice {
-        max-width: 100%;
-        overflow: hidden;
-        text-overflow: ellipsis; /*use this if you want to shorten*/
-    }
-    ul.select2-selection__rendered {
-        padding-right: 12px !important; /*overrides select2 style*/
-    }
-</style -->
-<style>
-    .select2-selection{
-        width: 100%;
-    }
-    .select2-selection, .select2-selection--single{
-        height: 100% !important;
-        max-width: 100% !important;
-    }
-    .select2-container .wrap.select2-selection--single .select2-selection__rendered .select2-selection--multiple .select2-selection__choice{
-        white-space: normal !important;
-        word-break: break-word!important;
-        overflow-wrap: break-word!important;
-        word-wrap: break-word !important;
-        text-overflow: inherit !important;
-    }
-</style>
-<!-- style>
-    ul.select2-choices {
-        padding-right: 30px !important;
-    }
-
-    ul.select2-choices:after {
-        content: "";
-        position: absolute;
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        border-top: 5px solid #333;
-        border-left: 5px solid transparent;
-        border-right: 5px solid transparent;
-    }
-</style -->
-<style>
-    .select2-results__option{
-        background-color: rgba(229, 229, 229, 0.5);
-    }
-    .select2-results__option--highlighted{
-        background-color: rgba(229, 229, 229, 1);
-    }
-    .select2-results__option[aria-selected="true"]{
-        background-color: rgba(255, 129, 129, 0.5) !important;
-    }
-    .select2-results__option--highlighted[aria-selected="true"]{
-        background-color: rgba(255, 129, 129, 1) !important;
-    }
-</style>
-<style>
-    .select2-selection__rendered > .select2-selection__choice{
-        white-space: normal !important;
-        word-break: break-word!important;
-        overflow-wrap: break-word!important;
-    }
-</style>
+    <style type="text/css" href="{!! asset('css/custom_style_select2_1.css') !!}"></style>
 @endsection
 
 @section('section_script_optional')
     @parent
+    <!-- -->
+    <!-- --------test-script-------- -->
+    <script>
+        $(function(){
+            $("button[data-select2-open-control]").each(function() {
+                var element = $( this );
+                var select2_id = element.attr("data-select2-open-control");
+                element.on("click", function(){
+                    var element_id = "#" + select2_id;
+                    //console.log( $(element_id).data('select2').isOpen() );
+                    //$(element_id).select2('isOpen');
+                    //$(element_id).hasClass("select2-hidden-accessible");
+                    //$(element_id).data('select2').toggleDropdown();
+                    if( (!$(element_id).select2('isOpen')) ){
+                        $(element_id).select2('open');
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(function(){
+            $("button[data-select2-close-control]").each(function() {
+                var element = $( this );
+                var select2_id = element.attr("data-select2-close-control");
+                element.on("click", function(){
+                    var element_id = "#" + select2_id;
+                    //console.log( $(element_id).data('select2').isOpen() );
+                    //$(element_id).select2('isOpen');
+                    //$(element_id).hasClass("select2-hidden-accessible");
+                    //$(element_id).data('select2').toggleDropdown();
+                    if( ($(element_id).select2('isOpen')) ){
+                        $(element_id).select2('close');
+                    }
+                });
+            });
+        });
+    </script>
+    <!-- --------test-script-------- -->
+    <!-- --------test-script-------- -->
+    <script>
+        $(function(){
+            function format(param) {
+                if (!param.id){
+                    return param.text; // optgroup
+                }
+
+                var tempOptionObject = "<div class='text-wrap text-break w-100'>"
+                + "<p>" + param.text + "</p>"
+                + "</div>";
+
+                var optionObject = $(tempOptionObject);
+                return optionObject;
+            }
+
+            //$.fn.select2.defaults.set( "theme", "bootstrap" );
+            $("#defect").select2({
+            theme: 'bootstrap',
+            placeholder: "Select",
+            //disabled: false,
+            //scrollAfterSelect: true,
+            //closeOnSelect: false,
+            //containerCssClass: ':all:',
+            width: 'resolve',
+            scrollAfterSelect: true,
+            closeOnSelect: false,
+            allowClear: true,
+
+            formatResult: format,
+            formatSelection: format,
+            escapeMarkup: function(markup) {
+                return markup;
+            },
+            templateResult: function(data) {
+                //console.log(data);
+                //return data.text;
+                return format(data);
+            },
+            templateSelection: function(data) {
+                //console.log(data);
+                //return data.text;
+                return format(data);
+            },
+            data: []
+            });
+        });
+    </script>
+    <!-- --------test-script-------- -->
+    <!-- --------test-script-------- -->
+    <script>
+        $(function(){
+            function format(param) {
+                if (!param.id){
+                    return param.text; // optgroup
+                }
+
+                var tempOptionObject = "<div class='text-wrap text-break w-100'>"
+                + "<p>" + param.text + "</p>"
+                + "</div>";
+
+                var optionObject = $(tempOptionObject);
+                return optionObject;
+            }
+
+
+            var dataArray = [
+                {
+                    "id": 1,
+                    "text": "Operation 1",
+                    "selected": false
+                },{
+                    "id": 2,
+                    "text": "Operation 2",
+                    "selected": false
+                },{
+                    "id": 3,
+                    "text": "Operation 3",
+                    "disabled": false
+                },{
+                    "id": 4,
+                    "text": "Operation 4",
+                    "disabled": false
+                },{
+                    "id": 5,
+                    "text": "Operation 5",
+                    "disabled": false
+                }
+            ];
+
+            $("#operation").select2({
+                theme: 'bootstrap',
+                placeholder: "Select",
+                //disabled: false,
+                //scrollAfterSelect: true,
+                //closeOnSelect: false,
+                //containerCssClass: ':all:',
+                width: 'resolve',
+                scrollAfterSelect: true,
+                closeOnSelect: true,
+                allowClear: true,
+
+                formatResult: format,
+                formatSelection: format,
+                escapeMarkup: function(markup) {
+                    return markup;
+                },
+                templateResult: function(data) {
+                    //console.log(data);
+                    //return data.text;
+                    return format(data);
+                },
+                templateSelection: function(data) {
+                    //console.log(data);
+                    //return data.text;
+                    return format(data);
+                },
+                data: dataArray
+            }).setSelect2OptionDataAttribute(dataArray);
+        });
+    </script>
+    <!-- --------test-script-------- -->
+    <!-- -->
 @endsection
 
 @section('contant')
@@ -279,167 +370,6 @@
                                                                         <!-- span id="form-control" class="help-block"></span -->
                                                                     </div>
                                                                     <!-- /.form-group -->
-                                                                        
-        <!-- --------test-script-------- -->
-        <script>
-            $(function(){
-                $("button[data-select2-open-control]").each(function() {
-                    var element = $( this );
-                    var select2_id = element.attr("data-select2-open-control");
-                    element.on("click", function(){
-                        var element_id = "#" + select2_id;
-                        //console.log( $(element_id).data('select2').isOpen() );
-                        //$(element_id).select2('isOpen');
-                        //$(element_id).hasClass("select2-hidden-accessible");
-                        //$(element_id).data('select2').toggleDropdown();
-                        if( (!$(element_id).select2('isOpen')) ){
-                            $(element_id).select2('open');
-                        }
-                    });
-                });
-            });
-        </script>
-        <script>
-            $(function(){
-                $("button[data-select2-close-control]").each(function() {
-                    var element = $( this );
-                    var select2_id = element.attr("data-select2-close-control");
-                    element.on("click", function(){
-                        var element_id = "#" + select2_id;
-                        //console.log( $(element_id).data('select2').isOpen() );
-                        //$(element_id).select2('isOpen');
-                        //$(element_id).hasClass("select2-hidden-accessible");
-                        //$(element_id).data('select2').toggleDropdown();
-                        if( ($(element_id).select2('isOpen')) ){
-                            $(element_id).select2('close');
-                        }
-                    });
-                });
-            });
-        </script>
-        <!-- --------test-script-------- -->
-        <!-- --------test-script-------- -->
-        <script>
-            $(function(){
-                function format(param) {
-                    if (!param.id){
-                        return param.text; // optgroup
-                    }
-
-                    var tempOptionObject = "<div class='text-wrap text-break w-100'>"
-                    + "<p>" + param.text + "</p>"
-                    + "</div>";
-
-                    var optionObject = $(tempOptionObject);
-                    return optionObject;
-                }
-                
-                //$.fn.select2.defaults.set( "theme", "bootstrap" );
-                $("#defect").select2({
-                    theme: 'bootstrap',
-                    placeholder: "Select",
-                    //disabled: false,
-                    //scrollAfterSelect: true,
-                    //closeOnSelect: false,
-                    //containerCssClass: ':all:',
-                    width: 'resolve',
-                    scrollAfterSelect: true,
-                    closeOnSelect: false,
-                    allowClear: true,
-                    
-                    formatResult: format,
-                    formatSelection: format,
-                    escapeMarkup: function(markup) {
-                        return markup;
-                    },
-                    templateResult: function(data) {
-                        //console.log(data);
-                        //return data.text;
-                        return format(data);
-                    },
-                    templateSelection: function(data) {
-                        //console.log(data);
-                        //return data.text;
-                        return format(data);
-                    },
-                    data: []
-                });
-            });
-        </script>
-        <!-- --------test-script-------- -->
-        <!-- --------test-script-------- -->
-        <script>
-        $(function(){
-            function format(param) {
-                if (!param.id){
-                    return param.text; // optgroup
-                }
-                
-                var tempOptionObject = "<div class='text-wrap text-break w-100'>"
-                + "<p>" + param.text + "</p>"
-                + "</div>";
-                
-                var optionObject = $(tempOptionObject);
-                return optionObject;
-            }
-            
-            
-            var dataArray = [
-                {
-                    "id": 1,
-                    "text": "Operation 1",
-                    "selected": false
-                },{
-                    "id": 2,
-                    "text": "Operation 2",
-                    "selected": false
-                },{
-                    "id": 3,
-                    "text": "Operation 3",
-                    "disabled": false
-                },{
-                    "id": 4,
-                    "text": "Operation 4",
-                    "disabled": false
-                },{
-                    "id": 5,
-                    "text": "Operation 5",
-                    "disabled": false
-                }
-            ];
-            
-            $("#operation").select2({
-                theme: 'bootstrap',
-                placeholder: "Select",
-                //disabled: false,
-                //scrollAfterSelect: true,
-                //closeOnSelect: false,
-                //containerCssClass: ':all:',
-                width: 'resolve',
-                scrollAfterSelect: true,
-                closeOnSelect: true,
-                allowClear: true,
-                
-                formatResult: format,
-                formatSelection: format,
-                escapeMarkup: function(markup) {
-                    return markup;
-                },
-                templateResult: function(data) {
-                    //console.log(data);
-                    //return data.text;
-                    return format(data);
-                },
-                templateSelection: function(data) {
-                    //console.log(data);
-                    //return data.text;
-                    return format(data);
-                },
-                data: dataArray
-            }).setSelect2OptionDataAttribute(dataArray);
-        });
-        </script>
-        <!-- --------test-script-------- -->
                                                                     
                                                                     <!-- row-part -->
                                                                     <!-- form-group -->
