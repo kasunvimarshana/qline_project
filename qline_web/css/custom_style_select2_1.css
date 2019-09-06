@@ -31,14 +31,26 @@
 }*/
 /* select2 background color */
 .select2-results__option{
+    /*--alpha: 0.5;
+    --rgb: 229, 229, 229;
+    background-color: rgba(var(--rgb), var(--alpha));*/
     background-color: rgba(229, 229, 229, 0.5);
 }
 .select2-results__option--highlighted{
+    /*--alpha: 1;
+    --rgb: 229, 229, 229;
+    background-color: rgba(var(--rgb), var(--alpha));*/
     background-color: rgba(229, 229, 229, 1);
 }
 .select2-results__option[aria-selected="true"]{
+    /*--alpha: 0.5;
+    --rgb: 255, 129, 129;
+    background-color: rgba(var(--rgb), var(--alpha));*/
     background-color: rgba(255, 129, 129, 0.5) !important;
 }
 .select2-results__option--highlighted[aria-selected="true"]{
+    /*--alpha: 1;
+    --rgb: 255, 129, 129;
+    background-color: rgba(var(--rgb), var(--alpha));*/
     background-color: rgba(255, 129, 129, 1) !important;
 }

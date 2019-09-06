@@ -2,10 +2,206 @@
 
 @section('section_stylesheet_optional')
     @parent
+    <link rel="stylesheet" type="text/css" href="{!! asset('css/custom_style_select2_1.css') !!}"/>
 @endsection
 
 @section('section_script_optional')
     @parent
+    <!-- -->
+    <!-- --------test-script-------- -->
+    <script>
+        $(function(){
+            $("button[data-select2-open-control]").each(function() {
+                var element = $( this );
+                var select2_id = element.attr("data-select2-open-control");
+                element.on("click", function(){
+                    var element_id = "#" + select2_id;
+                    //console.log( $(element_id).data('select2').isOpen() );
+                    //$(element_id).select2('isOpen');
+                    //$(element_id).hasClass("select2-hidden-accessible");
+                    //$(element_id).data('select2').toggleDropdown();
+                    if( (!$(element_id).select2('isOpen')) ){
+                        $(element_id).select2('open');
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(function(){
+            $("button[data-select2-close-control]").each(function() {
+                var element = $( this );
+                var select2_id = element.attr("data-select2-close-control");
+                element.on("click", function(){
+                    var element_id = "#" + select2_id;
+                    //console.log( $(element_id).data('select2').isOpen() );
+                    //$(element_id).select2('isOpen');
+                    //$(element_id).hasClass("select2-hidden-accessible");
+                    //$(element_id).data('select2').toggleDropdown();
+                    if( ($(element_id).select2('isOpen')) ){
+                        $(element_id).select2('close');
+                    }
+                });
+            });
+        });
+    </script>
+    <!-- --------test-script-------- -->
+    <!-- --------test-script-------- -->
+    <script>
+        $(function(){
+            function format(param) {
+                if (!param.id){
+                    return param.text; // optgroup
+                }
+
+                var tempOptionObject = "<div class='text-wrap text-break w-100'>"
+                + "<p>" + param.text + "</p>"
+                + "</div>";
+
+                var optionObject = $(tempOptionObject);
+                return optionObject;
+            }
+
+            //$.fn.select2.defaults.set( "theme", "bootstrap" );
+            $("#defect_category").select2({
+            theme: 'bootstrap',
+            placeholder: "Select",
+            //disabled: false,
+            //scrollAfterSelect: true,
+            //closeOnSelect: false,
+            //containerCssClass: ':all:',
+            width: 'resolve',
+            scrollAfterSelect: true,
+            closeOnSelect: false,
+            allowClear: true,
+
+            formatResult: format,
+            formatSelection: format,
+            escapeMarkup: function(markup) {
+                return markup;
+            },
+            templateResult: function(data) {
+                //console.log(data);
+                //return data.text;
+                return format(data);
+            },
+            templateSelection: function(data) {
+                //console.log(data);
+                //return data.text;
+                return format(data);
+            },
+            data: []
+            });
+        });
+    </script>
+    <!-- --------test-script-------- -->
+    <!-- --------test-script-------- -->
+    <script>
+        $(function(){
+            function format(param) {
+                if (!param.id){
+                    return param.text; // optgroup
+                }
+
+                var tempOptionObject = "<div class='text-wrap text-break w-100'>"
+                + "<p>" + param.text + "</p>"
+                + "</div>";
+
+                var optionObject = $(tempOptionObject);
+                return optionObject;
+            }
+
+            //$.fn.select2.defaults.set( "theme", "bootstrap" );
+            $("#defect").select2({
+            theme: 'bootstrap',
+            placeholder: "Select",
+            //disabled: false,
+            //scrollAfterSelect: true,
+            //closeOnSelect: false,
+            //containerCssClass: ':all:',
+            width: 'resolve',
+            scrollAfterSelect: true,
+            closeOnSelect: false,
+            allowClear: true,
+
+            formatResult: format,
+            formatSelection: format,
+            escapeMarkup: function(markup) {
+                return markup;
+            },
+            templateResult: function(data) {
+                //console.log(data);
+                //return data.text;
+                return format(data);
+            },
+            templateSelection: function(data) {
+                //console.log(data);
+                //return data.text;
+                return format(data);
+            },
+            data: []
+            });
+        });
+    </script>
+    <!-- --------test-script-------- -->
+    <!-- --------test-script-------- -->
+    <script>
+        $(function(){
+            function format(param) {
+                if (!param.id){
+                    return param.text; // optgroup
+                }
+
+                var tempOptionObject = "<div class='text-wrap text-break w-100'>"
+                + "<p>" + param.text + "</p>"
+                + "</div>";
+
+                var optionObject = $(tempOptionObject);
+                return optionObject;
+            }
+
+            //$.fn.select2.defaults.set( "theme", "bootstrap" );
+            $("#operation").select2({
+            theme: 'bootstrap',
+            placeholder: "Select",
+            //disabled: false,
+            //scrollAfterSelect: true,
+            //closeOnSelect: false,
+            //containerCssClass: ':all:',
+            width: 'resolve',
+            scrollAfterSelect: true,
+            closeOnSelect: true,
+            allowClear: true,
+
+            formatResult: format,
+            formatSelection: format,
+            escapeMarkup: function(markup) {
+                return markup;
+            },
+            templateResult: function(data) {
+                //console.log(data);
+                //return data.text;
+                return format(data);
+            },
+            templateSelection: function(data) {
+                //console.log(data);
+                //return data.text;
+                return format(data);
+            },
+            data: []
+            });
+        });
+    </script>
+    <!-- --------test-script-------- -->
+    <!-- --------test-script-------- -->
+    <script>
+        $(function(){
+            $("#id_left_control_div").collapse("hide");
+            $("#id_right_control_div").collapse("hide");
+        });
+    </script>
+    <!-- --------test-script-------- -->
+    <!-- -->
 @endsection
 
 @section('contant')
@@ -100,7 +296,7 @@
                                                                 
                                                                 <div class="row w-100 justify-content-between p-0 m-0">
                                                                     <!-- col -->
-                                                                    <div class="col col-md-3 p-0 m-0">
+                                                                    <div class="col col-md-3 p-0 m-0 collapse show" id="id_left_control_div">
                                                                         <!-- card-group -->
                                                                         <div class="card-group">
                                                                             <div class="card bg-light">
@@ -182,9 +378,29 @@
                                                                     </div>
                                                                     <!-- /.col -->
                                                                     <!-- col -->
-                                                                    <div class="col col-md-6 p-0 m-0">
+                                                                    <div class="col p-0 m-0">
                                                                         <div class="card-group">
                                                                             <div class="card bg-light">
+                                                                                <div class="card-header p-0 m-0">
+                                                                                <!-- -->
+                                                                                <div class="btn-toolbar" role="toolbar" aria-label="btn toolbar">
+                                                                                    <div class="btn-group mr-auto" role="group" aria-label="First group">
+                                                                                        <!-- --- -->
+                                                                                        <button class="btn btn-default" data-toggle="collapse" data-target="#id_left_control_div" aria-expanded="false" aria-controls="id_left_control_div" role="button" type="button">
+                                                                                            <i class="fa fa-angle-left"></i>
+                                                                                        </button>
+                                                                                        <!-- --- -->
+                                                                                    </div>
+                                                                                    <div class="btn-group ml-auto" role="group" aria-label="Second group">
+                                                                                        <!-- --- -->
+                                                                                        <button class="btn btn-default" data-toggle="collapse" data-target="#id_right_control_div" aria-expanded="false" aria-controls="id_right_control_div" role="button" type="button">
+                                                                                            <i class="fa fa-angle-right"></i>
+                                                                                        </button>
+                                                                                        <!-- --- -->
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!-- -->
+                                                                                </div>
                                                                                 <div class="card-body text-center p-0 m-0">
                                                                                     
                                                                                     <!-- list-group -->
@@ -206,10 +422,10 @@
                     <div class="row">
 
                         <!-- container -->
-                        <div class="container mt-3 mb-3">
-                            <!-- h2 class="text-danger"> - </h2 -->
-                            <!-- p> - </p -->
-                        </div>
+                        <!-- div class="container mt-3 mb-3">
+                            <h2 class="text-danger"> - </h2>
+                            <p> - </p>
+                        </div -->
                         <!-- /.container -->
                         <!-- form-group-col -->
                         <div class="col col-sm-12 row p-0 m-0">
@@ -309,23 +525,6 @@
                             </div>
                             <!-- /.form-group -->
                             <!-- ------------------------------------------------------------------------- -->
-                            
-                            <!-- form-group -->
-                            <div class="form-group col col-12">
-                                <label for="defect" class="col col-lg-12 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-left">Defect</label>
-                                <div class="col col-lg-12">
-                                    <!-- p class="form-control-static"></p -->
-                                    <select class="form-control form-control-md select2" id="defect" name="defect" value="{{ old('defect') }}" data-placeholder="Defect" style="width: 100%;" required>
-
-                                        <!-- @for($i =1; $i <= 5; $i++) -->
-                                        <option>Defect {{ $i }}</option>
-                                        <!-- @endfor -->
-
-                                    </select>
-                                </div>
-                                <!-- span id="form-control" class="help-block"></span -->
-                            </div>
-                            <!-- /.form-group -->
 
                             <!-- form-group-row -->
                             <div class="col col-12 w-100">
@@ -371,7 +570,7 @@
                                                                     </div>
                                                                     <!-- /.col -->
                                                                     <!-- col -->
-                                                                    <div class="col col-md-3 p-0 m-0">
+                                                                    <div class="col col-md-3 p-0 m-0 collapse show" id="id_right_control_div">
                                                                         <!-- card-group -->
                                                                         <div class="card-group">
                                                                             <div class="card bg-light">

@@ -2,7 +2,7 @@
 
 @section('section_stylesheet_optional')
     @parent
-    <style type="text/css" href="{!! asset('css/custom_style_select2_1.css') !!}"></style>
+    <link rel="stylesheet" type="text/css" href="{!! asset('css/custom_style_select2_1.css') !!}"/>
 @endsection
 
 @section('section_script_optional')
