@@ -1,0 +1,30 @@
+<!-- ----------------------------------------------------------------------- -->
+<script>
+$('select').select2({
+    placeholder: {
+        id: '-1', // the value of the option
+        text: 'Select an option'
+    }
+});
+</script>
+<!-- ----------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------- -->
+<script>
+$('select').select2({
+    templateSelection: function (data) {
+        if (data.id === '') { // adjust for custom placeholder values
+            return 'Custom styled placeholder text';
+        }
+
+        return data.text;
+    }
+});
+</script>
+<!-- ----------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------- -->
+<script>
+$.fn.select2.defaults.reset();
+$.fn.select2.defaults.set("theme", "classic");
+$.fn.select2.defaults.set("ajax--cache", false);
+</script>
+<!-- ----------------------------------------------------------------------- -->

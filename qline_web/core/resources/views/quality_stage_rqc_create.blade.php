@@ -227,6 +227,13 @@
                                                                         <div class="col">
                                                                             <!-- p class="form-control-static"></p -->
                                                                             <div class="input-group">
+                                                                                <div class="input-group-addon input-group-prepend">
+                                                                                    <!-- div class="input-group-text" -->
+                                                                                        <button type="button" class="btn btn-outline-danger" id="submit" data-select2-open-control="operation" aria-disabled="false">
+                                                                                            <i class="fa fa-search" aria-hidden="true"></i>
+                                                                                        </button>
+                                                                                    <!-- /div -->
+                                                                                </div>
                                                                                 <select class="form-control select2" id="operation" name="operation" value="{{ old('operation') }}" data-placeholder="Operation" required>
 
                                                                                     <!-- @for($i =1; $i <= 5; $i++) -->
@@ -234,13 +241,6 @@
                                                                                     <!-- @endfor -->
 
                                                                                 </select>
-                                                                                <div class="input-group-addon input-group-append">
-                                                                                    <!-- div class="input-group-text" -->
-                                                                                        <button type="button" class="btn btn-outline-danger" id="submit" data-select2-open-control="operation" aria-disabled="false">
-                                                                                            <i class="fa fa-plus" aria-hidden="true"></i>
-                                                                                        </button>
-                                                                                    <!-- /div -->
-                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                         <!-- span id="form-control" class="help-block"></span -->
@@ -253,6 +253,13 @@
                                                                         <div class="col">
                                                                             <!-- p class="form-control-static"></p -->
                                                                             <div class="input-group">
+                                                                                <div class="input-group-addon input-group-prepend">
+                                                                                    <!-- div class="input-group-text" -->
+                                                                                        <button type="button" class="btn btn-outline-danger" id="submit" data-select2-open-control="defect" aria-disabled="false">
+                                                                                            <i class="fa fa-search" aria-hidden="true"></i>
+                                                                                        </button>
+                                                                                    <!-- /div -->
+                                                                                </div>
                                                                                 <select class="form-control select2 select2-multiple select2-allow-clear" id="defect" name="defect" value="{{ old('defect') }}" data-placeholder="Defect" aria-hidden="true" multiple="multiple" required>
 
                                                                                     <!-- @for($i =1; $i <= 5; $i++) -->
@@ -262,7 +269,7 @@
                                                                                 </select>
                                                                                 <div class="input-group-addon input-group-append">
                                                                                     <!-- div class="input-group-text" -->
-                                                                                        <button type="button" class="btn btn-outline-danger" id="submit" data-select2-open-control="defect" aria-disabled="false">
+                                                                                        <button type="button" class="btn btn-outline-danger" id="submit" data-select2-close-control="defect" aria-disabled="false">
                                                                                             <i class="fa fa-plus" aria-hidden="true"></i>
                                                                                         </button>
                                                                                     <!-- /div -->
@@ -285,10 +292,26 @@
                         //$(element_id).select2('isOpen');
                         //$(element_id).hasClass("select2-hidden-accessible");
                         //$(element_id).data('select2').toggleDropdown();
-                        if( $(element_id).select2('isOpen') ){
-                            $(element_id).select2('close');
-                        }else{
+                        if( (!$(element_id).select2('isOpen')) ){
                             $(element_id).select2('open');
+                        }
+                    });
+                });
+            });
+        </script>
+        <script>
+            $(function(){
+                $("button[data-select2-close-control]").each(function() {
+                    var element = $( this );
+                    var select2_id = element.attr("data-select2-close-control");
+                    element.on("click", function(){
+                        var element_id = "#" + select2_id;
+                        //console.log( $(element_id).data('select2').isOpen() );
+                        //$(element_id).select2('isOpen');
+                        //$(element_id).hasClass("select2-hidden-accessible");
+                        //$(element_id).data('select2').toggleDropdown();
+                        if( ($(element_id).select2('isOpen')) ){
+                            $(element_id).select2('close');
                         }
                     });
                 });
@@ -298,6 +321,19 @@
         <!-- --------test-script-------- -->
         <script>
             $(function(){
+                function format(param) {
+                    if (!param.id){
+                        return param.text; // optgroup
+                    }
+
+                    var tempOptionObject = "<div class='text-wrap text-break w-100'>"
+                    + "<p>" + param.text + "</p>"
+                    + "</div>";
+
+                    var optionObject = $(tempOptionObject);
+                    return optionObject;
+                }
+                
                 //$.fn.select2.defaults.set( "theme", "bootstrap" );
                 $("#defect").select2({
                     theme: 'bootstrap',
@@ -310,6 +346,22 @@
                     scrollAfterSelect: true,
                     closeOnSelect: false,
                     allowClear: true,
+                    
+                    formatResult: format,
+                    formatSelection: format,
+                    escapeMarkup: function(markup) {
+                        return markup;
+                    },
+                    templateResult: function(data) {
+                        //console.log(data);
+                        //return data.text;
+                        return format(data);
+                    },
+                    templateSelection: function(data) {
+                        //console.log(data);
+                        //return data.text;
+                        return format(data);
+                    },
                     data: []
                 });
             });
