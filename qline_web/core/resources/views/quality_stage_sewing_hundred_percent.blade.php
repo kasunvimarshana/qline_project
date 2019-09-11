@@ -387,14 +387,20 @@
                                                                                     <div class="btn-group mr-auto" role="group" aria-label="First group">
                                                                                         <!-- --- -->
                                                                                         <button class="btn btn-default" data-toggle="collapse" data-target="#id_left_control_div" aria-expanded="false" aria-controls="id_left_control_div" role="button" type="button">
-                                                                                            <i class="fa fa-angle-left"></i>
+                                                                                            <i class="fa fa-angle-left" aria-hidden="true"></i>
                                                                                         </button>
                                                                                         <!-- --- -->
                                                                                     </div>
+                                                                                    <!-- ----------- -->
+                                                                                    <h5 class="card-title">
+                                                                                        <span> Defect Time </span>
+                                                                                        <span class="badge badge-secondary"> YYYY-MM-DD HH:mm </span>
+                                                                                    </h5>
+                                                                                    <!-- ----------- -->
                                                                                     <div class="btn-group ml-auto" role="group" aria-label="Second group">
                                                                                         <!-- --- -->
                                                                                         <button class="btn btn-default" data-toggle="collapse" data-target="#id_right_control_div" aria-expanded="false" aria-controls="id_right_control_div" role="button" type="button">
-                                                                                            <i class="fa fa-angle-right"></i>
+                                                                                            <i class="fa fa-angle-right" aria-hidden="true"></i>
                                                                                         </button>
                                                                                         <!-- --- -->
                                                                                     </div>
@@ -646,6 +652,25 @@
                                                                                             </div>
                                                                                         </li>
                                                                                         <!-- /.list-group-item -->
+                                                                                        
+                                                                                        <!-- list-group-item -->
+                                                                                        <li class="list-group-item flex-column align-items-start bg-transparent">
+                                                                                            <div class="d-flex w-100 justify-content-between">
+                                                                                                <!-- -->
+                                                                                                <div class="btn-toolbar w-100" role="toolbar" aria-label="btn toolbar">
+                                                                                                    <div class="btn-group w-100" role="group" aria-label="First group">
+                                                                                                        <!-- --- -->
+                                                                                                        <a class="btn btn-outline-success btn-lg btn-block" role="button" type="button" href="{!! url('quality_stage_sewing_hundred_percent_scan') !!}">
+                                                                                                            <i class="fa fa-barcode" aria-hidden="true"></i>
+                                                                                                            <span> Scan</span>
+                                                                                                        </a>
+                                                                                                        <!-- --- -->
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <!-- -->
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <!-- /.list-group-item -->
                                                                                     </ul>
                                                                                     <!-- /.list-group -->
                                                                                     
@@ -689,6 +714,116 @@
                 <!-- /.card -->
             </div>
             <!-- /.card-group -->
+            
+            <!-- -->
+            <!-- card-group -->
+            <div class="card-group">
+                <!-- card -->
+                <div class="card bg-secondary border-light">
+                    <div class="card-header" id="idCard_accordion_1_content_2">
+                        <!-- h5 class="mb-0">
+                            <button class="btn btn-default m-0 p-0 text-white" data-toggle="collapse" data-target="#idCollapse_accordion_1_content_2" aria-expanded="false" aria-controls="idCollapse_accordion_1_content_2" role="button" type="button">
+                            <i class="fab fa-buromobelexperte fa-fw"></i>
+                            <span class="text-decoration-none text-justify small"> List</span>
+                            </button>
+                        </h5 -->
+                        
+                        <!-- card-header-nav -->
+                        <div class="div" id="id">
+                        <!-- --- -->
+                        <ul class="nav nav-pills card-header-pills" id="id" role="tablist">
+                            <li class="nav-item text-sm-center" tabindex="1">
+                                <button id="id_nav_link_1" class="nav-link p-0 mx-1 btn btn-default text-white" data-toggle="collapse" data-target="#idCollapse_accordion_1_content_2" aria-expanded="false" aria-controls="idCollapse_accordion_1_content_2" role="tab" type="button" aria-selected="false">
+                                    <i class="fab fa-buromobelexperte fa-fw"></i>
+                                    <span class="text-decoration-none text-justify small"> Defect</span>
+                                </button>
+                            </li>
+                            <li class="nav-item text-sm-center" tabindex="1">
+                                <a id="id_nav_link_2" class="nav-link p-0 mx-1 btn btn-default text-white" data-toggle="false" href="{!! url('quality_stage_sewing_hundred_percent_history') !!}" role="tab" aria-controls="id_tab_content_2" aria-selected="false" target="_blank">
+                                    <i class="fab fa-buromobelexperte fa-fw"></i>
+                                    <span class="text-decoration-none text-justify small"> History</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- --- -->
+                        </div>
+                        <!-- /.card-header-nav -->
+                    </div>
+
+                    <div id="idCollapse_accordion_1_content_2" class="collapse hide" aria-labelledby="idCard_accordion_1_content_2" data-parent="#idCollapse_accordion_1_content_2">
+                        <div class="card-body bg-light" id="idCollapse_content_2_body">
+
+
+                            <!-- --- -->
+                            <!-- row -->
+                            <div class="row">
+                                <!-- col -->
+                                <div class="col-sm-12 table-responsive-sm">
+                                    <!-- table -->
+                                    <!-- class="table table-striped table-bordered dt-responsive nowrap" -->
+                                    <table id="tableId_1" class="table table-bordered" style="width:100%" width="100%" cellspacing="0" border="1" align="left">
+
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Time</th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                           <!-- @for($i =1; $i <= 5; $i++) -->                 
+                                           <!-- tr -->
+                                           <tr>
+                                                <th scope="row"># {{ $i }}</th>
+                                                <td>{{ $i }}</td>
+                                                <td>
+                                                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown" tabindex="-1">
+                                                        <div class="btn-group" role="group">
+                                                            <!-- button type="button" role="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split">Action</button -->
+                                                            <button id="btnGroupDrop_1_{{ $i }}" type="button" role="button" class="btn btn-outline-primary" data-toggle="dropdown"
+                                                            aria-haspopup="true" aria-expanded="false">
+                                                                <i class="fas fa-cogs fa-fw" aria-hidden="true"></i>
+                                                                <span class="sr-only">Toggle Dropdown</span>
+                                                            </button>
+                                                            <div class="dropdown-menu text-wrap text-break bg-light border-light" aria-labelledby="btnGroupDrop_1_{{ $i }}">
+                                                                <!-- span class="dropdown-item-text ">Title</span -->
+                                                                <!-- div class="dropdown-item dropdown-divider"></div -->
+                                                                <div class="dropdown-item btn-group  pl-1 pr-1 m-0" role="group" aria-label="Button Group">
+                                                                    <button type="button" role="button" class="btn btn-outline-primary btn-block waves-effect">
+                                                                    <i class="far fa-edit fa-fw" aria-hidden="true"></i>
+                                                                    <span class="sr-only">Action</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="dropdown-item btn-group  pl-1 pr-1 m-0" role="group" aria-label="Button Group">
+                                                                    <button type="button" role="button" class="btn btn-outline-primary btn-block waves-effect">
+                                                                    <i class="far fa-trash-alt fa-fw" aria-hidden="true"></i>
+                                                                    <span class="sr-only">Action</span>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <!-- /.tr -->                 
+                                            <!-- @endfor -->
+                                        </tbody>
+
+                                    </table>
+                                    <!-- /.table -->
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                            <!-- --- -->
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.card-group -->
+            <!-- -->
         </div>
         <!-- /.accordion -->
 

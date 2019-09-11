@@ -96,6 +96,14 @@ Route::get('/quality_stage_rqc_view', function(){
 Route::get('/quality_stage_rqc_create', function(){
     return view('quality_stage_rqc_create');
 });
+
+Route::get('/quality_stage_sewing_hundred_percent_scan', function(){
+    return view('quality_stage_sewing_hundred_percent_scan');
+});
+
+Route::get('/quality_stage_sewing_hundred_percent_history', function(){
+   return view('quality_stage_sewing_hundred_percent_history'); 
+});
 ////////////////////////////////////////////////////////
 /*
 Roue::get('/test', function(){
