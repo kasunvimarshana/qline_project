@@ -104,6 +104,10 @@ Route::get('/quality_stage_sewing_hundred_percent_scan', function(){
 Route::get('/quality_stage_sewing_hundred_percent_history', function(){
    return view('quality_stage_sewing_hundred_percent_history'); 
 });
+
+Route::get('quality_stage_sewing_aql_audit_data', function(){
+    return view('quality_stage_sewing_aql_audit_data');
+});
 ////////////////////////////////////////////////////////
 /*
 Roue::get('/test', function(){
