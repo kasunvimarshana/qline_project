@@ -22,8 +22,8 @@ class UserSeeder extends Seeder
         $newUser = User::create([
             'is_visible' => false,
             'is_active' => true,
-            'user_code' => '0ADMIN',
-            'epf_code' => '0ADMIN',
+            'code' => '0ADMIN',
+            'code_epf' => '0ADMIN',
             'name_first' => 'admin',
             'name_last' => 'admin',
             'password' => Hash::make('password')
@@ -47,7 +47,7 @@ class UserSeeder extends Seeder
             'is_active' => true,
             'is_deactivatable' => false,
             'is_notifiable' => false,
-            'user_id' => $newUser->user_code
+            'user_id' => $newUser->id
         ) );
         //$newUser->userAPITokens()->save( array( $newUserAPIToken ) );// add or edit related model
         //$newUserAPIToken->user()->associate( $newUser )->save();// edit related model relation

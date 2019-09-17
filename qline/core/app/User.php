@@ -15,7 +15,7 @@ class User extends Authenticatable
     use HasPermissionsTrait;
     
     //protected $table = "table";
-    protected $primaryKey = "user_code";
+    protected $primaryKey = "id";
     protected $keyType = 'string';
     public $incrementing = false;
     //protected $connection = "mysql";
@@ -35,7 +35,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = array('is_visible', 'is_active', 'user_code', 'epf_code', 'name_first', 'name_last', 'phone_mobile', 'password', 'remember_token', 'display_name', 'image_uri', 'email', 'company_id', 'department_id', 'section_id');
+    protected $fillable = array('id', 'is_visible', 'is_active', 'code', 'code_epf', 'name_first', 'name_last', 'phone_mobile', 'password', 'display_name', 'image_uri', 'email', 'company_id', 'strategic_business_unit_id', 'department_id', 'section_id', 'grade', 'remember_token');
 
     /**
      * The attributes that should be hidden for arrays.
@@ -53,20 +53,56 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
+    protected static function boot(){
+        parent::boot();
+        
+        static::creating(function( $model ){
+            $id = null;
+            if( (isset($model->id)) ){
+                $id = $model->id;
+            }else if( (isset($model->code)) ){
+                $id = $model->code;
+            }else if( (isset($model->name)) ){
+                $id = $model->name;
+            }
+            $model->id = $id;
+        });
+    }
+    
     //one to many
     public function userAPITokens(){
-        return $this->hasMany('App\UserAPIToken', 'user_id', 'user_code');
+        return $this->hasMany('App\UserAPIToken', 'user_id', 'id');
     }
     
     //one to many
     public function userAttachments(){
-        return $this->hasMany('App\UserAttachment', 'attached_by', 'user_code');
+        return $this->hasMany('App\UserAttachment', 'attached_by', 'id');
+    }
+    
+    //one to many (inverse)
+    public function company(){
+        return $this->belongsTo('App\Company', 'company_id', 'id');
+    }
+    
+    //one to many (inverse)
+    public function strategicBusinessUnit(){
+        return $this->belongsTo('App\StrategicBusinessUnit', 'strategic_business_unit_id', 'id');
+    }
+    
+    //one to many (inverse)
+    public function department(){
+        return $this->belongsTo('App\Department', 'department_id', 'id');
+    }
+    
+    //one to many (inverse)
+    public function section(){
+        return $this->belongsTo('App\Section', 'section_id', 'id');
     }
     
     /*
     //one to many (polymorphic)
     public function userAttachments(){
-        return $this->morphMany('App\UserAttachment', 'attachable', 'attachable_type', 'attachable_id', 'user_code');
+        return $this->morphMany('App\UserAttachment', 'attachable', 'attachable_type', 'attachable_id', 'id');
     }
     */
     

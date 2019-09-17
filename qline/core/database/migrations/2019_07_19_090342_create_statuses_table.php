@@ -26,18 +26,19 @@ class CreateStatusesTable extends Migration
             $table->timestamps();
             $table->boolean('is_visible')->index()->default(false)->nullable()->comment('comment');
             $table->boolean('is_active')->index()->default(false)->nullable()->comment('comment');
-            $table->string('colour')->index()->nullable()->comment('comment');
+            $table->string('colour_id')->index()->nullable()->comment('comment');
             //$table->string('slug')->index()->unique()->comment('comment'); // create-table
-            $table->string('name')->index()->unique()->comment('comment'); // create table
+            $table->string('code')->index()->nullable()->comment('comment');
+            $table->string('name')->index()->nullable()->comment('comment'); // create table
             $table->string('display_name')->index()->nullable()->comment('comment');
             $table->text('image_uri')->default(null)->nullable()->comment('uniform resource identifier'); 
             //->charset('utf8')->change();
             //$table->softDeletes();
             
-            //$table->primary(array('slug'));
+            //$table->primary(array('id'));
         });
         
-        //DB::statement('ALTER TABLE companies MODIFY COLUMN id INTEGER NOT NULL UNIQUE AUTO_INCREMENT;');
+        //DB::statement('ALTER TABLE table_name MODIFY COLUMN id INTEGER NOT NULL UNIQUE AUTO_INCREMENT;');
     }
 
     /**

@@ -22,7 +22,18 @@ class LogLevel extends Model
     //protected $appends = array('field1', 'field2');
     //protected $attributes = array();
     //protected $guarded = array();
-    protected $fillable = array('is_visible', 'is_active', 'log_code', 'name', 'display_name', 'image_uri');
+    protected $fillable = array('id', 'is_visible', 'is_active', 'code', 'name', 'display_name', 'image_uri', 'log_level_id_parent');
     //protected $hidden = array();
     //protected $casts = array();
+    
+    //one to many (inverse)
+    public function logLevelParent(){
+        return $this->belongsTo('App\LogLevel', 'log_level_id_parent', 'id');
+    }
+    
+    //one to many
+    public function logLevelChildren(){
+        return $this->hasMany('App\LogLevel', 'log_level_id_parent', 'id');
+    }
+    
 }

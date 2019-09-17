@@ -24,7 +24,7 @@ class UserAPIToken extends Model
     //protected $appends = array('field1', 'field2');
     //protected $attributes = array();
     //protected $guarded = array();
-    protected $fillable = array('is_visible', 'is_active', 'is_deactivatable', 'is_notifiable', 'access_token', 'refresh_token', 'code_active', 'ip_address_request', 'active_role', 'time_generate', 'time_active', 'time_deactive', 'duration_active', 'user_id');
+    protected $fillable = array('id', 'is_visible', 'is_active', 'is_deactivatable', 'is_notifiable', 'access_token', 'refresh_token', 'code_active', 'ip_address', 'active_role', 'time_create', 'time_active', 'time_deactive', 'duration_active', 'time_last_activity', 'user_agent', 'user_id');
     //protected $hidden = array();
     //protected $casts = array();
     
@@ -38,7 +38,12 @@ class UserAPIToken extends Model
     
     //one to many (inverse)
     public function user(){
-        return $this->belongsTo('App\User', 'user_id', 'user_code');
+        return $this->belongsTo('App\User', 'user_id', 'id');
+    }
+    
+    //one to many
+    public function userAPITokenDatas(){
+        return $this->hasMany('App\UserAPITokenData', 'user_a_p_i_token_id', 'id');
     }
     
     public static function generateAPIToken(){

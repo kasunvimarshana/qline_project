@@ -8,7 +8,7 @@ class SewingAuditStandard extends Model
 {
     //
     //protected $table = "table";
-    protected $primaryKey = "name";
+    protected $primaryKey = "id";
     protected $keyType = 'string';
     public $incrementing = false;
     //protected $connection = "mysql";
@@ -22,28 +22,44 @@ class SewingAuditStandard extends Model
     //protected $appends = array('field1', 'field2');
     //protected $attributes = array();
     //protected $guarded = array();
-    protected $fillable = array('is_visible', 'colour', 'name', 'display_name', 'image_uri', 'sewing_audit_standard_id_parent', 'a_q_l_standard_id');
+    protected $fillable = array('id', 'is_visible', 'is_active', 'colour_id', 'code', 'name', 'display_name', 'image_uri', 'sewing_audit_standard_id_parent', 'a_q_l_standard_id');
     //protected $hidden = array();
     //protected $casts = array();
     
+    protected static function boot(){
+        parent::boot();
+        
+        static::creating(function( $model ){
+            $id = null;
+            if( (isset($model->id)) ){
+                $id = $model->id;
+            }else if( (isset($model->code)) ){
+                $id = $model->code;
+            }else if( (isset($model->name)) ){
+                $id = $model->name;
+            }
+            $model->id = $id;
+        });
+    }
+    
     //one to many (inverse)
     public function sewingAuditStandardParent(){
-        return $this->belongsTo('App\SewingAuditStandard', 'sewing_audit_standard_id_parent', 'name');
+        return $this->belongsTo('App\SewingAuditStandard', 'sewing_audit_standard_id_parent', 'id');
     }
     
     //one to many
     public function sewingAuditStandardChildren(){
-        return $this->hasMany('App\SewingAuditStandard', 'sewing_audit_standard_id_parent', 'name');
+        return $this->hasMany('App\SewingAuditStandard', 'sewing_audit_standard_id_parent', 'id');
     }
     
     //one to many (inverse)
     public function aQLStandard(){
-        return $this->belongsTo('App\AQLStandard', 'a_q_l_standard_id', 'name');
+        return $this->belongsTo('App\AQLStandard', 'a_q_l_standard_id', 'id');
     }
     
     //one to many
     public function sewingAuditStandardDatas(){
-        return $this->hasMany('App\SewingAuditStandardData', 'sewing_audit_standard_id', 'name');
+        return $this->hasMany('App\SewingAuditStandardData', 'sewing_audit_standard_id', 'id');
     }
     
 }

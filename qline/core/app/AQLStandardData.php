@@ -22,12 +22,12 @@ class AQLStandardData extends Model
     //protected $appends = array('field1', 'field2');
     //protected $attributes = array();
     //protected $guarded = array();
-    protected $fillable = array('is_visible', 'a_q_l_standard_id');
+    protected $fillable = array('id', 'is_visible', 'is_active', 'count_sample', 'batch_count_min', 'batch_count_max', 'count_accept', 'count_reject', 'reject_level', 'reject_mode', 'accept_level', 'accept_mode', 'audit_frequency_count', 'audit_frequency_time', 'a_q_l_standard_id');
     //protected $hidden = array();
     //protected $casts = array();
     
     //one to many (inverse)
     public function aQlStandard(){
-        return $this->belongsTo('App\AQLStandard', 'a_q_l_standard_id', 'name');
+        return $this->belongsTo('App\AQLStandard', 'a_q_l_standard_id', 'id');
     }
 }

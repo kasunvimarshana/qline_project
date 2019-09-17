@@ -26,14 +26,15 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             */
             
-            $table->unsignedBigInteger('id')->default(0)->nullable()->comment('comment');
+            //$table->unsignedBigInteger('id')->default(0)->nullable()->comment('comment');
             //$table->->uuid('id')->default(0)->nullable()->comment('universal unique identifier');
+            $table->string('id')->index()->unique()->comment('comment');
             $table->timestamps();
-            $table->boolean('is_visible')->index()->nullable()->default(false)->comment('comment');
-            $table->boolean('is_active')->index()->nullable()->default(false)->comment('comment');
-            //$table->string('colour')->index()->nullable()->comment('comment');
-            $table->string('user_code')->index()->unique()->comment('comment');
-            $table->string('epf_code')->index()->nullable()->comment('comment');
+            $table->boolean('is_visible')->index()->default(false)->nullable()->comment('comment');
+            $table->boolean('is_active')->index()->default(false)->nullable()->comment('comment');
+            //$table->string('colour_id')->index()->nullable()->comment('comment');
+            $table->string('code')->index()->nullable()->comment('comment');
+            $table->string('code_epf')->index()->nullable()->comment('comment');
             $table->string('name_first')->index()->nullable()->comment('comment');
             $table->string('name_last')->index()->nullable()->comment('comment');
             $table->string('phone_mobile')->index()->nullable()->comment('comment');
@@ -44,6 +45,7 @@ class CreateUsersTable extends Migration
             $table->text('image_uri')->default(null)->nullable()->comment('uniform resource identifier'); 
             $table->string('email')->default(null)->nullable()->comment('comment');
             $table->string('company_id')->index()->nullable()->comment('comment');
+            $table->string('strategic_business_unit_id')->index()->nullable()->comment('comment');
             $table->string('department_id')->index()->nullable()->comment('comment');
             $table->string('section_id')->index()->nullable()->comment('comment');
             $table->string('grade')->index()->nullable()->comment('comment');
@@ -51,15 +53,14 @@ class CreateUsersTable extends Migration
             
             //$table->dropPrimary('id');
             //$table->primary('name');
-            $table->primary(array('user_code'));
+            $table->primary(array('id'));
             
             //$table->foreign('status_id')->references('id')->on('statuses')->onUpdate('cascade');
-            //$table->foreign('company_id')->references('name')->on('companies')->onUpdate('cascade');
-            //$table->foreign('department_id')->references('name')->on('departments')->onUpdate('cascade');
-            //$table->foreign('section_id')->references('name')->on('sections')->onUpdate('cascade');
+            //$table->foreign('company_id')->references('id')->on('companies')->onUpdate('cascade');
+            //$table->foreign('strategic_business_unit_id')->references('id')->on('strategic_business_units')->onUpdate('cascade');
+            //$table->foreign('department_id')->references('id')->on('departments')->onUpdate('cascade');
+            //$table->foreign('section_id')->references('id')->on('sections')->onUpdate('cascade');
         });
-        
-        DB::statement('ALTER TABLE users MODIFY COLUMN id INTEGER NOT NULL UNIQUE AUTO_INCREMENT;');
     }
 
     /**

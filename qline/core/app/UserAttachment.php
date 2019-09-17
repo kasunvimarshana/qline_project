@@ -22,13 +22,13 @@ class UserAttachment extends Model
     //protected $appends = array('field1', 'field2');
     //protected $attributes = array();
     //protected $guarded = array();
-    protected $fillable = array('is_visible', 'attached_by', 'file_original_name', 'attachable', 'file_type', 'link_url');
+    protected $fillable = array('id', 'is_visible', 'is_active', 'attached_by', 'file_original_name', 'file_type', 'link_url', 'attachable_type', 'attachable_id');
     //protected $hidden = array();
     //protected $casts = array();
     
     //one to many (inverse)
     public function userAttachedBy(){
-        return $this->belongsTo('App\User', 'attached_by', 'user_code');
+        return $this->belongsTo('App\User', 'attached_by', 'id');
     }
     
     //one to many (polymorphic) (inverse)

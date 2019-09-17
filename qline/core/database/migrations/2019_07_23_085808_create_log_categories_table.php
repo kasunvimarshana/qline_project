@@ -24,11 +24,12 @@ class CreateLogCategoriesTable extends Migration
             $table->timestamps();
             $table->boolean('is_visible')->index()->nullable()->default(false)->comment('comment');
             $table->boolean('is_active')->index()->nullable()->default(false)->comment('comment');
-            //$table->string('colour')->index()->nullable()->comment('comment');
-            $table->string('log_code')->index()->unique()->comment('comment');
+            //$table->string('colour_id')->index()->nullable()->comment('comment');
+            $table->string('code')->index()->nullable()->comment('comment');
             $table->string('name')->index()->nullable()->comment('comment');
             $table->string('display_name')->index()->nullable()->comment('comment');
             $table->text('image_uri')->default(null)->nullable()->comment('uniform resource identifier'); 
+            $table->unsignedBigInteger('log_category_id_parent')->unsigned()->index()->nullable()->comment('comment');
             //$table->softDeletes();
             
             //$table->foreign('status_id')->references('id')->on('statuses')->onUpdate('cascade');

@@ -24,7 +24,7 @@ class Status extends Model
     //protected $appends = array('field1', 'field2');
     //protected $attributes = array();
     //protected $guarded = array();
-    protected $fillable = array('is_visible', 'is_active', 'colour', 'name', 'display_name', 'image_uri');
+    protected $fillable = array('id', 'is_visible', 'is_active', 'colour_id', 'code', 'name', 'display_name', 'image_uri');
     //protected $hidden = array();
     //protected $casts = array();
     
