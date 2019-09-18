@@ -5,6 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class CreateLinesTable extends Migration
 {
@@ -38,15 +39,18 @@ class CreateLinesTable extends Migration
             $table->string('strategic_business_unit_id')->index()->nullable()->comment('comment');
             $table->string('factory_id')->index()->nullable()->comment('comment');
             //$table->softDeletes();
-            
             //$table->dropPrimary('id');
             //$table->primary('name');
-            $table->primary(array('id'));
-            
-            //$table->foreign('status_id')->references('id')->on('statuses')->onUpdate('cascade');
-            $table->foreign('company_id')->references('id')->on('companies')->onUpdate('cascade');
-            $table->foreign('strategic_business_unit_id')->references('id')->on('strategic_business_units')->onUpdate('cascade');
-            $table->foreign('factory_id')->references('id')->on('factories')->onUpdate('cascade');
+        });
+        
+        Schema::table('lines', function($table) {
+            $table->primary(array('id'), ('pk'.time().Str::uuid()->toString()));
+            //$table->unique(array('id'), ('unique'.time().Str::uuid()->toString()));
+            //$table->index(array('id'), ('index'.time().Str::uuid()->toString()));
+            //$table->foreign('status_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('statuses')->onUpdate('cascade');
+            $table->foreign('company_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('companies')->onUpdate('cascade');
+            $table->foreign('strategic_business_unit_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('strategic_business_units')->onUpdate('cascade');
+            $table->foreign('factory_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('factories')->onUpdate('cascade');
         });
     }
 

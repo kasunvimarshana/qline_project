@@ -5,6 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class CreateUserRolesTable extends Migration
 {
@@ -26,10 +27,20 @@ class CreateUserRolesTable extends Migration
             $table->string('user_id')->index()->comment('comment');
             $table->unsignedBigInteger('role_id')->index()->unsigned()->comment('comment');
             //FOREIGN KEY CONSTRAINTS
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('role_id')->references('id')->on('roles')->onUpdate('cascade')->onDelete('cascade');
+            //$table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            //$table->foreign('role_id')->references('id')->on('roles')->onUpdate('cascade')->onDelete('cascade');
             //SETTING THE PRIMARY KEYS
-            $table->primary(['user_id','role_id']);
+            //$table->primary(['user_id','role_id']);
+        });
+        
+        Schema::table('user_roles', function($table) {
+            //$table->primary(array('id'), ('pk'.time().Str::uuid()->toString()));
+            $table->primary(['user_id','role_id'], ('pk'.time().Str::uuid()->toString()));
+            //$table->unique(array('id'), ('unique'.time().Str::uuid()->toString()));
+            //$table->index(array('id'), ('index'.time().Str::uuid()->toString()));
+            //$table->foreign('status_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('statuses')->onUpdate('cascade');
+            $table->foreign('user_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('role_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('roles')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

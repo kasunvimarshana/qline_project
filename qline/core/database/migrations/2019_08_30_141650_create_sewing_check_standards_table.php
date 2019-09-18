@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+
 class CreateSewingCheckStandardsTable extends Migration
 {
     /**
@@ -34,13 +37,16 @@ class CreateSewingCheckStandardsTable extends Migration
             $table->string('sewing_check_standard_id_parent')->index()->nullable()->comment('comment');
             $table->string('a_q_l_standard_id')->index()->nullable()->comment('comment');
             //$table->softDeletes();
-            
             //$table->dropPrimary('id');
             //$table->primary('name');
-            $table->primary(array('id'));
-            
-            //$table->foreign('status_id')->references('id')->on('statuses')->onUpdate('cascade');
-            $table->foreign('a_q_l_standard_id')->references('id')->on('a_q_l_standards')->onUpdate('cascade');
+        });
+        
+        Schema::table('sewing_check_standards', function($table) {
+            $table->primary(array('id'), ('pk'.time().Str::uuid()->toString()));
+            //$table->unique(array('id'), ('unique'.time().Str::uuid()->toString()));
+            //$table->index(array('id'), ('index'.time().Str::uuid()->toString()));
+            //$table->foreign('status_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('statuses')->onUpdate('cascade');
+            $table->foreign('a_q_l_standard_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('a_q_l_standards')->onUpdate('cascade');
         });
     }
 

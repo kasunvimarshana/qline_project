@@ -2,10 +2,10 @@
 
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use App\InputScanDataStatus;
+use App\QualityRecordInputScanDataStatus;
 use Faker\Generator as Faker;
 
-$factory->define(InputScanDataStatus::class, function (Faker $faker) {
+$factory->define(QualityRecordInputScanDataStatus::class, function (Faker $faker) {
     return [
         //
     ];

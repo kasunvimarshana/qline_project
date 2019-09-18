@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+
 class CreateColoursTable extends Migration
 {
     /**
@@ -33,12 +36,15 @@ class CreateColoursTable extends Migration
             $table->text('image_uri')->default(null)->nullable()->comment('uniform resource identifier');
             $table->string('colour_id_parent')->index()->nullable()->comment('comment');
             //$table->softDeletes();
-            
             //$table->dropPrimary('id');
             //$table->primary('name');
-            $table->primary(array('id'));
-            
-            //$table->foreign('status_id')->references('id')->on('statuses')->onUpdate('cascade');
+        });
+        
+        Schema::table('colours', function($table) {
+            $table->primary(array('id'), ('pk'.time().Str::uuid()->toString()));
+            //$table->unique(array('id'), ('unique'.time().Str::uuid()->toString()));
+            //$table->index(array('id'), ('index'.time().Str::uuid()->toString()));
+            //$table->foreign('status_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('statuses')->onUpdate('cascade');
         });
     }
 

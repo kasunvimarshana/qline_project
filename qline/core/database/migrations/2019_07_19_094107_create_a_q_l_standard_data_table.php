@@ -5,6 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class CreateAQLStandardDataTable extends Migration
 {
@@ -39,9 +40,14 @@ class CreateAQLStandardDataTable extends Migration
             $table->double('audit_frequency_count')->index()->nullable()->default(0)->comment('comment [ 0 < ]');
             $table->double('audit_frequency_time')->index()->nullable()->default(0)->comment('comment [ 0 < ]');
             $table->string('a_q_l_standard_id')->index()->nullable()->comment('comment');
-            
-            //$table->foreign('status_id')->references('id')->on('statuses')->onUpdate('cascade');
-            $table->foreign('a_q_l_standard_id')->references('id')->on('a_q_l_standards')->onUpdate('cascade');
+        });
+        
+        Schema::table('a_q_l_standard_data', function($table) {
+            //$table->primary(array('id'), ('pk'.time().Str::uuid()->toString()));
+            //$table->unique(array('id'), ('unique'.time().Str::uuid()->toString()));
+            //$table->index(array('id'), ('index'.time().Str::uuid()->toString()));
+            //$table->foreign('status_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('statuses')->onUpdate('cascade');
+            $table->foreign('a_q_l_standard_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('a_q_l_standards')->onUpdate('cascade');
         });
     }
 

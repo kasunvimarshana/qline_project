@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\InputScanData;
+use App\QualityRecordInputScanData;
 use Illuminate\Http\Request;
 
-class InputScanDataController extends Controller
+class QualityRecordInputScanDataController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class InputScanDataController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\InputScanData  $inputScanData
+     * @param  \App\QualityRecordInputScanData  $qualityRecordInputScanData
      * @return \Illuminate\Http\Response
      */
-    public function show(InputScanData $inputScanData)
+    public function show(QualityRecordInputScanData $qualityRecordInputScanData)
     {
         //
     }
@@ -52,10 +52,10 @@ class InputScanDataController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\InputScanData  $inputScanData
+     * @param  \App\QualityRecordInputScanData  $qualityRecordInputScanData
      * @return \Illuminate\Http\Response
      */
-    public function edit(InputScanData $inputScanData)
+    public function edit(QualityRecordInputScanData $qualityRecordInputScanData)
     {
         //
     }
@@ -64,10 +64,10 @@ class InputScanDataController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\InputScanData  $inputScanData
+     * @param  \App\QualityRecordInputScanData  $qualityRecordInputScanData
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, InputScanData $inputScanData)
+    public function update(Request $request, QualityRecordInputScanData $qualityRecordInputScanData)
     {
         //
     }
@@ -75,10 +75,10 @@ class InputScanDataController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\InputScanData  $inputScanData
+     * @param  \App\QualityRecordInputScanData  $qualityRecordInputScanData
      * @return \Illuminate\Http\Response
      */
-    public function destroy(InputScanData $inputScanData)
+    public function destroy(QualityRecordInputScanData $qualityRecordInputScanData)
     {
         //
     }

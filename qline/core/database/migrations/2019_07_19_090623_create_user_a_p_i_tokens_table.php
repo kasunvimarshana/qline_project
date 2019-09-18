@@ -5,6 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class CreateUserAPITokensTable extends Migration
 {
@@ -45,13 +46,17 @@ class CreateUserAPITokensTable extends Migration
             $table->string('user_agent')->index()->nullable()->comment('comment');
             $table->string('user_id')->index()->nullable()->comment('comment');
             //$table->softDeletes();
-            
             //$table->dropPrimary('id');
             //$table->primary('name');
             //$table->primary(array('name'));
-            
-            //$table->foreign('status_id')->references('id')->on('statuses')->onUpdate('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
+        });
+        
+        Schema::table('user_a_p_i_tokens', function($table) {
+            //$table->primary(array('id'), ('pk'.time().Str::uuid()->toString()));
+            //$table->unique(array('id'), ('unique'.time().Str::uuid()->toString()));
+            //$table->index(array('id'), ('index'.time().Str::uuid()->toString()));
+            //$table->foreign('status_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('statuses')->onUpdate('cascade');
+            $table->foreign('user_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('users')->onUpdate('cascade');
         });
     }
 

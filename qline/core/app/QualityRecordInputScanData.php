@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class InputScanData extends Model
+class QualityRecordInputScanData extends Model
 {
     //
     //protected $table = "table";
@@ -70,5 +70,4 @@ class InputScanData extends Model
     public function user(){
         return $this->belongsTo('App\User', 'user_id_create', 'id');
     }
-    
 }

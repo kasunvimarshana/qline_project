@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class CreateQualityRecordsTable extends Migration
+class CreateQualityRecoredInputDefectDataTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,12 +16,12 @@ class CreateQualityRecordsTable extends Migration
      */
     public function up()
     {
-        Schema::create('quality_records', function (Blueprint $table) {
+        Schema::create('quality_recored_input_defect_data', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
         });
         
-        Schema::table('quality_records', function($table) {
+        Schema::table('quality_recored_input_defect_data', function($table) {
             //$table->primary(array('id'), ('pk'.time().Str::uuid()->toString()));
             //$table->unique(array('id'), ('unique'.time().Str::uuid()->toString()));
             //$table->index(array('id'), ('index'.time().Str::uuid()->toString()));
@@ -36,6 +36,6 @@ class CreateQualityRecordsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quality_records');
+        Schema::dropIfExists('quality_recored_input_defect_data');
     }
 }

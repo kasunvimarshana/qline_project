@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\InputScanDataStatus;
+use App\QualityRecoredInputDefectData;
 use Illuminate\Http\Request;
 
-class InputScanDataStatusController extends Controller
+class QualityRecoredInputDefectDataController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class InputScanDataStatusController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\InputScanDataStatus  $inputScanDataStatus
+     * @param  \App\QualityRecoredInputDefectData  $qualityRecoredInputDefectData
      * @return \Illuminate\Http\Response
      */
-    public function show(InputScanDataStatus $inputScanDataStatus)
+    public function show(QualityRecoredInputDefectData $qualityRecoredInputDefectData)
     {
         //
     }
@@ -52,10 +52,10 @@ class InputScanDataStatusController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\InputScanDataStatus  $inputScanDataStatus
+     * @param  \App\QualityRecoredInputDefectData  $qualityRecoredInputDefectData
      * @return \Illuminate\Http\Response
      */
-    public function edit(InputScanDataStatus $inputScanDataStatus)
+    public function edit(QualityRecoredInputDefectData $qualityRecoredInputDefectData)
     {
         //
     }
@@ -64,10 +64,10 @@ class InputScanDataStatusController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\InputScanDataStatus  $inputScanDataStatus
+     * @param  \App\QualityRecoredInputDefectData  $qualityRecoredInputDefectData
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, InputScanDataStatus $inputScanDataStatus)
+    public function update(Request $request, QualityRecoredInputDefectData $qualityRecoredInputDefectData)
     {
         //
     }
@@ -75,10 +75,10 @@ class InputScanDataStatusController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\InputScanDataStatus  $inputScanDataStatus
+     * @param  \App\QualityRecoredInputDefectData  $qualityRecoredInputDefectData
      * @return \Illuminate\Http\Response
      */
-    public function destroy(InputScanDataStatus $inputScanDataStatus)
+    public function destroy(QualityRecoredInputDefectData $qualityRecoredInputDefectData)
     {
         //
     }

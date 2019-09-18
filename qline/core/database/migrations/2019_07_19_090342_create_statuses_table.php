@@ -5,6 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class CreateStatusesTable extends Migration
 {
@@ -32,10 +33,16 @@ class CreateStatusesTable extends Migration
             $table->string('name')->index()->nullable()->comment('comment'); // create table
             $table->string('display_name')->index()->nullable()->comment('comment');
             $table->text('image_uri')->default(null)->nullable()->comment('uniform resource identifier'); 
+            $table->unsignedBigInteger('status_id_parent')->unsigned()->index()->nullable()->comment('comment');
             //->charset('utf8')->change();
             //$table->softDeletes();
-            
-            //$table->primary(array('id'));
+        });
+        
+        Schema::table('statuses', function($table) {
+            //$table->primary(array('id'), ('pk'.time().Str::uuid()->toString()));
+            //$table->unique(array('id'), ('unique'.time().Str::uuid()->toString()));
+            //$table->index(array('id'), ('index'.time().Str::uuid()->toString()));
+            //$table->foreign('status_id_parent', ('fk'.time().Str::uuid()->toString()))->references('id')->on('statuses')->onUpdate('cascade');
         });
         
         //DB::statement('ALTER TABLE table_name MODIFY COLUMN id INTEGER NOT NULL UNIQUE AUTO_INCREMENT;');

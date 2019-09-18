@@ -5,6 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class CreateDefectsTable extends Migration
 {
@@ -36,13 +37,16 @@ class CreateDefectsTable extends Migration
             $table->string('defect_id_parent')->index()->nullable()->comment('comment');
             $table->string('defect_category_id')->index()->nullable()->comment('comment');
             //$table->softDeletes();
-            
             //$table->dropPrimary('id');
             //$table->primary('name');
-            $table->primary(array('id'));
-            
-            //$table->foreign('status_id')->references('id')->on('statuses')->onUpdate('cascade');
-            $table->foreign('defect_category_id')->references('id')->on('defect_categories')->onUpdate('cascade');
+        });
+        
+        Schema::table('defects', function($table) {
+            $table->primary(array('id'), ('pk'.time().Str::uuid()->toString()));
+            //$table->unique(array('id'), ('unique'.time().Str::uuid()->toString()));
+            //$table->index(array('id'), ('index'.time().Str::uuid()->toString()));
+            //$table->foreign('status_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('statuses')->onUpdate('cascade');
+            $table->foreign('defect_category_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('defect_categories')->onUpdate('cascade');
         });
     }
 
