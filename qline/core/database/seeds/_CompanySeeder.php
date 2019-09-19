@@ -15,6 +15,9 @@ class CompanySeeder extends Seeder
     public function run()
     {
         //
+        //$model->hasManyModel()->save($model);
+        //$model->belongsToModel()->associate($model)->save();
+        
         $newCompany = Company::firstOrCreate([
             'id' => 'brandix',
             'is_visible' => true,
@@ -25,12 +28,12 @@ class CompanySeeder extends Seeder
         ]);
         
         $newStrategicBusinessUnit = $newCompany->strategicBusinessUnits()->firstOrCreate([
-            'id' => 'bli',
-            'is_visible' => true,
-            'is_active' => true,
-            'code' => 'bli',
-            'name' => 'bli',
-            'display_name' => 'bli'
+            'id' => 'default',
+            'is_visible' => false,
+            'is_active' => false,
+            'code' => 'default',
+            'name' => 'default',
+            'display_name' => 'default'
         ]);
         
         $newCompany->strategicBusinessUnits()->save($newStrategicBusinessUnit);
