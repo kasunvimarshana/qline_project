@@ -14,7 +14,7 @@ class StrategicBusinessUnitSeeder extends Seeder
     public function run()
     {
         //
-        $newStrategicBusinessUnit = StrategicBusinesUnit::firstOrCreate([
+        $newStrategicBusinessUnit = StrategicBusinessUnit::firstOrCreate([
             'id' => 'bli',
             'is_visible' => true,
             'is_active' => true,
@@ -40,24 +40,22 @@ class StrategicBusinessUnitSeeder extends Seeder
             'is_active' => true,
             'code' => 'quality',
             'name' => 'quality',
-            'display_name' => 'quality',
+            'display_name' => 'quality'
         ]);
         
-        $newDepartment->company()->associate($newCompany);
-        $newDepartment->strategicBusinessUnit()->associate($newStrategicBusinessUnit);
+        $newDepartment->company()->associate($newCompany)->save();
+        $newDepartment->strategicBusinessUnit()->associate($newStrategicBusinessUnit)->save();
         
         $newFactory = $newStrategicBusinessUnit->factories()->firstOrCreate([
-            '' => '',
-            '' => '',
-            '' => '',
-            '' => '',
-            '' => '',
-            '' => '',
-            '' => '',
-            '' => '',
-            '' => '',
-            '' => '',
-            '' => '',
+            'id' => 'bli_1',
+            'is_visible' => true,
+            'is_active' => true,
+            'code' => 'bli_1',
+            'name' => 'bli_1',
+            'display_name' => 'bli_1'
         ]);
+        
+        $newFactory->company()->associate($newCompany)->save();
+        $newFactory->strategicBusinessUnit()->associate($newStrategicBusinessUnit)->save();
     }
 }
