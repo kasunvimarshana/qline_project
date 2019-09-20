@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use Illuminate\Database\Eloquent\Builder;
 use App\Permissions\HasPermissionsTrait;
 
 class User extends Authenticatable
@@ -52,6 +53,44 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    /**
+     * All of the relationships to be touched.
+     *
+     * @var array
+     */
+    //protected $touches = ['table_name'];
+    /**
+    * Set the keys for a save update query.
+    *
+    * @param  \Illuminate\Database\Eloquent\Builder  $query
+    * @return \Illuminate\Database\Eloquent\Builder
+    */
+    protected function setKeysForSaveQuery(Builder $query){
+        $keys = $this->getKeyName();
+        if(!is_array($keys)){
+            return parent::setKeysForSaveQuery($query);
+        }
+        foreach($keys as $keyName){
+            $query->where($keyName, '=', $this->getKeyForSaveQuery($keyName));
+        }
+        return $query;
+    }
+    
+    /**
+    * Get the primary key value for a save query.
+    *
+    * @param mixed $keyName
+    * @return mixed
+    */
+    protected function getKeyForSaveQuery($keyName = null){
+        if(is_null($keyName)){
+            $keyName = $this->getKeyName();
+        }
+        if (isset($this->original[$keyName])){
+            return $this->original[$keyName];
+        }
+        return $this->getAttribute($keyName);
+    }
     
     protected static function boot(){
         parent::boot();

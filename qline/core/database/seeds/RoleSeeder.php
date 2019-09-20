@@ -3,7 +3,6 @@
 use Illuminate\Database\Seeder;
 
 use App\Role;
-use App\Permission;
 
 class RoleSeeder extends Seeder
 {
@@ -15,14 +14,16 @@ class RoleSeeder extends Seeder
     public function run()
     {
         //
-        //search permission
-        $devPermission = Permission::where('slug','edit-event')->first();
-        //create role
-        $newRole = Role::create([
+        $newRole = Role::firstOrCreate([
             'slug' => 'super-user',
             'name' => 'Super User'
         ]);
-        //attach role permission
-        $newRole->permissions()->attach($devPermission);
+        
+        $newPermission = $newRole->permissions()->firstOrCreate([
+            'slug' => 'edit-event',
+            'name' => 'Edit Event'
+        ]);
+        
+        $newRole->permissions()->attach($newPermission);
     }
 }

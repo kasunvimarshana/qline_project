@@ -18,38 +18,37 @@ class UserSeeder extends Seeder
     public function run()
     {
         //
-        //create a user
-        $newUser = User::create([
+        $newUser = User::firstOrCreate([
             'is_visible' => false,
             'is_active' => true,
-            'code' => '0ADMIN',
-            'code_epf' => '0ADMIN',
+            'code' => '0admin',
+            'code_epf' => '0admin',
             'name_first' => 'admin',
             'name_last' => 'admin',
             'password' => Hash::make('password')
         ]);
-        //search a role
-        $newRole = Role::where('slug','super-user')->first();
-        //search a permission
-        $newPermission = Permission::where('slug','show-event')->first();
-        //add role and permission
-        //$newUser->roles()->attach( array( $newRole->id ) );// add to intermediate model
-        //$newUser->roles()->detach( array( $newRole->id ) );// remove from intermediate model
-        //$newUser->roles()->sync( array( $newRole->id ) );// add or remove from intermediate model
-        //$newUser->permissions()->attach( array( $newPermission->id ) );// add to intermediate model
-        //$newUser->permissions()->detach( array( $newPermission->id ) );// remove from intermediate model
-        //$newUser->permissions()->sync( array( $newPermission->id ) );// add or remove from intermediate model
-        $newUser->roles()->attach( $newRole );
-        $newUser->permissions()->attach( $newPermission );
-        //add token
-        $newUserAPIToken = $newUser->userAPITokens()->create( array( 
+        
+        $newRole = $newUser->roles()->firstOrCreate([
+            'slug' => 'super-user',
+            'name' => 'Super User'
+        ]);
+        
+        $newUser->roles()->attach($newRole);
+        
+        $newPermission = $newUser->permissions()->firstOrCreate([
+            'slug' => 'show-event',
+            'name' => 'Show Event'
+        ]);
+        
+        $newUser->permissions()->attach($newPermission);
+        
+        $newUserAPIToken = $newUser->userAPITokens()->firstOrCreate([
             'is_visible' => false,
             'is_active' => true,
             'is_deactivatable' => false,
-            'is_notifiable' => false,
-            'user_id' => $newUser->id
-        ) );
-        //$newUser->userAPITokens()->save( array( $newUserAPIToken ) );// add or edit related model
-        //$newUserAPIToken->user()->associate( $newUser )->save();// edit related model relation
+            'is_notifiable' => false
+        ]);
+        
+        $newUser->userAPITokens()->save($newUserAPIToken);
     }
 }

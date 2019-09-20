@@ -24,7 +24,7 @@ class CreateSectionsTable extends Migration
             
             //$table->unsignedBigInteger('id')->default(0)->nullable()->comment('comment');
             //$table->->uuid('id')->default(0)->nullable()->comment('universal unique identifier');
-            $table->string('id')->index()->unique()->comment('comment');
+            $table->string('id')->index()->comment('comment');
             $table->timestamps();
             $table->boolean('is_visible')->index()->default(false)->nullable()->comment('comment');
             $table->boolean('is_active')->index()->default(false)->nullable()->comment('comment');
@@ -44,7 +44,7 @@ class CreateSectionsTable extends Migration
         });
         
         Schema::table('sections', function($table) {
-            $table->primary(array('id'), ('pk'.time().Str::uuid()->toString()));
+            $table->primary(array('id', 'department_id'), ('pk'.time().Str::uuid()->toString()));
             //$table->unique(array('id'), ('unique'.time().Str::uuid()->toString()));
             //$table->index(array('id'), ('index'.time().Str::uuid()->toString()));
             //$table->foreign('status_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('statuses')->onUpdate('cascade');

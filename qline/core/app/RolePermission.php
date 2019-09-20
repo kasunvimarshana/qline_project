@@ -13,7 +13,7 @@ class RolePermission extends Model
     protected $primaryKey = array('role_id', 'permission_id');
     //protected $primaryKey = "id";
     //protected $keyType = 'int';
-    //public $incrementing = false;
+    public $incrementing = false;
     //protected $connection = "mysql";
     //$this->setConnection("mysql");
     //protected $perPage = 25;
@@ -28,34 +28,51 @@ class RolePermission extends Model
     protected $fillable = array('role_id', 'permission_id');
     //protected $hidden = array();
     //protected $casts = array();
-    
+    /**
+     * All of the relationships to be touched.
+     *
+     * @var array
+     */
+    //protected $touches = ['table_name'];
     /**
     * Set the keys for a save update query.
-    * This is a fix for tables with composite keys
-    * TODO: Investigate this later on
     *
     * @param  \Illuminate\Database\Eloquent\Builder  $query
     * @return \Illuminate\Database\Eloquent\Builder
     */
-    /*
     protected function setKeysForSaveQuery(Builder $query){
-        $query
-        //Put appropriate values for your keys here:
-        ->where('column1', '=', $this->column1)
-        ->where('column2', '=', $this->column2);
-        return $query;
-    }
-    */
-    protected function setKeysForSaveQuery(Builder $query){
-        if (is_array($this->primaryKey)) {
-            foreach ($this->primaryKey as $key => $value) {
-                //$this->original($value);
-                $query->where($value, '=', $this->original[$value]);
-            }
-            return $query;
-        }else{
+        $keys = $this->getKeyName();
+        if(!is_array($keys)){
             return parent::setKeysForSaveQuery($query);
         }
+        foreach($keys as $keyName){
+            $query->where($keyName, '=', $this->getKeyForSaveQuery($keyName));
+        }
+        return $query;
     }
     
+    /**
+    * Get the primary key value for a save query.
+    *
+    * @param mixed $keyName
+    * @return mixed
+    */
+    protected function getKeyForSaveQuery($keyName = null){
+        if(is_null($keyName)){
+            $keyName = $this->getKeyName();
+        }
+        if (isset($this->original[$keyName])){
+            return $this->original[$keyName];
+        }
+        return $this->getAttribute($keyName);
+    }
+    
+    /*
+    public function newPivot(Model $parent, array $attributes, $table, $exists){
+        if ($parent instanceof ParentModel) {
+            return new LocalParentPivot($parent, $attributes, $table, $exists);
+        }
+        return parent::newPivot($parent, $attributes, $table, $exists);
+    }
+    */
 }

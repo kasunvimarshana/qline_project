@@ -24,7 +24,7 @@ class CreateFactoriesTable extends Migration
             
             //$table->unsignedBigInteger('id')->default(0)->nullable()->comment('comment');
             //$table->->uuid('id')->default(0)->nullable()->comment('universal unique identifier');
-            $table->string('id')->index()->unique()->comment('comment');
+            $table->string('id')->index()->comment('comment');
             $table->timestamps();
             $table->boolean('is_visible')->index()->default(false)->nullable()->comment('comment');
             $table->boolean('is_active')->index()->default(false)->nullable()->comment('comment');
@@ -43,7 +43,7 @@ class CreateFactoriesTable extends Migration
         });
         
         Schema::table('factories', function($table) {
-            $table->primary(array('id'), ('pk'.time().Str::uuid()->toString()));
+            $table->primary(array('id', 'strategic_business_unit_id'), ('pk'.time().Str::uuid()->toString()));
             //$table->unique(array('id'), ('unique'.time().Str::uuid()->toString()));
             //$table->index(array('id'), ('index'.time().Str::uuid()->toString()));
             //$table->foreign('status_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('statuses')->onUpdate('cascade');
