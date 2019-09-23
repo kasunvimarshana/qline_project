@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CompanySeeder::class);
         $this->call(StrategicBusinessUnitSeeder::class);
         $this->call(DefectCategorySeeder::class);
+        $this->call(MeasurePointSeeder::class);
     }
 }
