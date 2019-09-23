@@ -4,16 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Illuminate\Database\Eloquent\Builder;
-
-class DefectCategoryDefect extends Model
+class QualityRecordRQC extends Model
 {
-    /
+    //
     //protected $table = "table";
-    protected $primaryKey = array('defect_category_id', 'defect_id');
     //protected $primaryKey = "id";
-    //protected $keyType = 'string';
-    public $incrementing = false;
+    //protected $keyType = 'int';
+    //public $incrementing = false;
     //protected $connection = "mysql";
     //$this->setConnection("mysql");
     //protected $perPage = 25;
@@ -25,7 +22,7 @@ class DefectCategoryDefect extends Model
     //protected $appends = array('field1', 'field2');
     //protected $attributes = array();
     //protected $guarded = array();
-    protected $fillable = array('is_visible', 'is_active', 'defect_category_id', 'defect_id');
+    protected $fillable = array('id', 'is_visible', 'is_active', 'time_create', 'count_sample', 'inspection_stage_id', 'standard_a_q_l_id', 'company_id', 'strategic_business_unit_id', 'factory_id', 'line_id', 'customer_id', 'style_id', 'colour_id', 'export_id', 'user_id_create', 'ip_address', 'status_id', 'description', 'user_id_record');
     //protected $hidden = array();
     //protected $casts = array();
     /**
@@ -67,13 +64,8 @@ class DefectCategoryDefect extends Model
         return $this->getAttribute($keyName);
     }
     
-    //one to many (inverse)
-    public function defectCategory(){
-        return $this->belongsTo('App\DefectCategory', 'defect_category_id', 'id');
-    }
-    
-    //one to many (inverse)
-    public function defect(){
-        return $this->belongsTo('App\Defect', 'defect_id', 'id');
+    //one to many
+    public function qualityRecordDataRQC(){
+        return $this->hasMany('App\QualityRecordDataRQC', 'quality_record_r_q_c_id', 'id');
     }
 }

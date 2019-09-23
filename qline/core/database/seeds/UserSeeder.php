@@ -18,6 +18,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         //
+        /*
         $newUser = User::firstOrCreate([
             'is_visible' => false,
             'is_active' => true,
@@ -27,20 +28,45 @@ class UserSeeder extends Seeder
             'name_last' => 'admin',
             'password' => Hash::make('password')
         ]);
+        */
+        
+        $newUser = User::updateOrCreate(
+            [
+                'is_visible' => false,
+                'is_active' => true,
+                'code' => '0admin',
+                'code_epf' => '0admin',
+                'name_first' => 'admin',
+                'name_last' => 'admin'
+            ],
+            [
+                'is_visible' => false,
+                'is_active' => true,
+                'code' => '0admin',
+                'code_epf' => '0admin',
+                'name_first' => 'admin',
+                'name_last' => 'admin',
+                'password' => Hash::make('password')
+            ]
+        );
         
         $newRole = $newUser->roles()->firstOrCreate([
             'slug' => 'super-user',
             'name' => 'Super User'
         ]);
         
-        $newUser->roles()->attach($newRole);
+        //$newUser->roles()->attach($newRole);
+        //$newUser->roles()->sync($newRole);
+        $newUser->roles()->syncWithoutDetaching($newRole);
         
         $newPermission = $newUser->permissions()->firstOrCreate([
             'slug' => 'show-event',
             'name' => 'Show Event'
         ]);
         
-        $newUser->permissions()->attach($newPermission);
+        //$newUser->permissions()->attach($newPermission);
+        //$newUser->permissions()->sync($newPermission);
+        $newUser->permissions()->syncWithoutDetaching($newPermission);
         
         $newUserAPIToken = $newUser->userAPITokens()->firstOrCreate([
             'is_visible' => false,

@@ -24,6 +24,8 @@ class RoleSeeder extends Seeder
             'name' => 'Edit Event'
         ]);
         
-        $newRole->permissions()->attach($newPermission);
+        //$newRole->permissions()->attach($newPermission);
+        //$newRole->permissions()->sync($newPermission);
+        $newRole->permissions()->syncWithoutDetaching($newPermission);
     }
 }

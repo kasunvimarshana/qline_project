@@ -34,6 +34,8 @@ class PermissionSeeder extends Seeder
             'name' => 'Super User'
         ]);
         
-        $newPermission->roles()->attach($newRole);
+        //$newPermission->roles()->attach($newRole);
+        //$newPermission->roles()->sync($newRole);
+        $newPermission->roles()->syncWithoutDetaching($newRole);
     }
 }

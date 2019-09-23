@@ -110,4 +110,19 @@ class QualityRecordInputScanData extends Model
     public function user(){
         return $this->belongsTo('App\User', 'user_id_create', 'id');
     }
+    
+    //one to one
+    public function qualityRecordInputScanDataStatus(){
+        return $this->hasOne('App\QualityRecordInputScanDataStatus', 'quality_record_input_scan_data_id', 'id');
+    }
+    
+    //one to one
+    public function qualityRecordInputScanDataStatusSewingAudit(){
+        return $this->hasOne('App\QualityRecordInputScanDataStatusSewingAudit', 'quality_record_input_scan_data_id', 'id');
+    }
+    
+    //one to one
+    public function qualityRecordInputScanDataStatusFinishing(){
+        return $this->hasOne('App\QualityRecordInputScanDataStatusFinishing', 'quality_record_input_scan_data_id', 'id');
+    }
 }

@@ -4,10 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
-
-class CreateQualityRecordsTable extends Migration
+class CreateQualityRecordRQCSTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,7 +13,7 @@ class CreateQualityRecordsTable extends Migration
      */
     public function up()
     {
-        Schema::create('quality_records', function (Blueprint $table) {
+        Schema::create('quality_record_r_q_c_s', function (Blueprint $table) {
             /*
             $table->bigIncrements('id');
             $table->timestamps();
@@ -46,10 +43,11 @@ class CreateQualityRecordsTable extends Migration
             $table->string('ip_address')->nullable()->comment('comment');//->index()
             $table->unsignedBigInteger('status_id')->unsigned()->nullable()->comment('comment');//->index()
             $table->text('description')->default(null)->nullable()->comment('comment'); 
-            $table->morphs('recordable');
+            //$table->morphs('recordable');
+            $table->string('user_id_record')->nullable()->comment('comment');//->index()
         });
         
-        Schema::table('quality_records', function($table) {
+        Schema::table('quality_record_r_q_c_s', function($table) {
             //$table->primary(array('id'), ('pk'.time().Str::uuid()->toString()));
             //$table->unique(array('id'), ('unique'.time().Str::uuid()->toString()));
             //$table->index(array('id'), ('index'.time().Str::uuid()->toString()));
@@ -70,6 +68,7 @@ class CreateQualityRecordsTable extends Migration
             $table->index(array('user_id_create'), ('index'.time().Str::uuid()->toString()));
             $table->index(array('ip_address'), ('index'.time().Str::uuid()->toString()));
             $table->index(array('status_id'), ('index'.time().Str::uuid()->toString()));
+            $table->index(array('user_id_record'), ('index'.time().Str::uuid()->toString()));
         });
     }
 
@@ -80,6 +79,6 @@ class CreateQualityRecordsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quality_records');
+        Schema::dropIfExists('quality_record_r_q_c_s');
     }
 }

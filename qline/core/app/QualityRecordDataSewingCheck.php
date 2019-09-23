@@ -4,16 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Illuminate\Database\Eloquent\Builder;
-
-class DefectCategoryDefect extends Model
+class QualityRecordDataSewingCheck extends Model
 {
-    /
+    //
     //protected $table = "table";
-    protected $primaryKey = array('defect_category_id', 'defect_id');
     //protected $primaryKey = "id";
-    //protected $keyType = 'string';
-    public $incrementing = false;
+    //protected $keyType = 'int';
+    //public $incrementing = false;
     //protected $connection = "mysql";
     //$this->setConnection("mysql");
     //protected $perPage = 25;
@@ -25,7 +22,7 @@ class DefectCategoryDefect extends Model
     //protected $appends = array('field1', 'field2');
     //protected $attributes = array();
     //protected $guarded = array();
-    protected $fillable = array('is_visible', 'is_active', 'defect_category_id', 'defect_id');
+    protected $fillable = array('id', 'is_visible', 'is_active', 'time_create', 'quality_record_sewing_check_id', 'status_id', 'description', 'user_id_create', 'measure_point_id', 'defect_category_id', 'defect_id', 'count_defect');
     //protected $hidden = array();
     //protected $casts = array();
     /**
@@ -68,12 +65,7 @@ class DefectCategoryDefect extends Model
     }
     
     //one to many (inverse)
-    public function defectCategory(){
-        return $this->belongsTo('App\DefectCategory', 'defect_category_id', 'id');
-    }
-    
-    //one to many (inverse)
-    public function defect(){
-        return $this->belongsTo('App\Defect', 'defect_id', 'id');
+    public function qualityRecordSewingCheck(){
+        return $this->belongsTo('App\QualityRecordSewingCheck', 'quality_record_sewing_check_id', 'id');
     }
 }
