@@ -24,7 +24,7 @@ class CreateStandardDataRQCSTable extends Migration
             $table->timestamps();
             $table->boolean('is_visible')->index()->nullable()->default(false)->comment('comment');
             $table->boolean('is_active')->index()->nullable()->default(false)->comment('comment');
-            $table->double('count_sample')->index()->nullable()->default(0)->comment('comment [ 0 < ]');
+            $table->double('count_sample')->index()->nullable()->default(0)->comment('comment');
             $table->double('batch_count_min')->index()->nullable()->default(0)->comment('comment');
             $table->double('batch_count_max')->index()->nullable()->default(0)->comment('comment');
             $table->double('count_accept')->index()->nullable()->default(0)->comment('comment');
@@ -34,8 +34,9 @@ class CreateStandardDataRQCSTable extends Migration
             $table->string('accept_level')->index()->nullable()->default(null)->comment('comment');
             $table->string('accept_mode')->index()->nullable()->default(null)->comment('comment');
             //$table->double('audit_frequency')->index()->nullable()->default(0)->comment('comment');
+            $table->string('audit_frequency_type')->index()->nullable()->comment('comment');
             $table->double('audit_frequency_count')->index()->nullable()->default(0)->comment('comment');
-            $table->double('audit_frequency_time')->index()->nullable()->default(0)->comment('comment');
+            //$table->double('audit_frequency_time')->index()->nullable()->default(0)->comment('comment');
             $table->string('standard_r_q_c_id')->index()->nullable()->comment('comment');
         });
         

@@ -32,6 +32,9 @@ class CreateStandardAQLSTable extends Migration
             $table->string('display_name')->index()->nullable()->comment('comment');
             $table->text('image_uri')->default(null)->nullable()->comment('uniform resource identifier'); 
             $table->string('standard_a_q_l_id_parent')->index()->nullable()->comment('comment');
+            $table->string('audit_frequency_type')->index()->nullable()->comment('comment');
+            $table->double('audit_frequency_count')->index()->nullable()->default(0)->comment('comment [ 0 < ]');
+            //$table->double('audit_frequency_time')->index()->nullable()->default(0)->comment('comment [ 0 < ]');
             //$table->softDeletes();
             //$table->dropPrimary('id');
             //$table->primary('name');

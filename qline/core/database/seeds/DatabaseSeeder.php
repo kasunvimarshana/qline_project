@@ -19,5 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call(StrategicBusinessUnitSeeder::class);
         $this->call(DefectCategorySeeder::class);
         $this->call(MeasurePointSeeder::class);
+        $this->call(StandardRQCSeeder::class);
+        $this->call(StandardSewingCheckSeeder::class);
+        $this->call(StandardSewingAuditSeeder::class);
     }
 }

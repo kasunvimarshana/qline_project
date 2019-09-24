@@ -61,5 +61,6 @@ Route::fallback(function () {
 /////////////////////////////////////////////////////////////////////////////////////
 Route::get('companies/create', array('uses' => 'CompanyController@store'))->name('company.store');
 Route::get('companies/{company}', array('uses' => 'CompanyController@show'))->name('company.show');
+Route::get('companies/select/all', array('uses' => 'CompanyController@selectCompanies'))->name('company.selectCompanies');
 
 Route::fallback('FallbackController@index')->name('fallback');

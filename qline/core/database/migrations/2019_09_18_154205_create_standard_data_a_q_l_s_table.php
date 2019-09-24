@@ -34,8 +34,9 @@ class CreateStandardDataAQLSTable extends Migration
             $table->string('accept_level')->index()->nullable()->default(null)->comment('comment [ full / single ]');
             $table->string('accept_mode')->index()->nullable()->default(null)->comment('comment [ =, <, > ]');
             //$table->double('audit_frequency')->index()->nullable()->default(0)->comment('comment');
+            $table->string('audit_frequency_type')->index()->nullable()->comment('comment [count, time, s, h, m]');
             $table->double('audit_frequency_count')->index()->nullable()->default(0)->comment('comment [ 0 < ]');
-            $table->double('audit_frequency_time')->index()->nullable()->default(0)->comment('comment [ 0 < ]');
+            //$table->double('audit_frequency_time')->index()->nullable()->default(0)->comment('comment [ 0 < ]');
             $table->string('standard_a_q_l_id')->index()->nullable()->comment('comment');
         });
         

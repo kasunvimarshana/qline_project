@@ -24,7 +24,7 @@ class StandardSewingCheck extends Model
     //protected $appends = array('field1', 'field2');
     //protected $attributes = array();
     //protected $guarded = array();
-    protected $fillable = array('id', 'is_visible', 'is_active', 'colour_id', 'code', 'name', 'display_name', 'image_uri', 'standard_sewing_check_id_parent', 'standard_a_q_l_id');
+    protected $fillable = array('id', 'is_visible', 'is_active', 'colour_id', 'code', 'name', 'display_name', 'image_uri', 'standard_sewing_check_id_parent', 'standard_a_q_l_id', 'audit_frequency_type', 'audit_frequency_count');
     //protected $hidden = array();
     //protected $casts = array();
     /**
