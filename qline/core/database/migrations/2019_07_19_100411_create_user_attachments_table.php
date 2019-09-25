@@ -33,6 +33,8 @@ class CreateUserAttachmentsTable extends Migration
             $table->morphs('attachable');
             $table->string('file_type')->index()->nullable()->comment('comment');
             $table->text('link_url')->comment('comment');
+            $table->string('data_key')->index()->nullable()->comment('comment');
+            $table->string('data_value')->index()->nullable()->comment('comment');
         });
         
         Schema::table('user_attachments', function($table) {
