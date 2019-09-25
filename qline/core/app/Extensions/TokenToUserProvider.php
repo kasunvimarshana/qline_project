@@ -8,22 +8,15 @@ use Illuminate\Contracts\Hashing\Hasher as HasherContract;
 use Illuminate\Contracts\Auth\Authenticatable;
 
 use App\UserAPIToken;
-use App\User;
 
 class TokenToUserProvider implements UserProvider
 {
-    /**
-     * The user model.
-     *
-     * @var App\User
-     */
-    protected $user;
     /**
      * The token model.
      *
      * @var App\UserAPIToken
      */
-    protected $token;
+    protected $user;
     /**
      * Create a new user provider.
      *
@@ -31,9 +24,8 @@ class TokenToUserProvider implements UserProvider
      * @param  App\User  $user
      * @return void
      */
-    public function __construct (User $user, UserAPIToken $token) {
+    public function __construct (UserAPIToken $user) {
 		$this->user = $user;
-		$this->token = $token;
 	}
     /**
      * Retrieve a user by their unique identifier.
@@ -55,13 +47,13 @@ class TokenToUserProvider implements UserProvider
      */
     public function retrieveByToken($identifier, $token)
     {
-        $queryObject = $this->token;
+        $queryObject = $this->user;
         $queryObject = $queryObject->with('user')
             ->where('is_active', '=', true)
             ->where('user_id', '=', $identifier)
             ->where('api_token', '=', $token)
             ->first();
-		return $queryObject && $queryObject->user ? $queryObject->user : null;
+		return $queryObject;
     }
     /**
      * Update the "remember me" token for the given user in storage.
@@ -90,7 +82,7 @@ class TokenToUserProvider implements UserProvider
             return;
         }
         
-        $queryObject = $this->token;
+        $queryObject = $this->user;
         
         foreach ($credentials as $key => $value) {
             if(Str::contains($key, 'password')){
@@ -104,7 +96,7 @@ class TokenToUserProvider implements UserProvider
         }
         
 		$queryObject = $queryObject->first();
-        return $queryObject && $queryObject->user ? $queryObject->user : null;
+        return $queryObject;
     }
     /**
      * Validate a user against the given credentials.
@@ -115,9 +107,11 @@ class TokenToUserProvider implements UserProvider
      */
     public function validateCredentials(Authenticatable $user, array $credentials)
     {
+        /*
         $plain = $credentials['password'];
         //return app('hash')->check($plain, $user->getAuthPassword());
         return $this->hasher->check($plain, $user->getAuthPassword());
+        */
     }
     /**
      * Get a new query builder for the model instance.
@@ -172,7 +166,8 @@ class TokenToUserProvider implements UserProvider
      */
     public function getModel()
     {
-        return $this->model;
+        //return $this->model;
+        return $this->user;
     }
     /**
      * Sets the name of the Eloquent user model.
@@ -182,7 +177,11 @@ class TokenToUserProvider implements UserProvider
      */
     public function setModel($model)
     {
+        /*
         $this->model = $model;
+        return $this;
+        */
+        $this->user = $model;
         return $this;
     }
 }

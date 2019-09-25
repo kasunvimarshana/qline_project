@@ -7,6 +7,8 @@ use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
+use Illuminate\Contracts\Auth\Authenticatable as Authenticatable;
+
 class AccessTokenGuard implements Guard
 {
     use GuardHelpers;
@@ -45,7 +47,7 @@ class AccessTokenGuard implements Guard
      *
      * @var bool
      */
-    protected $hash = false;
+    protected $hash;
     /**
      * Create a new authentication guard.
      *
@@ -67,6 +69,8 @@ class AccessTokenGuard implements Guard
     }
     */
     
+    protected $user;
+    
     /**
      * Create a new authentication guard.
      *
@@ -78,12 +82,43 @@ class AccessTokenGuard implements Guard
     public function __construct (UserProvider $provider, Request $request, $configuration) {
 		$this->provider = $provider;
 		$this->request = $request;
-		$this->inputKeyToken = isset($configuration['input_key_token']) ? $configuration['input_key_token'] : 'access_token';
+		$this->inputKeyToken = isset($configuration['input_key_token']) ? $configuration['input_key_token'] : 'authenticatable_access_token';
 		$this->storageKeyToken = isset($configuration['storage_key_token']) ? $configuration['storage_key_token'] : 'access_token';
-        $this->inputKeyUser = isset($configuration['input_key_user']) ? $configuration['input_key_user'] : 'user_id';
+        $this->inputKeyUser = isset($configuration['input_key_user']) ? $configuration['input_key_user'] : 'authenticatable_user_id';
 		$this->storageKeyUser = isset($configuration['storage_key_user']) ? $configuration['storage_key_user'] : 'user_id';
 		$this->hash = isset($configuration['hash']) ? $configuration['hash'] : false;
 	}
+    
+    /**
+    * Determine if the current user is authenticated.
+    *
+    * @return bool
+    */
+    public function check(){
+        return ! is_null($this->user());
+    }
+    
+    /**
+    * Determine if the current user is a guest.
+    *
+    * @return bool
+    */
+    public function guest()
+    {
+        return ! $this->check();
+    }
+    
+    /**
+    * Get the ID for the currently authenticated user.
+    *
+    * @return string|null
+    */
+    public function id()
+    {
+        if ($user = $this->user()) {
+            return $this->user()->getAuthIdentifier();
+        }
+    }
     
     /**
      * Get the currently authenticated user.
@@ -107,6 +142,11 @@ class AccessTokenGuard implements Guard
                 $this->storageKeyUser => $request_user
             ]);
         }
+        
+        /*
+        $this->setUser($user);
+        return $user;
+        */
         return $this->user = $user;
     }
     /**
@@ -172,6 +212,52 @@ class AccessTokenGuard implements Guard
     public function setRequest(Request $request)
     {
         $this->request = $request;
+        return $this;
+    }
+    
+    /*
+    Attempt to authenticate a user using the given credentials.
+    */
+    public function attempt(array $credentials = [], bool $remember = false){
+        $provider = $this->provider;
+        $authenticatableModel = $provider->getModel();
+        if( ($authenticatableModel) ){
+            $user = $authenticatableModel->user()->firstOrNew([])
+                ->where('is_active', '=', true)
+                ->where('code', '=', $credentials['code'])
+                ->first();
+            if( ($user) ){
+                $is_match = app('hash')->check($credentials['password'], $user->getAuthPassword());
+                if( ($is_match) ){
+                    $newUserAPIToken = $user->userAPITokens()->create([
+                        'is_visible' => true,
+                        'is_active' => true
+                    ]);
+                    $user->userAPITokens()->save($newUserAPIToken);
+                    $this->setUser($newUserAPIToken);
+                }
+            }
+        }
+        return $this->check();
+    }
+    
+    /*
+    Log the user out of the application.
+    */
+    /*
+    public function logout(){
+        
+    }
+    */
+    /**
+    * Set the current user.
+    *
+    * @param  Array $user User info
+    * @return void
+    */
+    public function setUser(Authenticatable $user)
+    {
+        $this->user = $user;
         return $this;
     }
 }

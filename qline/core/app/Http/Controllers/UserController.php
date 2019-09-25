@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\MeasurePoint;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
@@ -24,7 +24,7 @@ use Carbon\Carbon;
 use App\Http\Resources\CommonResponseResource as CommonResponseResource;
 use App\Enums\HTTPStatusCodeEnum as HTTPStatusCodeEnum;
 
-class MeasurePointController extends Controller
+class UserController extends Controller
 {
     /**
      * Store a newly created resource in storage.
@@ -43,7 +43,7 @@ class MeasurePointController extends Controller
         
         // validate the info, create rules for the inputs
         $rules = array(
-            'code' => 'required|unique:measure_points,code'
+            'code' => 'required|unique:users,code'
         );
         // run the validation rules on the inputs from the form
         $validator = Validator::make(Input::all(), $rules);
@@ -63,17 +63,26 @@ class MeasurePointController extends Controller
                 $dataArray = array(
                     'is_visible' => $request->input('is_visible', true),
                     'is_active' => $request->input('is_active', true),
-                    'colour_id' => $request->input('colour_id'),
                     'code' => $request->input('code'),
-                    'name' => $request->input('name'),
+                    'code_epf' => $request->input('code_epf'),
+                    'name_first' => $request->input('name_first'),
+                    'name_last' => $request->input('name_last'),
+                    'phone_mobile' => $request->input('phone_mobile'),
+                    'password' => $request->input('password'),
                     'display_name' => $request->input('display_name'),
                     'image_uri' => $request->input('image_uri'),
-                    'measure_point_id_parent' => $request->input('measure_point_id_parent')
+                    'email' => $request->input('email'),
+                    'company_id' => $request->input('company_id'),
+                    'strategic_business_unit_id' => $request->input('strategic_business_unit_id'),
+                    'department_id' => $request->input('department_id'),
+                    'section_id' => $request->input('section_id'),
+                    'grade' => $request->input('grade'),
+                    'remember_token' => $request->input('remember_token')
                 );
 
-                $measurePointObject = MeasurePoint::create( $dataArray );
+                $userObject = User::create( $dataArray );
                 unset($dataArray);
-                $data['measure_point_object'] = $measurePointObject;
+                $data['user_object'] = $userObject;
 
                 unset($dataArray);
                 // Commit transaction!
@@ -102,7 +111,7 @@ class MeasurePointController extends Controller
             'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_CREATED]
         ));
     }
-
+    
     /**
      * Display the specified resource.
      *
@@ -120,7 +129,7 @@ class MeasurePointController extends Controller
         
         // validate the info, create rules for the inputs
         $rules = array(
-            'id' => 'required|exists:measure_points,id'
+            'id' => 'required|exists:users,id'
         );
         // run the validation rules on the inputs from the form
         $validator = Validator::make(Input::all(), $rules);
@@ -137,11 +146,11 @@ class MeasurePointController extends Controller
                 // Start transaction!
                 DB::beginTransaction();
                 
-                $measurePointObject = new MeasurePoint();
-                $measurePointObject = $measurePointObject
+                $userObject = new User();
+                $userObject = $userObject
                     ->where('id', '=', $request->input('id'))->first();
                 
-                $data['measure_point_object'] = $measurePointObject;
+                $data['user_object'] = $userObject;
                 unset($dataArray);
                 
                 // Commit transaction!
@@ -170,7 +179,7 @@ class MeasurePointController extends Controller
             'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_CREATED]
         ));
     }
-
+    
     /**
      * Update the specified resource in storage.
      *
@@ -188,7 +197,7 @@ class MeasurePointController extends Controller
         
         // validate the info, create rules for the inputs
         $rules = array(
-            'id' => 'required|exists:measure_points,id'
+            'id' => 'required|exists:users,id'
         );
         // run the validation rules on the inputs from the form
         $validator = Validator::make(Input::all(), $rules);
@@ -208,21 +217,30 @@ class MeasurePointController extends Controller
                 $dataArray = array(
                     'is_visible' => $request->input('is_visible', true),
                     'is_active' => $request->input('is_active', true),
-                    'colour_id' => $request->input('colour_id'),
                     'code' => $request->input('code'),
-                    'name' => $request->input('name'),
+                    'code_epf' => $request->input('code_epf'),
+                    'name_first' => $request->input('name_first'),
+                    'name_last' => $request->input('name_last'),
+                    'phone_mobile' => $request->input('phone_mobile'),
+                    //'password' => $request->input('password'),
                     'display_name' => $request->input('display_name'),
                     'image_uri' => $request->input('image_uri'),
-                    'measure_point_id_parent' => $request->input('measure_point_id_parent')
+                    'email' => $request->input('email'),
+                    'company_id' => $request->input('company_id'),
+                    'strategic_business_unit_id' => $request->input('strategic_business_unit_id'),
+                    'department_id' => $request->input('department_id'),
+                    'section_id' => $request->input('section_id'),
+                    'grade' => $request->input('grade'),
+                    'remember_token' => $request->input('remember_token')
                 );
 
-                $measurePointObject = new MeasurePoint();
-                $measurePointObject = $measurePointObject
+                $userObject = new User();
+                $userObject = $userObject
                     ->where('id', '=', $request->input('id'))->first();
                 
-                $measurePointObject = $measurePointObject->update( $dataArray );
+                $userObject = $userObject->update( $dataArray );
                 unset($dataArray);
-                $data['measure_point_object'] = $measurePointObject;
+                $data['user_object'] = $userObject;
 
                 unset($dataArray);
                 // Commit transaction!
@@ -251,7 +269,7 @@ class MeasurePointController extends Controller
             'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_CREATED]
         ));
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -269,7 +287,7 @@ class MeasurePointController extends Controller
         
         // validate the info, create rules for the inputs
         $rules = array(
-            'id' => 'required|exists:measure_points,id'
+            'id' => 'required|exists:users,id'
         );
         // run the validation rules on the inputs from the form
         $validator = Validator::make(Input::all(), $rules);
@@ -286,12 +304,12 @@ class MeasurePointController extends Controller
                 // Start transaction!
                 DB::beginTransaction();
                 
-                $measurePointObject = new MeasurePoint();
-                $measurePointObject = $measurePointObject
+                $userObject = new User();
+                $userObject = $userObject
                     ->where('id', '=', $request->input('id'))->first();
-                $measurePointObject->delete();
+                $userObject->delete();
                 
-                $data['measure_point_object'] = $measurePointObject;
+                $data['user_object'] = $userObject;
                 unset($dataArray);
                 
                 // Commit transaction!
@@ -322,7 +340,7 @@ class MeasurePointController extends Controller
     }
     
     //other
-    public function selectAllMeasurePoints(Request $request){
+    public function selectAllUsers(Request $request){
         //
         $dataArray = array();
         $rules = array();
@@ -360,8 +378,8 @@ class MeasurePointController extends Controller
                 // Start transaction!
                 //DB::beginTransaction();
                 //DB::transaction(function () use (&$data){});
-                $measurePointObject = new MeasurePoint();
-                $query = $measurePointObject;
+                $userObject = new User();
+                $query = $userObject;
                 /*
                 $query = $company->where('is_visible', '=', true);
                 $query = $company->where('is_active', '=', true);
@@ -433,22 +451,40 @@ class MeasurePointController extends Controller
                     $query = $query->where('id', '=', $id);
                 }
                 
-                // colour_id
-                if( ($request->has('colour_id')) && ($request->filled('colour_id')) ){
-                    $colour_id = $request->input('colour_id');
-                    $query = $query->where('colour_id', '=', $colour_id);
-                }
-                
                 // code
                 if( ($request->has('code')) && ($request->filled('code')) ){
                     $code = $request->input('code');
                     $query = $query->where('code', '=', $code);
                 }
                 
-                // name
-                if( ($request->has('name')) && ($request->filled('name')) ){
-                    $name = $request->input('name');
-                    $query = $query->where('name', '=', $name);
+                // code_epf
+                if( ($request->has('code_epf')) && ($request->filled('code_epf')) ){
+                    $code_epf = $request->input('code_epf');
+                    $query = $query->where('code_epf', '=', $code_epf);
+                }
+                
+                // name_first
+                if( ($request->has('name_first')) && ($request->filled('name_first')) ){
+                    $name_first = $request->input('name_first');
+                    $query = $query->where('name_first', '=', $name_first);
+                }
+                
+                // name_last
+                if( ($request->has('name_last')) && ($request->filled('name_last')) ){
+                    $name_last = $request->input('name_last');
+                    $query = $query->where('name_last', '=', $name_last);
+                }
+                
+                // phone_mobile
+                if( ($request->has('phone_mobile')) && ($request->filled('phone_mobile')) ){
+                    $phone_mobile = $request->input('phone_mobile');
+                    $query = $query->where('phone_mobile', '=', $phone_mobile);
+                }
+                
+                // remember_token
+                if( ($request->has('remember_token')) && ($request->filled('remember_token')) ){
+                    $remember_token = $request->input('remember_token');
+                    $query = $query->where('remember_token', '=', $remember_token);
                 }
                 
                 // display_name
@@ -463,10 +499,40 @@ class MeasurePointController extends Controller
                     $query = $query->where('image_uri', '=', $image_uri);
                 }
                 
-                // measure_point_id_parent
-                if( ($request->has('measure_point_id_parent')) && ($request->filled('measure_point_id_parent')) ){
-                    $measure_point_id_parent = $request->input('measure_point_id_parent');
-                    $query = $query->where('measure_point_id_parent', '=', $measure_point_id_parent);
+                // email
+                if( ($request->has('email')) && ($request->filled('email')) ){
+                    $email = $request->input('email');
+                    $query = $query->where('email', '=', $email);
+                }
+                
+                // company_id
+                if( ($request->has('company_id')) && ($request->filled('company_id')) ){
+                    $company_id = $request->input('company_id');
+                    $query = $query->where('company_id', '=', $company_id);
+                }
+                
+                // strategic_business_unit_id
+                if( ($request->has('strategic_business_unit_id')) && ($request->filled('strategic_business_unit_id')) ){
+                    $strategic_business_unit_id = $request->input('strategic_business_unit_id');
+                    $query = $query->where('strategic_business_unit_id', '=', $strategic_business_unit_id);
+                }
+                
+                // department_id
+                if( ($request->has('department_id')) && ($request->filled('department_id')) ){
+                    $department_id = $request->input('department_id');
+                    $query = $query->where('department_id', '=', $department_id);
+                }
+                
+                // section_id
+                if( ($request->has('section_id')) && ($request->filled('section_id')) ){
+                    $section_id = $request->input('section_id');
+                    $query = $query->where('section_id', '=', $section_id);
+                }
+                
+                // grade
+                if( ($request->has('grade')) && ($request->filled('grade')) ){
+                    $grade = $request->input('grade');
+                    $query = $query->where('grade', '=', $grade);
                 }
 
                 // get filtered record count

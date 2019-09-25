@@ -7,10 +7,13 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+//use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 
-class UserAPIToken extends Model
+class UserAPIToken extends Model implements AuthenticatableContract
 {
     //
+    //use AuthenticableTrait;
     //protected $table = "table";
     //protected $primaryKey = "id";
     //protected $keyType = 'int';
@@ -35,6 +38,86 @@ class UserAPIToken extends Model
      * @var array
      */
     //protected $touches = ['table_name'];
+    
+    /* implement AuthenticatableContract start */
+    /**
+     * Get the name of the unique identifier for the user.
+     *
+     * @return string
+     */
+    public function getAuthIdentifierName(){
+        /*
+        return "access_token";
+        */
+        return "id";
+    }
+    /**
+     * Get the unique identifier for the user.
+     *
+     * @return mixed
+     */
+    public function getAuthIdentifier(){
+        /*
+        return $this->{$this->getAuthIdentifierName()};
+        */
+        return $this->{$this->getAuthIdentifierName()};
+    }
+    /**
+     * Get the password for the user.
+     *
+     * @return string
+     */
+    public function getAuthPassword(){
+        /*
+        //return $this->password;
+        return $this->user_id;
+        */
+        return $this->user_id;
+    }
+    /**
+     * Get the token value for the "remember me" session.
+     *
+     * @return string
+     */
+    public function getRememberToken(){
+        /*
+        if ( (!empty($this->getRememberTokenName())) ) {
+            return $this->{$this->getRememberTokenName()};
+        }
+        */
+        if ( (!empty($this->getRememberTokenName())) ) {
+            return $this->{$this->getRememberTokenName()};
+        }
+    }
+    /**
+     * Set the token value for the "remember me" session.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setRememberToken($value){
+        /*
+        if ( (!empty($this->getRememberTokenName())) ) {
+            $this->{$this->getRememberTokenName()} = $value;
+        }
+        */
+        if ( (!empty($this->getRememberTokenName())) ) {
+            $this->{$this->getRememberTokenName()} = $value;
+        }
+    }
+    /**
+     * Get the column name for the "remember me" token.
+     *
+     * @return string
+     */
+    public function getRememberTokenName(){
+        /*
+        return "refresh_token";
+        */
+        return "refresh_token";
+    }
+    /* implement AuthenticatableContract end */
+    
     /**
     * Set the keys for a save update query.
     *
