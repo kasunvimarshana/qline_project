@@ -2,33 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Status;
+use App\CacheDataModel;
 use Illuminate\Http\Request;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-//use Illuminate\Support\Facades\Response;
-use Illuminate\Http\Response;
-use DB;
-use Illuminate\Support\Str;
-use Illuminate\Http\JsonResponse;
-use \StdClass;
-use \Exception;
-use Carbon\Carbon;
-//use Illuminate\Support\Facades\Storage;
-//use Illuminate\Support\Facades\Session as Session;
-//use Illuminate\Support\Facades\Cookie as Cookie;
-//use GuzzleHttp\Client as Client;
-
-use App\Http\Resources\CommonResponseResource as CommonResponseResource;
-use App\Enums\HTTPStatusCodeEnum as HTTPStatusCodeEnum;
-
-class StatusController extends Controller
+class CacheDataModelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -64,10 +41,10 @@ class StatusController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Status  $status
+     * @param  \App\CacheDataModel  $cacheDataModel
      * @return \Illuminate\Http\Response
      */
-    public function show(Status $status)
+    public function show(CacheDataModel $cacheDataModel)
     {
         //
     }
@@ -75,10 +52,10 @@ class StatusController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Status  $status
+     * @param  \App\CacheDataModel  $cacheDataModel
      * @return \Illuminate\Http\Response
      */
-    public function edit(Status $status)
+    public function edit(CacheDataModel $cacheDataModel)
     {
         //
     }
@@ -87,10 +64,10 @@ class StatusController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Status  $status
+     * @param  \App\CacheDataModel  $cacheDataModel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Status $status)
+    public function update(Request $request, CacheDataModel $cacheDataModel)
     {
         //
     }
@@ -98,10 +75,10 @@ class StatusController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Status  $status
+     * @param  \App\CacheDataModel  $cacheDataModel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Status $status)
+    public function destroy(CacheDataModel $cacheDataModel)
     {
         //
     }

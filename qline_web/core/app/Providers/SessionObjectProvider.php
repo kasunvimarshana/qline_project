@@ -23,7 +23,7 @@ use Illuminate\Http\Request;
 //use Carbon\Carbon;
 //use Illuminate\Support\Facades\Storage;
 
-class AuthUserProvider extends ServiceProvider
+class SessionObjectProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -49,8 +49,8 @@ class AuthUserProvider extends ServiceProvider
     {
         //
         view()->composer('*', function($view){
-            $auth_user = auth()->user();
-            $view->with('auth_user', $auth_user);
+            $session_object = session();
+            $view->with('session_object', $session_object);
         });
     }
 }

@@ -10,12 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 /*
 Route::get('/', function () {
     return view('welcome');
 });
 */
+//Route::fallback('FallbackController@index')->name('fallback');
 /*
 Route::match(['get', 'post'], '/', function () {
     //
@@ -57,12 +57,16 @@ Route::fallback(function () {
     //
 });
 */
-
+Route::fallback('FallbackController@index')->name('fallback');
 /////////////////////////////////////////////////////////////////////////////////////
+
+
 Route::get('companies/create', array('uses' => 'CompanyController@store'))->name('company.store');
 Route::get('companies/select', array('uses' => 'CompanyController@show'))->name('company.show');
 Route::get('companies/select/all', array('uses' => 'CompanyController@selectCompanies'))->name('company.selectCompanies');
-Route::get('logins/do_login', array('uses' => 'LoginController@doLogin'))->name('login.dologin');
-Route::get('logins/do_logout', array('uses' => 'LoginController@doLogout'))->name('login.doLogout');
+Route::get('logins/do-login', array('uses' => 'LoginController@doLogin'))->name('login.dologin');
+Route::get('logins/do-logout', array('uses' => 'LoginController@doLogout'))->name('login.doLogout');
 
-Route::fallback('FallbackController@index')->name('fallback');
+
+
+//Route::get('api/test', array('uses' => 'LoginController@doLogout'));

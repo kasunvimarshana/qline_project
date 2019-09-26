@@ -16,19 +16,20 @@ Route::get('/', function () {
 });
 */
 
-Route::get('/', array('uses' => 'LoginController@showLogin'))->name('home');
+Route::get('/', array('uses' => 'LoginController@showLogin'));
 
 //test
 Route::get('login', array('uses' => 'LoginController@showLogin'))->name('login.showLogin');
 // route to process the form
-Route::post('login', array('uses' => 'LoginController@doLogin'))->name('login.doLogin');
+Route::get('login-do', array('uses' => 'LoginController@doLogin'))->name('login.doLogin');
 // route to procss logout
 Route::get('logout', array('uses' => 'LoginController@doLogout'))->name('login.doLogout');
 
 //temp routes
 Route::get('/home', function () {
     return view('home');
-});
+})->name('home');
+
 Route::get('/company', function () {
     return view('company');
 });

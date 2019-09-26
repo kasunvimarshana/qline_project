@@ -20,6 +20,10 @@ use Illuminate\Http\JsonResponse;
 use \StdClass;
 use \Exception;
 use Carbon\Carbon;
+//use Illuminate\Support\Facades\Storage;
+//use Illuminate\Support\Facades\Session as Session;
+//use Illuminate\Support\Facades\Cookie as Cookie;
+//use GuzzleHttp\Client as Client;
 
 use App\Http\Resources\CommonResponseResource as CommonResponseResource;
 use App\Enums\HTTPStatusCodeEnum as HTTPStatusCodeEnum;
@@ -52,7 +56,7 @@ class LineController extends Controller
             //return redirect()->back()->withErrors($validator)->withInput();
             $data['message_error'] = $validator->errors()->first();
             return (new CommonResponseResource( $data ))->additional(array(
-                'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_UNPROCESSABLE_ENTITY]
+                'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
             ));
         } else {
             // do process
@@ -86,7 +90,7 @@ class LineController extends Controller
                 DB::rollback(); 
                 //return redirect()->back()->withInput();
                 return (new CommonResponseResource( $data ))->additional(array(
-                    'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_UNPROCESSABLE_ENTITY]
+                    'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
                 ));
             }
         }
@@ -102,7 +106,7 @@ class LineController extends Controller
         //return redirect()->back();
         //$http_response_code = http_response_code();
         return (new CommonResponseResource( $data ))->additional(array(
-            'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_CREATED]
+            'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_OK]
         ));
     }
 
@@ -133,7 +137,7 @@ class LineController extends Controller
             //return redirect()->back()->withErrors($validator)->withInput();
             $data['message_error'] = $validator->errors()->first();
             return (new CommonResponseResource( $data ))->additional(array(
-                'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_UNPROCESSABLE_ENTITY]
+                'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
             ));
         } else {
             // do process
@@ -157,7 +161,7 @@ class LineController extends Controller
                 DB::rollback(); 
                 //return redirect()->back()->withInput();
                 return (new CommonResponseResource( $data ))->additional(array(
-                    'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_UNPROCESSABLE_ENTITY]
+                    'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
                 ));
             }
         }
@@ -173,7 +177,7 @@ class LineController extends Controller
         //return redirect()->back();
         //$http_response_code = http_response_code();
         return (new CommonResponseResource( $data ))->additional(array(
-            'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_CREATED]
+            'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_OK]
         ));
     }
 
@@ -204,7 +208,7 @@ class LineController extends Controller
             //return redirect()->back()->withErrors($validator)->withInput();
             $data['message_error'] = $validator->errors()->first();
             return (new CommonResponseResource( $data ))->additional(array(
-                'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_UNPROCESSABLE_ENTITY]
+                'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
             ));
         } else {
             // do process
@@ -244,7 +248,7 @@ class LineController extends Controller
                 DB::rollback(); 
                 //return redirect()->back()->withInput();
                 return (new CommonResponseResource( $data ))->additional(array(
-                    'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_UNPROCESSABLE_ENTITY]
+                    'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
                 ));
             }
         }
@@ -260,7 +264,7 @@ class LineController extends Controller
         //return redirect()->back();
         //$http_response_code = http_response_code();
         return (new CommonResponseResource( $data ))->additional(array(
-            'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_CREATED]
+            'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_OK]
         ));
     }
 
@@ -291,7 +295,7 @@ class LineController extends Controller
             //return redirect()->back()->withErrors($validator)->withInput();
             $data['message_error'] = $validator->errors()->first();
             return (new CommonResponseResource( $data ))->additional(array(
-                'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_UNPROCESSABLE_ENTITY]
+                'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
             ));
         } else {
             // do process
@@ -316,7 +320,7 @@ class LineController extends Controller
                 DB::rollback(); 
                 //return redirect()->back()->withInput();
                 return (new CommonResponseResource( $data ))->additional(array(
-                    'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_UNPROCESSABLE_ENTITY]
+                    'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
                 ));
             }
         }
@@ -332,7 +336,7 @@ class LineController extends Controller
         //return redirect()->back();
         //$http_response_code = http_response_code();
         return (new CommonResponseResource( $data ))->additional(array(
-            'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_CREATED]
+            'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_OK]
         ));
     }
     
@@ -367,7 +371,7 @@ class LineController extends Controller
             //return redirect()->back()->withErrors($validator)->withInput();
             $data['message_error'] = $validator->errors()->first();
             return (new CommonResponseResource( $data ))->additional(array(
-                'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_UNPROCESSABLE_ENTITY]
+                'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
             ));
         } else {
             // do process
@@ -570,7 +574,7 @@ class LineController extends Controller
                 //DB::rollback(); 
                 //return redirect()->back()->withInput();
                 return (new CommonResponseResource( $data ))->additional(array(
-                    'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_UNPROCESSABLE_ENTITY]
+                    'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
                 ));
             }
         }
@@ -586,7 +590,7 @@ class LineController extends Controller
         //return redirect()->back();
         //$http_response_code = http_response_code();
         return (new CommonResponseResource( $data ))->additional(array(
-            'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_CREATED]
+            'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_OK]
         ));
     }
     

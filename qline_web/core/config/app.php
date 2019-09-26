@@ -177,7 +177,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         // custom service providers
-        // App\Providers\AuthUserProvider::class,
+        App\Providers\AuthUserProvider::class,
+        App\Providers\SessionObjectProvider::class,
         // provider for flash message
         Codecourse\Notify\NotifyServiceProvider::class,
         // provider for bensampo/laravel-enum (Laravel < 5.5)
@@ -250,6 +251,7 @@ return [
     'display_name' => env('APP_DISPLAY_NAME', 'Application'),
     'app_file_storage_uri' => env('APP_FILE_STORAGE_URI', 'file_input'),
     'mail_user_name' => env('MAIL_USERNAME', null),
-    'mail_password' => env('MAIL_PASSWORD', null)
+    'mail_password' => env('MAIL_PASSWORD', null),
+    'app_url_api' => env('APP_URL_API', 'http://localhost')
 
 ];
