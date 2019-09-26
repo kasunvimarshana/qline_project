@@ -58,6 +58,7 @@ Route::fallback(function () {
 });
 */
 Route::fallback('FallbackController@index')->name('fallback');
+Route::any('fallback', array('uses' => 'FallbackController@index'))->name('fallback');
 /////////////////////////////////////////////////////////////////////////////////////
 
 

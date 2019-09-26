@@ -15,24 +15,32 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
+Route::fallback('FallbackController@index')->name('fallback');
+Route::any('fallback', array('uses' => 'FallbackController@index'))->name('fallback');
 
 Route::get('/', array('uses' => 'LoginController@showLogin'));
 
-//test
+//route to login
 Route::get('login', array('uses' => 'LoginController@showLogin'))->name('login.showLogin');
 // route to process the form
 Route::get('login-do', array('uses' => 'LoginController@doLogin'))->name('login.doLogin');
 // route to procss logout
 Route::get('logout', array('uses' => 'LoginController@doLogout'))->name('login.doLogout');
 
-//temp routes
-Route::get('/home', function () {
-    return view('home');
-})->name('home');
+Route::group(['middleware' => ['authorizedUserMiddleware', 'disablePreventBackMiddleware', 'corsMiddleware']], function(){
+    
+    //temp routes
+    Route::get('/home', function () {
+        return view('home');
+    })->name('home');
+    
+});
+    
+
 
 Route::get('/company', function () {
     return view('company');
-});
+})->name('company');
 Route::get('/department', function () {
     return view('department');
 });
