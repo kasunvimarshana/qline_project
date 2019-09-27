@@ -34,6 +34,19 @@ class Permission extends Model
      */
     //protected $touches = ['table_name'];
     /**
+    * The relations to eager load on every query.
+    *
+    * @var array
+    */
+    //protected $with = [];
+    /*
+    protected $supportedRelations = [];
+    public function scopeWithAll($query){
+        return $query->with($this->supportedRelations);
+    }
+    */
+    
+    /**
     * Set the keys for a save update query.
     *
     * @param  \Illuminate\Database\Eloquent\Builder  $query

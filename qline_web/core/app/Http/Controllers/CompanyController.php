@@ -23,16 +23,14 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Session as Session;
 //use Illuminate\Support\Facades\Cookie as Cookie;
 use GuzzleHttp\Client as Client;
-use GuzzleHttp\Psr7\Request as GuzzleRequest;
 //use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Resources\CommonResponseResource as CommonResponseResource;
 use App\Enums\HTTPStatusCodeEnum as HTTPStatusCodeEnum;
 
-class LoginController extends Controller
+class CompanyController extends Controller
 {
-    //
     protected $app_url_api;
     
     function __construct(){
@@ -41,21 +39,8 @@ class LoginController extends Controller
     
     public function index(Request $request){}
     
-    public function showLogin(Request $request){
-        if( ($request->session()->has('is_login')) && ($request->session()->get('is_login', false)) ){
-            //return (request()->header('referer')) ? redirect()->back()->withInput() : redirect()->home()->withInput();
-            if( (Route::has('home')) ){
-                return redirect()->route('home');
-            }else{
-                return redirect()->back()->withInput();
-            }
-        }
-        if(view()->exists('login')){
-            return View::make('login', []);
-        }
-    }
-    
-    public function doLogin(Request $request){
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    public function selectAllCompanies(Request $request){
         //
         $dataArray = array();
         $rules = array();
@@ -64,10 +49,7 @@ class LoginController extends Controller
         $data = array();
         
         // validate the info, create rules for the inputs
-        $rules = array(
-            'code' => 'required',
-            'password' => 'required|min:3'
-        );
+        $rules = array();
         // run the validation rules on the inputs from the form
         $validator = Validator::make(Input::all(), $rules);
         // if the validator fails, redirect back to the form
@@ -91,20 +73,7 @@ class LoginController extends Controller
                     'password' => $request->input('password')
                 );
                 
-                $guzzleRequest = new GuzzleRequest('GET', 'logins/do-login', [
-                    'debug' => false,
-                    'verify' => false,
-                    //'config' => [],
-                    //'curl' => [],
-                    //'headers' => [],
-                    //'body' => [],
-                    //'query' => [],
-                    //'form_params' => [],
-                    //'multipart' => [],
-                    'query' => $dataArray,
-                ]);
-                
-                /*$response = $client->request('GET', 'logins/do-login', [
+                $response = $client->request('GET', 'logins/do-login', [
                     'debug' => false,
                     'verify' => false,
                     'config' => [],
@@ -113,13 +82,11 @@ class LoginController extends Controller
                     'query' => $dataArray,
                     'form_params' => [],
                     //'multipart' => []
-                ]);*/
-                
-                $response = $client->send($guzzleRequest);
+                ]);
                 
                 if($response->getStatusCode() == HTTPStatusCodeEnum::HTTP_OK){
                     $body = $response->getBody();
-                    $contents = $body->getContents();dd($contents);
+                    $contents = $body->getContents();
                     $contents = json_decode($contents, false);
                     if( ($contents->meta->status_code == HTTPStatusCodeEnum::HTTP_OK) ){
                         $auth_object = $contents->data->auth_object;
@@ -150,7 +117,7 @@ class LoginController extends Controller
                 unset($dataArray);
                 // Commit transaction!
                 //DB::commit();
-            }catch(Exception $e){dd($e);
+            }catch(Exception $e){
                 // Rollback transaction!
                 //DB::rollback(); 
                 return redirect()->back()->withInput();
@@ -170,18 +137,124 @@ class LoginController extends Controller
             return redirect()->back()->withInput();
         }
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////
     
-    public function doLogout(Request $request){
-        //$exitCode = Artisan::call('cache:clear');
-        //$request->session()->forget([]);
-        $request->session()->flush();
-        $request->session()->regenerate();
+    //other
+    public function selectAllCompanies(Request $request){
+        //
+        $dataArray = array();
+        $rules = array();
+        $date_today = Carbon::now();//->format('Y-m-d');
+        $current_user = null;
+        $data = array();
         
-        if( (Route::has('login.showLogin')) ){
-            return redirect()->route('login.showLogin');
-        }else{
-            return redirect()->back()->withInput();
+        // Solution to get around integer overflow errors
+        // $model->latest()->limit(PHP_INT_MAX)->offset(1)->get();
+        // function will process the ajax request
+        $draw = null;
+        $start = 0;
+        $length = 0;
+        $search = null;
+        $recordsTotal = 0;
+        $recordsFiltered = 0;
+        $query = null;
+        $queryResult = null;
+        //$recordsTotal = Model::where('active','=','1')->count();
+        
+        // validate the info, create rules for the inputs
+        $rules = array();
+        // run the validation rules on the inputs from the form
+        $validator = Validator::make(Input::all(), $rules);
+        // if the validator fails, redirect back to the form
+        if ($validator->fails()) {
+            //return redirect()->back()->withErrors($validator)->withInput();
+        } else {
+            // do process
+            try {
+                // Start transaction!
+                //DB::beginTransaction();
+                $client = new Client([
+                    // Base URI is used with relative requests
+                    'base_uri' => $this->app_url_api,
+                ]);
+                // get search query value
+                if( ($request->has('search')) && ($request->filled('search')) ){
+                    $search = $request->input('search');
+                    if( $search && (@key_exists('value', $search)) ){
+                        $search = $search['value'];
+                    }
+                    if($search && (!empty($search))){
+                        //$search = (string) $search;
+                        $query = $query->where('code', 'like', '%' . $search . '%');
+                    }
+                }
+                
+                // created_at
+                if( ($request->has('created_at')) && ($request->filled('created_at')) ){
+                    $created_at = $request->input('created_at');
+                    $query = $query->where('created_at', '=', $created_at);
+                }
+                
+                // updated_at
+                if( ($request->has('updated_at')) && ($request->filled('updated_at')) ){
+                    $updated_at = $request->input('updated_at');
+                    $query = $query->where('updated_at', '=', $updated_at);
+                }
+                
+                $response = $client->request('GET', 'logins/do-login', [
+                    'debug' => false,
+                    'verify' => false,
+                    'config' => [],
+                    'curl' => [],
+                    'headers' => [],
+                    'query' => $dataArray,
+                    'form_params' => [],
+                    //'multipart' => []
+                ]);
+                
+                if($response->getStatusCode() == HTTPStatusCodeEnum::HTTP_OK){
+                    $body = $response->getBody();
+                    $contents = $body->getContents();
+                    $contents = json_decode($contents, false);
+                    if( ($contents->meta->status_code == HTTPStatusCodeEnum::HTTP_OK) ){
+                        $auth_object = $contents->data->auth_object;
+                        $request->session()->put('input_key_token', $auth_object->access_token);
+                        $request->session()->put('input_key_user', $auth_object->user_id);
+                        $request->session()->put('is_login', true);
+                    }
+                }
+                
+                unset($dataArray);
+                
+                // Commit transaction!
+                //DB::commit();
+            }catch(Exception $e){
+                // Rollback transaction!
+                //DB::rollback(); 
+            }
         }
+        
+        //unset data
+        unset( $dataArray );
+        unset( $rules );
+        unset( $date_today );
+        unset( $current_user );
+        //unset( $data );
+        
+        $data = array(
+            'draw' => $draw,
+            'start' => $start,
+            'page' => $start,
+            'length' => $length,
+            'search' => $search,
+            'recordsTotal' => $recordsTotal,
+            'recordsFiltered' => $recordsFiltered,
+            'data' => $queryResult,
+            'pagination' => array(
+                'more' => ( ($start * $length) < $recordsFiltered ) ? true : false
+            )
+        );
+
+        return Response::json( $data );
     }
-    
 }

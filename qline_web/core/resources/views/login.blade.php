@@ -123,17 +123,17 @@
                                             <!-- col -->
                                             <div class="col col-sm-12 p-0 m-0">
                                                 <!-- form -->
-                                                <form action="{!! url('home') !!}" method="GET" class="col col-sm-12" autocomplete="off" id="form1" enctype="multipart/form-data">
+                                                <form action="{!! route('login.doLogin', []) !!}" method="POST" class="col col-sm-12" autocomplete="off" id="form1" enctype="multipart/form-data">
                                                     @csrf
                                                     <!-- form-group-row -->
                                                     <div class="row">
                                                         <!-- -->
                                                         <!-- form-group -->
                                                         <div class="form-group row col-sm-12">
-                                                            <label for="user_id" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">User ID</label>
+                                                            <label for="code" class="col-lg-4 control-label col-form-label col-form-label-md text-justify font-weight-bold text-md-right">User ID</label>
                                                             <div class="col">
                                                                 <!-- p class="form-control-static"></p -->
-                                                                <input type="text" class="form-control form-control-md" id="user_id" name="user_id" placeholder="User ID" value="{{ old('user_id') }}" required/>
+                                                                <input type="text" class="form-control form-control-md" id="code" name="code" placeholder="User ID" value="{{ old('code') }}" required/>
                                                             </div>
                                                             <!-- span id="form-control" class="help-block"></span -->
                                                         </div>

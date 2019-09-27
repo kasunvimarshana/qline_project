@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\Builder;
 
-class Colour extends Model
+class Export extends Model
 {
     //
     //protected $table = "table";
@@ -24,7 +24,7 @@ class Colour extends Model
     //protected $appends = array('field1', 'field2');
     //protected $attributes = array();
     //protected $guarded = array();
-    protected $fillable = array('id', 'is_visible', 'is_active', 'code', 'name', 'data_value', 'display_name', 'image_uri', 'colour_id_parent');
+    protected $fillable = array('id', 'is_visible', 'is_active', 'code', 'name', 'data_value', 'display_name', 'image_uri', 'export_id_parent');
     //protected $hidden = array();
     //protected $casts = array();
     /**

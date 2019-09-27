@@ -75,7 +75,8 @@ class LoginController extends Controller
                 
                 if( $is_match ){
                     //auth()->user()->user
-                    $data['auth_object'] = auth()->user();
+                    $auth_object = auth()->user()->loadMissing(['user', 'userAPITokenDatas']);
+                    $data['auth_object'] = $auth_object;
                 }else{
                     throw new Exception('exception');
                 }

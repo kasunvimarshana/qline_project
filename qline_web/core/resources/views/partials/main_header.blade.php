@@ -79,7 +79,7 @@
                 
                 <li class="nav-item">
                     <div class="btn-group">
-                        <a type="button" class="btn btn-danger text-white" href="{!! url('login') !!}">
+                        <a type="button" class="btn btn-danger text-white" href="{!! route('login.doLogout', []) !!}">
                             <i class="fa fa-power-off fa-fw" aria-hidden="true"></i>
                         </a>
                     </div>

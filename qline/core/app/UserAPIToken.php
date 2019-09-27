@@ -38,6 +38,19 @@ class UserAPIToken extends Model implements AuthenticatableContract
      * @var array
      */
     //protected $touches = ['table_name'];
+    /**
+    * The relations to eager load on every query.
+    *
+    * @var array
+    */
+    //protected $with = [];
+    /*
+    protected $supportedRelations = [];
+    public function scopeWithAll($query){
+        return $query->with($this->supportedRelations);
+    }
+    */
+    
     
     /* implement AuthenticatableContract start */
     /**

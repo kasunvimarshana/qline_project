@@ -18,12 +18,12 @@ Route::get('/', function () {
 Route::fallback('FallbackController@index')->name('fallback');
 Route::any('fallback', array('uses' => 'FallbackController@index'))->name('fallback');
 
-Route::get('/', array('uses' => 'LoginController@showLogin'));
+Route::get('/', array('uses' => 'LoginController@showLogin'));//->name('home');
 
 //route to login
 Route::get('login', array('uses' => 'LoginController@showLogin'))->name('login.showLogin');
 // route to process the form
-Route::get('login-do', array('uses' => 'LoginController@doLogin'))->name('login.doLogin');
+Route::post('login', array('uses' => 'LoginController@doLogin'))->name('login.doLogin');
 // route to procss logout
 Route::get('logout', array('uses' => 'LoginController@doLogout'))->name('login.doLogout');
 
