@@ -64,7 +64,7 @@ Route::any('fallback', array('uses' => 'FallbackController@index'))->name('fallb
 
 Route::get('companies/create', array('uses' => 'CompanyController@store'))->name('company.store');
 Route::get('companies/select', array('uses' => 'CompanyController@show'))->name('company.show');
-Route::get('companies/select/all', array('uses' => 'CompanyController@selectCompanies'))->name('company.selectCompanies');
+Route::get('companies/select/all', array('uses' => 'CompanyController@selectAllCompanies'))->name('company.selectAllCompanies');
 Route::get('logins/do-login', array('uses' => 'LoginController@doLogin'))->name('login.dologin');
 Route::get('logins/do-logout', array('uses' => 'LoginController@doLogout'))->name('login.doLogout');
 

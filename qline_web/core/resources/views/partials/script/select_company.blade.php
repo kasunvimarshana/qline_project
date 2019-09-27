@@ -6,7 +6,7 @@ $(function(){
         theme: "bootstrap"
     });*/
     var optionData = {};
-    optionData.url = "{!! route('home', []) !!}";//company.selectAllCompanies
+    optionData.url = "{!! route('company.selectAllCompanies', []) !!}";//company.selectAllCompanies
     optionData.id = "#company_id";
     
     $( optionData.id ).select2({
@@ -22,14 +22,21 @@ $(function(){
         //formatSelection : function(param){},
         //templateResult : function(data) {},
         //templateSelection : function(data) {},
-        placeholder	: 'Select',
+        placeholder	: {
+            //id : '-1',
+            placeholder : 'Option'
+        },
+        //tags : [],
+        //tokenSeparators : [],
         minimumInputLength : 2,
         multiple : false,
         escapeMarkup : function (markup) { return markup; },
         data : [],
+        //data : function(){ return {results: selections} },
         ajax : {
             url : optionData.url,
             cache : true,
+            // quietMillis: 250,
             // dataType: 'json',
             delay : 50,
             data : function (params) {
@@ -41,13 +48,14 @@ $(function(){
                 }
                 return query;
             },
+            //results : function(data, params){},
             processResults : function (data, params) {
                 //params.page = params.page || 1;
                 return {
                     results : $.map(data.data, function (obj) {
                         return { 
-                            id : obj.mail, 
-                            text : obj.mail + ' | ' + ( obj.displayname || obj.employeenumber ) + ' | ' + obj.physicaldeliveryofficename, 
+                            id : obj.id, 
+                            text : ( obj.name || obj.code ), 
                             data: obj 
                         };
                     }),
@@ -58,16 +66,24 @@ $(function(){
                 };
             }
         },
-        initSelection_: function(element, callback) {
+        initSelection: function(element, callback) {
             // the input tag has a value attribute preloaded that points to a preselected repository's id
             // this function resolves that id attribute to an object that select2 can render
             // using its formatResult renderer - that way the repository name is shown preselected
+            /*
+            var data = [];
+            $(element.val()).each(function () {
+                data.push({id: this, text: this});
+            });
+            */
             var element_value = $(element).val();
             if ( (element_value !== "") ) {
                 $.ajax({
                     type : 'GET', // define the type of HTTP verb we want to use (POST for our form)
                     url : optionData.url, // the url where we want to POST
-                    data : {}, // our data object
+                    data : {
+                        'id' : element_value
+                    }, // our data object
                     //dataType : 'json', // what type of data do we expect back from the server
                     //encode : true,
                     //processData : false,
@@ -77,6 +93,13 @@ $(function(){
                 // using the done promise callback
                 .done(function(data) {
                     //console.log(data);
+                    var data = $.map(data.data, function (obj) {
+                        return {
+                            id : obj.id, 
+                            text : ( obj.name || obj.code ), 
+                            data: obj
+                        };
+                    });
                     callback(data);
                 })
                 .fail(function() {
@@ -86,9 +109,18 @@ $(function(){
                     //console.log("complete" );
                 });
             }
-        }
-        
-    });
+        },
+        //sortResults: function(results, container, query) {},
+        /*query: function (query) {
+            var data = {results: []}, i, j, s;
+            for (i = 1; i < 5; i++) {
+                s = "";
+                for (j = 0; j < i; j++) {s = s + query.term;}
+                data.results.push({id: query.term + i, text: s});
+            }
+            query.callback(data);
+        }*/
+    });//.select2('val', []);
     
 });
 </script>

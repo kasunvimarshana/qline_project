@@ -1,0 +1,25 @@
+<!-- --------------------------------------------------------------------------------- -->
+http://select2.github.io/select2/#data
+<!-- --------------------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------------------------- -->
+<script>
+    $("#e15").select2({tags:["red", "green", "blue", "orange", "white", "black", "purple", "cyan", "teal"]});
+    $("#e15").on("change", function() { $("#e15_val").html($("#e15").val());});
+
+    $("#e15").select2("container").find("ul.select2-choices").sortable({
+        containment: 'parent',
+        start: function() { $("#e15").select2("onSortStart"); },
+        update: function() { $("#e15").select2("onSortEnd"); }
+    });
+</script>
+<!-- --------------------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------------------------- -->
+<script>
+    $("#e16").select2();
+    $("#e16_2").select2();
+    $("#e16_enable").click(function() { $("#e16,#e16_2").select2("enable", true); });
+    $("#e16_disable").click(function() { $("#e16,#e16_2").select2("enable", false); });
+    $("#e16_readonly").click(function() { $("#e16,#e16_2").select2("readonly", true); });
+    $("#e16_writable").click(function() { $("#e16,#e16_2").select2("readonly", false); });
+</script>
+<!-- --------------------------------------------------------------------------------- -->

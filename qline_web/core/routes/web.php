@@ -34,6 +34,8 @@ Route::group(['middleware' => ['authorizedUserMiddleware', 'disablePreventBackMi
         return view('home');
     })->name('home');
     
+    Route::get('companies/select/all', array('uses' => 'CompanyController@selectAllCompanies'))->name('company.selectAllCompanies');
+    
 });
     
 

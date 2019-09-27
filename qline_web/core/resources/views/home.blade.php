@@ -78,11 +78,7 @@
                                                         <!-- p class="form-control-static"></p -->
                                                         <div class="input-group h-100">
                                                             <select class="form-control form-control-md select2" id="company_id" name="company_id" value="{{ old('company_id') }}" data-placeholder="Group" style="width: 100%;" required>
-
-                                                                <!-- @for($i =1; $i <= 5; $i++) -->
-                                                                <option>Group {{ $i }}</option>
-                                                                <!-- @endfor -->
-
+                                                                <!-- option> Option </option -->
                                                             </select>
                                                         </div>
                                                     </div>

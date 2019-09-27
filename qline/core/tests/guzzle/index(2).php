@@ -59,3 +59,31 @@ $response = $client->send($request);
 
 ?>
 <!-- ------------------------------------------------------------------------------------ -->
+<!-- ------------------------------------------------------------------------------------ -->
+<?php
+
+$request = new GuzzleHttp\Psr7\Request(
+    'POST',
+    $uri,
+    [
+       'Authorization' => 'Bearer ' . $token,
+       'Content-Type' => 'application/x-www-form-urlencoded'
+
+    ],
+    http_build_query($form_params, null, '&')
+);
+
+?>
+<!-- ------------------------------------------------------------------------------------ -->
+<!-- ------------------------------------------------------------------------------------ -->
+<?php
+
+$post_data = array(
+  'title' => 'My work',
+  'description' => 'This is a request created using curl',
+  'submit' => 'submit',
+);
+$response = $http_client->post('/create.php', array(), $post_data)->send();
+
+?>
+<!-- ------------------------------------------------------------------------------------ -->

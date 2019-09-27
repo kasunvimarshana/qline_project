@@ -23,7 +23,8 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Session as Session;
 //use Illuminate\Support\Facades\Cookie as Cookie;
 use GuzzleHttp\Client as Client;
-use GuzzleHttp\Psr7\Request as GuzzleRequest;
+//use GuzzleHttp\Psr7\Request as GuzzleRequest;
+//use GuzzleHttp\Psr7\MultipartStream as GuzzleMultipartStream;
 //use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Route;
 
@@ -34,9 +35,14 @@ class LoginController extends Controller
 {
     //
     protected $app_url_api;
+    protected $authorizedDataArray;
     
     function __construct(){
         $this->app_url_api = config('app.app_url_api');
+        $this->authorizedDataArray = array(
+            'input_key_token' => null,
+            'input_key_user' => null,
+        );
     }
     
     public function index(Request $request){}
@@ -91,36 +97,31 @@ class LoginController extends Controller
                     'password' => $request->input('password')
                 );
                 
-                $guzzleRequest = new GuzzleRequest('GET', 'logins/do-login', [
-                    'debug' => false,
-                    'verify' => false,
+                $response = $client->request('GET', 'logins/do-login', [
+                    //'debug' => false,
+                    //'verify' => false,
+                    //'decode_content' => false,
+                    //'stream' => false,
+                    //'sink' => null,
+                    //'save_to' => null,
+                    //'timeout' => 0,
+                    //'version' => 1.0,
                     //'config' => [],
+                    //'proxy' => [],
                     //'curl' => [],
                     //'headers' => [],
-                    //'body' => [],
+                    //'body' => json_encode([]),
+                    //'json' => [],
                     //'query' => [],
                     //'form_params' => [],
                     //'multipart' => [],
-                    'query' => $dataArray,
+                    'query' => $dataArray
                 ]);
-                
-                /*$response = $client->request('GET', 'logins/do-login', [
-                    'debug' => false,
-                    'verify' => false,
-                    'config' => [],
-                    'curl' => [],
-                    'headers' => [],
-                    'query' => $dataArray,
-                    'form_params' => [],
-                    //'multipart' => []
-                ]);*/
-                
-                $response = $client->send($guzzleRequest);
                 
                 if($response->getStatusCode() == HTTPStatusCodeEnum::HTTP_OK){
                     $body = $response->getBody();
-                    $contents = $body->getContents();dd($contents);
-                    $contents = json_decode($contents, false);
+                    $contents = $body->getContents();
+                    $contents = json_decode((string) $contents, false);
                     if( ($contents->meta->status_code == HTTPStatusCodeEnum::HTTP_OK) ){
                         $auth_object = $contents->data->auth_object;
                         $request->session()->put('input_key_token', $auth_object->access_token);
@@ -150,7 +151,7 @@ class LoginController extends Controller
                 unset($dataArray);
                 // Commit transaction!
                 //DB::commit();
-            }catch(Exception $e){dd($e);
+            }catch(Exception $e){
                 // Rollback transaction!
                 //DB::rollback(); 
                 return redirect()->back()->withInput();
