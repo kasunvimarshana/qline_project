@@ -5,14 +5,15 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Str;
 
 class Line extends Model
 {
     //
     //protected $table = "table";
-    protected $primaryKey = array('id', 'factory_id');
-    //protected $primaryKey = "id";
-    //protected $keyType = 'string';
+    //protected $primaryKey = array('id');
+    protected $primaryKey = "id";
+    protected $keyType = 'string';
     public $incrementing = false;
     //protected $connection = "mysql";
     //$this->setConnection("mysql");
@@ -87,10 +88,8 @@ class Line extends Model
             $id = null;
             if( (isset($model->id)) ){
                 $id = $model->id;
-            }else if( (isset($model->code)) ){
-                $id = $model->code;
-            }else if( (isset($model->name)) ){
-                $id = $model->name;
+            }else{
+                $id = (bin2hex(time().Str::uuid()->toString()));
             }
             $model->id = $id;
         });

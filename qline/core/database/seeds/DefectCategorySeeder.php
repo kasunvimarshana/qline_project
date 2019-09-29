@@ -15,7 +15,7 @@ class DefectCategorySeeder extends Seeder
     {
         //
         $newDefectCategory = DefectCategory::firstOrCreate([
-            'id' => 'color',
+            //'id' => 'color',
             'is_visible' => true,
             'is_active' => true,
             'code' => 'color',
@@ -25,7 +25,7 @@ class DefectCategorySeeder extends Seeder
         
         $defectArray = array(
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'color transfer',
+                //'id' => 'color transfer',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'color transfer',
@@ -33,7 +33,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'color transfer'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'mixed panels',
+                //'id' => 'mixed panels',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'mixed panels',
@@ -41,7 +41,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'mixed panels'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'off shade',
+                //'id' => 'off shade',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'off shade',
@@ -49,7 +49,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'off shade'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'shading',
+                //'id' => 'shading',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'shading',
@@ -61,7 +61,7 @@ class DefectCategorySeeder extends Seeder
         $newDefectCategory->defects()->saveMany($defectArray);
         
         $newDefectCategory = DefectCategory::firstOrCreate([
-            'id' => 'embellishments',
+            //'id' => 'embellishments',
             'is_visible' => true,
             'is_active' => true,
             'code' => 'embellishments',
@@ -71,7 +71,7 @@ class DefectCategorySeeder extends Seeder
         
         $defectArray = array(
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'color transfer of print',
+                //'id' => 'color transfer of print',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'color transfer of print',
@@ -79,7 +79,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'color transfer of print'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'cracking heat seal',
+                //'id' => 'cracking heat seal',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'cracking heat seal',
@@ -87,7 +87,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'cracking heat seal'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'cracking on print',
+                //'id' => 'cracking on print',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'cracking on print',
@@ -95,7 +95,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'cracking on print'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'incomplete embroidery',
+                //'id' => 'incomplete embroidery',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'incomplete embroidery',
@@ -103,7 +103,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'incomplete embroidery'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'incorrect embellishment placement',
+                //'id' => 'incorrect embellishment placement',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'incorrect embellishment placement',
@@ -111,7 +111,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'incorrect embellishment placement'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'incorrect embroidery',
+                //'id' => 'incorrect embroidery',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'incorrect embroidery',
@@ -119,7 +119,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'incorrect embroidery'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'incorrect heat seal',
+                //'id' => 'incorrect heat seal',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'incorrect heat seal',
@@ -127,7 +127,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'incorrect heat seal'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'incorrect heat seal placement',
+                //'id' => 'incorrect heat seal placement',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'incorrect heat seal placement',
@@ -135,7 +135,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'incorrect heat seal placement'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'incorrect print',
+                //'id' => 'incorrect print',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'incorrect print',
@@ -143,7 +143,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'incorrect print'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'incorrect sequence',
+                //'id' => 'incorrect sequence',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'incorrect sequence',
@@ -151,7 +151,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'incorrect sequence'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'insecure heat seal',
+                //'id' => 'insecure heat seal',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'insecure heat seal',
@@ -159,7 +159,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'insecure heat seal'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'insecure rhinestone',
+                //'id' => 'insecure rhinestone',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'insecure rhinestone',
@@ -167,7 +167,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'insecure rhinestone'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'insecure sequence',
+                //'id' => 'insecure sequence',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'insecure sequence',
@@ -175,7 +175,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'insecure sequence'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'misaligned print',
+                //'id' => 'misaligned print',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'misaligned print',
@@ -183,7 +183,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'misaligned print'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'missing parts on print',
+                //'id' => 'missing parts on print',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'missing parts on print',
@@ -191,7 +191,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'missing parts on print'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'missing print',
+                //'id' => 'missing print',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'missing print',
@@ -199,7 +199,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'missing print'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'missing rhinestone',
+                //'id' => 'missing rhinestone',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'missing rhinestone',
@@ -207,7 +207,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'missing rhinestone'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'missing sequence',
+                //'id' => 'missing sequence',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'missing sequence',
@@ -215,7 +215,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'missing sequence'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'protrude print',
+                //'id' => 'protrude print',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'protrude print',
@@ -223,7 +223,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'protrude print'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'slanted heat seal',
+                //'id' => 'slanted heat seal',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'slanted heat seal',
@@ -231,7 +231,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'slanted heat seal'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'smudge print',
+                //'id' => 'smudge print',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'smudge print',
@@ -239,7 +239,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'smudge print'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'unremoved backing',
+                //'id' => 'unremoved backing',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'unremoved backing',
@@ -251,7 +251,7 @@ class DefectCategorySeeder extends Seeder
         $newDefectCategory->defects()->saveMany($defectArray);
         
         $newDefectCategory = DefectCategory::firstOrCreate([
-            'id' => 'fabric',
+            //'id' => 'fabric',
             'is_visible' => true,
             'is_active' => true,
             'code' => 'fabric',
@@ -261,7 +261,7 @@ class DefectCategorySeeder extends Seeder
         
         $defectArray = array(
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'broken yarn',
+                //'id' => 'broken yarn',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'broken yarn',
@@ -269,7 +269,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'broken yarn'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'color shading',
+                //'id' => 'color shading',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'color shading',
@@ -277,7 +277,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'color shading'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'crease mark',
+                //'id' => 'crease mark',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'crease mark',
@@ -285,7 +285,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'crease mark'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'delamination',
+                //'id' => 'delamination',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'delamination',
@@ -293,7 +293,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'delamination'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'fabric hole',
+                //'id' => 'fabric hole',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'fabric hole',
@@ -301,7 +301,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'fabric hole'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'fabric run',
+                //'id' => 'fabric run',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'fabric run',
@@ -309,7 +309,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'fabric run'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'foreign yarn',
+                //'id' => 'foreign yarn',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'foreign yarn',
@@ -317,7 +317,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'foreign yarn'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'incorrect dry hand feel',
+                //'id' => 'incorrect dry hand feel',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'incorrect dry hand feel',
@@ -325,7 +325,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'incorrect dry hand feel'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'incorrect fabric weight',
+                //'id' => 'incorrect fabric weight',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'incorrect fabric weight',
@@ -333,7 +333,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'incorrect fabric weight'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'knots',
+                //'id' => 'knots',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'knots',
@@ -341,7 +341,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'knots'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'missing yan',
+                //'id' => 'missing yan',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'missing yan',
@@ -349,7 +349,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'missing yan'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'orange peel effect',
+                //'id' => 'orange peel effect',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'orange peel effect',
@@ -357,7 +357,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'orange peel effect'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'shade bar',
+                //'id' => 'shade bar',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'shade bar',
@@ -365,7 +365,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'shade bar'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'shading',
+                //'id' => 'shading',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'shading',
@@ -373,7 +373,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'shading'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'slanted stripe/yarn',
+                //'id' => 'slanted stripe/yarn',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'slanted stripe/yarn',
@@ -381,7 +381,7 @@ class DefectCategorySeeder extends Seeder
                 'display_name' => 'slanted stripe/yarn'
             ]),
             $newDefectCategory->defects()->firstOrCreate([
-                'id' => 'slubs',
+                //'id' => 'slubs',
                 'is_visible' => true,
                 'is_active' => true,
                 'code' => 'slubs',
@@ -393,7 +393,7 @@ class DefectCategorySeeder extends Seeder
         $newDefectCategory->defects()->saveMany($defectArray);
         
         $newDefectCategory = DefectCategory::firstOrCreate([
-            'id' => 'finishing',
+            //'id' => 'finishing',
             'is_visible' => true,
             'is_active' => true,
             'code' => 'finishing',
@@ -402,7 +402,7 @@ class DefectCategorySeeder extends Seeder
         ]);
         
         $newDefectCategory = DefectCategory::firstOrCreate([
-            'id' => 'labeling',
+            //'id' => 'labeling',
             'is_visible' => true,
             'is_active' => true,
             'code' => 'labeling',
@@ -411,7 +411,7 @@ class DefectCategorySeeder extends Seeder
         ]);
         
         $newDefectCategory = DefectCategory::firstOrCreate([
-            'id' => 'measurmrnt',
+            //'id' => 'measurmrnt',
             'is_visible' => true,
             'is_active' => true,
             'code' => 'measurmrnt',
@@ -420,7 +420,7 @@ class DefectCategorySeeder extends Seeder
         ]);
         
         $newDefectCategory = DefectCategory::firstOrCreate([
-            'id' => 'moulding',
+            //'id' => 'moulding',
             'is_visible' => true,
             'is_active' => true,
             'code' => 'moulding',
@@ -429,7 +429,7 @@ class DefectCategorySeeder extends Seeder
         ]);
         
         $newDefectCategory = DefectCategory::firstOrCreate([
-            'id' => 'packaging',
+            //'id' => 'packaging',
             'is_visible' => true,
             'is_active' => true,
             'code' => 'packaging',
@@ -438,7 +438,7 @@ class DefectCategorySeeder extends Seeder
         ]);
         
         $newDefectCategory = DefectCategory::firstOrCreate([
-            'id' => 'safety',
+            //'id' => 'safety',
             'is_visible' => true,
             'is_active' => true,
             'code' => 'safety',
@@ -447,7 +447,7 @@ class DefectCategorySeeder extends Seeder
         ]);
         
         $newDefectCategory = DefectCategory::firstOrCreate([
-            'id' => 'sewing',
+            //'id' => 'sewing',
             'is_visible' => true,
             'is_active' => true,
             'code' => 'sewing',
@@ -456,7 +456,7 @@ class DefectCategorySeeder extends Seeder
         ]);
         
         $newDefectCategory = DefectCategory::firstOrCreate([
-            'id' => 'sewing trims',
+            //'id' => 'sewing trims',
             'is_visible' => true,
             'is_active' => true,
             'code' => 'sewing trims',
@@ -465,7 +465,7 @@ class DefectCategorySeeder extends Seeder
         ]);
         
         $newDefectCategory = DefectCategory::firstOrCreate([
-            'id' => 'stain',
+            //'id' => 'stain',
             'is_visible' => true,
             'is_active' => true,
             'code' => 'stain',
@@ -474,7 +474,7 @@ class DefectCategorySeeder extends Seeder
         ]);
         
         $newDefectCategory = DefectCategory::firstOrCreate([
-            'id' => 'washing',
+            //'id' => 'washing',
             'is_visible' => true,
             'is_active' => true,
             'code' => 'washing',

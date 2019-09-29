@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 
 class CreateLogCategoriesTable extends Migration
 {
+    protected $table_name_1 = "log_categories";
     /**
      * Run the migrations.
      *
@@ -16,15 +17,18 @@ class CreateLogCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('log_categories', function (Blueprint $table) {
+        Schema::create($this->table_name_1, function (Blueprint $table) {
             /*
             $table->bigIncrements('id');
             $table->timestamps();
             */
             
-            $table->bigIncrements('id');
+            //$table->unsignedBigInteger('id')->default(0)->nullable()->comment('comment');
             //$table->->uuid('id')->default(0)->nullable()->comment('universal unique identifier');
+            //$table->dateTime('date_time')->default('CURRENT_TIMESTAMP')->nullable()->change();
+            $table->bigIncrements('id');
             $table->timestamps();
+            $table->unsignedBigInteger('pk')->default(0)->nullable()->comment('comment');
             $table->boolean('is_visible')->index()->nullable()->default(false)->comment('comment');
             $table->boolean('is_active')->index()->nullable()->default(false)->comment('comment');
             //$table->string('colour_id')->index()->nullable()->comment('comment');
@@ -36,11 +40,21 @@ class CreateLogCategoriesTable extends Migration
             //$table->softDeletes();
         });
         
-        Schema::table('log_categories', function($table) {
+        Schema::table($this->table_name_1, function($table) {
             //$table->primary(array('id'), ('pk'.time().Str::uuid()->toString()));
             //$table->unique(array('id'), ('unique'.time().Str::uuid()->toString()));
             //$table->index(array('id'), ('index'.time().Str::uuid()->toString()));
-            //$table->foreign('status_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('statuses')->onUpdate('cascade');
+            //$table->foreign('status_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('statuses')->onUpdate('cascade')->onDelete('set null');
+            
+            //$table->primary(array('id'), ('pk'.time().Str::uuid()->toString()));
+        });
+        
+        Schema::table($this->table_name_1, function($table) {
+            //if (Schema::hasTable('table_name')){}
+            if ((Schema::hasColumn($this->table_name_1, 'id')) && (Schema::hasColumn($this->table_name_1, 'pk'))){
+                //DB::statement("ALTER TABLE {$this->table_name_1} MODIFY COLUMN pk INTEGER NOT NULL UNIQUE AUTO_INCREMENT;");
+                //DB::statement("UPDATE {$this->table_name} SET id = pk");
+            }
         });
     }
 
@@ -51,6 +65,6 @@ class CreateLogCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('log_categories');
+        Schema::dropIfExists($this->table_name_1);
     }
 }

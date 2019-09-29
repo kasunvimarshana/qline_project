@@ -76,5 +76,42 @@ class UserSeeder extends Seeder
         ]);
         
         $newUser->userAPITokens()->save($newUserAPIToken);
+        
+        
+        
+        $newCompany = $newUser->company()->firstOrCreate([
+            //'id' => 'brandix',
+            'is_visible' => true,
+            'is_active' => true,
+            'code' => 'brandix',
+            'name' => 'brandix',
+            'display_name' => 'brandix'
+        ]);
+        
+        $newUser->company()->associate($newCompany)->save();
+        
+        $newStrategicBusinessUnit = $newUser->strategicBusinessUnit()->firstOrCreate([
+            //'id' => 'bli',
+            'is_visible' => true,
+            'is_active' => true,
+            'code' => 'bli',
+            'name' => 'bli',
+            'display_name' => 'bli',
+            'company_id' => $newCompany->id
+        ]);
+        
+        $newUser->strategicBusinessUnit()->associate($newStrategicBusinessUnit)->save();
+        
+        $newDepartment = $newUser->department()->firstOrCreate([
+            //'id' => 'quality',
+            'is_visible' => true,
+            'is_active' => true,
+            'code' => 'quality',
+            'name' => 'quality',
+            'display_name' => 'quality',
+            'strategic_business_unit_id' => $newStrategicBusinessUnit->id
+        ]);
+        
+        $newUser->department()->associate($newDepartment)->save();
     }
 }

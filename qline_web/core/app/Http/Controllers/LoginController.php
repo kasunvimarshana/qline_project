@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-//use Illuminate\Support\Facades\Response;
-use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Response;
+//use Illuminate\Http\Response;
 use DB;
 use Illuminate\Support\Str;
 use Illuminate\Http\JsonResponse;
@@ -22,9 +22,10 @@ use Carbon\Carbon;
 //use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session as Session;
 //use Illuminate\Support\Facades\Cookie as Cookie;
-use GuzzleHttp\Client as Client;
+//use Illuminate\Http\Request;
 //use GuzzleHttp\Psr7\Request as GuzzleRequest;
 //use GuzzleHttp\Psr7\MultipartStream as GuzzleMultipartStream;
+use GuzzleHttp\Client as Client;
 //use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Route;
 
@@ -46,6 +47,14 @@ class LoginController extends Controller
     }
     
     public function index(Request $request){}
+    
+    public function setAuthorizedDataArray(Request $request = null){
+        // get input value
+        $this->authorizedDataArray = array(
+            'input_key_token' => $request->session()->get('input_key_token', null),
+            'input_key_user' => $request->session()->get('input_key_user', null)
+        );
+    }
     
     public function showLogin(Request $request){
         if( ($request->session()->has('is_login')) && ($request->session()->get('is_login', false)) ){

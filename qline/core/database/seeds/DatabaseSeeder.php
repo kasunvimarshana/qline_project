@@ -22,5 +22,8 @@ class DatabaseSeeder extends Seeder
         $this->call(StandardRQCSeeder::class);
         $this->call(StandardSewingCheckSeeder::class);
         $this->call(StandardSewingAuditSeeder::class);
+        $this->call(StatusSeeder::class);
+        $this->call(LineSeeder::class);
+        $this->call(FactorySeeder::class);
     }
 }

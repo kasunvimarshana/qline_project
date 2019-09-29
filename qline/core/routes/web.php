@@ -59,15 +59,23 @@ Route::fallback(function () {
 */
 Route::fallback('FallbackController@index')->name('fallback');
 Route::any('fallback', array('uses' => 'FallbackController@index'))->name('fallback');
-/////////////////////////////////////////////////////////////////////////////////////
+/* ****************************** */
 
-
-Route::get('companies/create', array('uses' => 'CompanyController@store'))->name('company.store');
-Route::get('companies/select', array('uses' => 'CompanyController@show'))->name('company.show');
-Route::get('companies/select/all', array('uses' => 'CompanyController@selectAllCompanies'))->name('company.selectAllCompanies');
 Route::get('logins/do-login', array('uses' => 'LoginController@doLogin'))->name('login.dologin');
 Route::get('logins/do-logout', array('uses' => 'LoginController@doLogout'))->name('login.doLogout');
 
+Route::get('companies/create', array('uses' => 'CompanyController@store'))->name('company.store');
+Route::get('companies/select', array('uses' => 'CompanyController@show'))->name('company.show');
 
+Route::get('companies/select/all', array('uses' => 'CompanyController@selectAllCompanies'))->name('company.selectAllCompanies');
+Route::get('strategic-business-units/select/all', array('uses' => 'StrategicBusinessUnitController@selectAllStrategicBusinessUnits'))->name('strategicBusinessUnit.selectAllStrategicBusinessUnits');
+Route::get('factories/select/all', array('uses' => 'FactoryController@selectAllFactories'))->name('factory.selectAllFactories');
+Route::get('lines/select/all', array('uses' => 'LineController@selectAllLines'))->name('line.selectAllLines');
+Route::get('colours/select/all', array('uses' => 'ColourController@selectAllColours'))->name('colour.selectAllColours');
+Route::get('customers/select/all', array('uses' => 'CustomerController@selectAllCustomers'))->name('customer.selectAllCustomers');
+Route::get('styles/select/all', array('uses' => 'StyleController@selectAllStyles'))->name('style.selectAllStyles');
+Route::get('exports/select/all', array('uses' => 'ExportController@selectAllExports'))->name('export.selectAllExports');
 
-//Route::get('api/test', array('uses' => 'LoginController@doLogout'));
+Route::get('standard-r-q-cs/select/all', array('uses' => 'StandardRQCController@selectAllStandarsRQCs'))->name('standardRQC.selectAllStandarsRQCs');
+Route::get('standard-sewing-checks/select/all', array('uses' => 'StandardSewingCheckController@selectAllStandardSewingChecks'))->name('standardSewingCheck.selectAllStandardSewingChecks');
+Route::get('standard-sewing-audits/select/all', array('uses' => 'StandardSewingAuditController@selectAllStandardSewingAudits'))->name('standardSewingAudit.selectAllStandardSewingAudits');

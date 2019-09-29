@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 
 class CreateQualityRecoredInputDefectDataTable extends Migration
 {
+    protected $table_name_1 = "quality_recored_input_defect_data";
     /**
      * Run the migrations.
      *
@@ -16,15 +17,18 @@ class CreateQualityRecoredInputDefectDataTable extends Migration
      */
     public function up()
     {
-        Schema::create('quality_recored_input_defect_data', function (Blueprint $table) {
+        Schema::create($this->table_name_1, function (Blueprint $table) {
             /*
             $table->bigIncrements('id');
             $table->timestamps();
             */
             
-            $table->bigIncrements('id');
+            //$table->unsignedBigInteger('id')->default(0)->nullable()->comment('comment');
             //$table->->uuid('id')->default(0)->nullable()->comment('universal unique identifier');
+            //$table->dateTime('date_time')->default('CURRENT_TIMESTAMP')->nullable()->change();
+            $table->bigIncrements('id');
             $table->timestamps();
+            $table->unsignedBigInteger('pk')->default(0)->nullable()->comment('comment');
             $table->boolean('is_visible')->default(false)->nullable()->comment('comment');//->index()
             $table->boolean('is_active')->default(false)->nullable()->comment('comment');//->index()
             $table->timestamp('time_create')->nullable()->comment('comment');//->index()
@@ -45,11 +49,13 @@ class CreateQualityRecoredInputDefectDataTable extends Migration
             //$table->morphs('defectable');
         });
         
-        Schema::table('quality_recored_input_defect_data', function($table) {
+        Schema::table($this->table_name_1, function($table) {
             //$table->primary(array('id'), ('pk'.time().Str::uuid()->toString()));
             //$table->unique(array('id'), ('unique'.time().Str::uuid()->toString()));
             //$table->index(array('id'), ('index'.time().Str::uuid()->toString()));
-            //$table->foreign('status_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('statuses')->onUpdate('cascade');
+            //$table->foreign('status_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('statuses')->onUpdate('cascade')->onDelete('set null');
+            
+            //$table->primary(array('id'), ('pk'.time().Str::uuid()->toString()));
             $table->foreign('company_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('companies')->onUpdate('cascade');
             $table->foreign('strategic_business_unit_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('strategic_business_units')->onUpdate('cascade');
             $table->foreign('factory_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('factories')->onUpdate('cascade');
@@ -76,6 +82,14 @@ class CreateQualityRecoredInputDefectDataTable extends Migration
             $table->index(array('ip_address'), ('index'.time().Str::uuid()->toString()));
             $table->index(array('status_id'), ('index'.time().Str::uuid()->toString()));
         });
+        
+        Schema::table($this->table_name_1, function($table) {
+            //if (Schema::hasTable('table_name')){}
+            if ((Schema::hasColumn($this->table_name_1, 'id')) && (Schema::hasColumn($this->table_name_1, 'pk'))){
+                //DB::statement("ALTER TABLE {$this->table_name_1} MODIFY COLUMN pk INTEGER NOT NULL UNIQUE AUTO_INCREMENT;");
+                //DB::statement("UPDATE {$this->table_name} SET id = pk");
+            }
+        });
     }
 
     /**
@@ -85,6 +99,6 @@ class CreateQualityRecoredInputDefectDataTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quality_recored_input_defect_data');
+        Schema::dropIfExists($this->table_name_1);
     }
 }

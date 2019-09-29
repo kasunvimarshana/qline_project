@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Str;
 use App\Permissions\HasPermissionsTrait;
 
 class User extends Authenticatable
@@ -16,6 +17,7 @@ class User extends Authenticatable
     use HasPermissionsTrait;
     
     //protected $table = "table";
+    //protected $primaryKey = array('id');
     protected $primaryKey = "id";
     protected $keyType = 'string';
     public $incrementing = false;
@@ -112,10 +114,8 @@ class User extends Authenticatable
             $id = null;
             if( (isset($model->id)) ){
                 $id = $model->id;
-            }else if( (isset($model->code)) ){
-                $id = $model->code;
-            }else if( (isset($model->name)) ){
-                $id = $model->name;
+            }else{
+                $id = (bin2hex(time().Str::uuid()->toString()));
             }
             $model->id = $id;
         });

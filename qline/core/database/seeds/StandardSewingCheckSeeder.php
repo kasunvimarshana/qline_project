@@ -15,7 +15,7 @@ class StandardSewingCheckSeeder extends Seeder
     {
         //
         $newStandardSewingCheck = StandardSewingCheck::firstOrCreate([
-            'id' => '100%',
+            //'id' => '100%',
             'is_visible' => true,
             'is_active' => true,
             'code' => '100%',

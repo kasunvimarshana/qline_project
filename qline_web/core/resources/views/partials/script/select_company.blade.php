@@ -5,11 +5,11 @@ $(function(){
     /*$('#id').select2({
         theme: "bootstrap"
     });*/
-    var optionData = {};
-    optionData.url = "{!! route('company.selectAllCompanies', []) !!}";//company.selectAllCompanies
+    var optionData = new Object();//{};
+    optionData.url = "{!! route('company.selectAllCompanies', []) !!}";
     optionData.id = "#company_id";
     
-    $( optionData.id ).select2({
+    var selectOptionObject = $( optionData.id ).select2({
         //theme : 'bootstrap',
         //disabled : false,
         //scrollAfterSelect : true,
@@ -28,15 +28,15 @@ $(function(){
         },
         //tags : [],
         //tokenSeparators : [],
-        minimumInputLength : 2,
+        //minimumInputLength : 2,
         multiple : false,
         escapeMarkup : function (markup) { return markup; },
         data : [],
         //data : function(){ return {results: selections} },
         ajax : {
             url : optionData.url,
-            cache : true,
-            // quietMillis: 250,
+            cache : false,
+            quietMillis: 50,
             // dataType: 'json',
             delay : 50,
             data : function (params) {
@@ -77,18 +77,22 @@ $(function(){
             });
             */
             var element_value = $(element).val();
-            if ( (element_value !== "") ) {
+            if( (element_value == "") || (element_value == null) ){
+                //console.log(element_value);
+            }else{
                 $.ajax({
                     type : 'GET', // define the type of HTTP verb we want to use (POST for our form)
                     url : optionData.url, // the url where we want to POST
                     data : {
                         'id' : element_value
                     }, // our data object
+                    quietMillis: 50,
+                    delay : 50,
                     //dataType : 'json', // what type of data do we expect back from the server
                     //encode : true,
                     //processData : false,
                     //contentType : false,
-                    //cache : false
+                    cache : false
                 })
                 // using the done promise callback
                 .done(function(data) {

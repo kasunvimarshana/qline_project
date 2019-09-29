@@ -31,26 +31,6 @@ use App\Enums\HTTPStatusCodeEnum as HTTPStatusCodeEnum;
 class DefectCategoryDefectController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -59,50 +39,495 @@ class DefectCategoryDefectController extends Controller
     public function store(Request $request)
     {
         //
+        $dataArray = array();
+        $rules = array();
+        $date_today = Carbon::now();//->format('Y-m-d');
+        $current_user = null;
+        $data = array();
+        
+        // validate the info, create rules for the inputs
+        $rules = array();
+        // run the validation rules on the inputs from the form
+        $validator = Validator::make(Input::all(), $rules);
+        // if the validator fails, redirect back to the form
+        if ($validator->fails()) {
+            //return redirect()->back()->withErrors($validator)->withInput();
+            $data['message_error'] = $validator->errors()->first();
+            return (new CommonResponseResource( $data ))->additional(array(
+                'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
+            ));
+        } else {
+            // do process
+            try {
+                // Start transaction!
+                DB::beginTransaction();
+                
+                $dataArray = array(
+                    'is_visible' => $request->input('is_visible', true),
+                    'is_active' => $request->input('is_active', true),
+                    'defect_category_id' => $request->input('defect_category_id'),
+                    'defect_id' => $request->input('defect_id')
+                );
+
+                $defectCategoryDefectObject = DefectCategoryDefect::create( $dataArray );
+                unset($dataArray);
+                $data['defect_category_defect_object'] = $defectCategoryDefectObject;
+
+                unset($dataArray);
+                // Commit transaction!
+                DB::commit();
+            }catch(Exception $e){
+                // Rollback transaction!
+                DB::rollback(); 
+                //return redirect()->back()->withInput();
+                return (new CommonResponseResource( $data ))->additional(array(
+                    'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
+                ));
+            }
+        }
+        
+        //unset data
+        unset( $dataArray );
+        unset( $rules );
+        unset( $date_today );
+        unset( $current_user );
+        //unset( $data );
+        
+        //return Response::json( $data );
+        //return redirect()->back();
+        //$http_response_code = http_response_code();
+        return (new CommonResponseResource( $data ))->additional(array(
+            'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_OK]
+        ));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\DefectCategoryDefect  $defectCategoryDefect
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function show(DefectCategoryDefect $defectCategoryDefect)
+    public function show(Request $request)
     {
         //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\DefectCategoryDefect  $defectCategoryDefect
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(DefectCategoryDefect $defectCategoryDefect)
-    {
-        //
+        $dataArray = array();
+        $rules = array();
+        $date_today = Carbon::now();//->format('Y-m-d');
+        $current_user = null;
+        $data = array();
+        
+        // validate the info, create rules for the inputs
+        $rules = array(
+            'defect_category_id' => 'required|exists:defect_category_defects,defect_category_id',
+            'defect_id' => 'required|exists:defect_category_defects,defect_id'
+        );
+        // run the validation rules on the inputs from the form
+        $validator = Validator::make(Input::all(), $rules);
+        // if the validator fails, redirect back to the form
+        if ($validator->fails()) {
+            //return redirect()->back()->withErrors($validator)->withInput();
+            $data['message_error'] = $validator->errors()->first();
+            return (new CommonResponseResource( $data ))->additional(array(
+                'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
+            ));
+        } else {
+            // do process
+            try {
+                // Start transaction!
+                DB::beginTransaction();
+                
+                $defectCategoryDefectObject = new DefectCategoryDefect();
+                $defectCategoryDefectObject = $defectCategoryDefectObject
+                    ->where('defect_category_id', '=', $request->input('defect_category_id'))
+                    ->where('defect_id', '=', $request->input('defect_id'))
+                    ->first();
+                
+                $data['defect_category_defect_object'] = $defectCategoryDefectObject;
+                unset($dataArray);
+                
+                // Commit transaction!
+                DB::commit();
+            }catch(Exception $e){
+                // Rollback transaction!
+                DB::rollback(); 
+                //return redirect()->back()->withInput();
+                return (new CommonResponseResource( $data ))->additional(array(
+                    'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
+                ));
+            }
+        }
+        
+        //unset data
+        unset( $dataArray );
+        unset( $rules );
+        unset( $date_today );
+        unset( $current_user );
+        //unset( $data );
+        
+        //return Response::json( $data );
+        //return redirect()->back();
+        //$http_response_code = http_response_code();
+        return (new CommonResponseResource( $data ))->additional(array(
+            'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_OK]
+        ));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\DefectCategoryDefect  $defectCategoryDefect
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DefectCategoryDefect $defectCategoryDefect)
+    public function update(Request $request)
     {
         //
+        $dataArray = array();
+        $rules = array();
+        $date_today = Carbon::now();//->format('Y-m-d');
+        $current_user = null;
+        $data = array();
+        
+        // validate the info, create rules for the inputs
+        $rules = array(
+            'defect_category_id' => 'required|exists:defect_category_defects,defect_category_id',
+            'defect_id' => 'required|exists:defect_category_defects,defect_id'
+        );
+        // run the validation rules on the inputs from the form
+        $validator = Validator::make(Input::all(), $rules);
+        // if the validator fails, redirect back to the form
+        if ($validator->fails()) {
+            //return redirect()->back()->withErrors($validator)->withInput();
+            $data['message_error'] = $validator->errors()->first();
+            return (new CommonResponseResource( $data ))->additional(array(
+                'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
+            ));
+        } else {
+            // do process
+            try {
+                // Start transaction!
+                DB::beginTransaction();
+                
+                $dataArray = array(
+                    'is_visible' => $request->input('is_visible', true),
+                    'is_active' => $request->input('is_active', true),
+                    'defect_category_id' => $request->input('defect_category_id'),
+                    'defect_id' => $request->input('defect_id')
+                );
+
+                $defectCategoryDefectObject = $defectCategoryDefectObject
+                    ->where('defect_category_id', '=', $request->input('defect_category_id'))
+                    ->where('defect_id', '=', $request->input('defect_id'))
+                    ->first();
+                
+                $defectCategoryDefectObject = $defectCategoryDefectObject->update( $dataArray );
+                unset($dataArray);
+                $data['defect_category_defect_object'] = $defectCategoryDefectObject;
+
+                unset($dataArray);
+                // Commit transaction!
+                DB::commit();
+            }catch(Exception $e){
+                // Rollback transaction!
+                DB::rollback(); 
+                //return redirect()->back()->withInput();
+                return (new CommonResponseResource( $data ))->additional(array(
+                    'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
+                ));
+            }
+        }
+        
+        //unset data
+        unset( $dataArray );
+        unset( $rules );
+        unset( $date_today );
+        unset( $current_user );
+        //unset( $data );
+        
+        //return Response::json( $data );
+        //return redirect()->back();
+        //$http_response_code = http_response_code();
+        return (new CommonResponseResource( $data ))->additional(array(
+            'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_OK]
+        ));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\DefectCategoryDefect  $defectCategoryDefect
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DefectCategoryDefect $defectCategoryDefect)
+    public function destroy(Request $request)
     {
         //
+        $dataArray = array();
+        $rules = array();
+        $date_today = Carbon::now();//->format('Y-m-d');
+        $current_user = null;
+        $data = array();
+        
+        // validate the info, create rules for the inputs
+        $rules = array(
+            'defect_category_id' => 'required|exists:defect_category_defects,defect_category_id',
+            'defect_id' => 'required|exists:defect_category_defects,defect_id'
+        );
+        // run the validation rules on the inputs from the form
+        $validator = Validator::make(Input::all(), $rules);
+        // if the validator fails, redirect back to the form
+        if ($validator->fails()) {
+            //return redirect()->back()->withErrors($validator)->withInput();
+            $data['message_error'] = $validator->errors()->first();
+            return (new CommonResponseResource( $data ))->additional(array(
+                'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
+            ));
+        } else {
+            // do process
+            try {
+                // Start transaction!
+                DB::beginTransaction();
+                
+                $defectCategoryDefectObject = new DefectCategoryDefect();
+                $defectCategoryDefectObject = $defectCategoryDefectObject
+                    ->where('defect_category_id', '=', $request->input('defect_category_id'))
+                    ->where('defect_id', '=', $request->input('defect_id'))
+                    ->first();
+                $defectCategoryDefectObject->delete();
+                
+                $data['defect_category_defect_object'] = $defectCategoryDefectObject;
+                unset($dataArray);
+                
+                // Commit transaction!
+                DB::commit();
+            }catch(Exception $e){
+                // Rollback transaction!
+                DB::rollback(); 
+                //return redirect()->back()->withInput();
+                return (new CommonResponseResource( $data ))->additional(array(
+                    'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
+                ));
+            }
+        }
+        
+        //unset data
+        unset( $dataArray );
+        unset( $rules );
+        unset( $date_today );
+        unset( $current_user );
+        //unset( $data );
+        
+        //return Response::json( $data );
+        //return redirect()->back();
+        //$http_response_code = http_response_code();
+        return (new CommonResponseResource( $data ))->additional(array(
+            'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_OK]
+        ));
+    }
+    
+    //other
+    public function selectAllDefectCategoryDefects(Request $request){
+        //
+        $dataArray = array();
+        $rules = array();
+        $date_today = Carbon::now();//->format('Y-m-d');
+        $current_user = null;
+        $data = array();
+        
+        // Solution to get around integer overflow errors
+        // $model->latest()->limit(PHP_INT_MAX)->offset(1)->get();
+        // function will process the ajax request
+        $draw = null;
+        $start = 0;
+        $length = 0;
+        $search = null;
+        $recordsTotal = 0;
+        $recordsFiltered = 0;
+        $query = null;
+        $queryResult = null;
+        //$recordsTotal = Model::where('active','=','1')->count();
+        
+        // validate the info, create rules for the inputs
+        $rules = array();
+        // run the validation rules on the inputs from the form
+        $validator = Validator::make(Input::all(), $rules);
+        // if the validator fails, redirect back to the form
+        if ($validator->fails()) {
+            //return redirect()->back()->withErrors($validator)->withInput();
+            $data['message_error'] = $validator->errors()->first();
+            return (new CommonResponseResource( $data ))->additional(array(
+                'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
+            ));
+        } else {
+            // do process
+            try {
+                // Start transaction!
+                //DB::beginTransaction();
+                //DB::transaction(function () use (&$data){});
+                $defectCategoryDefectObject = new DefectCategoryDefect();
+                $query = $defectCategoryDefectObject;
+                /*
+                $query = $company->where('is_visible', '=', true);
+                $query = $company->where('is_active', '=', true);
+                */
+                //$query = $query->where('is_visible', '=', $request->input('is_visible', true));
+                //$query = $query->where('is_active', '=', $request->input('is_visible', true));
+                // is_visible
+                if( ($request->has('is_visible')) && ($request->filled('is_visible')) ){
+                    $is_visible_val_true = "true";
+                    $is_visible_val_false = "false";
+                    $is_visible_val_temp = $request->input('is_visible');
+                    if( (strcasecmp($is_visible_val_temp, $is_visible_val_true) == 0) ){
+                        $query = $query->where('is_visible', '=', true);
+                    }else if( (strcasecmp($is_visible_val_temp, $is_visible_val_false) == 0) ){
+                        $query = $query->where('is_visible', '=', false);
+                    }else{
+                        $query = $query->where('is_visible', '=', true);
+                    }
+                }else{
+                    $query = $query->where('is_visible', '=', true);
+                }
+                
+                // is_active
+                if( ($request->has('is_active')) && ($request->filled('is_active')) ){
+                    $is_active_val_true = "true";
+                    $is_active_val_false = "false";
+                    $is_active_val_temp = $request->input('is_active');
+                    if( (strcasecmp($is_active_val_temp, $is_active_val_true) == 0) ){
+                        $query = $query->where('is_active', '=', true);
+                    }else if( (strcasecmp($is_active_val_temp, $is_active_val_false) == 0) ){
+                        $query = $query->where('is_active', '=', false);
+                    }else{
+                        $query = $query->where('is_active', '=', true);
+                    }
+                }else{
+                    $query = $query->where('is_active', '=', true);
+                }
+                
+                $recordsTotal = $query->count();
+                $recordsFiltered = $recordsTotal;
+                
+                // get search query value
+                /*
+                if( ($request->has('search')) && ($request->filled('search')) ){
+                    $search = $request->input('search');
+                    if( $search && (@key_exists('value', $search)) ){
+                        $search = $search['value'];
+                    }
+                    if($search && (!empty($search))){
+                        //$search = (string) $search;
+                        $query = $query->where('code', 'like', '%' . $search . '%');
+                    }
+                }
+                */
+                
+                // created_at
+                if( ($request->has('created_at')) && ($request->filled('created_at')) ){
+                    $created_at = $request->input('created_at');
+                    $query = $query->where('created_at', '=', $created_at);
+                }
+                
+                // updated_at
+                if( ($request->has('updated_at')) && ($request->filled('updated_at')) ){
+                    $updated_at = $request->input('updated_at');
+                    $query = $query->where('updated_at', '=', $updated_at);
+                }
+                
+                // defect_category_id
+                if( ($request->has('defect_category_id')) && ($request->filled('defect_category_id')) ){
+                    $defect_category_id = $request->input('defect_category_id');
+                    $query = $query->where('defect_category_id', '=', $defect_category_id);
+                }
+                
+                // defect_id
+                if( ($request->has('defect_id')) && ($request->filled('defect_id')) ){
+                    $defect_id = $request->input('defect_id');
+                    $query = $query->where('defect_id', '=', $defect_id);
+                }
+
+                // get filtered record count
+                $recordsFiltered = $query->count();
+
+                // get limit value
+                if( ($request->has('length')) && ($request->filled('length')) ){
+                    $length = intval( $request->input('length') );
+                    $length = abs( $length );
+                    $query = $query->limit($length);
+                }
+                // set default value for length (PHP_INT_MAX)
+                if( $length <= 0 ){
+                    $length = PHP_INT_MAX;
+                    $length = abs( $length );
+                    //$length = 0;
+                }
+
+                // get offset value
+                if( ($request->has('start')) && ($request->filled('start')) ){
+                    $start = intval( $request->input('start') );
+                    $start = abs( $start );
+                }else if( ($request->has('page')) && ($request->filled('page')) ){
+                    $start = intval( $request->input('page') );
+                    //$start = abs( ( ( $start - 1 ) * $length ) );
+                    $start = ( ( $start - 1 ) * $length );
+                    $start = abs( $start );
+                }
+
+                // filter with offset value
+                if( $start > 0 ){
+                    //$query = $query->limit($length)->skip($start);
+                    $query = $query->limit($length)->offset($start);
+                }else if( $length > 0 ){
+                    $query = $query->limit($length);
+                }
+
+                // order
+                //$query->orderBy('id', 'desc');
+                $query->orderBy('updated_at', 'desc');
+
+                // get data
+                $queryResult = $query->get();
+
+                $recordsTotal = $recordsFiltered;
+                
+                $draw = $request->input('draw');
+                
+                $data = array(
+                    'draw' => $draw,
+                    'start' => $start,
+                    'page' => $start,
+                    'length' => $length,
+                    'search' => $search,
+                    'recordsTotal' => $recordsTotal,
+                    'recordsFiltered' => $recordsFiltered,
+                    'data' => $queryResult,
+                    'pagination' => array(
+                        'more' => ( ($start * $length) < $recordsFiltered ) ? true : false
+                    )
+                );
+
+                // Commit transaction!
+                //DB::commit();
+                //return Response::json( $data );
+            }catch(Exception $e){
+                // Rollback transaction!
+                //DB::rollback(); 
+                //return redirect()->back()->withInput();
+                return (new CommonResponseResource( $data ))->additional(array(
+                    'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
+                ));
+            }
+        }
+        
+        //unset data
+        unset( $dataArray );
+        unset( $rules );
+        unset( $date_today );
+        unset( $current_user );
+        //unset( $data );
+        
+        //return Response::json( $data );
+        //return redirect()->back();
+        //$http_response_code = http_response_code();
+        return (new CommonResponseResource( $data ))->additional(array(
+            'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_OK]
+        ));
     }
 }

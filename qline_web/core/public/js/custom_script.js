@@ -3,6 +3,10 @@
 //$.fn.select2.defaults.set( "theme", "bootstrap" );
 /*select2 plugin for set options' data attribute */
 (function($) {
+    //$('#element').val('val_id').trigger('change');
+    //$('#element').select2('val', 'val_id', true).trigger('change');
+    //$(element).select2('data', newObject, true);
+    //$("#element").select2("trigger", "select", { data: { id: "val_id" } });
     $.fn.setSelect2OptionDataAttribute = function(newData) {
         //newData = [];
         try{

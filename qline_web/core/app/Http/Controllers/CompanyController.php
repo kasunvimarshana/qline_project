@@ -22,6 +22,9 @@ use Carbon\Carbon;
 //use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session as Session;
 //use Illuminate\Support\Facades\Cookie as Cookie;
+//use Illuminate\Http\Request;
+//use GuzzleHttp\Psr7\Request as GuzzleRequest;
+//use GuzzleHttp\Psr7\MultipartStream as GuzzleMultipartStream;
 use GuzzleHttp\Client as Client;
 //use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +34,7 @@ use App\Enums\HTTPStatusCodeEnum as HTTPStatusCodeEnum;
 
 class CompanyController extends Controller
 {
+    //
     protected $app_url_api;
     protected $authorizedDataArray;
     
@@ -43,6 +47,14 @@ class CompanyController extends Controller
     }
     
     public function index(Request $request){}
+    
+    public function setAuthorizedDataArray(Request $request = null){
+        // get input value
+        $this->authorizedDataArray = array(
+            'input_key_token' => $request->session()->get('input_key_token', null),
+            'input_key_user' => $request->session()->get('input_key_user', null)
+        );
+    }
     
     //other
     public function selectAllCompanies(Request $request){
@@ -83,11 +95,7 @@ class CompanyController extends Controller
                     'base_uri' => $this->app_url_api,
                 ]);
                 
-                // get input value
-                $this->authorizedDataArray = array(
-                    'input_key_token' => $request->session()->get('input_key_token', null),
-                    'input_key_user' => $request->session()->get('input_key_user', null)
-                );
+                $this->setAuthorizedDataArray( $request );
                 
                 $request = $request->merge( $this->authorizedDataArray );
                 $dataArray = $request->all();
@@ -138,24 +146,9 @@ class CompanyController extends Controller
         unset( $date_today );
         unset( $current_user );
         //unset( $data );
-        
-        /*
-        $data = array(
-            'draw' => $draw,
-            'start' => $start,
-            'page' => $start,
-            'length' => $length,
-            'search' => $search,
-            'recordsTotal' => $recordsTotal,
-            'recordsFiltered' => $recordsFiltered,
-            'data' => $queryResult,
-            'pagination' => array(
-                'more' => ( ($start * $length) < $recordsFiltered ) ? true : false
-            )
-        );
-        */
 
         //return Response::json( $data );
         return response()->json( $data );
     }
+    
 }

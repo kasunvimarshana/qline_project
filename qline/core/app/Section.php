@@ -5,12 +5,13 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Str;
 
 class Section extends Model
 {
     //
     //protected $table = "table";
-    protected $primaryKey = array('id', 'department_id');
+    //protected $primaryKey = array('id');
     //protected $primaryKey = "id";
     //protected $keyType = 'string';
     public $incrementing = false;
@@ -87,10 +88,8 @@ class Section extends Model
             $id = null;
             if( (isset($model->id)) ){
                 $id = $model->id;
-            }else if( (isset($model->code)) ){
-                $id = $model->code;
-            }else if( (isset($model->name)) ){
-                $id = $model->name;
+            }else{
+                $id = (bin2hex(time().Str::uuid()->toString()));
             }
             $model->id = $id;
         });

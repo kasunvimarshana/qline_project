@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 
 class CreateUserRolesTable extends Migration
 {
+    protected $table_name_1 = "user_roles";
     /**
      * Run the migrations.
      *
@@ -16,14 +17,16 @@ class CreateUserRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_roles', function (Blueprint $table) {
+        Schema::create($this->table_name_1, function (Blueprint $table) {
             /*
             $table->bigIncrements('id');
             $table->timestamps();
             */
             
+            //$table->unsignedBigInteger('id')->default(0)->nullable()->comment('comment');
             //$table->->uuid('id')->default(0)->nullable()->comment('universal unique identifier');
-            //$table->unsignedBigInteger('user_id')->index()->unsigned()->comment('comment');
+            //$table->dateTime('date_time')->default('CURRENT_TIMESTAMP')->nullable()->change();
+            //$table->unsignedBigInteger('pk')->default(0)->nullable()->comment('comment');
             $table->string('user_id')->index()->comment('comment');
             $table->unsignedBigInteger('role_id')->index()->unsigned()->comment('comment');
             //FOREIGN KEY CONSTRAINTS
@@ -33,14 +36,24 @@ class CreateUserRolesTable extends Migration
             //$table->primary(['user_id','role_id']);
         });
         
-        Schema::table('user_roles', function($table) {
+        Schema::table($this->table_name_1, function($table) {
             //$table->primary(array('id'), ('pk'.time().Str::uuid()->toString()));
-            $table->primary(['user_id','role_id'], ('pk'.time().Str::uuid()->toString()));
             //$table->unique(array('id'), ('unique'.time().Str::uuid()->toString()));
             //$table->index(array('id'), ('index'.time().Str::uuid()->toString()));
-            //$table->foreign('status_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('statuses')->onUpdate('cascade');
+            //$table->foreign('status_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('statuses')->onUpdate('cascade')->onDelete('set null');
+            
+            //$table->primary(array('id'), ('pk'.time().Str::uuid()->toString()));
+            $table->primary(array('user_id','role_id'), ('pk'.time().Str::uuid()->toString()));
             $table->foreign('user_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('role_id', ('fk'.time().Str::uuid()->toString()))->references('id')->on('roles')->onUpdate('cascade')->onDelete('cascade');
+        });
+        
+        Schema::table($this->table_name_1, function($table) {
+            //if (Schema::hasTable('table_name')){}
+            if ((Schema::hasColumn($this->table_name_1, 'id')) && (Schema::hasColumn($this->table_name_1, 'pk'))){
+                DB::statement("ALTER TABLE {$this->table_name_1} MODIFY COLUMN pk INTEGER NOT NULL UNIQUE AUTO_INCREMENT;");
+                //DB::statement("UPDATE {$this->table_name} SET id = pk");
+            }
         });
     }
 
@@ -51,6 +64,6 @@ class CreateUserRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_roles');
+        Schema::dropIfExists($this->table_name_1);
     }
 }

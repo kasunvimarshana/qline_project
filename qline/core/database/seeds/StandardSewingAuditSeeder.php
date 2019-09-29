@@ -15,7 +15,7 @@ class StandardSewingAuditSeeder extends Seeder
     {
         //
         $newStandardSewingAudit = StandardSewingAudit::firstOrCreate([
-            'id' => '1.0',
+            //'id' => '1.0',
             'is_visible' => true,
             'is_active' => true,
             'code' => '1.0',

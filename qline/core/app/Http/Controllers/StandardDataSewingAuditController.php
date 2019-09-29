@@ -31,26 +31,6 @@ use App\Enums\HTTPStatusCodeEnum as HTTPStatusCodeEnum;
 class StandardDataSewingAuditController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -59,50 +39,571 @@ class StandardDataSewingAuditController extends Controller
     public function store(Request $request)
     {
         //
+        $dataArray = array();
+        $rules = array();
+        $date_today = Carbon::now();//->format('Y-m-d');
+        $current_user = null;
+        $data = array();
+        
+        // validate the info, create rules for the inputs
+        $rules = array();
+        // run the validation rules on the inputs from the form
+        $validator = Validator::make(Input::all(), $rules);
+        // if the validator fails, redirect back to the form
+        if ($validator->fails()) {
+            //return redirect()->back()->withErrors($validator)->withInput();
+            $data['message_error'] = $validator->errors()->first();
+            return (new CommonResponseResource( $data ))->additional(array(
+                'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
+            ));
+        } else {
+            // do process
+            try {
+                // Start transaction!
+                DB::beginTransaction();
+                
+                $dataArray = array(
+                    'is_visible' => $request->input('is_visible', true),
+                    'is_active' => $request->input('is_active', true),
+                    'count_sample' => $request->input('count_sample'),
+                    'batch_count_min' => $request->input('batch_count_min'),
+                    'batch_count_max' => $request->input('batch_count_max'),
+                    'count_accept' => $request->input('count_accept'),
+                    'count_reject' => $request->input('count_reject'),
+                    'reject_level' => $request->input('reject_level'),
+                    'reject_mode' => $request->input('reject_mode'),
+                    'accept_level' => $request->input('accept_level'),
+                    'accept_mode' => $request->input('accept_mode'),
+                    'audit_frequency_type' => $request->input('audit_frequency_type'),
+                    'audit_frequency_count' => $request->input('audit_frequency_count'),
+                    'standard_sewing_audit_id' => $request->input('standard_sewing_audit_id')
+                );
+
+                $standardDataSewingAuditObject = StandardDataSewingAudit::create( $dataArray );
+                unset($dataArray);
+                $data['standard_data_sewing_audit_object'] = $standardDataSewingAuditObject;
+
+                unset($dataArray);
+                // Commit transaction!
+                DB::commit();
+            }catch(Exception $e){
+                // Rollback transaction!
+                DB::rollback(); 
+                //return redirect()->back()->withInput();
+                return (new CommonResponseResource( $data ))->additional(array(
+                    'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
+                ));
+            }
+        }
+        
+        //unset data
+        unset( $dataArray );
+        unset( $rules );
+        unset( $date_today );
+        unset( $current_user );
+        //unset( $data );
+        
+        //return Response::json( $data );
+        //return redirect()->back();
+        //$http_response_code = http_response_code();
+        return (new CommonResponseResource( $data ))->additional(array(
+            'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_OK]
+        ));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\StandardDataSewingAudit  $standardDataSewingAudit
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function show(StandardDataSewingAudit $standardDataSewingAudit)
+    public function show(Request $request)
     {
         //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\StandardDataSewingAudit  $standardDataSewingAudit
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(StandardDataSewingAudit $standardDataSewingAudit)
-    {
-        //
+        $dataArray = array();
+        $rules = array();
+        $date_today = Carbon::now();//->format('Y-m-d');
+        $current_user = null;
+        $data = array();
+        
+        // validate the info, create rules for the inputs
+        $rules = array(
+            'id' => 'required|exists:standard_data_sewing_audits,id'
+        );
+        // run the validation rules on the inputs from the form
+        $validator = Validator::make(Input::all(), $rules);
+        // if the validator fails, redirect back to the form
+        if ($validator->fails()) {
+            //return redirect()->back()->withErrors($validator)->withInput();
+            $data['message_error'] = $validator->errors()->first();
+            return (new CommonResponseResource( $data ))->additional(array(
+                'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
+            ));
+        } else {
+            // do process
+            try {
+                // Start transaction!
+                DB::beginTransaction();
+                
+                $standardDataSewingAuditObject = new StandardDataSewingAudit();
+                $standardDataSewingAuditObject = $standardDataSewingAuditObject->where('id', '=', $request->input('id'))->first();
+                
+                $data['standard_data_sewing_audit_object'] = $standardDataSewingAuditObject;
+                unset($dataArray);
+                
+                // Commit transaction!
+                DB::commit();
+            }catch(Exception $e){
+                // Rollback transaction!
+                DB::rollback(); 
+                //return redirect()->back()->withInput();
+                return (new CommonResponseResource( $data ))->additional(array(
+                    'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
+                ));
+            }
+        }
+        
+        //unset data
+        unset( $dataArray );
+        unset( $rules );
+        unset( $date_today );
+        unset( $current_user );
+        //unset( $data );
+        
+        //return Response::json( $data );
+        //return redirect()->back();
+        //$http_response_code = http_response_code();
+        return (new CommonResponseResource( $data ))->additional(array(
+            'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_OK]
+        ));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\StandardDataSewingAudit  $standardDataSewingAudit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, StandardDataSewingAudit $standardDataSewingAudit)
+    public function update(Request $request)
     {
         //
+        $dataArray = array();
+        $rules = array();
+        $date_today = Carbon::now();//->format('Y-m-d');
+        $current_user = null;
+        $data = array();
+        
+        // validate the info, create rules for the inputs
+        $rules = array(
+            'id' => 'required|exists:standard_data_sewing_audits,id'
+        );
+        // run the validation rules on the inputs from the form
+        $validator = Validator::make(Input::all(), $rules);
+        // if the validator fails, redirect back to the form
+        if ($validator->fails()) {
+            //return redirect()->back()->withErrors($validator)->withInput();
+            $data['message_error'] = $validator->errors()->first();
+            return (new CommonResponseResource( $data ))->additional(array(
+                'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
+            ));
+        } else {
+            // do process
+            try {
+                // Start transaction!
+                DB::beginTransaction();
+                
+                $dataArray = array(
+                    'is_visible' => $request->input('is_visible', true),
+                    'is_active' => $request->input('is_active', true),
+                    'count_sample' => $request->input('count_sample'),
+                    'batch_count_min' => $request->input('batch_count_min'),
+                    'batch_count_max' => $request->input('batch_count_max'),
+                    'count_accept' => $request->input('count_accept'),
+                    'count_reject' => $request->input('count_reject'),
+                    'reject_level' => $request->input('reject_level'),
+                    'reject_mode' => $request->input('reject_mode'),
+                    'accept_level' => $request->input('accept_level'),
+                    'accept_mode' => $request->input('accept_mode'),
+                    'audit_frequency_type' => $request->input('audit_frequency_type'),
+                    'audit_frequency_count' => $request->input('audit_frequency_count'),
+                    'standard_sewing_audit_id' => $request->input('standard_sewing_audit_id')
+                );
+
+                $standardDataSewingAuditObject = new StandardDataSewingAudit();
+                $standardDataSewingAuditObject = $standardDataSewingAuditObject->where('id', '=', $request->input('id'))->first();
+                
+                $standardDataSewingAuditObject = $standardDataSewingAuditObject->update( $dataArray );
+                unset($dataArray);
+                $data['standard_data_sewing_audit_object'] = $standardDataSewingAuditObject;
+
+                unset($dataArray);
+                // Commit transaction!
+                DB::commit();
+            }catch(Exception $e){
+                // Rollback transaction!
+                DB::rollback(); 
+                //return redirect()->back()->withInput();
+                return (new CommonResponseResource( $data ))->additional(array(
+                    'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
+                ));
+            }
+        }
+        
+        //unset data
+        unset( $dataArray );
+        unset( $rules );
+        unset( $date_today );
+        unset( $current_user );
+        //unset( $data );
+        
+        //return Response::json( $data );
+        //return redirect()->back();
+        //$http_response_code = http_response_code();
+        return (new CommonResponseResource( $data ))->additional(array(
+            'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_OK]
+        ));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\StandardDataSewingAudit  $standardDataSewingAudit
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy(StandardDataSewingAudit $standardDataSewingAudit)
+    public function destroy(Request $request)
     {
         //
+        $dataArray = array();
+        $rules = array();
+        $date_today = Carbon::now();//->format('Y-m-d');
+        $current_user = null;
+        $data = array();
+        
+        // validate the info, create rules for the inputs
+        $rules = array(
+            'id' => 'required|exists:standard_data_sewing_audits,id'
+        );
+        // run the validation rules on the inputs from the form
+        $validator = Validator::make(Input::all(), $rules);
+        // if the validator fails, redirect back to the form
+        if ($validator->fails()) {
+            //return redirect()->back()->withErrors($validator)->withInput();
+            $data['message_error'] = $validator->errors()->first();
+            return (new CommonResponseResource( $data ))->additional(array(
+                'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
+            ));
+        } else {
+            // do process
+            try {
+                // Start transaction!
+                DB::beginTransaction();
+                
+                $standardDataSewingAuditObject = new StandardDataSewingAudit();
+                $standardDataSewingAuditObject = $standardDataSewingAuditObject->where('id', '=', $request->input('id'))->first();
+                $standardDataSewingAuditObject->delete();
+                
+                $data['standard_data_sewing_audit_object'] = $standardDataSewingAuditObject;
+                unset($dataArray);
+                
+                // Commit transaction!
+                DB::commit();
+            }catch(Exception $e){
+                // Rollback transaction!
+                DB::rollback(); 
+                //return redirect()->back()->withInput();
+                return (new CommonResponseResource( $data ))->additional(array(
+                    'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
+                ));
+            }
+        }
+        
+        //unset data
+        unset( $dataArray );
+        unset( $rules );
+        unset( $date_today );
+        unset( $current_user );
+        //unset( $data );
+        
+        //return Response::json( $data );
+        //return redirect()->back();
+        //$http_response_code = http_response_code();
+        return (new CommonResponseResource( $data ))->additional(array(
+            'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_OK]
+        ));
     }
+    
+    //other
+    public function selectAllStandardDataSewingAudit(Request $request){
+        //
+        $dataArray = array();
+        $rules = array();
+        $date_today = Carbon::now();//->format('Y-m-d');
+        $current_user = null;
+        $data = array();
+        
+        // Solution to get around integer overflow errors
+        // $model->latest()->limit(PHP_INT_MAX)->offset(1)->get();
+        // function will process the ajax request
+        $draw = null;
+        $start = 0;
+        $length = 0;
+        $search = null;
+        $recordsTotal = 0;
+        $recordsFiltered = 0;
+        $query = null;
+        $queryResult = null;
+        //$recordsTotal = Model::where('active','=','1')->count();
+        
+        // validate the info, create rules for the inputs
+        $rules = array();
+        // run the validation rules on the inputs from the form
+        $validator = Validator::make(Input::all(), $rules);
+        // if the validator fails, redirect back to the form
+        if ($validator->fails()) {
+            //return redirect()->back()->withErrors($validator)->withInput();
+            $data['message_error'] = $validator->errors()->first();
+            return (new CommonResponseResource( $data ))->additional(array(
+                'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
+            ));
+        } else {
+            // do process
+            try {
+                // Start transaction!
+                //DB::beginTransaction();
+                //DB::transaction(function () use (&$data){});
+                $standardDataSewingAuditObject = new StandardDataSewingAudit();
+                $query = $standardDataSewingAuditObject;
+                /*
+                $query = $company->where('is_visible', '=', true);
+                $query = $company->where('is_active', '=', true);
+                */
+                //$query = $query->where('is_visible', '=', $request->input('is_visible', true));
+                //$query = $query->where('is_active', '=', $request->input('is_visible', true));
+                // is_visible
+                if( ($request->has('is_visible')) && ($request->filled('is_visible')) ){
+                    $is_visible_val_true = "true";
+                    $is_visible_val_false = "false";
+                    $is_visible_val_temp = $request->input('is_visible');
+                    if( (strcasecmp($is_visible_val_temp, $is_visible_val_true) == 0) ){
+                        $query = $query->where('is_visible', '=', true);
+                    }else if( (strcasecmp($is_visible_val_temp, $is_visible_val_false) == 0) ){
+                        $query = $query->where('is_visible', '=', false);
+                    }else{
+                        $query = $query->where('is_visible', '=', true);
+                    }
+                }else{
+                    $query = $query->where('is_visible', '=', true);
+                }
+                
+                // is_active
+                if( ($request->has('is_active')) && ($request->filled('is_active')) ){
+                    $is_active_val_true = "true";
+                    $is_active_val_false = "false";
+                    $is_active_val_temp = $request->input('is_active');
+                    if( (strcasecmp($is_active_val_temp, $is_active_val_true) == 0) ){
+                        $query = $query->where('is_active', '=', true);
+                    }else if( (strcasecmp($is_active_val_temp, $is_active_val_false) == 0) ){
+                        $query = $query->where('is_active', '=', false);
+                    }else{
+                        $query = $query->where('is_active', '=', true);
+                    }
+                }else{
+                    $query = $query->where('is_active', '=', true);
+                }
+                
+                $recordsTotal = $query->count();
+                $recordsFiltered = $recordsTotal;
+                
+                /*
+                // get search query value
+                if( ($request->has('search')) && ($request->filled('search')) ){
+                    $search = $request->input('search');
+                    if( $search && (@key_exists('value', $search)) ){
+                        $search = $search['value'];
+                    }
+                    if($search && (!empty($search))){
+                        //$search = (string) $search;
+                        $query = $query->where('code', 'like', '%' . $search . '%');
+                    }
+                }
+                */
+                
+                // created_at
+                if( ($request->has('created_at')) && ($request->filled('created_at')) ){
+                    $created_at = $request->input('created_at');
+                    $query = $query->where('created_at', '=', $created_at);
+                }
+                
+                // updated_at
+                if( ($request->has('updated_at')) && ($request->filled('updated_at')) ){
+                    $updated_at = $request->input('updated_at');
+                    $query = $query->where('updated_at', '=', $updated_at);
+                }
+                
+                // id
+                if( ($request->has('id')) && ($request->filled('id')) ){
+                    $id = $request->input('id');
+                    $query = $query->where('id', '=', $id);
+                }
+                
+                // count_sample
+                if( ($request->has('count_sample')) && ($request->filled('count_sample')) ){
+                    $count_sample = $request->input('count_sample');
+                    $query = $query->where('count_sample', '=', $count_sample);
+                }
+                
+                // batch_count_min
+                if( ($request->has('batch_count_min')) && ($request->filled('batch_count_min')) ){
+                    $batch_count_min = $request->input('batch_count_min');
+                    $query = $query->where('batch_count_min', '=', $batch_count_min);
+                }
+                
+                // batch_count_max
+                if( ($request->has('batch_count_max')) && ($request->filled('batch_count_max')) ){
+                    $batch_count_max = $request->input('batch_count_max');
+                    $query = $query->where('batch_count_max', '=', $batch_count_max);
+                }
+                
+                // count_accept
+                if( ($request->has('count_accept')) && ($request->filled('count_accept')) ){
+                    $count_accept = $request->input('count_accept');
+                    $query = $query->where('count_accept', '=', $count_accept);
+                }
+                
+                // count_reject
+                if( ($request->has('count_reject')) && ($request->filled('count_reject')) ){
+                    $count_reject = $request->input('count_reject');
+                    $query = $query->where('count_reject', '=', $count_reject);
+                }
+                
+                // reject_level
+                if( ($request->has('reject_level')) && ($request->filled('reject_level')) ){
+                    $reject_level = $request->input('reject_level');
+                    $query = $query->where('reject_level', '=', $reject_level);
+                }
+                
+                // reject_mode
+                if( ($request->has('reject_mode')) && ($request->filled('reject_mode')) ){
+                    $reject_mode = $request->input('reject_mode');
+                    $query = $query->where('reject_mode', '=', $reject_mode);
+                }
+                
+                // accept_level
+                if( ($request->has('accept_level')) && ($request->filled('accept_level')) ){
+                    $accept_level = $request->input('accept_level');
+                    $query = $query->where('accept_level', '=', $accept_level);
+                }
+                
+                // accept_mode
+                if( ($request->has('accept_mode')) && ($request->filled('accept_mode')) ){
+                    $accept_mode = $request->input('accept_mode');
+                    $query = $query->where('accept_mode', '=', $accept_mode);
+                }
+                
+                // audit_frequency_type
+                if( ($request->has('audit_frequency_type')) && ($request->filled('audit_frequency_type')) ){
+                    $audit_frequency_type = $request->input('audit_frequency_type');
+                    $query = $query->where('audit_frequency_type', '=', $audit_frequency_type);
+                }
+                
+                // audit_frequency_count
+                if( ($request->has('audit_frequency_count')) && ($request->filled('audit_frequency_count')) ){
+                    $audit_frequency_count = $request->input('audit_frequency_count');
+                    $query = $query->where('audit_frequency_count', '=', $audit_frequency_count);
+                }
+                
+                // standard_sewing_audit_id
+                if( ($request->has('standard_sewing_audit_id')) && ($request->filled('standard_sewing_audit_id')) ){
+                    $standard_sewing_audit_id = $request->input('standard_sewing_audit_id');
+                    $query = $query->where('standard_sewing_audit_id', '=', $standard_sewing_audit_id);
+                }
+
+                // get filtered record count
+                $recordsFiltered = $query->count();
+
+                // get limit value
+                if( ($request->has('length')) && ($request->filled('length')) ){
+                    $length = intval( $request->input('length') );
+                    $length = abs( $length );
+                    $query = $query->limit($length);
+                }
+                // set default value for length (PHP_INT_MAX)
+                if( $length <= 0 ){
+                    $length = PHP_INT_MAX;
+                    $length = abs( $length );
+                    //$length = 0;
+                }
+
+                // get offset value
+                if( ($request->has('start')) && ($request->filled('start')) ){
+                    $start = intval( $request->input('start') );
+                    $start = abs( $start );
+                }else if( ($request->has('page')) && ($request->filled('page')) ){
+                    $start = intval( $request->input('page') );
+                    //$start = abs( ( ( $start - 1 ) * $length ) );
+                    $start = ( ( $start - 1 ) * $length );
+                    $start = abs( $start );
+                }
+
+                // filter with offset value
+                if( $start > 0 ){
+                    //$query = $query->limit($length)->skip($start);
+                    $query = $query->limit($length)->offset($start);
+                }else if( $length > 0 ){
+                    $query = $query->limit($length);
+                }
+
+                // order
+                //$query->orderBy('id', 'desc');
+                $query->orderBy('updated_at', 'desc');
+
+                // get data
+                $queryResult = $query->get();
+
+                $recordsTotal = $recordsFiltered;
+                
+                $draw = $request->input('draw');
+                
+                $data = array(
+                    'draw' => $draw,
+                    'start' => $start,
+                    'page' => $start,
+                    'length' => $length,
+                    'search' => $search,
+                    'recordsTotal' => $recordsTotal,
+                    'recordsFiltered' => $recordsFiltered,
+                    'data' => $queryResult,
+                    'pagination' => array(
+                        'more' => ( ($start * $length) < $recordsFiltered ) ? true : false
+                    )
+                );
+
+                // Commit transaction!
+                //DB::commit();
+                //return Response::json( $data );
+            }catch(Exception $e){
+                // Rollback transaction!
+                //DB::rollback(); 
+                //return redirect()->back()->withInput();
+                return (new CommonResponseResource( $data ))->additional(array(
+                    'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_BAD_REQUEST]
+                ));
+            }
+        }
+        
+        //unset data
+        unset( $dataArray );
+        unset( $rules );
+        unset( $date_today );
+        unset( $current_user );
+        //unset( $data );
+        
+        //return Response::json( $data );
+        //return redirect()->back();
+        //$http_response_code = http_response_code();
+        return (new CommonResponseResource( $data ))->additional(array(
+            'meta' => ['status_code' => HTTPStatusCodeEnum::HTTP_OK]
+        ));
+    }
+    
 }

@@ -16,7 +16,7 @@ class CompanySeeder extends Seeder
     {
         //
         $newCompany = Company::firstOrCreate([
-            'id' => 'brandix',
+            //'id' => 'brandix',
             'is_visible' => true,
             'is_active' => true,
             'code' => 'brandix',
@@ -25,7 +25,7 @@ class CompanySeeder extends Seeder
         ]);
         
         $newStrategicBusinessUnit = $newCompany->strategicBusinessUnits()->firstOrCreate([
-            'id' => 'bli',
+            //'id' => 'bli',
             'is_visible' => true,
             'is_active' => true,
             'code' => 'bli',

@@ -3,10 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 //use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 
@@ -15,6 +15,7 @@ class UserAPIToken extends Model implements AuthenticatableContract
     //
     //use AuthenticableTrait;
     //protected $table = "table";
+    //protected $primaryKey = array('id');
     //protected $primaryKey = "id";
     //protected $keyType = 'int';
     //public $incrementing = false;

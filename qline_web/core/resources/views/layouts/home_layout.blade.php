@@ -41,9 +41,6 @@
     <!-- style stack -->
     @stack('stack_style')
     <!-- /.style stack -->
-    <!-- script stack -->
-    @stack('stack_script')
-    <!-- /.script stack -->  
 </head>
 <body class="hold-transition h-100 bg-light bg-gradient-light">
 <!-- wrapper -->
@@ -123,5 +120,12 @@
       
 </div>
 <!-- /.wrapper -->
+<!-- document script --> 
+@section('section_script_document')
+@show
+<!-- /.document script -->    
+<!-- script stack -->
+@stack('stack_script')
+<!-- /.script stack -->  
 </body>
 </html>

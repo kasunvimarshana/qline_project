@@ -15,7 +15,7 @@ class StrategicBusinessUnitSeeder extends Seeder
     {
         //
         $newStrategicBusinessUnit = StrategicBusinessUnit::firstOrCreate([
-            'id' => 'bli',
+            //'id' => 'bli',
             'is_visible' => true,
             'is_active' => true,
             'code' => 'bli',
@@ -24,7 +24,7 @@ class StrategicBusinessUnitSeeder extends Seeder
         ]);
         
         $newCompany = $newStrategicBusinessUnit->company()->firstOrCreate([
-            'id' => 'brandix',
+            //'id' => 'brandix',
             'is_visible' => true,
             'is_active' => true,
             'code' => 'brandix',
@@ -35,7 +35,7 @@ class StrategicBusinessUnitSeeder extends Seeder
         $newStrategicBusinessUnit->company()->associate($newCompany)->save();
         
         $newDepartment = $newStrategicBusinessUnit->departments()->firstOrCreate([
-            'id' => 'quality',
+            //'id' => 'quality',
             'is_visible' => true,
             'is_active' => true,
             'code' => 'quality',
@@ -47,7 +47,7 @@ class StrategicBusinessUnitSeeder extends Seeder
         $newDepartment->strategicBusinessUnit()->associate($newStrategicBusinessUnit)->save();
         
         $newFactory = $newStrategicBusinessUnit->factories()->firstOrCreate([
-            'id' => 'bli_1',
+            //'id' => 'bli_1',
             'is_visible' => true,
             'is_active' => true,
             'code' => 'bli_1',

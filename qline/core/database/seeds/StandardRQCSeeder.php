@@ -15,7 +15,7 @@ class StandardRQCSeeder extends Seeder
     {
         //
         $newStandardRQC = StandardRQC::firstOrCreate([
-            'id' => '5.0',
+            //'id' => '5.0',
             'is_visible' => true,
             'is_active' => true,
             'code' => '5.0',

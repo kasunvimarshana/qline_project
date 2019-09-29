@@ -5,11 +5,13 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Str;
 
 class QualityRecordData extends Model
 {
     //
     //protected $table = "table";
+    //protected $primaryKey = array('id');
     //protected $primaryKey = "id";
     //protected $keyType = 'int';
     //public $incrementing = false;

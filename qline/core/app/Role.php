@@ -5,12 +5,14 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Str;
 
 class Role extends Model
 {
     //
     protected $table = "roles";
-    protected $primaryKey = "id";
+    //protected $primaryKey = array('id');
+    //protected $primaryKey = "id";
     //protected $keyType = 'int';
     //public $incrementing = false;
     //protected $connection = "mysql";

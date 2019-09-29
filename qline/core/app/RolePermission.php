@@ -5,12 +5,13 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Str;
 
 class RolePermission extends Model
 {
     //
     protected $table = "role_permissions";
-    protected $primaryKey = array('role_id', 'permission_id');
+    //protected $primaryKey = array('id');
     //protected $primaryKey = "id";
     //protected $keyType = 'int';
     public $incrementing = false;

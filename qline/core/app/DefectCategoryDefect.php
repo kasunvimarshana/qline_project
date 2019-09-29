@@ -5,14 +5,15 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Str;
 
 class DefectCategoryDefect extends Model
 {
     /
     //protected $table = "table";
-    protected $primaryKey = array('defect_category_id', 'defect_id');
-    //protected $primaryKey = "id";
-    //protected $keyType = 'string';
+    //protected $primaryKey = array('id');
+    protected $primaryKey = "id";
+    protected $keyType = 'string';
     public $incrementing = false;
     //protected $connection = "mysql";
     //$this->setConnection("mysql");
