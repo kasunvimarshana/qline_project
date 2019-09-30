@@ -5,7 +5,7 @@ $(function(){
     /*$('#id').select2({
         theme: "bootstrap"
     });*/
-    var optionData = {};
+    var optionData = new Object();//{};
     optionData.url = "{!! route('factory.selectAllFactories', []) !!}";
     optionData.id = "#factory_id";
     
@@ -36,13 +36,13 @@ $(function(){
         ajax : {
             url : optionData.url,
             cache : true,
-            quietMillis: 50,
+            quietMillis: 10,
             // dataType: 'json',
-            delay : 50,
+            delay : 10,
             data : function (params) {
                 var query = {
                     search : params.term, // $.trim(params.term)
-                    active : 1,
+                    active : true,
                     page : params.page || 1,
                     length : 10
                 }
@@ -77,7 +77,7 @@ $(function(){
             });
             */
             var element_value = $(element).val();
-            if( (element_value == "") || (element_value == null) ){
+            if( (typeof element_value === "undefined") || (element_value === void(0)) || (element_value == "") || (element_value == null) ){
                 //console.log(element_value);
             }else{
                 $.ajax({
@@ -86,8 +86,8 @@ $(function(){
                     data : {
                         'id' : element_value
                     }, // our data object
-                    quietMillis: 50,
-                    delay : 50,
+                    quietMillis: 10,
+                    delay : 10,
                     //dataType : 'json', // what type of data do we expect back from the server
                     //encode : true,
                     //processData : false,

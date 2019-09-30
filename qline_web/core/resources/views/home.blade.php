@@ -332,22 +332,19 @@
 <script>
     $(function(){
         "use strict";
-        function setValueCompanyId(){
-            @php
+        @php
+            $setup_configuration_company_id = null;
+            if( (session()->has('setup_configuration_company_id')) && (session()->exists('setup_configuration_company_id')) ){
+                $setup_configuration_company_id = session()->get('setup_configuration_company_id', null);
+            }else if( (session()->has('authorized_user_company_id')) && (session()->exists('authorized_user_company_id')) ){
+                $setup_configuration_company_id = session()->get('authorized_user_company_id', null);
+            }else{
                 $setup_configuration_company_id = null;
-                if( (session()->has('setup_configuration_company_id')) && (session()->exists('setup_configuration_company_id')) ){
-                    $setup_configuration_company_id = session()->get('setup_configuration_company_id', null);
-                }else if( (session()->has('authorized_user_company_id')) && (session()->exists('authorized_user_company_id')) ){
-                    $setup_configuration_company_id = session()->get('authorized_user_company_id', null);
-                }else{
-                    $setup_configuration_company_id = null;
-                }
-            @endphp
-            $("#company_id").select2("trigger", "select", {
-                data: { id: "{!! $setup_configuration_company_id !!}" }
-            }); 
-        }
-        setTimeout(setValueCompanyId, 10);
+            }
+        @endphp
+        $("#company_id").select2("trigger", "select", {
+            data: { id: "{!! $setup_configuration_company_id !!}" }
+        }); 
     });
 </script>
 @endpush
